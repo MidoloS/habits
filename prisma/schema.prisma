@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:xsGPNFAYUJJEV9Xp@db.mabfjyjbggqdwqtjdwip.supabase.co:5432/postgres?connection_limit=50&pool_timeout=200"
+}
+
+model Habit {
+  name          HabitName       @id
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  isPro         Boolean         @default(false)
+  minutes       Int             @default(5)
+  subscriptions Subscriptions[]
+}
+
+model User {
+  name          String
+  email         String          @id
+  isPro         Boolean         @default(false)
+  subscriptions Subscriptions[]
+}
+
+model Subscriptions {
+  user      User      @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  userEmail String
+  habit     Habit     @relation(fields: [habitName], references: [name])
+  habitName HabitName
+
+  // middle fields
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+  streak      Int       @default(0)
+
+  @@id([userEmail, habitName])
+}
+
+enum HabitName {
+  WALK
+  EAT
+  TIDY
+  PRO_HABIT_EXAMPLE
+}
