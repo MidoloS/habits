@@ -5,32 +5,25 @@ type Props = {
   src: string;
   title: string;
   suffix?: React.ReactNode;
-  width?: number;
-  height?: number;
   minutes: number;
 };
 export const HabitCard: FC<Props> = forwardRef(
   // @ts-ignore
   ({ onClick, href, ...props }, ref): JSX.Element => {
-    const {
-      src,
-      title,
-      suffix,
-      width = 450,
-      height = 450,
-      minutes = 5,
-    } = props;
+    const { src, title, suffix, minutes = 5 } = props;
     return (
       // @ts-ignore
       <a href={href} onClick={onClick} ref={ref}>
         <figure className="w-full">
-          <div className="relative w-full">
+          <div className="relative h-56">
             <Image
               className="rounded-xl"
               src={src}
               alt={title}
-              width={width}
-              height={height}
+              fill={true}
+              sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
             />
             <div
               className="

@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <>
       <h1 className="font-bold text-3xl mb-6">Your Habits</h1>
-      <div className="flex flex-col gap-5 lg:flex-row">
+      <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 ">
         {subscriptions.map((sub) => (
           <Link
             href={`/habit/${sub.habit.name}`}
