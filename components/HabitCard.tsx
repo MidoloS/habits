@@ -16,14 +16,14 @@ export const HabitCard: FC<Props> = forwardRef(
       src,
       title,
       suffix,
-      width = 400,
-      height = 400,
+      width = 450,
+      height = 450,
       minutes = 5,
     } = props;
     return (
       // @ts-ignore
       <a href={href} onClick={onClick} ref={ref}>
-        <figure className="w-full ">
+        <figure className="w-full">
           <div className="relative w-full">
             <Image
               className="rounded-xl"
