@@ -14,7 +14,7 @@ export default async function Home() {
   const { subscriptions } = user;
   return (
     <>
-      <h1 className="font-bold text-5xl mb-6">Habits</h1>
+      <h1 className="font-bold text-3xl mb-6">Habits</h1>
       <div className="flex flex-col gap-5 lg:flex-row">
         {subscriptions.map((sub) => (
           <Link
@@ -28,7 +28,6 @@ export default async function Home() {
               title={TITLES[sub.habit.name]}
               suffix={<Completed completed={!!sub.completedAt} />}
               src={`/images/${sub.habit.name}.png`}
-              width={300}
             />
           </Link>
         ))}
