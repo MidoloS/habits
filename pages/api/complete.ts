@@ -10,7 +10,7 @@ export default async function handler(
 
   const { email = "midolo.1912@gmail.com", habitName } = JSON.parse(req.body);
 
-  console.log(req.body, habitName);
+  console.log(req.body, habitName, 1);
 
   const wea = await prisma.subscriptions.updateMany({
     where: {
