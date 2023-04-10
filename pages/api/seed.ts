@@ -38,7 +38,6 @@ export default async function handler(
       update: {
         name: habit.name,
         minutes: habit.minutes,
-        img: habit.img,
       },
       create: {
         name: habit.name,
