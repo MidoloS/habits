@@ -8,6 +8,7 @@ export default async function handler(
 ) {
   const prisma = generatePrismaClient();
 
+  console.log(123);
   const habits = await prisma.habit.findMany();
 
   return res.status(200).json(habits);
