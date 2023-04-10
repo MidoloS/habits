@@ -8,16 +8,7 @@ export default async function handler(
 ) {
   const prisma = generatePrismaClient();
 
-  const habits = await prisma.habit.findMany({
-    select: {
-      createdAt: true,
-      img: true,
-      isPro: true,
-      name: true,
-      updatedAt: true,
-      minutes: true,
-    },
-  });
+  const habits = await prisma.habit.findMany();
   console.log(habits);
 
   return res.status(200).json(habits);
