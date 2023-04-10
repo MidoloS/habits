@@ -8,8 +8,17 @@ export default async function handler(
 ) {
   const prisma = generatePrismaClient();
 
-  console.log(123);
-  const habits = await prisma.habit.findMany();
+  const habits = await prisma.habit.findMany({
+    select: {
+      createdAt: true,
+      img: true,
+      isPro: true,
+      name: true,
+      updatedAt: true,
+      minutes: true,
+    },
+  });
+  console.log(habits);
 
   return res.status(200).json(habits);
 }
