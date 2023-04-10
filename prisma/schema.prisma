@@ -16,7 +16,7 @@ model Habit {
   updatedAt     DateTime        @updatedAt
   isPro         Boolean         @default(false)
   minutes       Int             @default(5)
-  img           String
+  img           String?
   subscriptions Subscriptions[]
 }
 
