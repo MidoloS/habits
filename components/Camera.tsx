@@ -24,7 +24,7 @@ export const Camera = () => {
         height={720}
         mirrored={facing === "user"}
         // @ts-ignore
-        screenshotFormat={taken ? "" : "image/png"}
+        screenshotFormat="image/png"
         width={1280}
         imageSmoothing={true}
         forceScreenshotSourceSize={true}
@@ -33,6 +33,7 @@ export const Camera = () => {
         screenshotQuality={1}
         videoConstraints={{
           facingMode: facing,
+          frameRate: { ideal: 60, max: taken ? 0 : 60 },
         }}
       >
         {/* @ts-ignore */}
