@@ -12,7 +12,6 @@ export const Camera = () => (
     width={1280}
     imageSmoothing={true}
     forceScreenshotSourceSize={true}
-    mirrored={true}
     onUserMedia={() => console.log("User media loaded")}
     onUserMediaError={() => console.log("User media error")}
     screenshotQuality={1}
