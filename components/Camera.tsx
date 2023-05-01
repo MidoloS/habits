@@ -1,6 +1,9 @@
 "use client";
 
 import Webcam from "react-webcam";
+
+import { getHighestValueKey } from "../libs/helpers";
+
 export const Camera = () => (
   <Webcam
     audio={false}
@@ -23,7 +26,7 @@ export const Camera = () => (
           if (!base64) {
             return;
           }
-          fetch("https://bcd9-190-49-1-250.ngrok.io", {
+          fetch("https://557a-190-49-1-250.ngrok.io", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -32,10 +35,12 @@ export const Camera = () => (
             redirect: "follow",
           })
             .then((response) => {
-              console.log("response", response);
               return response.json();
             })
-            .then((result) => console.log(result))
+            .then((result) => {
+              console.log(result);
+              alert(getHighestValueKey(result));
+            })
             .catch((error) => console.log("error", error));
         }}
       >
