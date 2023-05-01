@@ -16,6 +16,9 @@ export const Camera = () => (
     onUserMedia={() => console.log("User media loaded")}
     onUserMediaError={() => console.log("User media error")}
     screenshotQuality={1}
+    videoConstraints={{
+      facingMode: "environment",
+    }}
   >
     {/* @ts-ignore */}
     {({ getScreenshot }) => (
