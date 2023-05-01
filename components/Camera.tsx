@@ -1,53 +1,70 @@
 "use client";
 
+import { useState } from "react";
 import Webcam from "react-webcam";
 
 import { getHighestValueKey } from "../libs/helpers";
 
-export const Camera = () => (
-  <Webcam
-    audio={false}
-    height={720}
-    screenshotFormat="image/jpeg"
-    width={1280}
-    imageSmoothing={true}
-    forceScreenshotSourceSize={true}
-    onUserMedia={() => console.log("User media loaded")}
-    onUserMediaError={() => console.log("User media error")}
-    screenshotQuality={1}
-    videoConstraints={{
-      facingMode: "environment",
-    }}
-  >
-    {/* @ts-ignore */}
-    {({ getScreenshot }) => (
-      <button
-        onClick={() => {
-          const base64 = getScreenshot();
+export const Camera = () => {
+  const [facing, setFacing] = useState("environment");
 
-          if (!base64) {
-            return;
-          }
-          fetch("https://557a-190-49-1-250.ngrok.io", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ image: base64.slice(22) }),
-            redirect: "follow",
-          })
-            .then((response) => {
-              return response.json();
-            })
-            .then((result) => {
-              console.log(result);
-              alert(getHighestValueKey(result));
-            })
-            .catch((error) => console.log("error", error));
+  const handleFace = () => {
+    if (facing === "user") {
+      setFacing("environment");
+    } else {
+      setFacing("user");
+    }
+  };
+
+  return (
+    <>
+      <Webcam
+        audio={false}
+        height={720}
+        mirrored={facing === "user"}
+        screenshotFormat="image/jpeg"
+        width={1280}
+        imageSmoothing={true}
+        forceScreenshotSourceSize={true}
+        onUserMedia={() => console.log("User media loaded")}
+        onUserMediaError={() => console.log("User media error")}
+        screenshotQuality={1}
+        videoConstraints={{
+          facingMode: facing,
         }}
       >
-        Capture photo
-      </button>
-    )}
-  </Webcam>
-);
+        {/* @ts-ignore */}
+        {({ getScreenshot }) => (
+          <button
+            onClick={() => {
+              const base64 = getScreenshot();
+
+              if (!base64) {
+                return;
+              }
+              fetch("https://557a-190-49-1-250.ngrok.io", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ image: base64.slice(22) }),
+                redirect: "follow",
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((result) => {
+                  console.log(result);
+                  alert(getHighestValueKey(result));
+                })
+                .catch((error) => console.log("error", error));
+            }}
+          >
+            Capture photo
+          </button>
+        )}
+      </Webcam>
+      <button onClick={handleFace}>Switch camera</button>
+    </>
+  );
+};
