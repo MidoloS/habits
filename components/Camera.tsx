@@ -33,7 +33,7 @@ export const Camera = () => {
         screenshotQuality={1}
         videoConstraints={{
           facingMode: facing,
-          frameRate: { ideal: 60, max: taken ? 0 : 60 },
+          frameRate: { ideal: taken ? 0 : 60, max: taken ? 0 : 60 },
         }}
       >
         {/* @ts-ignore */}
