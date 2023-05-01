@@ -23,7 +23,7 @@ export const Camera = () => (
           if (!base64) {
             return;
           }
-          fetch("http://127.0.0.1:8000", {
+          fetch("https://bcd9-190-49-1-250.ngrok.io", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
