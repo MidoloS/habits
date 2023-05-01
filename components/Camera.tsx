@@ -7,6 +7,7 @@ import { getHighestValueKey } from "../libs/helpers";
 
 export const Camera = () => {
   const [facing, setFacing] = useState("environment");
+  const [taken, setTaken] = useState(false);
 
   const handleFace = () => {
     if (facing === "user") {
@@ -22,7 +23,8 @@ export const Camera = () => {
         audio={false}
         height={720}
         mirrored={facing === "user"}
-        screenshotFormat="image/jpeg"
+        // @ts-ignore
+        screenshotFormat={taken ? "" : "image/png"}
         width={1280}
         imageSmoothing={true}
         forceScreenshotSourceSize={true}
