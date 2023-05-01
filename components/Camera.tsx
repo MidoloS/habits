@@ -17,8 +17,9 @@ const Webcam = () => {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
-      } catch (error) {
-        setError(error);
+      } catch (err) {
+        // @ts-ignore
+        setError(err);
       }
     };
 
