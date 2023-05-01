@@ -1,3 +1,4 @@
+import Camera from "@/components/Camera";
 import CompleteHabitButton from "@/components/CompleteHabitButton";
 import GoBackButton from "@/components/GoBackButton";
 import { TITLES } from "@/libs/constants";
@@ -27,7 +28,8 @@ export default async function Page({
           height={600}
           width={600}
         />
-        <h1>{TITLES[name]}</h1>
+        <h1>{TITLES[habit.name]}</h1>
+        <Camera />
         <CompleteHabitButton habitName={name} />
         <GoBackButton />
       </div>

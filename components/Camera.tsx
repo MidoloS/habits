@@ -1,9 +1,46 @@
 "use client";
-import { takePicture } from "@/libs/capacitor/helpers";
 
-const Camera = () => {
-  takePicture();
-  return <h1>Hola mundo</h1>;
+import { useEffect, useRef, useState } from "react";
+
+const Webcam = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const getMedia = async () => {
+      console.log(navigator);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true,
+        });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    getMedia();
+
+    return () => {
+      if (videoRef.current) {
+        const stream = videoRef.current.srcObject as MediaStream;
+        if (stream) {
+          stream.getTracks().forEach((track) => {
+            track.stop();
+          });
+        }
+      }
+    };
+  }, []);
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
+  return <video ref={videoRef} autoPlay playsInline muted />;
 };
 
-export default Camera;
+export default Webcam;

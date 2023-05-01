@@ -1,4 +1,3 @@
-import Camera from "@/components/Camera";
 import CompleteHabitButton from "@/components/CompleteHabitButton";
 import GoBackButton from "@/components/GoBackButton";
 import { TITLES } from "@/libs/constants";
@@ -22,7 +21,6 @@ export default async function Page({
   return (
     <>
       <h1>{name} weador</h1>
-      <Camera />
     </>
   );
 }

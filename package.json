@@ -9,9 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@capacitor/camera": "^4.1.4",
-    "@capacitor/cli": "^4.7.3",
-    "@capacitor/core": "^4.7.3",
     "@prisma/client": "^4.12.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
@@ -24,6 +21,7 @@
     "postcss": "8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-webcam": "^7.0.1",
     "sharp": "^0.32.0",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4"
