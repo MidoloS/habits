@@ -1,47 +1,46 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import Webcam from "react-webcam";
+export const Camera = () => (
+  <Webcam
+    audio={false}
+    height={720}
+    screenshotFormat="image/jpeg"
+    width={1280}
+    imageSmoothing={true}
+    forceScreenshotSourceSize={true}
+    mirrored={true}
+    onUserMedia={() => console.log("User media loaded")}
+    onUserMediaError={() => console.log("User media error")}
+    screenshotQuality={1}
+  >
+    {/* @ts-ignore */}
+    {({ getScreenshot }) => (
+      <button
+        onClick={() => {
+          const base64 = getScreenshot();
 
-const Webcam = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    const getMedia = async () => {
-      console.log(navigator);
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-          audio: true,
-        });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      } catch (err) {
-        // @ts-ignore
-        setError(err);
-      }
-    };
-
-    getMedia();
-
-    return () => {
-      if (videoRef.current) {
-        const stream = videoRef.current.srcObject as MediaStream;
-        if (stream) {
-          stream.getTracks().forEach((track) => {
-            track.stop();
-          });
-        }
-      }
-    };
-  }, []);
-
-  if (error) {
-    return <div>{error.message}</div>;
-  }
-
-  return <video ref={videoRef} autoPlay playsInline muted />;
-};
-
-export default Webcam;
+          if (!base64) {
+            return;
+          }
+          fetch("http://127.0.0.1:8000", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ image: base64.slice(22) }),
+            redirect: "follow",
+          })
+            .then((response) => {
+              console.log("response", response);
+              return response.json();
+            })
+            .then((result) => console.log(result))
+            .catch((error) => console.log("error", error));
+        }}
+      >
+        Capture photo
+      </button>
+    )}
+  </Webcam>
+);
