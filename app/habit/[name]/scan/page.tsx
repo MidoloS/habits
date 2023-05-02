@@ -22,8 +22,6 @@ export default async function Page({
     <>
       <div className="max-h-48">
         <Camera />
-        <PrimaryButton>Complete Habit</PrimaryButton>
-        <GoBackButton />
       </div>
     </>
   );

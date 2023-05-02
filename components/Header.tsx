@@ -45,7 +45,7 @@ export const Header: FC<Props> = ({ route }) => (
   <header className="sticky flex justify-between items-center mb-6 top-0 z-10 bg-slate-50 container mx-auto px-8 mt-4 py-2">
     <div>{LOGO_ICON}</div>
     <div className="text-center">
-      <h1 className="font-bold text-lg">Create new Habit</h1>
+      <h1 className="font-bold text-lg">Take a Photo</h1>
       <h2 className="text-slate-400 text-sm">We will validate</h2>
     </div>
     <div>{BELL_ICON}</div>
