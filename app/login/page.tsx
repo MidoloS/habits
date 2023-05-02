@@ -1,10 +1,3 @@
-import { HabitCard } from "@/components/HabitCard";
-import { Completed } from "@/components/Completed";
-import Link from "next/link";
-import { getUserHabits } from "@/prisma/helpers";
-import { TITLES } from "@/libs/constants";
-import { useRouter } from "next/router";
-
 export default async function Home() {
   return (
     <>

@@ -1,7 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
+import { pathToTitle } from "@/libs/helpers";
+import Link from "next/link";
 
 type Props = {
   route?: string;
@@ -44,19 +46,23 @@ export const BELL_ICON = (
   </svg>
 );
 
-export const Header: FC<Props> = () => {
-  const route = useRouter();
+const Header: FC<Props> = () => {
+  const path = usePathname();
 
-  console.log(route);
+  const { title, subtitle } = pathToTitle(path);
 
   return (
     <header className="sticky flex justify-between items-center mb-6 top-0 z-10 bg-slate-50 container mx-auto px-8 mt-4 py-2">
-      <div>{LOGO_ICON}</div>
+      <div>
+        <Link href="/habits">{LOGO_ICON}</Link>
+      </div>
       <div className="text-center">
-        <h1 className="font-bold text-lg">Take a Photo</h1>
-        <h2 className="text-slate-400 text-sm">We will validate</h2>
+        <h1 className="font-bold text-lg">{title}</h1>
+        <h2 className="text-slate-400 text-sm">{subtitle}</h2>
       </div>
       <div>{BELL_ICON}</div>
     </header>
   );
 };
+
+export default Header;

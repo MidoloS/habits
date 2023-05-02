@@ -9,3 +9,33 @@ export const getHighestValueKey = (obj) => {
   }
   return highestKey;
 };
+
+export const pathToTitle = (path) => {
+  const PATHS = {
+    "/habit/:id": { title: "Create new Habit", subtitle: "Find new Goals" },
+    "/habit/:id/scan": { title: "Take a Photo", subtitle: "We will validate" },
+    "/habits": { title: "My Habits", subtitle: "" },
+    "/leaderboard": { title: "Ranking", subtitle: "Top Players" },
+    "/habit/add": { title: "Add Habit", subtitle: "Pick new a Habit" },
+  };
+
+  if (PATHS[path]) {
+    return PATHS[path];
+  }
+
+  const FALLBACK_ROUTE = { title: "Not found", subtitle: "Missing page" };
+
+  const matchedRoute = Object.keys(PATHS).find((route) => {
+    const pattern = new RegExp(`^${route.replace(":id", "(\\w+)")}$`);
+    return pattern.test(path);
+  });
+
+  if (matchedRoute) {
+    const pattern = new RegExp(`^${matchedRoute.replace(":id", "(\\w+)")}$`);
+    const params = pattern.exec(path);
+    const title = PATHS[matchedRoute].title.replace(":id", params[1]);
+    return { title, subtitle: PATHS[matchedRoute].subtitle };
+  } else {
+    return FALLBACK_ROUTE;
+  }
+};

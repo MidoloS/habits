@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+import Header from "@/components/Header";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
@@ -22,6 +22,7 @@ export default function BlogLayout({
         <link rel="apple-touch-icon" href="/icon.png"></link>
         <meta name="theme-color" content="#fff" />
       </head>
+
       <body className={inter.className}>
         <main>
           <Header />
