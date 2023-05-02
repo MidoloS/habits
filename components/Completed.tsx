@@ -42,7 +42,7 @@ export const Completed: FC<Props> = ({ completed = false }) => {
   return (
     <div className={`flex flex-col items-center gap-2 ${opacity}`}>
       {completed ? COMPLETED_ICON : INCOMPLETED_ICON}
-      <p className="text-white">{text}</p>
+      <p className="text-white text-sm">{text}</p>
     </div>
   );
 };

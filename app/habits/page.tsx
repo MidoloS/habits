@@ -14,8 +14,37 @@ export default async function Home() {
   const { subscriptions } = user;
   return (
     <>
-      <h1 className="font-bold text-3xl mb-6">Your Habits</h1>
       <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 ">
+        {subscriptions.map((sub) => (
+          <Link
+            href={`/habit/${sub.habit.name}`}
+            key={sub.habit.name}
+            passHref
+            legacyBehavior
+          >
+            <HabitCard
+              minutes={20}
+              title={TITLES[sub.habit.name]}
+              suffix={<Completed completed={!!sub.completedAt} />}
+              src={`/images/${sub.habit.name}.png`}
+            />
+          </Link>
+        ))}
+        {subscriptions.map((sub) => (
+          <Link
+            href={`/habit/${sub.habit.name}`}
+            key={sub.habit.name}
+            passHref
+            legacyBehavior
+          >
+            <HabitCard
+              minutes={20}
+              title={TITLES[sub.habit.name]}
+              suffix={<Completed completed={!!sub.completedAt} />}
+              src={`/images/${sub.habit.name}.png`}
+            />
+          </Link>
+        ))}
         {subscriptions.map((sub) => (
           <Link
             href={`/habit/${sub.habit.name}`}

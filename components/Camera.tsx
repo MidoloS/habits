@@ -4,6 +4,8 @@ import { useState } from "react";
 import Webcam from "react-webcam";
 
 import { getHighestValueKey } from "../libs/helpers";
+import { SecondaryButton } from "./Button/Secondary";
+import { PrimaryButton } from "./Button/Primary";
 
 const TakenToast = ({ name }: { name: string }) => (
   <div
@@ -56,10 +58,10 @@ export const Camera = () => {
     <>
       <Webcam
         audio={false}
-        height={720}
+        height={1000}
         mirrored={facing === "user"}
         screenshotFormat="image/png"
-        width={1280}
+        width={500}
         imageSmoothing={true}
         forceScreenshotSourceSize={true}
         onUserMedia={() => console.log("User media loaded")}
@@ -68,10 +70,11 @@ export const Camera = () => {
         videoConstraints={{
           facingMode: facing,
         }}
+        className="rounded-xl"
       >
         {/* @ts-ignore */}
         {({ getScreenshot }) => (
-          <button
+          <PrimaryButton
             onClick={() => {
               setHabitName(null);
               const base64 = getScreenshot();
@@ -98,10 +101,10 @@ export const Camera = () => {
             }}
           >
             Capture photo
-          </button>
+          </PrimaryButton>
         )}
       </Webcam>
-      <button onClick={handleFace}>Switch camera</button>
+      <SecondaryButton onClick={handleFace}>Switch camera</SecondaryButton>
       {habitName && <TakenToast name={habitName} />}
     </>
   );

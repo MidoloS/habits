@@ -14,7 +14,6 @@ export default async function Home() {
   const { subscriptions } = user;
   return (
     <>
-      <h1 className="font-bold text-3xl mb-6">Habits</h1>
       <div className="flex flex-col gap-5 lg:flex-row">
         {subscriptions.map((sub) => (
           <Link

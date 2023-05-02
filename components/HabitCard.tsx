@@ -31,7 +31,7 @@ export const HabitCard: FC<Props> = forwardRef(
       "
             >
               <figcaption>
-                <h3 className="text-md mb-1 text-white">{title}</h3>
+                <h3 className="text-sm mb-1 text-white">{title}</h3>
                 <p className="font-bold text-xl text-white">{minutes} mins</p>
               </figcaption>
               {suffix}
