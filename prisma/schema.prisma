@@ -46,5 +46,9 @@ enum HabitName {
   WALK
   EAT
   TIDY
-  PRO_HABIT_EXAMPLE
+  BRUSH
+  MEDITATE
+  READ
+  WASH
+  WATER
 }
