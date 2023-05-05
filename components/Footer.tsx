@@ -69,7 +69,7 @@ export const Footer: FC = () => {
   const isHome = path === "/habits";
   const isLeaderboard = path === "/leaderboard";
   return (
-    <footer className="fixed bg-slate-100 bottom-0 flex justify-around w-full items-center py-2">
+    <footer className="fixed  bottom-0 flex justify-around w-full items-center py-2">
       <Link href="/habits">
         <HomeIcon isActive={isHome} />
       </Link>

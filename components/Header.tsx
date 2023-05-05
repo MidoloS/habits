@@ -25,27 +25,6 @@ export const LOGO_ICON = (
   </svg>
 );
 
-export const BELL_ICON = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="17.569"
-    height="20.593"
-    viewBox="0 0 17.569 20.593"
-  >
-    <path
-      id="Path_7"
-      data-name="Path 7"
-      d="M14.485,17.867a21.456,21.456,0,0,0,5.272-1.383,9.975,9.975,0,0,1-2.234-6.358V9.334A6.085,6.085,0,0,0,11.723,3a6.085,6.085,0,0,0-5.8,6.334v.792a9.975,9.975,0,0,1-2.235,6.358,21.459,21.459,0,0,0,5.273,1.383m5.524,0a21.484,21.484,0,0,1-5.524,0m5.524,0a3.334,3.334,0,0,1-1.06,3.531,2.7,2.7,0,0,1-3.4,0,3.334,3.334,0,0,1-1.06-3.531"
-      transform="translate(-2.938 -2.25)"
-      fill="none"
-      stroke="#1e293b"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="1.5"
-    />
-  </svg>
-);
-
 const Header: FC<Props> = () => {
   const path = usePathname();
 
@@ -60,7 +39,7 @@ const Header: FC<Props> = () => {
         <h1 className="font-bold text-lg">{title}</h1>
         <h2 className="text-slate-400 text-sm">{subtitle}</h2>
       </div>
-      <div>{BELL_ICON}</div>
+      <div />
     </header>
   );
 };
