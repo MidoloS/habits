@@ -1,9 +1,4 @@
 import { FollowButton } from "@/components/Button/Follow";
-import { PrimaryButton } from "@/components/Button/Primary";
-import { SecondaryButton } from "@/components/Button/Secondary";
-import { Camera } from "@/components/Camera";
-import CompleteHabitButton from "@/components/CompleteHabitButton";
-import GoBackButton from "@/components/GoBackButton";
 import { Minutes } from "@/components/Info/Mins";
 import { Score } from "@/components/Info/Score";
 import { Paragraph } from "@/components/Paragraph";
@@ -11,7 +6,6 @@ import { TITLES } from "@/libs/constants";
 import { getHabit } from "@/prisma/helpers";
 import { HabitName } from "@prisma/client";
 import Image from "next/image";
-import Link from "next/link";
 
 export default async function Page({
   params: { name },
