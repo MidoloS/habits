@@ -57,3 +57,7 @@ export const completeHabit = async ({
     },
   });
 };
+
+export const getHabits = async () => {
+  return await prisma.habit.findMany();
+};

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FC, forwardRef } from "react";
 
 type Props = {
-  src: string;
+  src: string | null;
   title: string;
   suffix?: React.ReactNode;
   minutes: number;
@@ -10,7 +10,7 @@ type Props = {
 export const HabitCard: FC<Props> = forwardRef(
   // @ts-ignore
   ({ onClick, href, ...props }, ref): JSX.Element => {
-    const { src, title, suffix, minutes = 5 } = props;
+    const { src = "", title, suffix, minutes = 5 } = props;
     return (
       // @ts-ignore
       <a href={href} onClick={onClick} ref={ref}>
@@ -18,7 +18,7 @@ export const HabitCard: FC<Props> = forwardRef(
           <div className="relative h-56">
             <Image
               className="rounded-xl"
-              src={src}
+              src={src || "/images/placeholder.png"}
               alt={title}
               fill={true}
               sizes="(max-width: 768px) 100vw,
