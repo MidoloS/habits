@@ -25,7 +25,7 @@ export default async function Page({
       <div className="flex flex-col max-h-48 gap-6">
         <Image
           alt={name}
-          src={habit.img}
+          src={habit.img || "/images/placeholder.png"}
           height={600}
           width={600}
           className="rounded-xl"
