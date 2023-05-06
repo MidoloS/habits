@@ -12,6 +12,11 @@ export default async function Home() {
   }
 
   const { subscriptions } = user;
+
+  if (!subscriptions) {
+    return <h1>You have no habit, begin your journey</h1>;
+  }
+
   return (
     <>
       <div className="flex flex-col gap-5 lg:flex-row">

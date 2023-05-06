@@ -1,9 +1,11 @@
 import { FollowButton } from "@/components/Button/Follow";
+import { FollowHabitButton } from "@/components/Button/FollowHabitButton";
 import { Minutes } from "@/components/Info/Mins";
 import { Score } from "@/components/Info/Score";
 import { Paragraph } from "@/components/Paragraph";
 import { TITLES } from "@/libs/constants";
-import { getHabit } from "@/prisma/helpers";
+import { subscribeToHabit, unsubscribeToHabit } from "@/libs/helpers";
+import { getHabit, getUserHabits } from "@/prisma/helpers";
 import { HabitName } from "@prisma/client";
 import Image from "next/image";
 
@@ -13,12 +15,25 @@ export default async function Page({
   params: { name: HabitName };
 }) {
   const habit = await getHabit(name);
+  const user = await getUserHabits("midolo.1912@gmail.com");
 
   console.log(habit);
 
   if (!habit?.createdAt) {
     return <h1>Habit not found</h1>;
   }
+
+  if (!user) {
+    return null;
+  }
+
+  console.log(user.subscriptions, habit.name);
+
+  const isFollowing = user.subscriptions?.some(
+    (sub) => sub.habitName === habit.name
+  );
+
+  console.log(isFollowing);
 
   return (
     <>
@@ -34,11 +49,11 @@ export default async function Page({
           <div>
             <h1 className="text-2xl font-bold">{TITLES[habit.name]}</h1>
             <div className="flex gap-6">
-              <Minutes minutes={5} />
-              <Score score={10} />
+              <Minutes minutes={habit.minutes} />
+              <Score score={habit.points} />
             </div>
           </div>
-          <FollowButton />
+          <FollowHabitButton habitName={habit.name} isFollowing={isFollowing} />
         </div>
         <div>
           <h2 className="font-bold text-xl">About</h2>

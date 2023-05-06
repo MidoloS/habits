@@ -26,37 +26,7 @@ export default async function Home() {
               minutes={20}
               title={TITLES[sub.habit.name]}
               suffix={<Completed completed={!!sub.completedAt} />}
-              src={`/images/${sub.habit.name}.png`}
-            />
-          </Link>
-        ))}
-        {subscriptions.map((sub) => (
-          <Link
-            href={`/habit/${sub.habit.name}`}
-            key={sub.habit.name}
-            passHref
-            legacyBehavior
-          >
-            <HabitCard
-              minutes={20}
-              title={TITLES[sub.habit.name]}
-              suffix={<Completed completed={!!sub.completedAt} />}
-              src={`/images/${sub.habit.name}.png`}
-            />
-          </Link>
-        ))}
-        {subscriptions.map((sub) => (
-          <Link
-            href={`/habit/${sub.habit.name}`}
-            key={sub.habit.name}
-            passHref
-            legacyBehavior
-          >
-            <HabitCard
-              minutes={20}
-              title={TITLES[sub.habit.name]}
-              suffix={<Completed completed={!!sub.completedAt} />}
-              src={`/images/${sub.habit.name}.png`}
+              src={sub.habit.img}
             />
           </Link>
         ))}

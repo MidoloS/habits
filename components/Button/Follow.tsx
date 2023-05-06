@@ -2,12 +2,27 @@
 
 import { FC, useState } from "react";
 
-export const FollowButton: FC = () => {
-  const [following, setFollowing] = useState<boolean>(false);
+type Props = {
+  onSubscribe: () => any;
+  onUnsubscribe: () => any;
+  isFollowing?: boolean;
+};
+
+export const FollowButton: FC<Props> = ({
+  onSubscribe,
+  onUnsubscribe,
+  isFollowing = false,
+}) => {
+  const [following, setFollowing] = useState<boolean>(isFollowing);
 
   const text = following ? "Following" : "Follow";
 
   const handleClick = () => {
+    if (following) {
+      onUnsubscribe();
+    } else {
+      onSubscribe();
+    }
     setFollowing((prev) => !prev);
   };
 

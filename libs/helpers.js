@@ -39,3 +39,29 @@ export const pathToTitle = (path) => {
     return FALLBACK_ROUTE;
   }
 };
+
+export const subscribeToHabit = async ({ habitName, email }) => {
+  const response = await fetch("/api/habit/subscribe/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ habitName, email }),
+  });
+  const data = await response.json();
+  alert(JSON.stringify(data));
+  return data;
+};
+
+export const unsubscribeToHabit = async ({ habitName, email }) => {
+  const response = await fetch("/api/habit/subscribe/", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ habitName, email }),
+  });
+  const data = await response.json();
+  alert(JSON.stringify(data));
+  return data;
+};
