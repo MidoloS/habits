@@ -19,7 +19,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="flex flex-col gap-5 lg:flex-row">
+      <div className="flex flex-col gap-5 lg:flex-row mb-28">
         {subscriptions.map((sub) => (
           <Link
             href={`/habit/${sub.habit.name}/scan`}
