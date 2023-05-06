@@ -14,7 +14,7 @@ export const pathToTitle = (path) => {
   const PATHS = {
     "/habit/:id": { title: "Create new Habit", subtitle: "Find new Goals" },
     "/habit/:id/scan": { title: "Take a Photo", subtitle: "We will validate" },
-    "/habits": { title: "My Habits", subtitle: "" },
+    "/": { title: "My Habits", subtitle: "" },
     "/leaderboard": { title: "Ranking", subtitle: "Top Players" },
     "/habit/add": { title: "Add Habit", subtitle: "Pick new a Habit" },
   };

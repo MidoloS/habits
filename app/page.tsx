@@ -22,7 +22,7 @@ export default async function Home() {
       <div className="flex flex-col gap-5 lg:flex-row">
         {subscriptions.map((sub) => (
           <Link
-            href={`/habit/${sub.habit.name}`}
+            href={`/habit/${sub.habit.name}/scan`}
             key={sub.habit.name}
             passHref
             legacyBehavior

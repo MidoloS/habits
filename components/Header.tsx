@@ -33,7 +33,7 @@ const Header: FC<Props> = () => {
   return (
     <header className="sticky flex justify-between items-center mb-6 top-0 z-10 bg-slate-50 container mx-auto px-8 mt-4 py-5">
       <div>
-        <Link href="/habits">{LOGO_ICON}</Link>
+        <Link href="/">{LOGO_ICON}</Link>
       </div>
       <div className="text-center">
         <h1 className="font-bold text-lg">{title}</h1>

@@ -66,11 +66,11 @@ export const ADD_ICON = (
 
 export const Footer: FC = () => {
   const path = usePathname();
-  const isHome = path === "/habits";
+  const isHome = path === "/";
   const isLeaderboard = path === "/leaderboard";
   return (
     <footer className="fixed bg-slate-50 bottom-0 flex justify-around w-full items-center py-2">
-      <Link href="/habits">
+      <Link href="/">
         <HomeIcon isActive={isHome} />
       </Link>
       <Link href="/leaderboard">
