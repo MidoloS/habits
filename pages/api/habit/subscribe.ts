@@ -15,18 +15,16 @@ export default async function handler(
     email: string;
     habitName: HabitName;
   }) => {
-    return await prisma.user.update({
-      where: {
-        email,
-      },
+    return prisma.subscriptions.create({
       data: {
-        subscriptions: {
-          create: {
-            habit: {
-              connect: {
-                name: habitName,
-              },
-            },
+        user: {
+          connect: {
+            email,
+          },
+        },
+        habit: {
+          connect: {
+            name: habitName,
           },
         },
       },
@@ -40,7 +38,7 @@ export default async function handler(
     email: string;
     habitName: HabitName;
   }) => {
-    return await prisma.subscriptions.delete({
+    return prisma.subscriptions.delete({
       where: {
         userEmail_habitName: {
           habitName,
@@ -58,14 +56,16 @@ export default async function handler(
 
   console.log(1);
 
-  switch (req.method) {
-    case "POST":
-      subscribe({ email, habitName });
-      return res.status(200).json({ message: "Subscribed!" });
-    case "DELETE":
-      unsubscribe({ email, habitName });
-      return res.status(200).json({ message: "Unsubscribed!" });
-    default:
-      return res.status(405).json({ message: "Method not allowed" });
-  }
+  (async () => {
+    switch (req.method) {
+      case "POST":
+        await subscribe({ email, habitName });
+        return res.status(200).json({ message: "Subscribed!" });
+      case "DELETE":
+        await unsubscribe({ email, habitName });
+        return res.status(200).json({ message: "Unsubscribed!" });
+      default:
+        return res.status(405).json({ message: "Method not allowed" });
+    }
+  })();
 }

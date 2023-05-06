@@ -1,10 +1,8 @@
-import { FollowButton } from "@/components/Button/Follow";
 import { FollowHabitButton } from "@/components/Button/FollowHabitButton";
 import { Minutes } from "@/components/Info/Mins";
 import { Score } from "@/components/Info/Score";
 import { Paragraph } from "@/components/Paragraph";
 import { TITLES } from "@/libs/constants";
-import { subscribeToHabit, unsubscribeToHabit } from "@/libs/helpers";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
 import { HabitName } from "@prisma/client";
 import Image from "next/image";

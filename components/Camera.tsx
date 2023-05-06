@@ -7,39 +7,30 @@ import { getHighestValueKey } from "../libs/helpers";
 import { SecondaryButton } from "./Button/Secondary";
 import { PrimaryButton } from "./Button/Primary";
 
-const TakenToast = ({ name }: { name: string }) => (
-  <div
-    id="toast-undo"
-    className="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-    role="alert"
+const swapCameraIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24.75"
+    height="24.989"
+    viewBox="0 0 24.75 24.989"
   >
-    <div className="text-sm font-normal">
-      Habit completed {name.toUpperCase()}
-    </div>
-    <div className="flex items-center ml-auto space-x-2">
-      <button
-        type="button"
-        className="bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-        data-dismiss-target="#toast-undo"
-        aria-label="Close"
-      >
-        <span className="sr-only">Close</span>
-        <svg
-          aria-hidden="true"
-          className="w-5 h-5"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      </button>
-    </div>
-  </div>
+    <g id="refresh_1_" data-name="refresh (1)" transform="translate(-2.461)">
+      <path
+        id="Path_20"
+        data-name="Path 20"
+        d="M5.555,11.124a9.377,9.377,0,0,1,15.373-5.76L19.72,6.573a1.038,1.038,0,0,0,.734,1.771h4.758a1.038,1.038,0,0,0,1.038-1.038V2.548a1.038,1.038,0,0,0-1.771-.734L23.129,3.163A12.477,12.477,0,0,0,2.482,10.671a1.554,1.554,0,1,0,3.073.453Z"
+        transform="translate(0 0)"
+        fill="#020617"
+      />
+      <path
+        id="Path_21"
+        data-name="Path 21"
+        d="M44.471,256.891a1.572,1.572,0,0,0-1.542,1.37,9.377,9.377,0,0,1-15.373,5.76l1.209-1.209a1.038,1.038,0,0,0-.734-1.771H23.273a1.038,1.038,0,0,0-1.038,1.038v4.758a1.038,1.038,0,0,0,1.771.734l1.349-1.349A12.475,12.475,0,0,0,46,258.715a1.571,1.571,0,0,0-1.531-1.824Z"
+        transform="translate(-18.812 -244.397)"
+        fill="#020617"
+      />
+    </g>
+  </svg>
 );
 
 export const Camera = () => {
@@ -74,38 +65,39 @@ export const Camera = () => {
       >
         {/* @ts-ignore */}
         {({ getScreenshot }) => (
-          <PrimaryButton
-            onClick={() => {
-              setHabitName(null);
-              const base64 = getScreenshot();
+          <div className="flex items-center gap-6">
+            <PrimaryButton
+              onClick={() => {
+                setHabitName(null);
+                const base64 = getScreenshot();
 
-              if (!base64) {
-                return;
-              }
-              fetch("https://557a-190-49-1-250.ngrok.io", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ image: base64.slice(22) }),
-                redirect: "follow",
-              })
-                .then((response) => {
-                  return response.json();
+                if (!base64) {
+                  return;
+                }
+                fetch("https://557a-190-49-1-250.ngrok.io", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ image: base64.slice(22) }),
+                  redirect: "follow",
                 })
-                .then((result) => {
-                  console.log(result);
-                  setHabitName(getHighestValueKey(result));
-                })
-                .catch((error) => console.log("error", error));
-            }}
-          >
-            Capture photo
-          </PrimaryButton>
+                  .then((response) => {
+                    return response.json();
+                  })
+                  .then((result) => {
+                    console.log(result);
+                    setHabitName(getHighestValueKey(result));
+                  })
+                  .catch((error) => console.log("error", error));
+              }}
+            >
+              Capture photo
+            </PrimaryButton>
+            {swapCameraIcon}
+          </div>
         )}
       </Webcam>
-      <SecondaryButton onClick={handleFace}>Switch camera</SecondaryButton>
-      {habitName && <TakenToast name={habitName} />}
     </>
   );
 };
