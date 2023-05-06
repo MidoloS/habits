@@ -10,7 +10,7 @@ export default async function Page() {
     <div className="flex flex-col gap-4 mb-32">
       {habits.map((habit) => (
         <Link
-          href={`/habit/${habit.name}/scan`}
+          href={`/habit/${habit.name}`}
           key={habit.name}
           passHref
           legacyBehavior
