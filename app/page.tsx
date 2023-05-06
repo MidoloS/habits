@@ -31,7 +31,7 @@ export default async function Home() {
               minutes={20}
               title={TITLES[sub.habit.name]}
               suffix={<Completed completed={!!sub.completedAt} />}
-              src={`/images/${sub.habit.name}.png`}
+              src={sub.habit.img}
             />
           </Link>
         ))}

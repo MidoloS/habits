@@ -49,7 +49,7 @@ export const Camera = () => {
     <>
       <Webcam
         audio={false}
-        height={1000}
+        height={1100}
         mirrored={facing === "user"}
         screenshotFormat="image/png"
         width={500}
@@ -94,7 +94,7 @@ export const Camera = () => {
             >
               Capture photo
             </PrimaryButton>
-            {swapCameraIcon}
+            <button onClick={handleFace}>{swapCameraIcon}</button>
           </div>
         )}
       </Webcam>

@@ -31,7 +31,7 @@ const Header: FC<Props> = () => {
   const { title, subtitle } = pathToTitle(path);
 
   return (
-    <header className="sticky flex justify-between items-center mb-6 top-0 z-10 bg-slate-50 container mx-auto px-8 mt-4 py-5">
+    <header className="sticky flex justify-between items-center top-0 z-10 bg-slate-50 container mx-auto px-8 mt-2 py-5">
       <div>
         <Link href="/">{LOGO_ICON}</Link>
       </div>
