@@ -1,25 +1,34 @@
+"use client";
+
 import { HabitCard } from "@/components/HabitCard";
 import { Completed } from "@/components/Completed";
 import Link from "next/link";
 import { getUserHabits } from "@/prisma/helpers";
 import { TITLES } from "@/libs/constants";
+import { Habit } from "@prisma/client";
+import { useEffect, useState } from "react";
 
-export default async function Home() {
-  const user = await getUserHabits("midolo.1912@gmail.com");
+// @ts-ignore
+const Home = (a) => {
+  const [subscriptions, setSubscriptions] = useState<any>([]);
 
-  if (!user) {
-    return null;
-  }
+  // find a better way
+  // Option 1: useSWR
+  // Option 2: useQuery
+  useEffect(() => {
+    (async () => {
+      const req = await fetch("/api/subscriptions");
+      const subscriptions = await req.json();
+      console.log("subscriptions", subscriptions);
 
-  const { subscriptions } = user;
-
-  if (!subscriptions) {
-    return <h1>You have no habit, begin your journey</h1>;
-  }
+      setSubscriptions(subscriptions);
+    })();
+  }, []);
 
   return (
     <>
       <div className="flex flex-col gap-5 lg:flex-row mb-28">
+        {/* @ts-ignore */}
         {subscriptions.map((sub) => (
           <Link
             href={`/habit/${sub.habit.name}/scan`}
@@ -29,6 +38,7 @@ export default async function Home() {
           >
             <HabitCard
               minutes={20}
+              // @ts-ignore
               title={TITLES[sub.habit.name]}
               suffix={<Completed completed={!!sub.completedAt} />}
               src={sub.habit.img}
@@ -38,4 +48,6 @@ export default async function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;

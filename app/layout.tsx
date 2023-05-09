@@ -26,7 +26,7 @@ export default function BlogLayout({
       <body className={inter.className}>
         <main>
           <Header />
-          <div className="container mx-auto px-8 mt-4 ">{children}</div>
+          <div className="container mx-auto px-8 mt-4 xl:px-72">{children}</div>
           <Footer />
         </main>
       </body>
