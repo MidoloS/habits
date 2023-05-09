@@ -49,7 +49,7 @@ export const Camera = () => {
     <>
       <Webcam
         audio={false}
-        height={1400}
+        height={1700}
         mirrored={facing === "user"}
         screenshotFormat="image/png"
         width={500}
