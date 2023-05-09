@@ -21,6 +21,10 @@ export const ShareButton = () => {
   const pathname = usePathname();
   console.log(pathname);
 
+  if (!navigator.share) {
+    return null;
+  }
+
   const canShare = navigator.canShare({
     title: "Habit",
     text: "Check out this habit!",
