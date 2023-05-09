@@ -1,5 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const SHARE_ICON = (
   <svg
@@ -19,24 +20,20 @@ const SHARE_ICON = (
 
 export const ShareButton = () => {
   const pathname = usePathname();
+  const [isNativeShareSupported, setShare] = useState<boolean>(false);
   console.log(pathname);
 
-  if (!navigator.share) {
-    return null;
-  }
-
-  const canShare = navigator.canShare({
-    title: "Habit",
-    text: "Check out this habit!",
-  });
-
-  console.log(canShare);
+  useEffect(() => {
+    if (navigator) {
+      setShare(true);
+    }
+  }, []);
 
   const handleShare = () => {
-    if (navigator.share) {
+    if (isNativeShareSupported) {
       navigator.share({
+        url: "",
         title: "Habit",
-        text: "Check out this habit!",
       });
     }
   };
