@@ -4,6 +4,7 @@ import { FC } from "react";
 import { usePathname } from "next/navigation";
 import { pathToTitle } from "@/libs/helpers";
 import Link from "next/link";
+import { ShareButton } from "./ShareButton";
 
 type Props = {
   route?: string;
@@ -39,7 +40,7 @@ const Header: FC<Props> = () => {
         <h1 className="font-bold text-lg">{title}</h1>
         <h2 className="text-slate-400 text-sm">{subtitle}</h2>
       </div>
-      <div />
+      <ShareButton />
     </header>
   );
 };
