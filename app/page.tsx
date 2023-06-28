@@ -4,7 +4,6 @@ import { HabitCard } from "@/components/HabitCard";
 import { Completed } from "@/components/Completed";
 import Link from "next/link";
 import { getUserHabits } from "@/prisma/helpers";
-import { TITLES } from "@/libs/constants";
 import { Habit } from "@prisma/client";
 import { useEffect, useState } from "react";
 
@@ -39,7 +38,7 @@ const Home = (a) => {
             <HabitCard
               minutes={20}
               // @ts-ignore
-              title={TITLES[sub.habit.name]}
+              title={sub.habit.title}
               suffix={<Completed completed={!!sub.completedAt} />}
               src={sub.habit.img}
             />

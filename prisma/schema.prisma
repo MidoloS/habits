@@ -19,6 +19,7 @@ model Habit {
   img           String?
   points        Int             @default(0)
   subscriptions Subscriptions[]
+  title         String
 }
 
 model User {

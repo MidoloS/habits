@@ -2,7 +2,6 @@ import { FollowHabitButton } from "@/components/Button/FollowHabitButton";
 import { Minutes } from "@/components/Info/Mins";
 import { Score } from "@/components/Info/Score";
 import { Paragraph } from "@/components/Paragraph";
-import { TITLES } from "@/libs/constants";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
 import Image from "next/image";
 
@@ -44,7 +43,7 @@ export default async function Page({
         />
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold">{TITLES[habit.name]}</h1>
+            <h1 className="text-2xl font-bold">{habit.title}</h1>
             <div className="flex gap-6">
               <Minutes minutes={habit.minutes} />
               <Score score={habit.points} />

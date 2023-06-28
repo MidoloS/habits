@@ -10,24 +10,28 @@ export default async function handler(
 
   const DATA = [
     {
-      name: "TIDY",
+      name: "tidy",
       minutes: 10,
       isPro: false,
+      title: "Tidy up",
     },
     {
-      name: "WALK",
+      name: "walk",
       minutes: 20,
       isPro: false,
+      title: "Go for a walk",
     },
     {
-      name: "EAT",
+      name: "eat",
       minutes: 30,
       isPro: false,
+      title: "Healthy meal",
     },
     {
-      name: "PRO_HABIT_EXAMPLE",
+      name: "pro_habit_example",
       minutes: 5,
       isPro: true,
+      title: "Pro habit example",
     },
   ] as Habit[];
   const promises = DATA.map((habit) =>
@@ -40,6 +44,7 @@ export default async function handler(
         minutes: habit.minutes,
       },
       create: {
+        title: habit.title,
         name: habit.name,
         minutes: habit.minutes,
       },

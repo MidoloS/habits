@@ -1,5 +1,4 @@
 import { HabitCard } from "@/components/HabitCard";
-import { TITLES } from "@/libs/constants";
 import { getHabits } from "@/prisma/helpers";
 import Link from "next/link";
 
@@ -15,7 +14,7 @@ export default async function Page() {
           passHref
           legacyBehavior
         >
-          <HabitCard minutes={20} title={TITLES[habit.name]} src={habit.img} />
+          <HabitCard minutes={20} title={habit.title} src={habit.img} />
         </Link>
       ))}
     </div>
