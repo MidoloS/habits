@@ -1,5 +1,4 @@
 import { generatePrismaClient } from "@/prisma/client";
-import { HabitName, Habit } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -15,7 +14,7 @@ export default async function handler(
   const wea = await prisma.subscriptions.updateMany({
     where: {
       userEmail: email,
-      habitName: habitName as HabitName,
+      habitName: habitName,
       completedAt: null,
     },
     data: {

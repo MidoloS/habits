@@ -1,5 +1,4 @@
 import { generatePrismaClient } from "@/prisma/client";
-import { HabitName } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -13,7 +12,7 @@ export default async function handler(
     habitName,
   }: {
     email: string;
-    habitName: HabitName;
+    habitName: string;
   }) => {
     return prisma.subscriptions.create({
       data: {
@@ -36,7 +35,7 @@ export default async function handler(
     habitName,
   }: {
     email: string;
-    habitName: HabitName;
+    habitName: string;
   }) => {
     return prisma.subscriptions.delete({
       where: {

@@ -1,5 +1,4 @@
 import { generatePrismaClient } from "@/prisma/client";
-import { HabitName, Habit } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(

@@ -1,4 +1,3 @@
-import { HabitName } from "@prisma/client";
 import { generatePrismaClient } from "./client";
 
 const prisma = generatePrismaClient();
@@ -18,7 +17,7 @@ export const getUserHabits = async (email: string) => {
   });
 };
 
-export const getHabit = async (name: HabitName) => {
+export const getHabit = async (name: string) => {
   return await prisma.habit.findUnique({
     where: {
       name,
@@ -31,7 +30,7 @@ export const completeHabit = async ({
   habitName,
 }: {
   email: string;
-  habitName: HabitName;
+  habitName: string;
 }) => {
   await prisma.user.update({
     where: {

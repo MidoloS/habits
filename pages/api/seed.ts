@@ -1,5 +1,5 @@
 import { generatePrismaClient } from "@/prisma/client";
-import { HabitName, Habit } from "@prisma/client";
+import { Habit } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -55,7 +55,7 @@ export default async function handler(
       name: "Sebastian Modolo",
       subscriptions: {
         createMany: {
-          data: [{ habitName: HabitName.TIDY }, { habitName: HabitName.WALK }],
+          data: [{ habitName: "tidy" }, { habitName: "talk" }],
         },
       },
     },

@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Habit {
-  name          HabitName       @id
+  name          String          @id
   createdAt     DateTime        @default(now())
   updatedAt     DateTime?       @updatedAt
   isPro         Boolean         @default(false)
@@ -26,14 +26,15 @@ model User {
   email         String          @id
   isPro         Boolean         @default(false)
   points        Int             @default(0)
+  img           String?
   subscriptions Subscriptions[]
 }
 
 model Subscriptions {
-  user      User      @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  user      User   @relation(fields: [userEmail], references: [email], onDelete: Cascade)
   userEmail String
-  habit     Habit     @relation(fields: [habitName], references: [name])
-  habitName HabitName
+  habit     Habit  @relation(fields: [habitName], references: [name])
+  habitName String
 
   // middle fields
   createdAt   DateTime  @default(now())
@@ -42,16 +43,4 @@ model Subscriptions {
   streak      Int       @default(0)
 
   @@id([userEmail, habitName])
-}
-
-enum HabitName {
-  WALK
-  EAT
-  DRINK
-  TIDY
-  BRUSH
-  MEDITATE
-  READ
-  WASH
-  PRO_HABIT_EXAMPLE
 }

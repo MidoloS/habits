@@ -1,12 +1,11 @@
 "use client";
 
 import { subscribeToHabit, unsubscribeToHabit } from "@/libs/helpers";
-import { HabitName } from "@prisma/client";
 import { FC } from "react";
 import { FollowButton } from "./Follow";
 
 type Props = {
-  habitName: HabitName;
+  habitName: string;
   isFollowing?: boolean;
 };
 

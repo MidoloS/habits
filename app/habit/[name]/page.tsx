@@ -4,13 +4,12 @@ import { Score } from "@/components/Info/Score";
 import { Paragraph } from "@/components/Paragraph";
 import { TITLES } from "@/libs/constants";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
-import { HabitName } from "@prisma/client";
 import Image from "next/image";
 
 export default async function Page({
   params: { name },
 }: {
-  params: { name: HabitName };
+  params: { name: string };
 }) {
   const habit = await getHabit(name);
   const user = await getUserHabits("midolo.1912@gmail.com");
