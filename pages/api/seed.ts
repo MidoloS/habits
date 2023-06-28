@@ -33,6 +33,30 @@ export default async function handler(
       isPro: true,
       title: "Pro habit example",
     },
+    {
+      name: "read",
+      minutes: 20,
+      isPro: false,
+      title: "Read",
+    },
+    {
+      name: "wakeup",
+      minutes: 10,
+      isPro: false,
+      title: "Wake up early",
+    },
+    {
+      name: "train",
+      minutes: 30,
+      isPro: false,
+      title: "Train",
+    },
+    {
+      name: "brush",
+      minutes: 5,
+      isPro: false,
+      title: "Brush your teeth",
+    },
   ] as Habit[];
   const promises = DATA.map((habit) =>
     prisma.habit.upsert({
@@ -40,6 +64,7 @@ export default async function handler(
         name: habit.name,
       },
       update: {
+        title: habit.title,
         name: habit.name,
         minutes: habit.minutes,
       },
@@ -66,5 +91,5 @@ export default async function handler(
     },
   });
 
-  return res.status(200).json({ habits });
+  res.status(200).json({ habits });
 }
