@@ -57,6 +57,18 @@ export default async function handler(
       isPro: false,
       title: "Brush your teeth",
     },
+    {
+      name: "meditate",
+      minutes: 10,
+      isPro: false,
+      title: "Meditate",
+    },
+    {
+      name: "laundry",
+      minutes: 10,
+      isPro: false,
+      title: "Do the laundry",
+    },
   ] as Habit[];
   const promises = DATA.map((habit) =>
     prisma.habit.upsert({
@@ -84,9 +96,22 @@ export default async function handler(
       email: "midolo.1912@gmail.com",
       name: "Sebastian Modolo",
       subscriptions: {
-        createMany: {
-          data: [{ habitName: "tidy" }, { habitName: "talk" }],
-        },
+        create: [
+          {
+            habit: {
+              connect: {
+                name: "tidy",
+              },
+            },
+          },
+          {
+            habit: {
+              connect: {
+                name: "walk",
+              },
+            },
+          },
+        ],
       },
     },
   });
