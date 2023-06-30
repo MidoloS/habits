@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getUserHabits } from "@/prisma/helpers";
 import { Habit } from "@prisma/client";
 import { useEffect, useState } from "react";
+import { Navigator } from "@/components/Footer";
 
 // @ts-ignore
 const Home = (a) => {
@@ -26,7 +27,7 @@ const Home = (a) => {
 
   return (
     <>
-      <div className="flex flex-col gap-5 lg:flex-row mb-28">
+      <div className="flex flex-row gap-5 lg:flex-row mb-28">
         {/* @ts-ignore */}
         {subscriptions.map((sub) => (
           <Link
@@ -37,7 +38,7 @@ const Home = (a) => {
           >
             <HabitCard
               minutes={20}
-              // @ts-ignore
+              habitName={sub.habit.name}
               title={sub.habit.title}
               suffix={<Completed completed={!!sub.completedAt} />}
               src={sub.habit.img}
@@ -45,6 +46,7 @@ const Home = (a) => {
           </Link>
         ))}
       </div>
+      <Navigator />
     </>
   );
 };

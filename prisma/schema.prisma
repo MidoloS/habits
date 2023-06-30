@@ -18,8 +18,10 @@ model Habit {
   minutes       Int             @default(5)
   img           String?
   points        Int             @default(0)
+  followersQty  Int             @default(0)
   subscriptions Subscriptions[]
   title         String
+  subtitle      String
 }
 
 model User {

@@ -1,10 +1,6 @@
-"use client";
-
 import { FC } from "react";
-import { usePathname } from "next/navigation";
-import { pathToTitle } from "@/libs/helpers";
-import Link from "next/link";
 import { ShareButton } from "./ShareButton";
+import GoBackButton from "./GoBackButton";
 
 type Props = {
   route?: string;
@@ -27,19 +23,9 @@ export const LOGO_ICON = (
 );
 
 const Header: FC<Props> = () => {
-  const path = usePathname();
-
-  const { title, subtitle } = pathToTitle(path);
-
   return (
-    <header className="sticky flex justify-between items-center top-0 z-10 bg-slate-50 container mx-auto px-8 mt-2 py-3 xl:px-72">
-      <div>
-        <Link href="/">{LOGO_ICON}</Link>
-      </div>
-      <div className="text-center">
-        <h1 className="font-bold text-lg">{title}</h1>
-        <h2 className="text-slate-400 text-sm">{subtitle}</h2>
-      </div>
+    <header className="absolute flex justify-between items-center top-0 z-10 container mx-auto px-8 mt-2 py-3 xl:px-72">
+      <GoBackButton />
       <ShareButton />
     </header>
   );

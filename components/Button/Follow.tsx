@@ -18,16 +18,19 @@ export const FollowButton: FC<Props> = ({
   const text = following ? "Following" : "Follow";
 
   const handleClick = () => {
+    console.log("click");
+    console.log(following);
+
     if (following) {
-      onUnsubscribe();
-    } else {
       onSubscribe();
+    } else {
+      onUnsubscribe();
     }
     setFollowing((prev) => !prev);
   };
 
   const style = following
-    ? "bg-slate-900 text-slate-50"
+    ? "bg-slate-950 text-slate-50"
     : "border-slate-900 text-slate-900 border-2";
 
   const icon = (
@@ -52,7 +55,7 @@ export const FollowButton: FC<Props> = ({
 
   return (
     <button
-      className={`font-medium rounded-xl px-5 py-2 ${style} duration-500 inline-flex items-center h-fit`}
+      className={`font-medium rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
       onClick={handleClick}
     >
       {following && icon}

@@ -64,7 +64,7 @@ export const ADD_ICON = (
   </svg>
 );
 
-export const Footer: FC = () => {
+export const Navigator: FC = () => {
   const path = usePathname();
   const isHome = path === "/";
   const isLeaderboard = path === "/leaderboard";

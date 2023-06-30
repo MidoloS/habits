@@ -6,7 +6,7 @@ type Props = {
 };
 
 export const PrimaryButton: FC<Props> = ({ children }) => (
-  <button className="bg-slate-950 w-full text-white rounded-xl py-4 font-medium my-4">
+  <button className="bg-slate-950 w-full text-white rounded-xl font-medium py-4 px-6 md:w-fit">
     {children}
   </button>
 );

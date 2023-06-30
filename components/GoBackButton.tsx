@@ -1,21 +1,31 @@
-"use client";
-
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const GoBackButton = () => {
-  const router = useRouter();
-
-  const handleBack = () => {
-    router.back();
-  };
-
   return (
-    <button
-      className="bg-black text-white py-3 px-5 rounded-lg"
-      onClick={handleBack}
+    <Link
+      className="bg-black opacity-90 text-white h-14 w-14 rounded-lg flex items-center justify-center"
+      href="/"
     >
-      Go Back
-    </button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="10.518"
+        height="18.536"
+        viewBox="0 0 10.518 18.536"
+      >
+        <path
+          id="Path_62"
+          data-name="Path 62"
+          d="M15.75,19.5,8.25,12l7.5-7.5"
+          transform="translate(-7 -2.732)"
+          fill="none"
+          stroke="#fff"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+        />
+      </svg>
+    </Link>
   );
 };
 

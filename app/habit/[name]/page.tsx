@@ -1,7 +1,5 @@
 import { FollowHabitButton } from "@/components/Button/FollowHabitButton";
-import { Minutes } from "@/components/Info/Mins";
-import { Score } from "@/components/Info/Score";
-import { Paragraph } from "@/components/Paragraph";
+import { ReadMore } from "@/components/Button/ReadMore";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
 import Image from "next/image";
 
@@ -33,33 +31,29 @@ export default async function Page({
 
   return (
     <>
-      <div className="flex flex-col max-h-48 gap-6">
-        <Image
-          alt={name}
-          src={habit.img || "/images/placeholder.png"}
-          height={600}
-          width={600}
-          className="rounded-xl"
-        />
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold">{habit.title}</h1>
-            <div className="flex gap-6">
-              <Minutes minutes={habit.minutes} />
-              <Score score={habit.points} />
+      <div className="flex flex-col gap-2 h-screen">
+        <figure>
+          <Image
+            alt={name}
+            src={habit.img || "/images/placeholder.png"}
+            height={677}
+            width={452}
+            className="md:rounded-xl"
+          />
+        </figure>
+        <main className="container mx-auto p-6 flex flex-col justify-between h-full">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl font-bold">{habit.title}</h1>
+              <p className="text-sm text-slate-500">{habit.subtitle}</p>
             </div>
+            <FollowHabitButton
+              habitName={habit.name}
+              isFollowing={isFollowing}
+            />
           </div>
-          <FollowHabitButton habitName={habit.name} isFollowing={isFollowing} />
-        </div>
-        <div>
-          <h2 className="font-bold text-xl">About</h2>
-          <Paragraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias unde
-            aut nemo sapiente nesciunt maxime obcaecati fuga maiores natus
-            dolore nulla doloribus quos quaerat, itaque fugiat ab reiciendis
-            nihil vitae.
-          </Paragraph>
-        </div>
+          <ReadMore />
+        </main>
       </div>
     </>
   );

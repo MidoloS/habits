@@ -60,3 +60,38 @@ export const completeHabit = async ({
 export const getHabits = async () => {
   return await prisma.habit.findMany();
 };
+
+export const deleteSubscriptions = async ({
+  email,
+  habitName,
+}: {
+  email: string;
+  habitName: string;
+}) => {
+  console.log(email, habitName, "CREATE");
+  return prisma.subscriptions.create({
+    data: {
+      habitName,
+      userEmail: email,
+    },
+  });
+};
+
+export const createSubscriptions = async ({
+  email,
+  habitName,
+}: {
+  email: string;
+  habitName: string;
+}) => {
+  console.log(email, habitName, "DELETE");
+
+  return prisma.subscriptions.delete({
+    where: {
+      userEmail_habitName: {
+        habitName,
+        userEmail: email,
+      },
+    },
+  });
+};
