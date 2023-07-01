@@ -68,11 +68,24 @@ export const deleteSubscriptions = async ({
   email: string;
   habitName: string;
 }) => {
-  console.log(email, habitName, "CREATE");
-  return prisma.subscriptions.create({
+  console.log(email, habitName, "DELETE");
+
+  return prisma.habit.update({
+    where: {
+      name: habitName,
+    },
     data: {
-      habitName,
-      userEmail: email,
+      followersQty: {
+        decrement: 1,
+      },
+      subscriptions: {
+        delete: {
+          userEmail_habitName: {
+            habitName,
+            userEmail: email,
+          },
+        },
+      },
     },
   });
 };
@@ -84,13 +97,20 @@ export const createSubscriptions = async ({
   email: string;
   habitName: string;
 }) => {
-  console.log(email, habitName, "DELETE");
+  console.log(email, habitName, "CREATE");
 
-  return prisma.subscriptions.delete({
+  return prisma.habit.update({
     where: {
-      userEmail_habitName: {
-        habitName,
-        userEmail: email,
+      name: habitName,
+    },
+    data: {
+      followersQty: {
+        increment: 1,
+      },
+      subscriptions: {
+        create: {
+          userEmail: email,
+        },
       },
     },
   });

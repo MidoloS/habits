@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Webcam from "react-webcam";
 
-import { getHighestValueKey } from "../libs/helpers";
-import { SecondaryButton } from "./Button/Secondary";
 import { PrimaryButton } from "./Button/Primary";
 
 const swapCameraIcon = (
@@ -35,7 +33,6 @@ const swapCameraIcon = (
 
 export const Camera = () => {
   const [facing, setFacing] = useState("environment");
-  const [habitName, setHabitName] = useState<string | null>(null);
 
   const handleFace = () => {
     if (facing === "user") {
@@ -68,7 +65,6 @@ export const Camera = () => {
           <div className="flex items-center gap-6">
             <PrimaryButton
               onClick={() => {
-                setHabitName(null);
                 const base64 = getScreenshot();
 
                 if (!base64) {
@@ -87,7 +83,6 @@ export const Camera = () => {
                   })
                   .then((result) => {
                     console.log(result);
-                    setHabitName(getHighestValueKey(result));
                   })
                   .catch((error) => console.log("error", error));
               }}

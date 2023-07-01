@@ -21,7 +21,7 @@ export const FollowButton: FC<Props> = ({
     console.log("click");
     console.log(following);
 
-    if (following) {
+    if (!following) {
       onSubscribe();
     } else {
       onUnsubscribe();
@@ -55,7 +55,7 @@ export const FollowButton: FC<Props> = ({
 
   return (
     <button
-      className={`font-medium rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
+      className={`font-medium text-sm rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
       onClick={handleClick}
     >
       {following && icon}

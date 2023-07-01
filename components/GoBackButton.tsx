@@ -20,9 +20,9 @@ const GoBackButton = () => {
           transform="translate(-7 -2.732)"
           fill="none"
           stroke="#fff"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2.5"
         />
       </svg>
     </Link>

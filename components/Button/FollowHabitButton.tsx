@@ -17,13 +17,11 @@ export const FollowHabitButton: FC<Props> = ({
     isFollowing={isFollowing}
     onSubscribe={() =>
       subscribeToHabit({
-        email: "midolo.1912@gmail.com",
         habitName,
       })
     }
     onUnsubscribe={() =>
       unsubscribeToHabit({
-        email: "midolo.1912@gmail.com",
         habitName,
       })
     }
