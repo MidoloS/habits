@@ -43,7 +43,7 @@ export default async function Page({
             className="md:rounded-xl"
           />
         </figure>
-        <main className="z-10 bottom-0 absolute bg-slate-50 w-full">
+        <main className="z-10 bottom-0 absolute bg-slate-50 w-full rounded-3xl">
           <div className="container mx-auto p-6 flex flex-col h-full gap-4 ">
             <div className="flex justify-between items-center">
               <div>
