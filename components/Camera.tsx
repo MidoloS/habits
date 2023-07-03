@@ -55,6 +55,9 @@ export const Camera = () => {
         screenshotQuality={1}
         videoConstraints={{
           facingMode: facing,
+          width: { min: 430 },
+          height: { min: 669 },
+          aspectRatio: 0.62,
         }}
         className="rounded-xl"
       >
