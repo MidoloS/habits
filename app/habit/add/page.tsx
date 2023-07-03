@@ -10,6 +10,8 @@ export default async function Page() {
     return <div>{error}</div>;
   }
 
+  // si anda
+
   return (
     <>
       <main className="container mx-auto p-8">

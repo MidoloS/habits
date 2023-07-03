@@ -11,9 +11,9 @@ type Props = {
 };
 export const HabitCard: FC<Props> = ({ minutes, src, title, suffix }) => {
   return (
-    <figure className="relative cursor-pointer">
+    <figure className="relative w-full min-w-[300px]  cursor-pointer">
       <Image
-        className="rounded-xl max-w-fit h-full"
+        className="rounded-xl h-full w-full"
         src={src || "default"}
         alt={title}
         height={877}
