@@ -44,12 +44,11 @@ export const Camera = () => {
     <>
       <Webcam
         audio={false}
-        height={677}
+        height={669}
         mirrored={facing === "user"}
         screenshotFormat="image/png"
-        width={452}
+        width={430}
         imageSmoothing={true}
-        forceScreenshotSourceSize={true}
         onUserMedia={() => console.log("User media loaded")}
         onUserMediaError={() => console.log("User media error")}
         screenshotQuality={1}
@@ -57,9 +56,8 @@ export const Camera = () => {
           facingMode: facing,
           width: { min: 430 },
           height: { min: 669 },
-          aspectRatio: 0.62,
+          aspectRatio: 0.5,
         }}
-        className="rounded-xl"
       >
         {/* @ts-ignore */}
         {({ getScreenshot }) => (
