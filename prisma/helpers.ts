@@ -1,3 +1,4 @@
+import { Habit } from "@prisma/client";
 import { generatePrismaClient } from "./client";
 
 const prisma = generatePrismaClient();
@@ -18,11 +19,25 @@ export const getUserHabits = async (email: string) => {
 };
 
 export const getHabit = async (name: string) => {
-  return await prisma.habit.findUnique({
+  const habit = await prisma.habit.findUnique({
     where: {
       name,
     },
   });
+
+  if (!habit) {
+    return {
+      data: {} as Habit,
+      error: "Habit not found",
+      status: 404,
+    };
+  }
+
+  return {
+    data: habit,
+    error: null,
+    status: 200,
+  };
 };
 
 export const completeHabit = async ({
@@ -58,7 +73,21 @@ export const completeHabit = async ({
 };
 
 export const getHabits = async () => {
-  return await prisma.habit.findMany();
+  const habits = await prisma.habit.findMany();
+
+  if (!habits.length) {
+    return {
+      data: [] as Habit[],
+      error: "Habits not found",
+      status: 404,
+    };
+  }
+
+  return {
+    data: habits,
+    error: null,
+    status: 200,
+  };
 };
 
 export const deleteSubscriptions = async ({

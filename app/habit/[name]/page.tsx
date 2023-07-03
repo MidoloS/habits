@@ -1,8 +1,9 @@
 import { FollowHabitButton } from "@/components/Button/FollowHabitButton";
 import { ReadMore } from "@/components/Button/ReadMore";
-import { Feature } from "@/components/Feature";
 import { Features } from "@/components/Features";
+import { isFollowing } from "@/libs/helpers";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
+import { Subscriptions, User } from "@prisma/client";
 import Image from "next/image";
 
 export default async function Page({
@@ -10,12 +11,10 @@ export default async function Page({
 }: {
   params: { name: string };
 }) {
-  const habit = await getHabit(name);
+  const { data: habit, error } = await getHabit(name);
   const user = await getUserHabits("midolo.1912@gmail.com");
 
-  console.log(habit);
-
-  if (!habit?.createdAt) {
+  if (error) {
     return <h1>Habit not found</h1>;
   }
 
@@ -24,10 +23,6 @@ export default async function Page({
   }
 
   console.log(user.subscriptions, habit.name);
-
-  const isFollowing = user.subscriptions?.some(
-    (sub) => sub.habitName === habit.name
-  );
 
   console.log(isFollowing);
 
@@ -52,7 +47,10 @@ export default async function Page({
               </div>
               <FollowHabitButton
                 habitName={habit.name}
-                isFollowing={isFollowing}
+                isFollowing={isFollowing({
+                  habitName: habit.name,
+                  subscriptions: user.subscriptions,
+                })}
               />
             </div>
             <div className="flex flex-row justify-between text-center">

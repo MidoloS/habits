@@ -46,10 +46,10 @@ export const Camera = () => {
     <>
       <Webcam
         audio={false}
-        height={1700}
+        height={677}
         mirrored={facing === "user"}
         screenshotFormat="image/png"
-        width={500}
+        width={452}
         imageSmoothing={true}
         forceScreenshotSourceSize={true}
         onUserMedia={() => console.log("User media loaded")}

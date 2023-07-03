@@ -1,12 +1,14 @@
-import { Navigator } from "@/components/Footer";
+import { Navigator } from "@/components/Navigator";
 import { HabitCard } from "@/components/HabitCard";
 import { getHabits } from "@/prisma/helpers";
 import Link from "next/link";
 
 export default async function Page() {
-  const habits = await getHabits();
+  const { data: habits, error } = await getHabits();
 
-  console.log(habits);
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>
