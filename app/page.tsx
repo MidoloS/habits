@@ -109,27 +109,29 @@ const Home = (a) => {
             className="bg-slate-200 rounded-md w-full p-4 text-sm"
           />
         </div>
-        <div className="max-w-md md:max-w-7xl overflow-x-auto">
+        <div className="max-w-md md:max-w-7xl">
           <h1 className="font-bold text-slate-950 text-2xl mb-4">
             Your Habits
           </h1>
-          <div className="flex flex-row gap-4">
-            {subscriptions.map((sub: any) => (
-              <Link
-                href={`/habit/${sub.habit.name}/scan`}
-                key={sub.habit.name}
-                passHref
-                legacyBehavior
-              >
-                <HabitCard
-                  minutes={20}
-                  habitName={sub.habit.name}
-                  title={sub.habit.title}
-                  suffix={<Completed completed={!!sub.completedAt} />}
-                  src={sub.habit.img}
-                />
-              </Link>
-            ))}
+          <div className="overflow-x-auto">
+            <div className="flex flex-row gap-4">
+              {subscriptions.map((sub: any) => (
+                <Link
+                  href={`/habit/${sub.habit.name}/scan`}
+                  key={sub.habit.name}
+                  passHref
+                  legacyBehavior
+                >
+                  <HabitCard
+                    minutes={20}
+                    habitName={sub.habit.name}
+                    title={sub.habit.title}
+                    suffix={<Completed completed={!!sub.completedAt} />}
+                    src={sub.habit.img}
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </main>
