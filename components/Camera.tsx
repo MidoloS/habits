@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Webcam from "react-webcam";
 
-import { PrimaryButton } from "./Button/Primary";
-
 const swapCameraIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +61,7 @@ export const Camera = () => {
         {/* @ts-ignore */}
         {({ getScreenshot }) => (
           <div className="flex items-center gap-6">
-            <PrimaryButton
+            {/* <PrimaryButton
               onClick={() => {
                 const base64 = getScreenshot();
 
@@ -88,7 +86,7 @@ export const Camera = () => {
               }}
             >
               Capture photo
-            </PrimaryButton>
+            </PrimaryButton> */}
             <button onClick={handleFace}>{swapCameraIcon}</button>
           </div>
         )}
