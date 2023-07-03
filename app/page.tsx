@@ -2,6 +2,7 @@ import { HabitCard } from "@/components/HabitCard";
 import { Completed } from "@/components/Completed";
 import Link from "next/link";
 import { Navigator } from "@/components/Navigator";
+import Image from "next/image";
 
 // @ts-ignore
 const Home = (a) => {
@@ -91,8 +92,27 @@ const Home = (a) => {
   // no anda
   return (
     <>
-      <main className="container mx-auto px-4">
+      <main className="flex flex-col container mx-auto px-4 gap-8">
+        <figure className="flex items-center gap-4 mt-8">
+          <Image src="/me.png" width={70} height={70} alt={""} />
+          <figcaption>
+            <p className="text-sm text-slate-500">Welcome Back</p>
+            <h2 className="text-slate-900 font-bold">Sebastian Midolo</h2>
+          </figcaption>
+        </figure>
+        <div>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Search for a habit"
+            className="bg-slate-200 rounded-md w-full p-4 text-sm"
+          />
+        </div>
         <div className="max-w-md md:max-w-7xl overflow-x-auto">
+          <h1 className="font-bold text-slate-950 text-2xl mb-4">
+            Your Habits
+          </h1>
           <div className="flex flex-row gap-4">
             {subscriptions.map((sub: any) => (
               <Link
