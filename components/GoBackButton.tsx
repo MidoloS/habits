@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 const GoBackButton = () => {
   return (
     <Link
-      className="bg-black opacity-90 text-white h-14 w-14 rounded-lg flex items-center justify-center"
+      className="bg-black opacity-80 text-white h-14 w-14 rounded-lg flex items-center justify-center"
       href="/"
     >
       <svg
