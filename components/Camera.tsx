@@ -56,7 +56,7 @@ export const Camera = () => {
           facingMode: facing,
           width: { min: 430 },
           height: { min: 669 },
-          aspectRatio: 0.5,
+          aspectRatio: 1.5,
         }}
       >
         {/* @ts-ignore */}
