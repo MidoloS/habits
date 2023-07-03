@@ -1,9 +1,6 @@
 import { HabitCard } from "@/components/HabitCard";
 import { Completed } from "@/components/Completed";
 import Link from "next/link";
-import { getUserHabits } from "@/prisma/helpers";
-import { Habit, Subscriptions } from "@prisma/client";
-import { useEffect, useState } from "react";
 import { Navigator } from "@/components/Navigator";
 
 // @ts-ignore
@@ -99,7 +96,7 @@ const Home = (a) => {
           <div className="flex flex-row gap-4">
             {subscriptions.map((sub: any) => (
               <Link
-                href={`/habit/${sub.habit.name}`}
+                href={`/habit/${sub.habit.name}/scan`}
                 key={sub.habit.name}
                 passHref
                 legacyBehavior
