@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { useGoogleLogin } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
 
 export const useUser = () => {
   const [user, setUser] = useState();
   const [profile, setProfile] = useState();
 
-  const login = useGoogleLogin({
-    onSuccess: (user) => {
-      console.log("user", user);
-      // @ts-ignore
-      setUser(user);
-    },
-    onError: (error) => {
-      console.log("error", error);
-    },
-  });
+  //   const login = useGoogleLogin({
+  //     onSuccess: (user) => {
+  //       console.log("user", user);
+  //       // @ts-ignore
+  //       setUser(user);
+  //     },
+  //     onError: (error) => {
+  //       console.log("error", error);
+  //     },
+  //   });
 
   console.log("user", user);
   console.log("profile", profile);
@@ -45,5 +45,5 @@ export const useUser = () => {
     }
   }, [user]);
 
-  return { profile, user, login };
+  return { profile, user };
 };

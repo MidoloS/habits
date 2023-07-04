@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
+// import { GoogleLogin } from "@react-oauth/google";
 
 function App() {
   const responseMessage = (response: any) => {
@@ -15,7 +15,7 @@ function App() {
       <h2>React Google Login</h2>
       <br />
       <br />
-      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+      {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
     </div>
   );
 }

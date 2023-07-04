@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export const metadata = {
   title: "Create Next App",
