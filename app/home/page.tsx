@@ -1,11 +1,8 @@
-"use client";
-
 import { HabitCard } from "@/components/HabitCard";
 import { Completed } from "@/components/Completed";
 import Link from "next/link";
 import { Navigator } from "@/components/Navigator";
 import Image from "next/image";
-import { useUser } from "@/libs/hooks";
 
 // @ts-ignore
 const Home = () => {
@@ -94,10 +91,14 @@ const Home = () => {
 
   //   const { login, profile } = useUser();
 
+  const profile = {
+    name: "Sebastian",
+    picture: "",
+  };
+
   // no anda
   return (
     <>
-      <button onClick={() => login()}>Weador</button>
       <main className="flex flex-col container mx-auto px-4 gap-8">
         <figure className="flex items-center gap-4 mt-8">
           <Image
