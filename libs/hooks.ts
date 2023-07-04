@@ -8,6 +8,7 @@ export const useUser = () => {
   const login = useGoogleLogin({
     onSuccess: (user) => {
       console.log("user", user);
+      // @ts-ignore
       setUser(user);
     },
     onError: (error) => {
@@ -23,9 +24,11 @@ export const useUser = () => {
       console.log("wea", user);
 
       fetch(
+        // @ts-ignore
         `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
         {
           headers: {
+            // @ts-ignore
             Authorization: `Bearer ${user.access_token}`,
             Accept: "application/json",
           },

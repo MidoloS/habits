@@ -101,6 +101,7 @@ const Home = () => {
       <main className="flex flex-col container mx-auto px-4 gap-8">
         <figure className="flex items-center gap-4 mt-8">
           <Image
+            // @ts-ignore
             src={profile?.picture}
             width={70}
             height={70}
@@ -109,6 +110,7 @@ const Home = () => {
           />
           <figcaption>
             <p className="text-sm text-slate-500">Welcome</p>
+            {/* @ts-ignore */}
             <h2 className="text-slate-900 font-bold">{profile?.name}</h2>
           </figcaption>
         </figure>

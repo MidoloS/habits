@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { Navigator } from "@/components/Navigator";
 import { HabitCard } from "@/components/HabitCard";
@@ -14,13 +14,19 @@ export default async function Page() {
     return <div>{error}</div>;
   }
 
-  const { login, profile } = useUser();
+  // const { login, profile } = useUser();
+
+  const profile = {
+    name: "Sebastian",
+    picture: "",
+  };
 
   return (
     <>
       <main className="flex flex-col gap-8 container mx-auto px-4">
         <figure className="flex items-center gap-4 mt-8">
           <Image
+            // @ts-ignore
             src={profile?.picture}
             width={70}
             height={70}
@@ -29,6 +35,7 @@ export default async function Page() {
           />
           <figcaption>
             <p className="text-sm text-slate-500">Welcome</p>
+            {/* @ts-ignore */}
             <h2 className="text-slate-900 font-bold">{profile?.name}</h2>
           </figcaption>
         </figure>
