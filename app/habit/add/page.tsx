@@ -1,8 +1,11 @@
+"use client";
+
 import { Navigator } from "@/components/Navigator";
 import { HabitCard } from "@/components/HabitCard";
 import { getHabits } from "@/prisma/helpers";
 import Link from "next/link";
 import Image from "next/image";
+import { useUser } from "@/libs/hooks";
 
 export default async function Page() {
   const { data: habits, error } = await getHabits();
@@ -11,16 +14,22 @@ export default async function Page() {
     return <div>{error}</div>;
   }
 
-  // si anda
+  const { login, profile } = useUser();
 
   return (
     <>
       <main className="flex flex-col gap-8 container mx-auto px-4">
         <figure className="flex items-center gap-4 mt-8">
-          <Image src="/me.png" width={70} height={70} alt={""} />
+          <Image
+            src={profile?.picture}
+            width={70}
+            height={70}
+            alt={""}
+            className="rounded-full"
+          />
           <figcaption>
-            <p className="text-sm text-slate-500">Welcome Back</p>
-            <h2 className="text-slate-900 font-bold">Sebastian Midolo</h2>
+            <p className="text-sm text-slate-500">Welcome</p>
+            <h2 className="text-slate-900 font-bold">{profile?.name}</h2>
           </figcaption>
         </figure>
         <div>

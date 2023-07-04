@@ -17,7 +17,11 @@ const next = {
     appDir: true,
   },
   images: {
-    domains: ["supabase.co", "mabfjyjbggqdwqtjdwip.supabase.co"],
+    domains: [
+      "supabase.co",
+      "mabfjyjbggqdwqtjdwip.supabase.co",
+      "lh3.googleusercontent.com",
+    ],
   },
 };
 
