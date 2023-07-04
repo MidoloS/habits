@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -17,16 +15,16 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <GoogleOAuthProvider clientId="104807834649-9f3pfm5ds0ajtndsqc1pqvhhm34civpt.apps.googleusercontent.com">
-      <html lang="en">
-        <head>
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/icon.png"></link>
-          <meta name="theme-color" content="#fff" />
-        </head>
+    // <GoogleOAuthProvider clientId="104807834649-9f3pfm5ds0ajtndsqc1pqvhhm34civpt.apps.googleusercontent.com">
+    <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon.png"></link>
+        <meta name="theme-color" content="#fff" />
+      </head>
 
-        <body className={inter.className}>{children}</body>
-      </html>
-    </GoogleOAuthProvider>
+      <body className={inter.className}>{children}</body>
+    </html>
+    // </GoogleOAuthProvider>
   );
 }
