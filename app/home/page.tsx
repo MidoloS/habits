@@ -92,7 +92,7 @@ const Home = () => {
     },
   ];
 
-  const { login, profile } = useUser();
+  //   const { login, profile } = useUser();
 
   // no anda
   return (
