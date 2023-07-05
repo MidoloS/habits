@@ -4,6 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export const authOptions: NextAuthOptions = {
+  secret: "secret",
   // https://next-auth.js.org/configuration/providers/oauth
   providers: [
     GoogleProvider({
@@ -16,6 +17,12 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token }) {
       token.userRole = "admin";
       return token;
+    },
+    async signIn({ user, account, credentials, email, profile }) {
+      return true;
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
     },
   },
 };
