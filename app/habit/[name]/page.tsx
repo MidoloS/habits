@@ -1,16 +1,25 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { FollowHabitButton } from "@/components/Button/FollowHabitButton";
 import { ReadMore } from "@/components/Button/ReadMore";
-import { Features } from "@/components/Features";
+import { Features } from "@/components/Info/Features";
 import { isFollowing } from "@/libs/helpers";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
 import { Subscriptions, User } from "@prisma/client";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default async function Page({
   params: { name },
 }: {
   params: { name: string };
 }) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/signin?callbackUrl=/");
+  }
+
   const { data: habit, error } = await getHabit(name);
   const user = await getUserHabits("midolo.1912@gmail.com");
 

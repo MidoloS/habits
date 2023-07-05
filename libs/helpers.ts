@@ -34,3 +34,15 @@ export const isFollowing = ({
   subscriptions: Subscriptions[];
   habitName: string;
 }) => subscriptions.some((sub: Subscriptions) => sub.habitName === habitName);
+
+export const getSubscriptions = async () => {
+  console.log(1);
+
+  const response = await fetch("http://localhost:3000/api/subscriptions");
+  console.log({ response });
+  const data = await response.json();
+  console.log({ data });
+  console.log("----------------------");
+
+  return data;
+};

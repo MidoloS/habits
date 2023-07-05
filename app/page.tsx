@@ -1,9 +1,18 @@
 "use client";
 
+import { getServerSession } from "next-auth";
 import React from "react";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 // import { GoogleLogin } from "@react-oauth/google";
 
-function App() {
+const Index = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/signin?callbackUrl=/");
+  }
+
   const responseMessage = (response: any) => {
     console.log(response);
   };
@@ -18,5 +27,5 @@ function App() {
       {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
     </div>
   );
-}
-export default App;
+};
+export default Index;

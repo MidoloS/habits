@@ -1,13 +1,22 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { PrimaryButton } from "@/components/Button/Primary";
 import { Camera } from "@/components/Camera";
-import { Features } from "@/components/Features";
+import { Features } from "@/components/Info/Features";
 import { getHabit } from "@/prisma/helpers";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 export default async function Page({
   params: { name },
 }: {
   params: { name: string };
 }) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/signin?callbackUrl=/");
+  }
+
   const habit = await getHabit(name);
 
   if (!habit.data?.createdAt) {
