@@ -1,5 +1,7 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { createSubscriptions } from "@/prisma/helpers";
 import { NextApiRequest, NextApiResponse } from "next";
+import { getServerSession } from "next-auth";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,10 +12,16 @@ export default async function handler(
     res.status(405).json({ message: "Method not allowed" });
   }
 
+  const session = await getServerSession(req, res, authOptions);
+
+  if (!session?.user?.email) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
   await createSubscriptions({
     // @ts-ignore
     habitName,
-    email: "midolo.1912@gmail.com",
+    email: session?.user?.email,
   });
   res.status(200).json({ message: "Subscribed!" });
 }
