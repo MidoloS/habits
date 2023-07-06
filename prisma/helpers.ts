@@ -148,13 +148,15 @@ export const createSubscriptions = async ({
 export const createUser = async ({
   email,
   name,
+  img,
 }: {
   email: string | undefined;
   name: string | undefined;
+  img: string | undefined;
 }) => {
   console.log({ email, name });
 
-  if (!email || !name) {
+  if (!email || !name || !img) {
     return null;
   }
   console.log(1);
@@ -164,6 +166,7 @@ export const createUser = async ({
       data: {
         email,
         name,
+        img,
       },
     });
   } catch (err) {
