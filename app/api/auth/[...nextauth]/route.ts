@@ -1,3 +1,4 @@
+import { createUser } from "@/prisma/helpers";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -16,7 +17,17 @@ export const authOptions: NextAuthOptions = {
       token.userRole = "admin";
       return token;
     },
-    async signIn({ user, account, credentials, email, profile }) {
+    async signIn({ profile }) {
+      console.log("LA WEA MAXIMA VOLADORA DE SIGN IN");
+
+      console.log({ profile });
+
+      const res = await createUser({
+        email: profile?.email,
+        name: profile?.name,
+      });
+      console.log({ res });
+
       return true;
     },
     async redirect({ url, baseUrl }) {

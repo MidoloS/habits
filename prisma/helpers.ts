@@ -144,3 +144,31 @@ export const createSubscriptions = async ({
     },
   });
 };
+
+export const createUser = async ({
+  email,
+  name,
+}: {
+  email: string | undefined;
+  name: string | undefined;
+}) => {
+  console.log({ email, name });
+
+  if (!email || !name) {
+    return null;
+  }
+  console.log(1);
+
+  try {
+    return await prisma.user.create({
+      data: {
+        email,
+        name,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+
+    return null;
+  }
+};
