@@ -156,7 +156,7 @@ export const createUser = async ({
 }) => {
   console.log({ email, name });
 
-  if (!email || !name || !img) {
+  if (!email || !name) {
     return null;
   }
   console.log(1);
