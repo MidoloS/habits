@@ -19,12 +19,14 @@ export const HabitList: FC<Props> = ({ habits = [], urlPattern }) => {
             passHref
             legacyBehavior
           >
-            <HabitCard
-              minutes={habit.minutes}
-              title={habit.title}
-              src={habit.img}
-              habitName={habit.name}
-            />
+            <a>
+              <HabitCard
+                minutes={habit.minutes}
+                title={habit.title}
+                src={habit.img}
+                habitName={habit.name}
+              />
+            </a>
           </Link>
         ))}
       </div>

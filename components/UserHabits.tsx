@@ -15,6 +15,9 @@ export const UserHabits = () => {
   }, []);
 
   return (
-    <HabitList habits={subscriptions} urlPattern="/habits/{habitName}/scan" />
+    <HabitList
+      habits={subscriptions}
+      urlPattern="/habit/{habitName}/complete"
+    />
   );
 };
