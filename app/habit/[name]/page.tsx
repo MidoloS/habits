@@ -1,10 +1,8 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { FollowHabitButton } from "@/components/Button/FollowHabitButton";
+import { FollowButton } from "@/components/Button/Follow";
 import { ReadMore } from "@/components/Button/ReadMore";
 import { Features } from "@/components/Info/Features";
-import { isFollowing } from "@/libs/helpers";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
-import { Subscriptions, User } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -21,19 +19,10 @@ export default async function Page({
   }
 
   const { data: habit, error } = await getHabit(name);
-  const user = await getUserHabits("midolo.1912@gmail.com");
 
   if (error) {
-    return <h1>Habit not found</h1>;
-  }
-
-  if (!user) {
     return null;
   }
-
-  console.log(user.subscriptions, habit.name);
-
-  console.log(isFollowing);
 
   return (
     <>
@@ -54,13 +43,7 @@ export default async function Page({
                 <h1 className="text-2xl font-bold">{habit.title}</h1>
                 <p className="text-sm text-slate-500">{habit.subtitle}</p>
               </div>
-              <FollowHabitButton
-                habitName={habit.name}
-                isFollowing={isFollowing({
-                  habitName: habit.name,
-                  subscriptions: user.subscriptions,
-                })}
-              />
+              <FollowButton habitName={habit.name} />
             </div>
             <div className="flex flex-row justify-between text-center">
               <Features habit={habit} />

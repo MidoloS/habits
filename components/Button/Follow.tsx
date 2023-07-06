@@ -1,35 +1,34 @@
 "use client";
 
-import { FC, useState } from "react";
+import {
+  getSubscription,
+  subscribeToHabit,
+  unsubscribeToHabit,
+} from "@/libs/helpers";
+import { FC, useEffect, useState } from "react";
 
 type Props = {
-  onSubscribe: () => any;
-  onUnsubscribe: () => any;
-  isFollowing?: boolean;
+  habitName: string;
 };
 
-export const FollowButton: FC<Props> = ({
-  onSubscribe,
-  onUnsubscribe,
-  isFollowing = false,
-}) => {
-  const [following, setFollowing] = useState<boolean>(isFollowing);
+export const FollowButton: FC<Props> = ({ habitName }) => {
+  const [isFollowing, setIsFollowing] = useState<boolean>(false);
+  useEffect(() => {
+    getSubscription(habitName).then((sub) => setIsFollowing(!!sub));
+  }, []);
 
-  const text = following ? "Following" : "Follow";
+  const text = isFollowing ? "Following" : "Follow";
 
   const handleClick = () => {
-    console.log("click");
-    console.log(following);
-
-    if (!following) {
-      onSubscribe();
+    if (isFollowing) {
+      unsubscribeToHabit(habitName);
     } else {
-      onUnsubscribe();
+      subscribeToHabit(habitName);
     }
-    setFollowing((prev) => !prev);
+    setIsFollowing((prev) => !prev);
   };
 
-  const style = following
+  const style = isFollowing
     ? "bg-slate-950 text-slate-50"
     : "border-slate-900 text-slate-900 border-2";
 
@@ -58,7 +57,7 @@ export const FollowButton: FC<Props> = ({
       className={`font-medium text-sm rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
       onClick={handleClick}
     >
-      {following && icon}
+      {isFollowing && icon}
       {text}
     </button>
   );

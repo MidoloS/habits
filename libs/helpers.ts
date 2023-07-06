@@ -1,48 +1,37 @@
-import { Subscriptions, User } from "@prisma/client";
-import { UserWithSubscriptions } from "./types";
+import { Habit, Prisma, Subscriptions } from "@prisma/client";
 
-export const subscribeToHabit = async ({
-  habitName,
-}: {
-  habitName: string;
-}) => {
+export const SubscriptionsWithHabits: Prisma.SubscriptionsInclude = {
+  habit: true,
+};
+
+export const subscribeToHabit = async (habitName: string): Promise<Habit> => {
   const response = await fetch(`/api/habit/subscribe/${habitName}`, {
     method: "POST",
   });
   const data = await response.json();
-  alert(JSON.stringify(data));
   return data;
 };
 
-export const unsubscribeToHabit = async ({
-  habitName,
-}: {
-  habitName: string;
-}) => {
+export const unsubscribeToHabit = async (habitName: string): Promise<Habit> => {
   const response = await fetch(`/api/habit/unsubscribe/${habitName}`, {
     method: "DELETE",
   });
   const data = await response.json();
-  alert(JSON.stringify(data));
   return data;
 };
 
-export const isFollowing = ({
-  subscriptions,
-  habitName,
-}: {
-  subscriptions: Subscriptions[];
-  habitName: string;
-}) => subscriptions.some((sub: Subscriptions) => sub.habitName === habitName);
-
-export const getSubscriptions = async () => {
-  console.log(1);
-
+export const getSubscriptions = async (): Promise<Subscriptions[]> => {
   const response = await fetch("http://localhost:3000/api/subscriptions");
-  console.log({ response });
   const data = await response.json();
-  console.log({ data });
-  console.log("----------------------");
+  return data;
+};
 
+export const getSubscription = async (
+  habitName: string
+): Promise<Subscriptions> => {
+  const response = await fetch(
+    `http://localhost:3000/api/subscription/${habitName}`
+  );
+  const data = await response.json();
   return data;
 };

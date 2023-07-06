@@ -158,9 +158,9 @@ export const AddHabitIcon = ({ isActive }: { isActive: boolean }) =>
 
 export const Navigator: FC = () => {
   const path = usePathname();
-  const isHome = path === "/";
+  const isHome = path === "/home";
   const isLeaderboard = path === "/leaderboard";
-  const isAddHabit = path === "/habit/add";
+  const isAddHabit = path === "/habit/new";
   return (
     <footer className="fixed mb-4 bg-slate-50 bottom-0 flex justify-around w-full items-center">
       <Link href="/">
@@ -169,7 +169,7 @@ export const Navigator: FC = () => {
       <Link href="/leaderboard">
         <LeaderboardIcon isActive={isLeaderboard} />
       </Link>
-      <Link href="/habit/add">
+      <Link href="/habit/new">
         <AddHabitIcon isActive={isAddHabit} />
       </Link>
     </footer>
