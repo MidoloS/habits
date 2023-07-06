@@ -160,8 +160,16 @@ export const createUser = async ({
   console.log(1);
 
   try {
-    return prisma.user.create({
-      data: {
+    return prisma.user.upsert({
+      where: {
+        email,
+      },
+      create: {
+        email,
+        name,
+        img,
+      },
+      update: {
         email,
         name,
         img,
