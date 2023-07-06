@@ -10,10 +10,12 @@ export const UserHabits = () => {
   useEffect(() => {
     getSubscriptions().then((subs) => {
       // @ts-ignore
-      console.log({ habits: subs.map((sub) => sub.habit) });
+      console.log("pepe", subs);
+
+      console.log({ habits: subs.data.map((sub) => sub.habit) });
 
       // @ts-ignore
-      setSubscriptions(subs.map((sub) => sub.habit));
+      setSubscriptions(subs.data.map((sub) => sub.habit));
     });
   }, []);
 

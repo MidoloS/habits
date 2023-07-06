@@ -204,5 +204,8 @@ export const getSubscriptions = async ({ email }: { email: string }) => {
     where: {
       userEmail: email,
     },
+    include: {
+      habit: true,
+    },
   });
 };

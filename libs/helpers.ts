@@ -21,7 +21,7 @@ export const unsubscribeToHabit = async (habitName: string): Promise<Habit> => {
 };
 
 export const getSubscriptions = async (): Promise<Subscriptions[]> => {
-  const response = await fetch("http://localhost:3000/api/subscriptions");
+  const response = await fetch("http://localhost:3000/api/habit/sub");
   const data = await response.json();
   return data;
 };
