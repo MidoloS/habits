@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const GoBackButton = () => {
   return (
@@ -20,9 +19,9 @@ const GoBackButton = () => {
           transform="matrix(0.017, 1, -1, 0.017, 28.356, -3.12)"
           fill="none"
           stroke="#020617"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         />
       </svg>
     </Link>

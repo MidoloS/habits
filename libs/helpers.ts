@@ -5,7 +5,7 @@ export const SubscriptionsWithHabits: Prisma.SubscriptionsInclude = {
 };
 
 export const subscribeToHabit = async (habitName: string): Promise<Habit> => {
-  const response = await fetch(`/api/habit/subscribe/${habitName}`, {
+  const response = await fetch(`/api/habit/sub/${habitName}`, {
     method: "POST",
   });
   const data = await response.json();
@@ -13,7 +13,7 @@ export const subscribeToHabit = async (habitName: string): Promise<Habit> => {
 };
 
 export const unsubscribeToHabit = async (habitName: string): Promise<Habit> => {
-  const response = await fetch(`/api/habit/unsubscribe/${habitName}`, {
+  const response = await fetch(`/api/habit/sub/${habitName}`, {
     method: "DELETE",
   });
   const data = await response.json();
@@ -29,9 +29,15 @@ export const getSubscriptions = async (): Promise<Subscriptions[]> => {
 export const getSubscription = async (
   habitName: string
 ): Promise<Subscriptions> => {
-  const response = await fetch(
-    `http://localhost:3000/api/subscription/${habitName}`
-  );
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/habit/sub/${habitName}`
+    );
+    const data = await response.json();
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.log({ error });
+  }
 };

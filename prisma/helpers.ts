@@ -126,8 +126,6 @@ export const createSubscriptions = async ({
   email: string;
   habitName: string;
 }) => {
-  console.log(email, habitName, "CREATE");
-
   return prisma.habit.update({
     where: {
       name: habitName,
@@ -162,7 +160,7 @@ export const createUser = async ({
   console.log(1);
 
   try {
-    return await prisma.user.create({
+    return prisma.user.create({
       data: {
         email,
         name,
@@ -174,4 +172,29 @@ export const createUser = async ({
 
     return null;
   }
+};
+
+export const getSubscription = async ({
+  habitName,
+  email,
+}: {
+  habitName: string;
+  email: string;
+}) => {
+  return prisma.subscriptions.findUnique({
+    where: {
+      userEmail_habitName: {
+        habitName,
+        userEmail: email,
+      },
+    },
+  });
+};
+
+export const getSubscriptions = async ({ email }: { email: string }) => {
+  return prisma.subscriptions.findMany({
+    where: {
+      userEmail: email,
+    },
+  });
 };

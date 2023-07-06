@@ -14,7 +14,17 @@ type Props = {
 export const FollowButton: FC<Props> = ({ habitName }) => {
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
   useEffect(() => {
-    getSubscription(habitName).then((sub) => setIsFollowing(!!sub));
+    console.log("weador");
+
+    getSubscription(habitName)
+      .then((sub) => {
+        console.log("subs", sub);
+
+        setIsFollowing(!!sub);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const text = isFollowing ? "Following" : "Follow";
