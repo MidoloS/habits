@@ -19,6 +19,8 @@ export default async function handler(
     return res.status(401).json({ message: "Unauthorized" });
   }
 
+  console.log("weador");
+
   await deleteSubscriptions({
     // @ts-ignore
     habitName,
