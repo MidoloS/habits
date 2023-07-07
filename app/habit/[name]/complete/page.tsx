@@ -1,10 +1,13 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { PrimaryButton } from "@/components/Button/Primary";
+import { SwapCamera } from "@/components/Button/SwapCamera";
 import { Camera } from "@/components/Camera";
 import { Features } from "@/components/Info/Features";
 import { getHabit } from "@/prisma/helpers";
 import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { useState } from "react";
 
 export default async function Page({
   params: { name },
@@ -35,6 +38,9 @@ export default async function Page({
               <div>
                 <h1 className="text-2xl font-bold">{habit.data.title}</h1>
                 <p className="text-sm text-slate-500">We will Validate</p>
+              </div>
+              <div>
+                <SwapCamera />
               </div>
             </div>
             <div className="flex flex-row justify-between text-center">
