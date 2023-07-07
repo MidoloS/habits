@@ -18,9 +18,9 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
 
     getSubscription(habitName)
       .then((sub) => {
-        console.log("subs", sub);
+        console.log("subs", sub.data);
 
-        setIsFollowing(!!sub);
+        setIsFollowing(!!sub.data);
       })
       .catch((err) => {
         console.log(err);
