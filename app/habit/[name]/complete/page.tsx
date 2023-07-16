@@ -3,11 +3,10 @@ import { PrimaryButton } from "@/components/Button/Primary";
 import { SwapCamera } from "@/components/Button/SwapCamera";
 import { Camera } from "@/components/Camera";
 import { Features } from "@/components/Info/Features";
+import { getSubscription } from "@/libs/helpers";
 import { getHabit } from "@/prisma/helpers";
 import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { useState } from "react";
 
 export default async function Page({
   params: { name },
@@ -15,6 +14,14 @@ export default async function Page({
   params: { name: string };
 }) {
   const session = await getServerSession(authOptions);
+
+  console.log("name", name);
+
+  // getSubscription(name).then((res) => console.log("pepe123", res));
+
+  const pepe = await fetch(`/api/habits`);
+
+  console.log("sub", "sub");
 
   if (!session) {
     redirect("/signin?callbackUrl=/");
@@ -25,6 +32,9 @@ export default async function Page({
   if (!habit.data?.createdAt) {
     return <h1>Habit not found</h1>;
   }
+
+  // const submitText = sub.completedAt ? "Completed" : "Complete";
+  const submitText = "ok";
 
   return (
     <>
@@ -46,7 +56,7 @@ export default async function Page({
             <div className="flex flex-row justify-between text-center">
               <Features habit={habit.data} />
             </div>
-            <PrimaryButton>Submit</PrimaryButton>
+            <PrimaryButton disabled={false}>{submitText}</PrimaryButton>
           </div>
         </main>
       </div>

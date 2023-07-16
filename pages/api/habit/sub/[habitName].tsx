@@ -46,6 +46,8 @@ export default async function handler(
       });
       break;
     case "GET":
+      console.log("----------------------- 1 ---------------");
+
       const sub = await getSubscription({
         // @ts-ignore
         habitName,

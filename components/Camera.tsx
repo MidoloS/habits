@@ -12,6 +12,16 @@ export const Camera = () => {
   const capture = useCallback(() => {
     // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
+
+    console.log("imageSrc", imageSrc);
+
+    fetch(
+      "https://wmoy6ravk5hlbzhskyaotl3bei0gfmeb.lambda-url.us-east-1.on.aws/",
+      {
+        method: "POST",
+        body: imageSrc,
+      }
+    ).then((res) => res.json().then((res) => console.log("res", res)));
   }, [webcamRef]);
 
   useEffect(() => {
@@ -40,6 +50,7 @@ export const Camera = () => {
           aspectRatio: 1.5,
         }}
       />
+      <button onClick={capture}>Comprar weas</button>
     </>
   );
 };

@@ -27,13 +27,13 @@ export const getSubscriptions = async (): Promise<Subscriptions[]> => {
 };
 
 export const getSubscription = async (habitName: string) => {
-  try {
-    const response = await fetch(`/api/habit/sub/${habitName}`);
-    const data = await response.json();
-    console.log(data);
+  console.log(1111111111111111);
 
-    return data;
-  } catch (error) {
-    console.log({ error });
-  }
+  const response = await fetch(`/api/habit/sub/${habitName}`);
+  console.log(22222222222222222);
+
+  const data = await response.json();
+  console.log(data);
+
+  return data;
 };
