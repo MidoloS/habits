@@ -52,7 +52,7 @@ export const UserHabits = () => {
       <div className="flex flex-row gap-4">
         {subscriptions.map((sub) => (
           <Link
-            href={`/habit/${sub.habit.name}`}
+            href={`/habit/${sub.habit.name}/complete`}
             key={sub.habit.name}
             passHref
             legacyBehavior
