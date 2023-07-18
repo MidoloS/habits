@@ -1,4 +1,5 @@
 import { Habit, Prisma, Subscriptions } from "@prisma/client";
+import { SubscriptionWithHabit } from "./types";
 
 export const SubscriptionsWithHabits: Prisma.SubscriptionsInclude = {
   habit: true,
@@ -20,7 +21,11 @@ export const unsubscribeToHabit = async (habitName: string): Promise<Habit> => {
   return data;
 };
 
-export const getSubscriptions = async (): Promise<Subscriptions[]> => {
+export const getSubscriptions = async (): Promise<{
+  data: SubscriptionWithHabit[];
+  error: string;
+  message: string;
+}> => {
   const response = await fetch("/api/habit/sub");
   const data = await response.json();
   return data;

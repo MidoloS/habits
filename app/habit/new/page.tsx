@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { UserWelcome } from "@/components/UserWelcome";
 import { HabitList } from "@/components/HabitList";
+import { SearchInput } from "@/components/SearchInput";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
@@ -25,16 +26,7 @@ export default async function Page() {
     <>
       <main className="flex flex-col container mx-auto px-4 gap-8">
         <UserWelcome />
-        <div>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Search for a habit"
-            className="bg-slate-200 rounded-md w-full p-4 text-sm"
-          />
-        </div>
-
+        <SearchInput />
         <div className="max-w-md md:max-w-7xl">
           <h1 className="font-bold text-slate-950 text-lg mb-4 font-heading">
             Habits

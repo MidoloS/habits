@@ -4,7 +4,7 @@ import { FC } from "react";
 type Props = {
   src: string | null;
   title: string;
-  suffix?: React.ReactNode;
+  suffix?: React.ReactNode | null;
   minutes: number;
   habitName: string;
 };
@@ -18,7 +18,7 @@ export const HabitCard: FC<Props> = ({ minutes, src, title, suffix }) => {
         height={300}
         width={252}
       />
-      <div className="absolute top-0 right-0 p-6">{suffix}</div>
+      <div className="absolute top-0 right-0 p-4">{suffix}</div>
 
       <div
         className="

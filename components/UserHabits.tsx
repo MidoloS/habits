@@ -4,6 +4,9 @@ import { getSubscriptions } from "@/libs/helpers";
 import { HabitList } from "./HabitList";
 import { useEffect, useState } from "react";
 import { Habit, Subscriptions } from "@prisma/client";
+import { SubscriptionWithHabit } from "@/libs/types";
+import Link from "next/link";
+import { HabitCard } from "./HabitCard";
 
 const COMPLETED_ICON = (
   <svg
@@ -23,31 +26,49 @@ const COMPLETED_ICON = (
 );
 
 export const UserHabits = () => {
-  const [subscriptions, setSubscriptions] = useState([]);
+  const [subscriptions, setSubscriptions] = useState<SubscriptionWithHabit[]>(
+    []
+  );
 
   useEffect(() => {
     getSubscriptions().then((subs) => {
-      // @ts-ignore
-      setSubscriptions(subs.data.map((sub) => sub.habit));
+      console.log({ subs });
+
+      setSubscriptions(subs.data);
     });
   }, []);
 
-  const Completed = ({
-    subscription = {} as Subscriptions,
-  }: {
-    subscription: Subscriptions;
-  }) => {
-    if (!subscription.completedAt) {
+  const Completed = ({ completedAt }: { completedAt: Date | null }) => {
+    if (!completedAt) {
       return null;
     }
     return <div className="bg-slate-50 p-3 rounded-lg">{COMPLETED_ICON}</div>;
   };
 
+  console.log(typeof Completed, "weador");
+
   return (
-    <HabitList
-      habits={subscriptions}
-      urlPattern="/habit/{habitName}/complete"
-      // Suffix={Completed}
-    />
+    <div className="overflow-x-auto">
+      <div className="flex flex-row gap-4">
+        {subscriptions.map((sub) => (
+          <Link
+            href={`/habit/${sub.habit.name}`}
+            key={sub.habit.name}
+            passHref
+            legacyBehavior
+          >
+            <a>
+              <HabitCard
+                minutes={sub.habit.minutes}
+                title={sub.habit.title}
+                src={sub.habit.img}
+                habitName={sub.habit.name}
+                suffix={<Completed completedAt={sub.completedAt} />}
+              />
+            </a>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };

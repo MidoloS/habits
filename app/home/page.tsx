@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { UserHabits } from "@/components/UserHabits";
 import { UserWelcome } from "@/components/UserWelcome";
+import { SearchInput } from "@/components/SearchInput";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -16,15 +17,7 @@ const Home = async () => {
     <>
       <main className="flex flex-col container mx-auto px-4 gap-8">
         <UserWelcome />
-        <div>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Search for a habit"
-            className="bg-slate-200 rounded-md w-full p-4 text-sm"
-          />
-        </div>
+        <SearchInput />
         <div className="max-w-md md:max-w-7xl">
           <h1 className="font-bold text-slate-950 text-lg mb-4 font-heading">
             Your Habits

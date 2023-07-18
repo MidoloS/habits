@@ -1,6 +1,7 @@
-import { Prisma } from "@prisma/client";
+import { Habit, Subscriptions } from "@prisma/client";
 
-// Prisma.SubscriptionsScalarFieldEnum
-export interface UserWithSubscriptions extends Prisma.UserGetPayload<true> {
-  subscriptions: Prisma.SubscriptionsGetPayload<true>[];
-}
+// Subscription type with Habit
+
+export type SubscriptionWithHabit = Subscriptions & {
+  habit: Habit;
+};

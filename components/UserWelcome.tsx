@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { SignOutButton } from "./Button/Logout";
 
 export const UserWelcome = () => {
   const { data: session } = useSession();
@@ -11,19 +12,24 @@ export const UserWelcome = () => {
   }
 
   return (
-    <figure className="flex items-center gap-4 mt-8">
-      <Image
-        // @ts-ignore
-        src={session?.user?.image}
-        width={60}
-        height={60}
-        alt={""}
-        className="rounded-full"
-      />
-      <figcaption>
-        <p className="text-sm text-slate-500">Welcome</p>
-        <h2 className="text-slate-900 font-bold">{session.user?.name}</h2>
-      </figcaption>
+    <figure className="flex gap-4 mt-8 justify-between">
+      <div className="flex items-center gap-4">
+        <Image
+          // @ts-ignore
+          src={session?.user?.image}
+          width={60}
+          height={60}
+          alt={""}
+          className="rounded-full"
+        />
+        <figcaption>
+          <p className="text-sm text-slate-500">Welcome</p>
+          <h2 className="text-slate-900 font-bold">{session.user?.name}</h2>
+        </figcaption>
+      </div>
+      <div>
+        <SignOutButton />
+      </div>
     </figure>
   );
 };
