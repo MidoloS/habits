@@ -10,24 +10,27 @@ type Props = {
 };
 export const HabitCard: FC<Props> = ({ minutes, src, title, suffix }) => {
   return (
-    <figure className="relative w-full min-w-[300px]  cursor-pointer max-h-96 max-w-xs">
+    <figure className="relative w-full min-w-[250px]  cursor-pointer max-w-xs mb-16">
       <Image
         className="rounded-xl h-full w-full"
         src={src || "default"}
         alt={title}
-        height={877}
+        height={300}
         width={252}
       />
+      <div className="absolute top-0 right-0 p-6">{suffix}</div>
+
       <div
         className="
       absolute bottom-0 flex w-full items-center justify-between rounded-xl bg-gradient-to-t from-black to-transparent px-7 py-5
       "
       >
-        <figcaption>
-          <h3 className="text-sm mb-1 text-white">{title}</h3>
-          <p className="font-bold text-xl text-white">{minutes} mins</p>
+        <figcaption className="text-center w-full">
+          <h3 className="text-lg font-heading font-semibold mb-1 text-white">
+            {title}
+          </h3>
+          <p className="font-medium text-slate-300">{minutes} mins</p>
         </figcaption>
-        {suffix}
       </div>
     </figure>
   );

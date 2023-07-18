@@ -6,6 +6,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { UserWelcome } from "@/components/UserWelcome";
+import { HabitList } from "@/components/HabitList";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
@@ -22,7 +23,7 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex flex-col gap-8 container mx-auto px-4">
+      <main className="flex flex-col container mx-auto px-4 gap-8">
         <UserWelcome />
         <div>
           <input
@@ -34,27 +35,11 @@ export default async function Page() {
           />
         </div>
 
-        <div className="max-w-md">
-          <h1 className="font-bold text-slate-950 text-2xl mb-4">Habits</h1>
-          <div className="overflow-x-auto">
-            <div className="flex flex-row gap-4">
-              {habits.map((habit) => (
-                <Link
-                  href={`/habit/${habit.name}`}
-                  key={habit.name}
-                  passHref
-                  legacyBehavior
-                >
-                  <HabitCard
-                    minutes={habit.minutes}
-                    title={habit.title}
-                    src={habit.img}
-                    habitName={habit.name}
-                  />
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div className="max-w-md md:max-w-7xl">
+          <h1 className="font-bold text-slate-950 text-lg mb-4 font-heading">
+            Habits
+          </h1>
+          <HabitList habits={habits} urlPattern="/habit/{habitName}" />
         </div>
       </main>
       <Navigator />

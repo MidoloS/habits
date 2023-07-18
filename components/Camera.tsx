@@ -13,13 +13,15 @@ export const Camera = () => {
     // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
 
+    const b64img = imageSrc.replace(/^.*?base64,/, "");
+
     console.log("imageSrc", imageSrc);
 
     fetch(
       "https://wmoy6ravk5hlbzhskyaotl3bei0gfmeb.lambda-url.us-east-1.on.aws/",
       {
         method: "POST",
-        body: imageSrc,
+        body: b64img,
       }
     ).then((res) => res.json().then((res) => console.log("res", res)));
   }, [webcamRef]);

@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Inter", "sans-serif"],
+      heading: ["Montserrat", "sans-serif"],
     },
     extend: {
       backgroundImage: {

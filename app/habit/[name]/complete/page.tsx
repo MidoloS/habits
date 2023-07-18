@@ -3,7 +3,6 @@ import { PrimaryButton } from "@/components/Button/Primary";
 import { SwapCamera } from "@/components/Button/SwapCamera";
 import { Camera } from "@/components/Camera";
 import { Features } from "@/components/Info/Features";
-import { getSubscription } from "@/libs/helpers";
 import { getHabit } from "@/prisma/helpers";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -18,8 +17,6 @@ export default async function Page({
   console.log("name", name);
 
   // getSubscription(name).then((res) => console.log("pepe123", res));
-
-  const pepe = await fetch(`/api/habits`);
 
   console.log("sub", "sub");
 

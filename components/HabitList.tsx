@@ -6,9 +6,10 @@ import { HabitCard } from "./HabitCard";
 type Props = {
   habits: Habit[];
   urlPattern: string; // example: /habits/{habitName}/scan
+  Suffix?: FC<{ habit: Habit }>;
 };
 
-export const HabitList: FC<Props> = ({ habits = [], urlPattern }) => {
+export const HabitList: FC<Props> = ({ habits = [], urlPattern, Suffix }) => {
   return (
     <div className="overflow-x-auto">
       <div className="flex flex-row gap-4">
@@ -25,6 +26,7 @@ export const HabitList: FC<Props> = ({ habits = [], urlPattern }) => {
                 title={habit.title}
                 src={habit.img}
                 habitName={habit.name}
+                // suffix={() => Suffix({})}
               />
             </a>
           </Link>

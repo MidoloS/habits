@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 // import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 
 export const metadata = {
   title: "Create Next App",
@@ -8,6 +8,7 @@ export const metadata = {
 };
 
 const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function BlogLayout({
   children,
@@ -22,7 +23,7 @@ export default function BlogLayout({
         <meta name="theme-color" content="#fff" />
       </head>
 
-      <body className={inter.className}>
+      <body className={`${montserrat.className} ${inter.className}`}>
         <Header />
         {children}
       </body>
