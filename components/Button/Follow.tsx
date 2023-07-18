@@ -64,7 +64,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
 
   return (
     <button
-      className={`font-medium text-sm rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
+      className={`font-medium font-sans text-sm rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
       onClick={handleClick}
     >
       {isFollowing && icon}
