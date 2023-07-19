@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
+import { PrimaryButton } from "./Button/Primary";
 
 export const Camera = () => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");
@@ -34,25 +35,27 @@ export const Camera = () => {
 
   return (
     <>
-      <Webcam
-        audio={false}
-        height={669}
-        mirrored={facing === "user"}
-        screenshotFormat="image/png"
-        width={430}
-        ref={webcamRef}
-        imageSmoothing={true}
-        onUserMedia={() => console.log("User media loaded")}
-        onUserMediaError={() => console.log("User media error")}
-        screenshotQuality={1}
-        videoConstraints={{
-          facingMode: facing,
-          width: { min: 430 },
-          height: { min: 669 },
-          aspectRatio: 1.5,
-        }}
-      />
-      <button onClick={capture}>Comprar weas</button>
+      <div className="w-full -z-10 absolute top-0 left-0">
+        <Webcam
+          audio={false}
+          height={669}
+          mirrored={facing === "user"}
+          screenshotFormat="image/png"
+          width={430}
+          ref={webcamRef}
+          imageSmoothing={true}
+          onUserMedia={() => console.log("User media loaded")}
+          onUserMediaError={() => console.log("User media error")}
+          screenshotQuality={1}
+          videoConstraints={{
+            facingMode: facing,
+            width: { min: 430 },
+            height: { min: 669 },
+            aspectRatio: 1.5,
+          }}
+        />
+      </div>
+      <PrimaryButton onClick={capture}>Take picture</PrimaryButton>
     </>
   );
 };

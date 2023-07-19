@@ -3,6 +3,7 @@ import { PrimaryButton } from "@/components/Button/Primary";
 import { SwapCamera } from "@/components/Button/SwapCamera";
 import { Camera } from "@/components/Camera";
 import { Features } from "@/components/Info/Features";
+import { getSubscription } from "@/libs/helpers";
 import { getHabit } from "@/prisma/helpers";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -14,7 +15,7 @@ export default async function Page({
 }) {
   const session = await getServerSession(authOptions);
 
-  console.log("name", name);
+  console.log("name", name, session);
 
   // getSubscription(name).then((res) => console.log("pepe123", res));
 
@@ -24,9 +25,15 @@ export default async function Page({
     redirect("/signin?callbackUrl=/");
   }
 
-  const habit = await getHabit(name);
+  const sub = await getSubscription(name);
 
-  if (!habit.data?.createdAt) {
+  console.log({ sub });
+
+  if (!sub) {
+    return <h1>Subscription not found</h1>;
+  }
+
+  if (!sub.habit.data?.createdAt) {
     return <h1>Habit not found</h1>;
   }
 
@@ -35,15 +42,12 @@ export default async function Page({
 
   return (
     <>
-      <div className="flex flex-col w-screen h-screen">
-        <figure className="w-full">
-          <Camera />
-        </figure>
-        <main className="z-10 bottom-0 absolute bg-slate-50 w-full rounded-3xl">
+      <div className="flex flex-col w-screen h-screen justify-end">
+        <main className="z-10 bottom-0 bg-slate-50 w-full rounded-3xl">
           <div className="container mx-auto p-6 flex flex-col h-full gap-4 ">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-lg font-bold">{habit.data.title}</h1>
+                {/* <h1 className="text-lg font-bold">{habit.data.title}</h1> */}
                 <p className="text-sm text-slate-500">We will Validate</p>
               </div>
               <div>
@@ -51,9 +55,9 @@ export default async function Page({
               </div>
             </div>
             <div className="flex flex-row justify-between text-center">
-              <Features habit={habit.data} />
+              {/* <Features habit={habit.data} /> */}
             </div>
-            <PrimaryButton disabled={false}>{submitText}</PrimaryButton>
+            <Camera />
           </div>
         </main>
       </div>

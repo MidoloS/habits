@@ -11,35 +11,27 @@ export default async function handler(
   const DATA = [
     {
       name: "tidy",
-      minutes: 10,
+      minutes: 5,
       isPro: false,
       title: "Tidy up",
-      subtitle: "Tidy up your room",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2058.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNTgucG5nIiwiaWF0IjoxNjg4MTAzMzA2LCJleHAiOjE3MTk2MzkzMDZ9.-Ne2aptbayq0zHxC3FcqIlxImLL9LtDpAikzw-DWZIk&t=2023-06-30T05%3A35%3A07.435Z",
+      subtitle: "Tidy Bed",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/tidy?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvdGlkeSIsImlhdCI6MTY4OTc3NjM5MCwiZXhwIjoxNzIxMzEyMzkwfQ.vY28I3haXuM3ApBsbV3vpYgGjVHnPFgimXnKJx5X_Kc&t=2023-07-19T14%3A19%3A50.529Z",
     },
     {
       name: "walk",
       minutes: 20,
       isPro: false,
-      title: "Go for a walk",
+      title: "Take a Walk",
       subtitle: "Go for a walk in the park",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2057.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNTcucG5nIiwiaWF0IjoxNjg4MTAzMjkyLCJleHAiOjE3MTk2MzkyOTJ9.d-M5l0HvqOnPP-j4GLraYBTQmaxAaNQWRxgt-8VpyUc&t=2023-06-30T05%3A34%3A53.892Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/walk?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvd2FsayIsImlhdCI6MTY4OTc3NjM3OCwiZXhwIjoxNzIxMzEyMzc4fQ.ITeHStCrTwaTqIaU3dHdvnE1XD2OlocGeruTVFX_kug&t=2023-07-19T14%3A19%3A38.412Z",
     },
     {
       name: "eat",
       minutes: 30,
       isPro: false,
-      title: "Healthy meal",
+      title: "Healthy Meal",
       subtitle: "Eat a healthy meal",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2061.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNjEucG5nIiwiaWF0IjoxNjg4MTAzMzQ1LCJleHAiOjE3MTk2MzkzNDV9.XKD73DedlTPO6PZM9C5qmZcLPk5adWoDPydwUqpA9KQ&t=2023-06-30T05%3A35%3A46.237Z",
-    },
-    {
-      name: "pro_habit_example",
-      minutes: 5,
-      isPro: true,
-      title: "Pro habit example",
-      subtitle: "This is a pro habit example",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2061.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNjEucG5nIiwiaWF0IjoxNjg4MTAzMzQ1LCJleHAiOjE3MTk2MzkzNDV9.XKD73DedlTPO6PZM9C5qmZcLPk5adWoDPydwUqpA9KQ&t=2023-06-30T05%3A35%3A46.237Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/meal?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbWVhbCIsImlhdCI6MTY4OTc3NjM2MiwiZXhwIjoxNzIxMzEyMzYyfQ.Q--BilVvNGTJigh6r9ILmfWXZOwjSSKe7xMP047kM2Y&t=2023-07-19T14%3A19%3A22.852Z",
     },
     {
       name: "read",
@@ -47,15 +39,15 @@ export default async function handler(
       isPro: false,
       title: "Read",
       subtitle: "Read a book",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2056.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNTYucG5nIiwiaWF0IjoxNjg4MTAzMjgyLCJleHAiOjE3MTk2MzkyODJ9.FSrLzvksHrCeoEn1nCi4rIBmoG8Nq4HYqIbeFd4KoQw&t=2023-06-30T05%3A34%3A43.137Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/read.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvcmVhZC5wbmciLCJpYXQiOjE2ODk3NzYzNDAsImV4cCI6MTcyMTMxMjM0MH0.DqoRFuuhF5aLR-sapN0joVIHS6qHuMAm-lXLKE1RmGc&t=2023-07-19T14%3A19%3A00.495Z",
     },
     {
       name: "wakeup",
-      minutes: 10,
+      minutes: 1,
       isPro: false,
-      title: "Wake up early",
+      title: "Wake up Early",
       subtitle: "Wake up early in the morning",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2054.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNTQucG5nIiwiaWF0IjoxNjg4MTAzMjQ5LCJleHAiOjE3MTk2MzkyNDl9.RwesWwc3PBxDjNb4AkD-z3NYFPU3RjTYkVxMNYuFRKc&t=2023-06-30T05%3A34%3A10.266Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/wake?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvd2FrZSIsImlhdCI6MTY4OTc3NjMxNiwiZXhwIjoxNzIxMzEyMzE2fQ.Jqvt1aW9znmE_jMPVLy-vYn_qf6teX3chzMmwMBsRjs&t=2023-07-19T14%3A18%3A36.294Z",
     },
     {
       name: "train",
@@ -63,15 +55,15 @@ export default async function handler(
       isPro: false,
       title: "Train",
       subtitle: "Train your body",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2062.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNjIucG5nIiwiaWF0IjoxNjg4MTAzMzU1LCJleHAiOjE3MTk2MzkzNTV9.1bWG4rkN0SKWze7vdwyIAEIPqdKRTvTjejRhVM6tX24&t=2023-06-30T05%3A35%3A56.466Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/train?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvdHJhaW4iLCJpYXQiOjE2ODk3NzYzMDIsImV4cCI6MTcyMTMxMjMwMn0.2YLQNp9zSpHRE_8zl0xglnJ_dApo31xzXUvaqMiUn9o&t=2023-07-19T14%3A18%3A22.599Z",
     },
     {
       name: "brush",
-      minutes: 5,
+      minutes: 3,
       isPro: false,
-      title: "Brush your teeth",
+      title: "Brush Teeth",
       subtitle: "Brush your teeth",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2063.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNjMucG5nIiwiaWF0IjoxNjg4MTAzMzY1LCJleHAiOjE3MTk2MzkzNjV9.eK3wmkqX0QKv2cLwFENXd_Fme4WUcjeq_pr2_ITlpok&t=2023-06-30T05%3A36%3A06.395Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/brush.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvYnJ1c2gucG5nIiwiaWF0IjoxNjg5Nzc2MjczLCJleHAiOjE3MjEzMTIyNzN9.Kw1CaU9JNIbMUVosYwHlZ15U_Yb_lNiSmCoXmqWlqcs&t=2023-07-19T14%3A17%3A53.608Z",
     },
     {
       name: "meditate",
@@ -79,15 +71,23 @@ export default async function handler(
       isPro: false,
       title: "Meditate",
       subtitle: "Meditate for 10 minutes",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2059.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNTkucG5nIiwiaWF0IjoxNjg4MTAzMzIyLCJleHAiOjE3MTk2MzkzMjJ9.Gu_zUxFMSv0CF0gukjPFDlV4_64ZrHfMq-eeQW8LQgs&t=2023-06-30T05%3A35%3A23.906Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/meditate.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbWVkaXRhdGUucG5nIiwiaWF0IjoxNjg5Nzc2MjU5LCJleHAiOjE3MjEzMTIyNTl9.TVN4gz4d2kIHHzYmj1cD3H2fdvQoSwq8Map4XMm8I28&t=2023-07-19T14%3A17%3A39.186Z",
     },
     {
       name: "laundry",
-      minutes: 10,
+      minutes: 5,
       isPro: false,
-      title: "Do the laundry",
+      title: "Do the Laundry",
       subtitle: "Do the laundry",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/Image%2060.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvSW1hZ2UgNjAucG5nIiwiaWF0IjoxNjg4MTAzMzM1LCJleHAiOjE3MTk2MzkzMzV9.RsRc637FjdD9xtPFEeypnJrDOzri2fI5CnPkvIE2YVw&t=2023-06-30T05%3A35%3A36.742Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/laundry?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbGF1bmRyeSIsImlhdCI6MTY4OTc3NjIzMywiZXhwIjoxNzIxMzEyMjMzfQ.CR4bMScvoLOzwA5Ja4XF0kYIZX6l3COujYMvfq9pGHM&t=2023-07-19T14%3A17%3A14.100Z",
+    },
+    {
+      name: "drink",
+      minutes: 1,
+      isPro: false,
+      title: "Keep Hydrated",
+      subtitle: "Drinking water",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/drink.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvZHJpbmsucG5nIiwiaWF0IjoxNjg5Nzc3MzIxLCJleHAiOjE3MjEzMTMzMjF9._iggAG835jFwx9EYNNWEO9r19ST7IKYlv0kGmyXz1iw&t=2023-07-19T14%3A35%3A21.583Z",
     },
   ] as Habit[];
   const promises = DATA.map((habit) =>
@@ -112,33 +112,6 @@ export default async function handler(
     })
   );
   const habits = await Promise.all(promises);
-
-  await prisma.user.deleteMany({});
-
-  await prisma.user.create({
-    data: {
-      email: "midolo.1912@gmail.com",
-      name: "Sebastian Modolo",
-      subscriptions: {
-        create: [
-          {
-            habit: {
-              connect: {
-                name: "tidy",
-              },
-            },
-          },
-          {
-            habit: {
-              connect: {
-                name: "walk",
-              },
-            },
-          },
-        ],
-      },
-    },
-  });
 
   res.status(200).json({ habits });
 }

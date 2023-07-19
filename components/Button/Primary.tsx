@@ -6,10 +6,11 @@ type Props = {
   disabled?: boolean;
 };
 
-export const PrimaryButton: FC<Props> = ({ children, disabled }) => (
+export const PrimaryButton: FC<Props> = ({ children, disabled, onClick }) => (
   <button
     className="bg-slate-950 font-sans w-full text-white rounded-xl text-sm font-medium py-4 px-6 md:w-fit"
     disabled={disabled}
+    onClick={onClick}
   >
     {children}
   </button>
