@@ -4,9 +4,15 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import { PrimaryButton } from "./Button/Primary";
+import { getSubscription } from "@/libs/helpers";
+import { SubscriptionWithHabit } from "@/libs/types";
 
-export const Camera = () => {
+export const Camera = ({ habitName }: { habitName: string }) => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");
+  const [subscription, setSubscription] = useState<SubscriptionWithHabit>(
+    {} as SubscriptionWithHabit
+  );
+
   const searchParams = useSearchParams();
   const urlFacing = searchParams?.get("facing") || "environment";
   const webcamRef = useRef(null);
@@ -33,6 +39,16 @@ export const Camera = () => {
     }
   }, [urlFacing]);
 
+  useEffect(() => {
+    (async () => {
+      const res = await getSubscription("walk");
+      console.log({ res });
+      setSubscription(res.data);
+    })();
+  }, []);
+
+  const text = subscription.completedAt ? "Already done" : "Take picture";
+
   return (
     <>
       <div className="w-full -z-10 absolute top-0 left-0">
@@ -55,7 +71,9 @@ export const Camera = () => {
           }}
         />
       </div>
-      <PrimaryButton onClick={capture}>Take picture</PrimaryButton>
+      <PrimaryButton onClick={capture} disabled={!!subscription.completedAt}>
+        {text}
+      </PrimaryButton>
     </>
   );
 };

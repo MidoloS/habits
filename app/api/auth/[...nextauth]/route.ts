@@ -22,15 +22,19 @@ export const authOptions: NextAuthOptions = {
 
       console.log({ profile });
 
-      const res = await createUser({
-        email: profile?.email,
-        name: profile?.name,
-        // @ts-ignore
-        img: profile?.picture || profile?.image,
-      });
-      console.log({ res });
+      try {
+        const res = await createUser({
+          email: profile?.email,
+          name: profile?.name,
+          // @ts-ignore
+          img: profile?.picture || profile?.image,
+        });
+        console.log({ res });
 
-      return true;
+        return true;
+      } catch (error) {
+        return false;
+      }
     },
     async redirect({ url, baseUrl }) {
       return baseUrl;

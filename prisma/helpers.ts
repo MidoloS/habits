@@ -196,6 +196,9 @@ export const getSubscription = async ({
         userEmail: email,
       },
     },
+    include: {
+      habit: true,
+    },
   });
 };
 

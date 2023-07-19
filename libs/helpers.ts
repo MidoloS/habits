@@ -34,9 +34,7 @@ export const getSubscriptions = async (): Promise<{
 export const getSubscription = async (habitName: string) => {
   console.log(1111111111111111);
 
-  const response = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/habit/sub/${habitName}`
-  );
+  const response = await fetch(`/api/habit/sub/${habitName}`);
   console.log(22222222222222222);
 
   const data = await response.json();
