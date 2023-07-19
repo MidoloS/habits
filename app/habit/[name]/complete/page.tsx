@@ -35,7 +35,7 @@ export default async function Page({
   return (
     <>
       <div className="flex flex-col w-screen h-screen justify-end">
-        <main className="z-10 bottom-0 bg-slate-50 w-full rounded-3xl">
+        <main className="z-30 bottom-0 bg-slate-50 w-full rounded-3xl">
           <div className="container mx-auto p-6 flex flex-col h-full gap-4 ">
             <div className="flex justify-between items-center">
               <div>
