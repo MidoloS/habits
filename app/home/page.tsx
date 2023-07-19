@@ -15,11 +15,14 @@ const Home = async () => {
 
   return (
     <>
-      <main className="flex flex-col container mx-auto px-4 gap-8">
-        <UserWelcome />
-        <SearchInput />
+      <main className="flex flex-col gap-8">
+        <div className="px-4 flex flex-col gap-8">
+          <UserWelcome />
+          <SearchInput />
+        </div>
+
         <div className="max-w-md md:max-w-7xl">
-          <h1 className="font-bold text-slate-950 text-lg mb-4 font-heading">
+          <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">
             Your Habits
           </h1>
           <UserHabits />

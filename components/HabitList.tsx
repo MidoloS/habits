@@ -14,8 +14,8 @@ export const HabitList: FC<Props> = ({ habits, urlPattern, Suffix }) => {
   console.log(habits);
 
   return (
-    <div className="overflow-x-auto">
-      <div className="flex flex-row gap-4">
+    <div className="overflow-x-auto ">
+      <div className="flex flex-row gap-4 mx-4">
         {habits.map((habit) => (
           <Link
             href={urlPattern.replace("{habitName}", habit.name)}

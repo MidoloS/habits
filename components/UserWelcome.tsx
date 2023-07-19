@@ -23,8 +23,10 @@ export const UserWelcome = () => {
           className="rounded-full"
         />
         <figcaption>
-          <p className="text-sm text-slate-500">Hi,</p>
-          <h2 className="text-slate-900 font-medium">{session.user?.name}</h2>
+          <p className="text-xs text-slate-500">Hi,</p>
+          <h2 className="text-slate-900 text-sm font-medium">
+            {session.user?.name}
+          </h2>
         </figcaption>
       </div>
       <div>

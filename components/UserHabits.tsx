@@ -49,7 +49,7 @@ export const UserHabits = () => {
 
   return (
     <div className="overflow-x-auto">
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-row gap-4 px-4">
         {subscriptions.map((sub) => (
           <Link
             href={`/habit/${sub.habit.name}/complete`}
