@@ -12,6 +12,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log("COSA MAGICA BOLADORA");
+
   const { habitName } = req.query;
 
   const session = await getServerSession(req, res, authOptions);
