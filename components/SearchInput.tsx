@@ -23,7 +23,7 @@ export const SearchInput = () => (
       name=""
       id=""
       placeholder="Search"
-      className="bg-white shadow-xl rounded-md w-full p-4 px-12 text-sm"
+      className="bg-white border border-slate-200 rounded-lg w-full p-4 px-12 text-sm"
     />
   </div>
 );

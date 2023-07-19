@@ -17,14 +17,14 @@ export const UserWelcome = () => {
         <Image
           // @ts-ignore
           src={session?.user?.image}
-          width={60}
-          height={60}
+          width={55}
+          height={55}
           alt={""}
           className="rounded-full"
         />
         <figcaption>
-          <p className="text-sm text-slate-500">Welcome</p>
-          <h2 className="text-slate-900 font-bold">{session.user?.name}</h2>
+          <p className="text-sm text-slate-500">Hi,</p>
+          <h2 className="text-slate-900 font-medium">{session.user?.name}</h2>
         </figcaption>
       </div>
       <div>

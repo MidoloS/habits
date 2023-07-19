@@ -6,7 +6,7 @@ export const SignOutButton = () => {
   return (
     <>
       <button
-        className="bg-white shadow-2xl rounded-md p-4 text-sm"
+        className="bg-white border border-slate-200 rounded-lg p-4 text-sm"
         // @ts-ignore
         onClick={() => signOut("google", { callbackUrl: "/home" })}
       >
