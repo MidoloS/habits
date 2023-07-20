@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import { PrimaryButton } from "./Button/Primary";
@@ -30,6 +30,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const [subscription, setSubscription] = useState<SubscriptionWithHabit>(
     {} as SubscriptionWithHabit
   );
+  const { push } = useRouter();
 
   const searchParams = useSearchParams();
   const urlFacing = searchParams?.get("facing") || "environment";
@@ -67,6 +68,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
       const audio = new Audio("/success.mp3");
       audio.play();
       await completeHabit(habitName);
+      push("/home?completed=1");
     }
   }, [webcamRef]);
 
