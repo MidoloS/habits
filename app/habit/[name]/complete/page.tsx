@@ -13,12 +13,6 @@ export default async function Page({
 }) {
   const session = await getServerSession(authOptions);
 
-  console.log("name", name);
-
-  // getSubscription(name).then((res) => console.log("pepe123", res));
-
-  console.log("sub", "sub");
-
   if (!session) {
     redirect("/signin?callbackUrl=/");
   }
@@ -29,14 +23,11 @@ export default async function Page({
     return <h1>Habit not found</h1>;
   }
 
-  // const submitText = sub.completedAt ? "Completed" : "Complete";
-  const submitText = "ok";
-
   return (
     <>
-      <div className="flex flex-col w-screen h-screen justify-end">
-        <main className="z-30 bottom-0 bg-slate-50 w-full rounded-3xl">
-          <div className="container mx-auto p-6 flex flex-col h-full gap-4 ">
+      <div className="flex flex-col  w-screen h-screen relative justify-end">
+        <main className="bg-slate-50 w-full rounded-3xl">
+          <div className="container mx-auto p-6 flex flex-col justify-end h-full  gap-4 ">
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-lg font-bold">{habit.title}</h1>

@@ -51,7 +51,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
   return (
     <>
-      <div className="w-full -z-10 absolute top-0 left-0">
+      <div className="w-full -z-10 absolute top-0 h-full left-0 ">
         <Webcam
           audio={false}
           height={669}
