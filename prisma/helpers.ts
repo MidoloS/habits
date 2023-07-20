@@ -46,31 +46,21 @@ export const completeHabit = async ({
 }: {
   email: string;
   habitName: string;
-}) => {
-  await prisma.user.update({
+}) =>
+  prisma.subscriptions.update({
     where: {
-      email,
+      userEmail_habitName: {
+        habitName,
+        userEmail: email,
+      },
     },
     data: {
-      subscriptions: {
-        update: {
-          where: {
-            userEmail_habitName: {
-              habitName,
-              userEmail: email,
-            },
-          },
-          data: {
-            createdAt: new Date(),
-            streak: {
-              increment: 1,
-            },
-          },
-        },
+      completedAt: new Date(),
+      streak: {
+        increment: 1,
       },
     },
   });
-};
 
 export const getHabits = async () => {
   const habits = await prisma.habit.findMany();

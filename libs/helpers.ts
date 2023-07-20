@@ -1,4 +1,4 @@
-import { Habit, Prisma, Subscriptions } from "@prisma/client";
+import { Habit, Prisma } from "@prisma/client";
 import { SubscriptionWithHabit } from "./types";
 
 export const SubscriptionsWithHabits: Prisma.SubscriptionsInclude = {
@@ -39,6 +39,16 @@ export const getSubscription = async (habitName: string) => {
 
   const data = await response.json();
   console.log(data);
+
+  return data;
+};
+
+export const completeHabit = async (habitName: string) => {
+  const response = await fetch(`/api/habit/complete/${habitName}`, {
+    method: "POST",
+  });
+
+  const data = await response.json();
 
   return data;
 };
