@@ -46,21 +46,39 @@ export const completeHabit = async ({
 }: {
   email: string;
   habitName: string;
-}) =>
-  prisma.subscriptions.update({
+}) => {
+  const habit = await prisma.habit.findUnique({
     where: {
-      userEmail_habitName: {
-        habitName,
-        userEmail: email,
-      },
+      name: habitName,
+    },
+  });
+  return prisma.user.update({
+    where: {
+      email,
     },
     data: {
-      completedAt: new Date(),
-      streak: {
-        increment: 1,
+      points: {
+        increment: habit?.points,
+      },
+      subscriptions: {
+        update: {
+          where: {
+            userEmail_habitName: {
+              habitName,
+              userEmail: email,
+            },
+          },
+          data: {
+            completedAt: new Date(),
+            streak: {
+              increment: 1,
+            },
+          },
+        },
       },
     },
   });
+};
 
 export const getHabits = async () => {
   const habits = await prisma.habit.findMany();

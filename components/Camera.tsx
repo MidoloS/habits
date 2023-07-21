@@ -27,6 +27,7 @@ function getKeyWithMaxValue(obj) {
 
 export const Camera = ({ habitName }: { habitName: string }) => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");
+  const [isLoading, setIsLoading] = useState(false);
   const [subscription, setSubscription] = useState<SubscriptionWithHabit>(
     {} as SubscriptionWithHabit
   );
@@ -37,6 +38,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const webcamRef = useRef(null);
   const capture = useCallback(async () => {
     // @ts-ignore
+    setIsLoading(true);
     const imageSrc = webcamRef.current.getScreenshot();
 
     const b64img = imageSrc.replace(/^.*?base64,/, "");
@@ -61,14 +63,18 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     // @ts-ignore
     console.log({ toKey: API_TO_HABIT_NAME[mostLikely] });
-
+    setIsLoading(false);
     // @ts-ignore
     if (API_TO_HABIT_NAME[mostLikely] === habitName) {
       console.log("Habit completed");
-      const audio = new Audio("/success.mp3");
-      audio.play();
+      const success = new Audio("/success.mp3");
+      success.play();
       await completeHabit(habitName);
-      push("/home?completed=1");
+      push(`/home?completed=${habitName}`);
+    } else {
+      const failure = new Audio("/failure.mp3");
+      failure.play();
+      setIsLoading(false);
     }
   }, [webcamRef]);
 
@@ -112,7 +118,11 @@ export const Camera = ({ habitName }: { habitName: string }) => {
           }}
         />
       </div>
-      <PrimaryButton onClick={capture} disabled={!!subscription.completedAt}>
+      <PrimaryButton
+        isLoading={isLoading}
+        onClick={capture}
+        disabled={!!subscription.completedAt}
+      >
         {text}
       </PrimaryButton>
     </>
