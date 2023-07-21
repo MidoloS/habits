@@ -44,6 +44,8 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     }
 
     setIsLoading(true);
+    console.log(isLoading);
+
     // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
 
@@ -70,6 +72,8 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     // @ts-ignore
     console.log({ toKey: API_TO_HABIT_NAME[mostLikely] });
     setIsLoading(false);
+    console.log(isLoading);
+
     // @ts-ignore
     if (API_TO_HABIT_NAME[mostLikely] === habitName) {
       console.log("Habit completed");
