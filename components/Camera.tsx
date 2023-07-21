@@ -37,8 +37,8 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const urlFacing = searchParams?.get("facing") || "environment";
   const webcamRef = useRef(null);
   const capture = useCallback(async () => {
-    // @ts-ignore
     setIsLoading(true);
+    // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
 
     const b64img = imageSrc.replace(/^.*?base64,/, "");
