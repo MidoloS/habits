@@ -37,7 +37,17 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const urlFacing = searchParams?.get("facing") || "environment";
   const webcamRef = useRef(null);
   const capture = useCallback(async () => {
-    if (["meditate", "read", "wakeup"].includes(habitName)) {
+    if (habitName === "wakeup") {
+      const now = new Date();
+      const hours = now.getHours();
+      if (hours >= 5 && hours <= 9) {
+        const success = new Audio("/success.mp3");
+        success.play();
+        await completeHabit(habitName);
+        push(`/home?completed=${habitName}`);
+      }
+    }
+    if (["meditate", "read"].includes(habitName)) {
       const success = new Audio("/success.mp3");
       success.play();
       push(`/home?completed=${habitName}`);
