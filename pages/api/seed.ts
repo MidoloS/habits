@@ -63,7 +63,7 @@ export default async function handler(
       isPro: false,
       title: "Brush Teeth",
       subtitle: "Brush your teeth",
-      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/brush.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvYnJ1c2gucG5nIiwiaWF0IjoxNjg5Nzc2MjczLCJleHAiOjE3MjEzMTIyNzN9.Kw1CaU9JNIbMUVosYwHlZ15U_Yb_lNiSmCoXmqWlqcs&t=2023-07-19T14%3A17%3A53.608Z",
+      img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/brush.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvYnJ1c2gucG5nIiwiaWF0IjoxNjg5OTQ2MTQ1LCJleHAiOjE3MjE0ODIxNDV9.7wjdab2n5mLZqPOf9wSpXgRL9PXsqI6_wwryCfvPZdg&t=2023-07-21T13%3A29%3A07.077Z",
     },
     {
       name: "meditate",
