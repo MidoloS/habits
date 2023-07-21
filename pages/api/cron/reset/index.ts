@@ -5,6 +5,8 @@ export const config = {
 };
 
 export default async function handler(req: NextRequest) {
+  console.log(1);
+
   await update();
 
   return new NextResponse(JSON.stringify({ message: "subs updated" }), {
