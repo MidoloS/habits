@@ -33,13 +33,22 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   );
   const { push } = useRouter();
 
+  console.log({ habitName });
+
   const searchParams = useSearchParams();
   const urlFacing = searchParams?.get("facing") || "environment";
   const webcamRef = useRef(null);
   const capture = useCallback(async () => {
+    console.log("--------------------------");
+
+    console.log({ habitName });
+
     if (habitName === "wakeup") {
       const now = new Date();
       const hours = now.getHours();
+
+      console.log({ hours });
+
       if (hours >= 5 && hours <= 9) {
         const success = new Audio("/success.mp3");
         success.play();
@@ -49,6 +58,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
         const failure = new Audio("/failure.mp3");
         failure.play();
       }
+      return;
     }
     if (["meditate", "read"].includes(habitName)) {
       const success = new Audio("/success.mp3");
