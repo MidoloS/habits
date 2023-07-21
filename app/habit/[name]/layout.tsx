@@ -23,7 +23,7 @@ export default function BlogLayout({
         <meta name="theme-color" content="#fff" />
       </head>
 
-      <body className={`${montserrat.className} ${inter.className}`}>
+      <body>
         <Header />
         {children}
       </body>

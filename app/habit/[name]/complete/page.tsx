@@ -30,7 +30,9 @@ export default async function Page({
           <div className="container mx-auto p-6 flex flex-col justify-end h-full  gap-4 ">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-lg font-bold">{habit.title}</h1>
+                <h1 className="text-lg font-bold font-heading">
+                  {habit.title}
+                </h1>
                 <p className="text-sm text-slate-500">We will Validate</p>
               </div>
               <div>

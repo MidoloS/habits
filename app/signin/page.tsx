@@ -16,7 +16,7 @@ const SignInPage = () => {
           <h1 className="text-center text-slate-50 font-heading font-semibold text-3xl">
             Begin Journey
           </h1>
-          <p className="text-slate-400 text-center">
+          <p className="text-slate-400 text-center text-sm">
             Join to other Rankers around the world
           </p>
         </div>
