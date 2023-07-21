@@ -45,6 +45,9 @@ export const Camera = ({ habitName }: { habitName: string }) => {
         success.play();
         await completeHabit(habitName);
         push(`/home?completed=${habitName}`);
+      } else {
+        const failure = new Audio("/failure.mp3");
+        failure.play();
       }
     }
     if (["meditate", "read"].includes(habitName)) {
