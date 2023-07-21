@@ -37,6 +37,12 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const urlFacing = searchParams?.get("facing") || "environment";
   const webcamRef = useRef(null);
   const capture = useCallback(async () => {
+    if (["meditate", "read", "wakeup"].includes(habitName)) {
+      const success = new Audio("/success.mp3");
+      success.play();
+      push(`/home?completed=${habitName}`);
+    }
+
     setIsLoading(true);
     // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
