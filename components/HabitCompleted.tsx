@@ -25,7 +25,7 @@ export const HabitCompleted = () => {
         </h1>
         <p className="text-center text-slate-500 text-sm">
           Congratulations, you have completed the task! <br /> Dont forget that
-          its the small accomplishments that make a
+          its the small accomplishments that make a{" "}
           <span className="text-slate-950 font-semibold">
             big change over time!
           </span>
