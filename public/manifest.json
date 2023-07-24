@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Habit",
-  "short_name": "habit",
+  "name": "habitai.io",
+  "short_name": "habitai.io",
   "description": "App of self improvement",
   "icons": [
     {

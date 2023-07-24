@@ -31,22 +31,6 @@ export const UserWelcome = () => {
       </div>
       <div>
         <SignOutButton />
-        <button
-          onClick={() => {
-            Notification.requestPermission().then((permission) => {
-              // If the user accepts, let's create a notification
-              console.log({ permission });
-
-              if (permission === "granted") {
-                new Notification("Hi, How are you?", {
-                  body: "Have a good day",
-                });
-              }
-            });
-          }}
-        >
-          Notify
-        </button>
       </div>
     </figure>
   );
