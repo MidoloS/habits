@@ -15,6 +15,7 @@ export default async function handler(
       isPro: false,
       title: "Tidy up",
       subtitle: "Tidy Bed",
+      points: 5,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/tidy?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvdGlkeSIsImlhdCI6MTY4OTc3NjM5MCwiZXhwIjoxNzIxMzEyMzkwfQ.vY28I3haXuM3ApBsbV3vpYgGjVHnPFgimXnKJx5X_Kc&t=2023-07-19T14%3A19%3A50.529Z",
     },
     {
@@ -23,6 +24,7 @@ export default async function handler(
       isPro: false,
       title: "Take a Walk",
       subtitle: "Go for a walk in the park",
+      points: 20,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/walk?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvd2FsayIsImlhdCI6MTY4OTc3NjM3OCwiZXhwIjoxNzIxMzEyMzc4fQ.ITeHStCrTwaTqIaU3dHdvnE1XD2OlocGeruTVFX_kug&t=2023-07-19T14%3A19%3A38.412Z",
     },
     {
@@ -31,6 +33,7 @@ export default async function handler(
       isPro: false,
       title: "Healthy Meal",
       subtitle: "Eat a healthy meal",
+      points: 30,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/meal?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbWVhbCIsImlhdCI6MTY4OTc3NjM2MiwiZXhwIjoxNzIxMzEyMzYyfQ.Q--BilVvNGTJigh6r9ILmfWXZOwjSSKe7xMP047kM2Y&t=2023-07-19T14%3A19%3A22.852Z",
     },
     {
@@ -39,6 +42,7 @@ export default async function handler(
       isPro: false,
       title: "Read",
       subtitle: "Read a book",
+      points: 0,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/read.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvcmVhZC5wbmciLCJpYXQiOjE2ODk3NzYzNDAsImV4cCI6MTcyMTMxMjM0MH0.DqoRFuuhF5aLR-sapN0joVIHS6qHuMAm-lXLKE1RmGc&t=2023-07-19T14%3A19%3A00.495Z",
     },
     {
@@ -47,6 +51,7 @@ export default async function handler(
       isPro: false,
       title: "Wake up Early",
       subtitle: "Wake up early in the morning",
+      points: 10,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/wake?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvd2FrZSIsImlhdCI6MTY4OTc3NjMxNiwiZXhwIjoxNzIxMzEyMzE2fQ.Jqvt1aW9znmE_jMPVLy-vYn_qf6teX3chzMmwMBsRjs&t=2023-07-19T14%3A18%3A36.294Z",
     },
     {
@@ -55,6 +60,7 @@ export default async function handler(
       isPro: false,
       title: "Train",
       subtitle: "Train your body",
+      points: 40,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/train?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvdHJhaW4iLCJpYXQiOjE2ODk3NzYzMDIsImV4cCI6MTcyMTMxMjMwMn0.2YLQNp9zSpHRE_8zl0xglnJ_dApo31xzXUvaqMiUn9o&t=2023-07-19T14%3A18%3A22.599Z",
     },
     {
@@ -63,6 +69,7 @@ export default async function handler(
       isPro: false,
       title: "Brush Teeth",
       subtitle: "Brush your teeth",
+      points: 5,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/brush.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvYnJ1c2gucG5nIiwiaWF0IjoxNjg5OTQ2MTQ1LCJleHAiOjE3MjE0ODIxNDV9.7wjdab2n5mLZqPOf9wSpXgRL9PXsqI6_wwryCfvPZdg&t=2023-07-21T13%3A29%3A07.077Z",
     },
     {
@@ -71,6 +78,7 @@ export default async function handler(
       isPro: false,
       title: "Meditate",
       subtitle: "Meditate for 10 minutes",
+      points: 0,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/meditate.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbWVkaXRhdGUucG5nIiwiaWF0IjoxNjg5Nzc2MjU5LCJleHAiOjE3MjEzMTIyNTl9.TVN4gz4d2kIHHzYmj1cD3H2fdvQoSwq8Map4XMm8I28&t=2023-07-19T14%3A17%3A39.186Z",
     },
     {
@@ -79,6 +87,7 @@ export default async function handler(
       isPro: false,
       title: "Do the Laundry",
       subtitle: "Do the laundry",
+      points: 5,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/laundry?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbGF1bmRyeSIsImlhdCI6MTY4OTc3NjIzMywiZXhwIjoxNzIxMzEyMjMzfQ.CR4bMScvoLOzwA5Ja4XF0kYIZX6l3COujYMvfq9pGHM&t=2023-07-19T14%3A17%3A14.100Z",
     },
     {
@@ -87,6 +96,7 @@ export default async function handler(
       isPro: false,
       title: "Keep Hydrated",
       subtitle: "Drinking water",
+      points: 3,
       img: "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/drink.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvZHJpbmsucG5nIiwiaWF0IjoxNjg5Nzc3MzIxLCJleHAiOjE3MjEzMTMzMjF9._iggAG835jFwx9EYNNWEO9r19ST7IKYlv0kGmyXz1iw&t=2023-07-19T14%3A35%3A21.583Z",
     },
   ] as Habit[];
@@ -101,6 +111,7 @@ export default async function handler(
         title: habit.title,
         name: habit.name,
         minutes: habit.minutes,
+        points: habit.points,
       },
       create: {
         img: habit.img,
@@ -108,6 +119,7 @@ export default async function handler(
         title: habit.title,
         name: habit.name,
         minutes: habit.minutes,
+        points: habit.points,
       },
     })
   );

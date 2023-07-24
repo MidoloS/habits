@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { FollowButton } from "@/components/Button/Follow";
 import { ReadMore } from "@/components/Button/ReadMore";
-import { Features } from "@/components/Info/Features";
+import { HabitFeatures } from "@/components/Info/HabitFeatures";
 import { getHabit, getUserHabits } from "@/prisma/helpers";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
@@ -48,7 +48,7 @@ export default async function Page({
               <FollowButton habitName={habit.name} />
             </div>
             <div className="flex flex-row justify-between text-center">
-              <Features habit={habit} />
+              <HabitFeatures habit={habit} />
             </div>
             <ReadMore />
           </div>

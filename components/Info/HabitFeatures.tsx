@@ -6,7 +6,10 @@ type Props = {
   habit: Habit;
 };
 
-export const Features: FC<Props> = ({ habit }) => {
+export const HabitFeatures: FC<Props> = ({ habit }) => {
+  const pointsToDisplay =
+    habit.points === 0 ? "No Ranked" : `${habit.points} pts`;
+
   return (
     <>
       <Feature key={habit.name} text={`${habit.minutes} mins`}>
@@ -24,7 +27,7 @@ export const Features: FC<Props> = ({ habit }) => {
           />
         </svg>
       </Feature>
-      <Feature key={habit.name} text={`${habit.points} pts`}>
+      <Feature key={habit.name} text={pointsToDisplay}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

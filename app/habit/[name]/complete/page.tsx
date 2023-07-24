@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { SwapCamera } from "@/components/Button/SwapCamera";
 import { Camera } from "@/components/Camera";
-import { Features } from "@/components/Info/Features";
+import { SubFeatures } from "@/components/Info/SubFeatures";
 import { getHabit } from "@/prisma/helpers";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -40,7 +40,7 @@ export default async function Page({
               </div>
             </div>
             <div className="flex flex-row justify-between text-center">
-              <Features habit={habit} />
+              <SubFeatures habit={habit} />
             </div>
             <Camera habitName={habit.name} />
           </div>
