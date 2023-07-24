@@ -25,7 +25,7 @@ export const HabitList: FC<Props> = ({ habits, urlPattern, Suffix }) => {
           >
             <a>
               <HabitCard
-                minutes={habit.minutes}
+                subtitle={`${habit.minutes} mins`}
                 title={habit.title}
                 src={habit.img}
                 habitName={habit.name}

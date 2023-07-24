@@ -5,10 +5,10 @@ type Props = {
   src: string | null;
   title: string;
   suffix?: React.ReactNode | null;
-  minutes: number;
+  subtitle: number | string;
   habitName: string;
 };
-export const HabitCard: FC<Props> = ({ minutes, src, title, suffix }) => {
+export const HabitCard: FC<Props> = ({ subtitle, src, title, suffix }) => {
   return (
     <figure className="relative w-full min-w-[250px]  cursor-pointer max-w-xs mb-16">
       <Image
@@ -29,7 +29,7 @@ export const HabitCard: FC<Props> = ({ minutes, src, title, suffix }) => {
           <h3 className="text-lg font-heading font-semibold mb-1 text-white">
             {title}
           </h3>
-          <p className="font-medium text-slate-300">{minutes} mins</p>
+          <p className="font-medium text-slate-300">{subtitle}</p>
         </figcaption>
       </div>
     </figure>

@@ -6,12 +6,32 @@ import { UserHabits } from "@/components/UserHabits";
 import { UserWelcome } from "@/components/UserWelcome";
 import { SearchInput } from "@/components/SearchInput";
 import { HabitCompleted } from "@/components/HabitCompleted";
+import { EmptyHabit } from "@/components/EmptyHabit";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
 
   if (!session) {
     redirect("/signin?callbackUrl=/");
+  }
+
+  if (!session?.user) {
+    return null;
+  }
+
+  // @ts-ignore
+  if (session?.user?.subs.length === 0) {
+    return (
+      <main className="flex flex-col gap-8">
+        <div className="px-4 flex flex-col gap-8">
+          <UserWelcome />
+        </div>
+
+        <div className="flex  justify-center">
+          <EmptyHabit />
+        </div>
+      </main>
+    );
   }
 
   return (
@@ -23,12 +43,14 @@ const Home = async () => {
           <SearchInput />
         </div>
 
-        <div className="max-w-md md:max-w-7xl">
-          <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">
-            Your Habits
-          </h1>
-          <UserHabits />
-        </div>
+        {
+          <div className="max-w-md md:max-w-7xl">
+            <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">
+              Your Habits
+            </h1>
+            <UserHabits />
+          </div>
+        }
       </main>
       <Navigator />
     </>

@@ -7,6 +7,7 @@ import { Habit, Subscriptions } from "@prisma/client";
 import { SubscriptionWithHabit } from "@/libs/types";
 import Link from "next/link";
 import { HabitCard } from "./HabitCard";
+import { EmptyHabit } from "./EmptyHabit";
 
 const COMPLETED_ICON = (
   <svg
@@ -45,8 +46,6 @@ export const UserHabits = () => {
     return <div className="bg-slate-50 p-3 rounded-lg">{COMPLETED_ICON}</div>;
   };
 
-  console.log(typeof Completed, "weador");
-
   return (
     <div className="overflow-x-auto">
       <div className="flex flex-row gap-4 px-4">
@@ -59,7 +58,7 @@ export const UserHabits = () => {
           >
             <a>
               <HabitCard
-                minutes={sub.habit.minutes}
+                subtitle={`${sub.habit.minutes} mins`}
                 title={sub.habit.title}
                 src={sub.habit.img}
                 habitName={sub.habit.name}

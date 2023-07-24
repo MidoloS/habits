@@ -1,4 +1,4 @@
-import { createUser } from "@/prisma/helpers";
+import { createUser, getSubscriptions } from "@/prisma/helpers";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -17,17 +17,31 @@ export const authOptions: NextAuthOptions = {
       token.userRole = "admin";
       return token;
     },
+    // @ts-ignore
+    session: async ({ session, token }) => {
+      if (!session || !token) {
+        return null;
+      }
+
+      if (!session?.user?.email) {
+        return null;
+      }
+
+      // @ts-ignore
+      session.user.subs = await getSubscriptions({
+        email: session.user?.email,
+      });
+
+      return Promise.resolve(session);
+    },
+
     async signIn({ profile }) {
-      console.log("LA WEA MAXIMA VOLADORA DE SIGN IN");
-
-      console.log({ profile });
-
       try {
         const res = await createUser({
           email: profile?.email,
           name: profile?.name,
           // @ts-ignore
-          img: profile?.picture || profile?.image,
+          img: profile?.picture || profile?.image || "/default_user.png",
         });
         console.log({ res });
 
