@@ -43,14 +43,13 @@ const Home = async () => {
           <SearchInput />
         </div>
 
-        {
-          <div className="max-w-md md:max-w-7xl">
-            <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">
-              Your Habits
-            </h1>
-            <UserHabits />
-          </div>
-        }
+        <div className="max-w-md md:max-w-7xl">
+          <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">
+            Your Habits
+          </h1>
+          {/* @ts-ignore */}
+          <UserHabits />
+        </div>
       </main>
       <Navigator />
     </>

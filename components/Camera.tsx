@@ -64,6 +64,8 @@ export const Camera = ({ habitName }: { habitName: string }) => {
       const success = new Audio("/success.mp3");
       success.play();
       push(`/home?completed=${habitName}`);
+      await completeHabit(habitName);
+      return;
     }
 
     setIsLoading(true);

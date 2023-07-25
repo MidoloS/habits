@@ -11,7 +11,7 @@ export const EmptyHabit = () => (
       <div className="py-2">
         <Link
           href="/habit/new"
-          className="bg-slate-50 rounded-xl text-sm font-medium p-4"
+          className="bg-slate-50 rounded-xl text-sm font-medium p-4 "
         >
           Start new habit
         </Link>

@@ -1,13 +1,9 @@
-"use client";
-
-import { getSubscriptions } from "@/libs/helpers";
-import { HabitList } from "./HabitList";
-import { useEffect, useState } from "react";
-import { Habit, Subscriptions } from "@prisma/client";
-import { SubscriptionWithHabit } from "@/libs/types";
 import Link from "next/link";
 import { HabitCard } from "./HabitCard";
-import { EmptyHabit } from "./EmptyHabit";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { Subscriptions } from "@prisma/client";
+import { SubscriptionWithHabit } from "@/libs/types";
 
 const COMPLETED_ICON = (
   <svg
@@ -26,18 +22,23 @@ const COMPLETED_ICON = (
   </svg>
 );
 
-export const UserHabits = () => {
-  const [subscriptions, setSubscriptions] = useState<SubscriptionWithHabit[]>(
-    []
-  );
+export const UserHabits = async () => {
+  const session = await getServerSession(authOptions);
 
-  useEffect(() => {
-    getSubscriptions().then((subs) => {
-      console.log({ subs });
+  if (!session) {
+    return null;
+  }
 
-      setSubscriptions(subs.data);
-    });
-  }, []);
+  if (!session?.user?.email) {
+    return null;
+  }
+
+  // @ts-ignore
+  const subscriptions = session?.user?.subs;
+
+  if (!subscriptions.length) {
+    return null;
+  }
 
   const Completed = ({ completedAt }: { completedAt: Date | null }) => {
     if (!completedAt) {
@@ -49,7 +50,7 @@ export const UserHabits = () => {
   return (
     <div className="overflow-x-auto">
       <div className="flex flex-row gap-4 px-4">
-        {subscriptions.map((sub) => (
+        {subscriptions.map((sub: SubscriptionWithHabit) => (
           <Link
             href={`/habit/${sub.habit.name}/complete`}
             key={sub.habit.name}
