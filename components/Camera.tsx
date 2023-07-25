@@ -7,6 +7,7 @@ import { PrimaryButton } from "./Button/Primary";
 import { completeHabit, getSubscription } from "@/libs/helpers";
 import { SubscriptionWithHabit } from "@/libs/types";
 import { API_TO_HABIT_NAME } from "@/libs/constants";
+import { HabitCompleteLoading } from "./HabitCompleteLoading";
 
 // @ts-ignore
 function getKeyWithMaxValue(obj) {
@@ -133,6 +134,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
   return (
     <>
+      {isLoading && <HabitCompleteLoading />}
       <div className="w-full -z-10 absolute top-0 h-full left-0 ">
         <Webcam
           audio={false}
