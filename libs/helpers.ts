@@ -66,7 +66,7 @@ export const getUsers = async (): Promise<{
 }> => {
   console.log("pepe1");
 
-  const response = await fetch("http://localhost:3000/api/users");
+  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/users`);
 
   console.log("pepe2");
 
