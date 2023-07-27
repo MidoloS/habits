@@ -42,7 +42,7 @@ const Home = async () => {
         <div className="px-4 flex flex-col gap-8">
           <UserWelcome />
           {/* @ts-ignore */}
-          <HabitToCompleteSummary />
+          <HabitToCompleteSummary subscriptions={session?.user?.subs} />
         </div>
 
         <div className="max-w-md md:max-w-7xl">

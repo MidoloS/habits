@@ -3,23 +3,18 @@ import { CircularProgressbar } from "./CircularProgressBar";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { SubscriptionWithHabit } from "@/libs/types";
 import Link from "next/link";
+import { FC } from "react";
 
-export const HabitToCompleteSummary = async () => {
-  const session = await getServerSession(authOptions);
+type Props = {
+  subscriptions: SubscriptionWithHabit[];
+};
 
-  if (!session) {
-    return null;
-  }
-
-  // @ts-ignore
-  if (session?.user?.subs.length === 0) {
-    return null;
-  }
-
-  // @ts-ignore
-  const subs = session?.user?.subs;
-  const totalSubs = subs.length;
-  const completedSubs = subs.filter(
+// @ts-ignore
+export const HabitToCompleteSummary: FC<Props> = async ({
+  subscriptions = [],
+}) => {
+  const totalSubs = subscriptions.length;
+  const completedSubs = subscriptions.filter(
     (sub: SubscriptionWithHabit) => sub.completedAt
   ).length;
 
@@ -29,9 +24,7 @@ export const HabitToCompleteSummary = async () => {
 
   const title = percentajeCompleted > 50 ? "Good job!" : "Keep going!";
 
-  const uncompletedHabit = subs.filter(
-    (sub: SubscriptionWithHabit) => !sub.completedAt
-  )[0];
+  const uncompletedHabit = subscriptions.filter((sub) => !sub.completedAt)[0];
 
   console.log({ uncompletedHabit });
 
