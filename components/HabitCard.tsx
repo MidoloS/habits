@@ -29,7 +29,7 @@ export const HabitCard: FC<Props> = ({ subtitle, src, title, suffix }) => {
           <h3 className="text-lg font-heading font-semibold mb-1 text-white">
             {title}
           </h3>
-          <p className="font-medium text-slate-300">{subtitle}</p>
+          <p className="font-medium text-slate-300 font-sans">{subtitle}</p>
         </figcaption>
       </div>
     </figure>

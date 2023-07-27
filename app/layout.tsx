@@ -41,7 +41,7 @@ export default function BlogLayout({
         />
       </head>
 
-      <body className={`${montserrat.className} ${inter.className}`}>
+      <body className={inter.className}>
         <Provider>{children}</Provider>
       </body>
     </html>
