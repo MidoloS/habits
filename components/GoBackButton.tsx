@@ -5,6 +5,7 @@ const GoBackButton = () => {
     <Link
       className="shadow-sm border border-slate-200 bg-slate-50 text-slate-950 p-4 rounded-lg flex items-center justify-center"
       href="/"
+      aria-label="Go back"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

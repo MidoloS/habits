@@ -27,23 +27,34 @@ export const HabitToCompleteSummary = async () => {
 
   const percentajeCompleted = (completedSubs / totalSubs) * 100;
 
-  const title =
-    percentajeCompleted === 100
-      ? "Congratulations!"
-      : percentajeCompleted > 50
-      ? "Good job!"
-      : "Keep going!";
+  const title = percentajeCompleted > 50 ? "Good job!" : "Keep going!";
 
-  const nonCompletedHabit = subs.filter(
+  const uncompletedHabit = subs.filter(
     (sub: SubscriptionWithHabit) => !sub.completedAt
   )[0];
 
-  console.log({ nonCompletedHabit });
+  console.log({ uncompletedHabit });
+
+  if (!uncompletedHabit) {
+    return (
+      <div className="bg-slate-950 flex justify-between py-2 px-6 items-center rounded-xl">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-slate-50 font-medium">Congratulations!</h1>
+          <p className="text-slate-500 text-sm">
+            You have completed all your habits
+          </p>
+        </div>
+        <div>
+          <CircularProgressbar percentage={100} strokeWidth={5} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Link
-      href={`${process.env.NEXTAUTH_URL}/habit/${nonCompletedHabit.habit.name}/complete`}
-      key={nonCompletedHabit.habit.name}
+      href={`${process.env.NEXTAUTH_URL}/habit/${uncompletedHabit.habit.name}/complete`}
+      key={uncompletedHabit.habit.name}
       passHref
       legacyBehavior
     >
