@@ -7,6 +7,7 @@ import { UserWelcome } from "@/components/UserWelcome";
 import { SearchInput } from "@/components/SearchInput";
 import { HabitCompleted } from "@/components/HabitCompleted";
 import { EmptyHabit } from "@/components/EmptyHabit";
+import { HabitToCompleteSummary } from "@/components/HabitToCompleteSummary";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -40,7 +41,8 @@ const Home = async () => {
       <main className="flex flex-col gap-8">
         <div className="px-4 flex flex-col gap-8">
           <UserWelcome />
-          <SearchInput />
+          {/* @ts-ignore */}
+          <HabitToCompleteSummary />
         </div>
 
         <div className="max-w-md md:max-w-7xl">
