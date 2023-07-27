@@ -47,7 +47,7 @@ export const CountdownHabit = () => {
     time.seconds < 10 ? `0${time.seconds}` : time.seconds;
 
   if (time.hours === 0 && time.minutes === 0 && time.seconds === 0) {
-    return <p>-:-:-</p>;
+    return <p className="text-center text-slate-500">-:-:-</p>;
   }
 
   return (
