@@ -27,7 +27,12 @@ export const HabitToCompleteSummary = async () => {
 
   const percentajeCompleted = (completedSubs / totalSubs) * 100;
 
-  const title = percentajeCompleted > 50 ? "Good job!" : "Keep going!";
+  const title =
+    percentajeCompleted === 100
+      ? "Congratulations!"
+      : percentajeCompleted > 50
+      ? "Good job!"
+      : "Keep going!";
 
   const nonCompletedHabit = subs.filter(
     (sub: SubscriptionWithHabit) => !sub.completedAt
