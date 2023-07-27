@@ -26,7 +26,7 @@ export default async function Page() {
     <>
       <main className="flex flex-col gap-8">
         <div className="px-4 flex flex-col gap-8">
-          <UserWelcome />
+          <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>
         <div className="max-w-md md:max-w-7xl">
           <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">

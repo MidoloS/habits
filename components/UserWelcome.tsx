@@ -1,22 +1,18 @@
-"use client";
-
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { SignOutButton } from "./Button/Logout";
+import { FC } from "react";
 
-export const UserWelcome = () => {
-  const { data: session } = useSession();
+type Props = {
+  name: string | null | undefined;
+  img: string | null | undefined;
+};
 
-  if (!session?.user) {
-    return null;
-  }
-
+export const UserWelcome: FC<Props> = ({ name, img }) => {
   return (
     <figure className="flex gap-4 mt-8 justify-between">
       <div className="flex items-center gap-4">
         <Image
-          // @ts-ignore
-          src={session?.user?.image}
+          src={img || "/default_user.png"}
           width={55}
           height={55}
           alt={""}
@@ -25,7 +21,7 @@ export const UserWelcome = () => {
         <figcaption>
           <p className="text-xs text-slate-500 font-sans">Hi,</p>
           <h2 className="text-slate-900 text-sm font-medium font-heading">
-            {session.user?.name}
+            {name}
           </h2>
         </figcaption>
       </div>

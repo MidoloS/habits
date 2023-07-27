@@ -25,7 +25,7 @@ const Home = async () => {
     return (
       <main className="flex flex-col gap-8">
         <div className="px-4 flex flex-col gap-8">
-          <UserWelcome />
+          <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>
 
         <div className="flex  justify-center">
@@ -40,7 +40,7 @@ const Home = async () => {
       <HabitCompleted />
       <main className="flex flex-col gap-8">
         <div className="px-4 flex flex-col gap-8">
-          <UserWelcome />
+          <UserWelcome img={session.user?.image} name={session.user?.name} />
           {/* @ts-ignore */}
           <HabitToCompleteSummary subscriptions={session?.user?.subs} />
         </div>

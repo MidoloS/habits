@@ -9,7 +9,6 @@ export const metadata = {
 };
 
 const inter = Inter({ subsets: ["latin"] });
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function BlogLayout({
   children,
