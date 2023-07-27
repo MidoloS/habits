@@ -128,7 +128,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     })();
   }, []);
 
-  const text = subscription.completedAt ? "Already done" : "Take picture";
+  const text = subscription.completedAt ? "Already done" : "Complete";
 
   console.log({ subscription });
 
