@@ -218,5 +218,8 @@ export const getSubscriptions = async ({ email }: { email: string }) => {
     include: {
       habit: true,
     },
+    orderBy: {
+      completedAt: "desc",
+    },
   });
 };
