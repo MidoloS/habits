@@ -10,7 +10,7 @@ export const GoogleSignInButton = () => {
   return (
     <>
       <button
-        className="max-w-xs w-full flex items-center justify-center bg-slate-50 p-4 rounded-lg text-slate-900 font-medium"
+        className="max-w-xs w-full flex items-center justify-center bg-slate-50 p-4 rounded-lg text-slate-900 font-medium font-sans"
         // @ts-ignore
         onClick={() => signIn("google", { callbackUrl: "/home" })}
       >
