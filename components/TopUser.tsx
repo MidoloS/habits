@@ -8,7 +8,11 @@ type Props = {
 };
 
 const formatName = (name: string) => {
-  const [firstName, lastName] = name.split(" ");
+  const [firstName = "", lastName = ""] = name.split(" ");
+
+  if (lastName.length === 0) {
+    return firstName;
+  }
 
   return `${firstName}. ${lastName[0]}`;
 };

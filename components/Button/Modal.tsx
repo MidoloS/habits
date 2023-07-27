@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const Modal: FC<Props> = ({ buttonText, title, description }) => {
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const handleModal = () => {
     setIsVisible((prev) => !prev);
@@ -28,9 +28,9 @@ export const Modal: FC<Props> = ({ buttonText, title, description }) => {
       {isVisible &&
         createPortal(
           <div className="absolute top-0 left-0 bg-slate-950 bg-opacity-80 w-screen h-screen z-50 p-8 flex justify-center items-center">
-            <div className="bg-slate-50 p-6 rounded-xl relative flex flex-col gap-4">
+            <div className="bg-slate-50 p-6 rounded-xl relative flex flex-col gap-4 max-w-md">
               <h1 className="font-heading text-lg font-semibold text-center">
-                title
+                {title}
               </h1>
               <p className="text-slate-500 text-center">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut

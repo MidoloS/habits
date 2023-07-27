@@ -52,7 +52,7 @@ export default async function Page({
             </div>
             <Modal
               buttonText="About benefits"
-              title={habit.title}
+              title={`Befenist of ${habit.title}`}
               description="wea"
             />
           </div>

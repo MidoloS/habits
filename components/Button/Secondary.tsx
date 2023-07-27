@@ -1,15 +1,25 @@
 import { FC } from "react";
+import { Loading } from "../Loading";
 
 type Props = {
   children: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
+  isLoading?: boolean;
 };
 
-export const SecondaryButton: FC<Props> = ({ children, ...other }) => (
+export const PrimaryButton: FC<Props> = ({
+  children,
+  disabled,
+  onClick,
+  isLoading,
+}) => (
   <button
-    className="border-2 border-slate-950 w-full text-slate-950 rounded-xl py-4 font-medium"
-    {...other}
+    className="bg-slate-50 shadow-sm border border-slate-200 text-slate-950 p-3 rounded-lg flex items-center justify-center font-medium text-sm"
+    disabled={disabled || isLoading}
+    onClick={onClick}
   >
-    {children}
+    <div>{isLoading && <Loading />}</div>
+    {isLoading ? "Loading..." : children}
   </button>
 );
