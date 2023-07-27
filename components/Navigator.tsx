@@ -162,7 +162,7 @@ export const Navigator: FC = () => {
   const isLeaderboard = path === "/leaderboard";
   const isAddHabit = path === "/habit/new";
   return (
-    <footer className="fixed p-4 bg-slate-50 bottom-0 flex justify-around w-full items-center">
+    <footer className="fixed p-4 bg-slate-50 bottom-0 flex justify-around w-full items-center border-t border-slate-200">
       <Link href="/">
         <HomeIcon isActive={isHome} />
       </Link>
