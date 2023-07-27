@@ -74,3 +74,26 @@ export const getUsers = async (): Promise<{
 
   return data;
 };
+
+export const createDateWithTimezone = (
+  date: Date = new Date(),
+  timeZone: string
+) => {
+  if (typeof date === "string") {
+    return new Date(
+      new Date(date).toLocaleString("en-US", {
+        timeZone,
+      })
+    );
+  }
+
+  return new Date(
+    date.toLocaleString("en-US", {
+      timeZone,
+    })
+  );
+};
+
+export const currentDateWithTimezone = (timeZone: string) => {
+  return createDateWithTimezone(new Date(), timeZone);
+};
