@@ -29,6 +29,7 @@ export const CountdownHabit = () => {
 
   useEffect(() => {
     const remaing = timeUntil12UTC();
+    setTime(remaing);
 
     console.log({ remaing });
 
@@ -52,7 +53,7 @@ export const CountdownHabit = () => {
   return (
     <p className="text-center text-slate-500">
       {hoursFormatted}:{minutesFormatted}:{secondsFormatted} until reset (may
-      take 1h to reset)
+      take 1h to update)
     </p>
   );
 };
