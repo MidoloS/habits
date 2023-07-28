@@ -52,7 +52,7 @@ export const CountdownHabit = () => {
 
   return (
     <p className="text-center text-slate-500">
-      <span className="font-semibold">
+      <span className="font-semibold text-slate-950">
         {hoursFormatted}:{minutesFormatted}:{secondsFormatted}
       </span>{" "}
       until reset (may take 1h to update)
