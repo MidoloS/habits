@@ -17,8 +17,6 @@ function timeUntil12UTC() {
 }
 export const CountdownHabit = () => {
   return (
-    <p className="text-center text-slate-500">
-      Habits reset at 12PM UTC (might take 1h to update)
-    </p>
+    <p className="text-center text-slate-500">Habits reset at 12PM UTC.</p>
   );
 };
