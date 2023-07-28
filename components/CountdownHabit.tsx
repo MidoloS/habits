@@ -3,24 +3,23 @@
 import { currentDateWithTimezone } from "@/libs/helpers";
 import { useEffect, useState } from "react";
 
-const calculateTimeLeft = () => {
-  const server = currentDateWithTimezone("America/Indiana/Indianapolis");
-  let client = new Date();
-  client.setHours(24, 0, 0, 0);
-  // @ts-ignore
-  const difference = client - server;
+function timeUntil12UTC() {
+  const nowTimestamp = Date.now();
+  const twelveUTC = new Date();
+  twelveUTC.setUTCHours(24, 0, 0, 0);
+  const twelveUTCTimestamp = twelveUTC.getTime();
+  const timeRemainingMs = twelveUTCTimestamp - nowTimestamp;
 
-  if (difference < 0) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }
+  const secondsRemaining = Math.floor(timeRemainingMs / 1000) % 60;
+  const minutesRemaining = Math.floor(timeRemainingMs / (1000 * 60)) % 60;
+  const hoursRemaining = Math.floor(timeRemainingMs / (1000 * 60 * 60));
 
   return {
-    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((difference / 1000 / 60) % 60),
-    seconds: Math.floor((difference / 1000) % 60),
+    hours: hoursRemaining,
+    minutes: minutesRemaining,
+    seconds: secondsRemaining,
   };
-};
-
+}
 export const CountdownHabit = () => {
   const [time, setTime] = useState({
     hours: 0,
@@ -29,7 +28,7 @@ export const CountdownHabit = () => {
   });
 
   useEffect(() => {
-    const remaing = calculateTimeLeft();
+    const remaing = timeUntil12UTC();
 
     console.log({ remaing });
 
@@ -52,7 +51,8 @@ export const CountdownHabit = () => {
 
   return (
     <p className="text-center text-slate-500">
-      {hoursFormatted}:{minutesFormatted}:{secondsFormatted} until reset
+      {hoursFormatted}:{minutesFormatted}:{secondsFormatted} until reset (may
+      take 1h to reset)
     </p>
   );
 };

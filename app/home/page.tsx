@@ -50,7 +50,7 @@ const Home = async () => {
           </div>
         </div>
 
-        <div className="max-w-md md:max-w-7xl">
+        <div className="max-w-md ">
           <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">
             Your Habits
           </h1>
