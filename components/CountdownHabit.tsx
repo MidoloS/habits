@@ -52,8 +52,10 @@ export const CountdownHabit = () => {
 
   return (
     <p className="text-center text-slate-500">
-      {hoursFormatted}:{minutesFormatted}:{secondsFormatted} until reset (may
-      take 1h to update)
+      <span className="font-semibold">
+        {hoursFormatted}:{minutesFormatted}:{secondsFormatted}
+      </span>{" "}
+      until reset (may take 1h to update)
     </p>
   );
 };
