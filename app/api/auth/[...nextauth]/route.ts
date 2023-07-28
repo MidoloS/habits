@@ -1,3 +1,4 @@
+import { getUserHabits } from "@/prisma/helpers";
 import { createUser, getSubscriptions } from "@/prisma/helpers";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
@@ -27,10 +28,13 @@ export const authOptions: NextAuthOptions = {
         return null;
       }
 
+      const dbUser = await getUserHabits(session.user?.email);
+
       // @ts-ignore
-      session.user.subs = await getSubscriptions({
-        email: session.user?.email,
-      });
+      session.user.subs = dbUser?.subscriptions;
+
+      // @ts-ignore
+      session.user.points = dbUser?.points;
 
       return Promise.resolve(session);
     },
