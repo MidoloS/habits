@@ -39,7 +39,7 @@ const Home = async () => {
   return (
     <>
       <HabitCompleted />
-      <main className="flex flex-col gap-8">
+      <main className="flex flex-col gap-8 p-4">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
 

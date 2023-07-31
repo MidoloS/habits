@@ -9,7 +9,7 @@ type Props = {
 
 export const UserWelcome: FC<Props> = ({ name, img }) => {
   return (
-    <figure className="flex gap-4 mt-8 justify-between">
+    <figure className="flex gap-4 justify-between mt-2">
       <div className="flex items-center gap-4">
         <Image
           src={img || "/default_user.png"}

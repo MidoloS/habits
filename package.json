@@ -18,6 +18,7 @@
     "autoprefixer": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "js-confetti": "^0.11.0",
     "next": "latest",
     "next-auth": "latest",
     "next-pwa": "5.5.4",

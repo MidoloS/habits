@@ -14,18 +14,14 @@ type Props = {
 export const FollowButton: FC<Props> = ({ habitName }) => {
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
   useEffect(() => {
-    console.log("weador");
-
     getSubscription(habitName)
       .then((sub) => {
-        console.log("subs", sub.data);
-
         setIsFollowing(!!sub.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [habitName]);
 
   const text = isFollowing ? "Following" : "Follow";
 

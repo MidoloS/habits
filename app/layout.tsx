@@ -41,7 +41,7 @@ export default function BlogLayout({
 
       <body className={inter.className}>
         <Provider>
-          <main className="container mx-auto px-4">{children}</main>
+          <main className="container mx-auto">{children}</main>
         </Provider>
       </body>
     </html>

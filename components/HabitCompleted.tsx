@@ -1,37 +1,56 @@
 "use client";
 
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PrimaryButton } from "./Button/Primary";
+import JSConfetti from "js-confetti";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { SubscriptionWithHabit } from "@/libs/types";
+import { Habit } from "@prisma/client";
 
 export const HabitCompleted = () => {
   const { push } = useRouter();
   const res = useSearchParams();
+  const { data: session } = useSession();
+  const [habit, setHabit] = useState<Habit>();
 
-  console.log("res", res?.get("completed"));
+  const habitName = res?.get("completed");
 
-  if (!res?.get("completed")) {
-    return null;
-  }
+  const habits = (session?.user.subs || []) as SubscriptionWithHabit[];
 
-  const handleOnClick = () => {
-    push("/home");
-  };
+  const sub = habits.find((sub) => sub.habitName === habitName);
+
+  useEffect(() => {
+    setHabit(sub?.habit);
+
+    const success = new Audio("/success.mp3");
+    success.play();
+
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti({
+      emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
+    });
+  }, [sub?.habit]);
 
   return (
-    <div className="w-screen h-screen z-10 bg-black bg-opacity-80 flex items-center justify-center p-8 absolute top-0 ">
+    <div className="w-screen h-screen z-10 bg-black bg-opacity-80 flex items-center justify-center absolute top-0 p-8">
       <div className="bg-slate-50 z-20 p-6 rounded-xl gap-4 flex flex-col max-w-md">
-        <h1 className="text-center text-slate-950 text-lg font-semibold font-heading">
-          Habit Completed
-        </h1>
-        <p className="text-center text-slate-500 text-sm">
-          Congratulations, you have completed the task! <br /> Dont forget that
-          its the small accomplishments that make a{" "}
-          <span className="text-slate-950 font-semibold">
+        <div>
+          <p className="text-center text-slate-500 text-sm mb-2">
+            Congratulations!
+          </p>
+          <h1 className="text-center text-slate-950 text-3xl font-bold font-heading">
+            +{habit?.points || 100} XP
+          </h1>
+        </div>
+        <p className="text-center text-slate-950 text-sm">
+          Dont forget that its the small accomplishments that make a{" "}
+          <span className="text-slate-950 font-bold">
             big change over time!
           </span>
         </p>
 
-        <PrimaryButton onClick={handleOnClick}>Great!</PrimaryButton>
+        <PrimaryButton onClick={() => push("/home")}>Great!</PrimaryButton>
       </div>
     </div>
   );
