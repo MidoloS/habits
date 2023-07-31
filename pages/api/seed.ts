@@ -15,7 +15,7 @@ export default async function handler(
       isPro: false,
       title: "Tidy up",
       subtitle: "Tidy Bed",
-      points: 5,
+      points: 100,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/tidy_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvdGlkeV93aWRlIiwiaWF0IjoxNjkwNzY2NDUwLCJleHAiOjE3MjIzMDI0NTB9.nFlkvSo5rVgS3bVnOGxbgdF6zNovIE0Jcn6n_0y3fSs&t=2023-07-31T01%3A20%3A51.048Z",
       tallImage:
@@ -27,7 +27,7 @@ export default async function handler(
       isPro: false,
       title: "Take a Walk",
       subtitle: "Go for a walk in the park",
-      points: 20,
+      points: 200,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/walk_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvd2Fsa193aWRlIiwiaWF0IjoxNjkwNzY2MDU3LCJleHAiOjE3MjIzMDIwNTd9.JJSHwDOAWZrVWbQWB9EQ0mW4px3AcHdT9MH7j1m2Vzs&t=2023-07-31T01%3A14%3A17.542Z",
       tallImage:
@@ -39,7 +39,7 @@ export default async function handler(
       isPro: false,
       title: "Healthy Meal",
       subtitle: "Eat a healthy meal",
-      points: 30,
+      points: 200,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/meal_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbWVhbF93aWRlIiwiaWF0IjoxNjkwNzY2MDQ1LCJleHAiOjE3MjIzMDIwNDV9.uHz3406nWJaeK9yjC1rkV3RCKX3jn3uoCHG8KaSiUq0&t=2023-07-31T01%3A14%3A05.900Z",
       tallImage:
@@ -63,7 +63,7 @@ export default async function handler(
       isPro: false,
       title: "Wake up Early",
       subtitle: "Wake up early in the morning",
-      points: 10,
+      points: 100,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/wake_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvd2FrZV93aWRlIiwiaWF0IjoxNjkwNzcxNTQyLCJleHAiOjE3MjIzMDc1NDJ9.PZytDaegtW1Yz3V2-u6Y92sj_5cK_P1zh5WDoFbRW1w&t=2023-07-31T02%3A45%3A43.092Z",
       tallImage:
@@ -75,7 +75,7 @@ export default async function handler(
       isPro: false,
       title: "Train",
       subtitle: "Train your body",
-      points: 40,
+      points: 300,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/train_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvdHJhaW5fd2lkZSIsImlhdCI6MTY5MDc2NjAxMCwiZXhwIjoxNzIyMzAyMDEwfQ.4DJJ-UeBnXCifrhURNG8GA54HiZ8l1Az82M_1xqMx64&t=2023-07-31T01%3A13%3A31.012Z",
       tallImage:
@@ -87,7 +87,7 @@ export default async function handler(
       isPro: false,
       title: "Brush Teeth",
       subtitle: "Brush your teeth",
-      points: 5,
+      points: 50,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/brush_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvYnJ1c2hfd2lkZSIsImlhdCI6MTY5MDc2NTM0OCwiZXhwIjoxNzIyMzAxMzQ4fQ.6fYTmJT7RmkjcgMVBRYyT_HI6B-z9DGX3NJ4iWYbSY4&t=2023-07-31T01%3A02%3A28.689Z",
       tallImage:
@@ -111,7 +111,7 @@ export default async function handler(
       isPro: false,
       title: "Do the Laundry",
       subtitle: "Do the laundry",
-      points: 5,
+      points: 50,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/laundry_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvbGF1bmRyeV93aWRlIiwiaWF0IjoxNjkwNzY1OTM5LCJleHAiOjE3MjIzMDE5Mzl9.24P-GTfIQo15buTXdLvYGf04ttatP_YmF409vD3cdVw&t=2023-07-31T01%3A12%3A20.272Z",
       tallImage:
@@ -123,7 +123,7 @@ export default async function handler(
       isPro: false,
       title: "Keep Hydrated",
       subtitle: "Drinking water",
-      points: 3,
+      points: 30,
       wideImage:
         "https://mabfjyjbggqdwqtjdwip.supabase.co/storage/v1/object/sign/images/drink_wide?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJpbWFnZXMvZHJpbmtfd2lkZSIsImlhdCI6MTY5MDc2NTQ0MiwiZXhwIjoxNzIyMzAxNDQyfQ.LdrsEPMASF2xZ15wc9pNF46Z3VI5VOUKLBuVjuBoexA&t=2023-07-31T01%3A04%3A02.458Z",
       tallImage:
