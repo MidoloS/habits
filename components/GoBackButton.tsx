@@ -1,10 +1,13 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 const GoBackButton = () => {
+  const router = useRouter();
   return (
-    <Link
+    <button
       className="shadow-sm border border-slate-200 bg-slate-50 text-slate-950 p-4 rounded-lg flex items-center justify-center"
-      href="/"
+      onClick={router.back}
       aria-label="Go back"
     >
       <svg
@@ -25,7 +28,7 @@ const GoBackButton = () => {
           strokeWidth="2"
         />
       </svg>
-    </Link>
+    </button>
   );
 };
 
