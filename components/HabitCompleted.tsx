@@ -23,6 +23,10 @@ export const HabitCompleted = () => {
   useEffect(() => {
     setHabit(sub?.habit);
 
+    if (!sub) {
+      return;
+    }
+
     const success = new Audio("/success.mp3");
     success.play();
 
@@ -31,6 +35,10 @@ export const HabitCompleted = () => {
       emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
     });
   }, [sub?.habit]);
+
+  if (!sub) {
+    return null;
+  }
 
   return (
     <div className="w-screen h-screen z-10 bg-black bg-opacity-80 flex items-center justify-center absolute top-0 p-8">
