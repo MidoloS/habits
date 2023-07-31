@@ -52,11 +52,11 @@ export const HabitToCompleteSummary: FC<Props> = async ({
       legacyBehavior
     >
       <a>
-        <div className="bg-slate-950 flex justify-between py-2 px-6 items-center rounded-xl">
+        <div className="bg-slate-950 flex justify-between px-6 items-center rounded-xl">
           <div className="flex flex-col gap-2">
             <h1 className="text-slate-50 font-medium">{title}</h1>
             <p className="text-slate-500 text-sm">
-              {completedSubs}/{totalSubs} habits completed
+              {completedSubs} of {totalSubs} habits completed
             </p>
           </div>
           <div>

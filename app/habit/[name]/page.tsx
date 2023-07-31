@@ -32,7 +32,7 @@ export default async function Page({
             alt={name}
             height={677}
             width={452}
-            src={habit.img || "/images/placeholder.png"}
+            src={habit.tallImage || "/images/placeholder.png"}
             className="md:rounded-xl"
           />
         </figure>
@@ -52,7 +52,7 @@ export default async function Page({
             </div>
             <Modal
               buttonText="About benefits"
-              title={`Befenist of ${habit.title}`}
+              title={`Benefits of ${habit.title}`}
               description="wea"
             />
           </div>

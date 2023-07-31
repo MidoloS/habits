@@ -48,27 +48,25 @@ export const UserHabits = async () => {
   };
 
   return (
-    <div className="overflow-x-auto">
-      <div className="flex flex-row gap-4 px-4">
-        {subscriptions.map((sub: SubscriptionWithHabit) => (
-          <Link
-            href={`/habit/${sub.habit.name}/complete`}
-            key={sub.habit.name}
-            passHref
-            legacyBehavior
-          >
-            <a>
-              <HabitCard
-                subtitle={`${sub.habit.minutes} mins`}
-                title={sub.habit.title}
-                src={sub.habit.img}
-                habitName={sub.habit.name}
-                suffix={<Completed completedAt={sub.completedAt} />}
-              />
-            </a>
-          </Link>
-        ))}
-      </div>
+    <div className="flex flex-col gap-4 md:grid grid-cols-5 mb-16">
+      {subscriptions.map((sub: SubscriptionWithHabit) => (
+        <Link
+          href={`/habit/${sub.habit.name}/complete`}
+          key={sub.habit.name}
+          passHref
+          legacyBehavior
+        >
+          <a>
+            <HabitCard
+              subtitle={`${sub.habit.minutes} mins`}
+              title={sub.habit.title}
+              src={sub.habit.wideImage}
+              habitName={sub.habit.name}
+              suffix={<Completed completedAt={sub.completedAt} />}
+            />
+          </a>
+        </Link>
+      ))}
     </div>
   );
 };

@@ -10,13 +10,13 @@ type Props = {
 };
 export const HabitCard: FC<Props> = ({ subtitle, src, title, suffix }) => {
   return (
-    <figure className="relative w-full min-w-[250px]  cursor-pointer max-w-xs mb-16">
+    <figure className="relative w-full cursor-pointer">
       <Image
         className="rounded-xl h-full w-full"
         src={src || "default"}
         alt={title}
-        height={300}
-        width={252}
+        height={180}
+        width={320}
       />
       <div className="absolute top-0 right-0 p-4">{suffix}</div>
 

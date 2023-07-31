@@ -14,26 +14,24 @@ export const HabitList: FC<Props> = ({ habits, urlPattern, Suffix }) => {
   console.log(habits);
 
   return (
-    <div className="overflow-x-auto ">
-      <div className="flex flex-row gap-4 mx-4">
-        {habits.map((habit) => (
-          <Link
-            href={urlPattern.replace("{habitName}", habit.name)}
-            key={habit.name}
-            passHref
-            legacyBehavior
-          >
-            <a>
-              <HabitCard
-                subtitle={`${habit.minutes} mins`}
-                title={habit.title}
-                src={habit.img}
-                habitName={habit.name}
-              />
-            </a>
-          </Link>
-        ))}
-      </div>
+    <div className="flex flex-col gap-4 md:grid grid-cols-5 mb-16">
+      {habits.map((habit) => (
+        <Link
+          href={urlPattern.replace("{habitName}", habit.name)}
+          key={habit.name}
+          passHref
+          legacyBehavior
+        >
+          <a>
+            <HabitCard
+              subtitle={`${habit.minutes} mins`}
+              title={habit.title}
+              src={habit.wideImage}
+              habitName={habit.name}
+            />
+          </a>
+        </Link>
+      ))}
     </div>
   );
 };

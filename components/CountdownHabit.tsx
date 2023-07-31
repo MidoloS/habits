@@ -1,22 +1,19 @@
-function timeUntil12UTC() {
-  const nowTimestamp = Date.now();
-  const twelveUTC = new Date();
-  twelveUTC.setUTCHours(24, 0, 0, 0);
-  const twelveUTCTimestamp = twelveUTC.getTime();
-  const timeRemainingMs = twelveUTCTimestamp - nowTimestamp;
+"use client";
 
-  const secondsRemaining = Math.floor(timeRemainingMs / 1000) % 60;
-  const minutesRemaining = Math.floor(timeRemainingMs / (1000 * 60)) % 60;
-  const hoursRemaining = Math.floor(timeRemainingMs / (1000 * 60 * 60));
+import { useState } from "react";
 
-  return {
-    hours: hoursRemaining,
-    minutes: minutesRemaining,
-    seconds: secondsRemaining,
-  };
-}
+const hoursUntil12UTC = () => {
+  const now = new Date();
+  const hours = 24 - now.getUTCHours();
+  return hours;
+};
+
 export const CountdownHabit = () => {
-  return (
-    <p className="text-center text-slate-500">Habits reset at 12PM UTC.</p>
-  );
+  const [hours, setHours] = useState(hoursUntil12UTC());
+
+  setTimeout(() => {
+    setHours(hoursUntil12UTC());
+  }, 1000 * 60 * 60);
+
+  return <p className="text-center text-slate-500">{hours}h until reset</p>;
 };

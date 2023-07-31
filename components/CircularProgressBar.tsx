@@ -9,7 +9,7 @@ type Props = {
 export const CircularProgressbar: FC<Props> = ({
   strokeWidth,
   percentage,
-  size = 40,
+  size = 35,
 }) => {
   const radius = size - strokeWidth / 2;
   const pathDescription = `
@@ -64,7 +64,7 @@ export const CircularProgressbar: FC<Props> = ({
           fontWeight: "bold",
         }}
       >
-        {`${percentage.toFixed(1)}%`}
+        {`${Math.round(percentage)}%`}
       </text>
     </svg>
   );

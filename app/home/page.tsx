@@ -25,7 +25,7 @@ const Home = async () => {
   if (session?.user?.subs.length === 0) {
     return (
       <main className="flex flex-col gap-8">
-        <div className="px-4 flex flex-col gap-8">
+        <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>
 
@@ -40,7 +40,7 @@ const Home = async () => {
     <>
       <HabitCompleted />
       <main className="flex flex-col gap-8">
-        <div className="px-4 flex flex-col gap-8">
+        <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
 
           <div className="flex flex-col gap-2">
@@ -50,8 +50,8 @@ const Home = async () => {
           </div>
         </div>
 
-        <div className="max-w-md ">
-          <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading px-4">
+        <div>
+          <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading">
             Your Habits
           </h1>
           {/* @ts-ignore */}
