@@ -52,7 +52,7 @@ export const SubFeatures: FC<Props> = ({ habit }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22.096"
-          height="11.2"
+          height="22.2"
           viewBox="0 0 22.096 11.2"
         >
           <path
