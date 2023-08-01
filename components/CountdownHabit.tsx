@@ -8,12 +8,14 @@ const hoursUntil12UTC = () => {
   return hours;
 };
 
+const ONE_HOUR = 1000 * 60 * 60;
+
 export const CountdownHabit = () => {
   const [hours, setHours] = useState(hoursUntil12UTC());
 
   setTimeout(() => {
     setHours(hoursUntil12UTC());
-  }, 1000 * 60 * 60);
+  }, ONE_HOUR);
 
   return <p className="text-center text-slate-500">{hours}h until reset</p>;
 };

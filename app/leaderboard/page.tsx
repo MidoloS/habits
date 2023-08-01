@@ -54,8 +54,7 @@ export default async function Page() {
                 {session?.user?.name}
               </figcaption>
               <figcaption className="text-slate-500 text-sm">
-                {/* @ts-ignore */}
-                Lvl {pointsToLevel(session?.user?.points)} • {/* @ts-ignore */}
+                Lvl {pointsToLevel(session?.user?.points)} •
                 {session?.user?.points} xp
               </figcaption>
             </div>

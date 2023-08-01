@@ -7,7 +7,6 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { UserWelcome } from "@/components/UserWelcome";
 import { HabitList } from "@/components/HabitList";
-import { SearchInput } from "@/components/SearchInput";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
@@ -24,7 +23,7 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex flex-col gap-8">
+      <main className="flex flex-col gap-6 p-4">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>

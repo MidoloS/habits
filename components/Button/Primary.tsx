@@ -16,10 +16,10 @@ export const PrimaryButton: FC<Props> = ({
 }) => (
   <button
     className="flex justify-center bg-slate-950 font-sans w-full text-white rounded-xl text-sm font-medium py-4 px-6 md:w-fit disabled:bg-slate-200 disabled:text-slate-400"
-    disabled={disabled || isLoading}
+    disabled={disabled}
     onClick={onClick}
   >
-    <div>{isLoading && <Loading />}</div>
-    {isLoading ? "Loading..." : children}
+    <div>{isLoading && <Loading size="xl" />}</div>
+    {!isLoading && children}
   </button>
 );

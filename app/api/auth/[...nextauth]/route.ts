@@ -1,4 +1,4 @@
-import { getUserHabits } from "@/prisma/helpers";
+import { getUser, getUserHabits } from "@/prisma/helpers";
 import { createUser, getSubscriptions } from "@/prisma/helpers";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
@@ -28,13 +28,11 @@ export const authOptions: NextAuthOptions = {
         return null;
       }
 
-      const dbUser = await getUserHabits(session.user?.email);
+      const dbUser = await getUser(session.user?.email);
 
-      // @ts-ignore
-      session.user.subs = dbUser?.subscriptions;
+      session.user.subs = dbUser?.subscriptions || [];
 
-      // @ts-ignore
-      session.user.points = dbUser?.points;
+      session.user.points = dbUser?.points || 0;
 
       return Promise.resolve(session);
     },
@@ -44,8 +42,7 @@ export const authOptions: NextAuthOptions = {
         const res = await createUser({
           email: profile?.email,
           name: profile?.name,
-          // @ts-ignore
-          img: profile?.picture || profile?.image || "/default_user.png",
+          img: profile?.image || "/default_user.png",
         });
         console.log({ res });
 

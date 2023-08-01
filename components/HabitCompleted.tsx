@@ -10,7 +10,6 @@ import { Habit } from "@prisma/client";
 import Link from "next/link";
 
 export const HabitCompleted = () => {
-  const { push } = useRouter();
   const res = useSearchParams();
   const { data: session } = useSession();
   const [habit, setHabit] = useState<Habit>();
@@ -33,9 +32,10 @@ export const HabitCompleted = () => {
 
     const jsConfetti = new JSConfetti();
     jsConfetti.addConfetti({
-      emojis: ["🌈", "⚡️", "💥", "✨", "💫", "🌸"],
+      emojis: ["⚡️", "💥", "✨", "💫", "🌸"],
+      emojiSize: 150,
     });
-  }, [sub?.habit]);
+  }, [sub?.habit?.name]);
 
   if (!sub) {
     return null;
@@ -59,7 +59,12 @@ export const HabitCompleted = () => {
           </span>
         </p>
 
-        <Link href="/home">Great!</Link>
+        <Link
+          href="/home"
+          className="bg-slate-950 p-4 flex items-center text-slate-50 justify-center rounded-xl"
+        >
+          Great!
+        </Link>
       </div>
     </div>
   );

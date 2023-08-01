@@ -3,7 +3,7 @@ import { generatePrismaClient } from "./client";
 
 const prisma = generatePrismaClient();
 
-export const getUserHabits = async (email: string) => {
+export const getUser = async (email: string) => {
   return await prisma.user.findUnique({
     where: {
       email,
@@ -17,6 +17,13 @@ export const getUserHabits = async (email: string) => {
     },
   });
 };
+
+export const getUserHabits = async (email: string) =>
+  prisma.subscriptions.findMany({
+    where: {
+      userEmail: email,
+    },
+  });
 
 export const getHabit = async (name: string) => {
   const habit = await prisma.habit.findUnique({

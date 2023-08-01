@@ -7,8 +7,7 @@ export const SignOutButton = () => {
     <>
       <button
         className="shadow-sm border border-slate-200 rounded-lg p-4 text-sm"
-        // @ts-ignore
-        onClick={() => signOut("google", { callbackUrl: "/home" })}
+        onClick={() => signOut({ callbackUrl: "/login" })}
       >
         <svg
           id="exit"

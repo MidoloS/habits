@@ -2,7 +2,6 @@ import Link from "next/link";
 import { HabitCard } from "./HabitCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { Subscriptions } from "@prisma/client";
 import { SubscriptionWithHabit } from "@/libs/types";
 
 const COMPLETED_ICON = (
@@ -33,7 +32,6 @@ export const UserHabits = async () => {
     return null;
   }
 
-  // @ts-ignore
   const subscriptions = session?.user?.subs;
 
   if (!subscriptions.length) {

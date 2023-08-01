@@ -97,3 +97,15 @@ export const createDateWithTimezone = (
 export const currentDateWithTimezone = (timeZone: string) => {
   return createDateWithTimezone(new Date(), timeZone);
 };
+
+export const getKeyWithMaxValue = (obj: Object) => {
+  const maxVal = Math.max(...Object.values(obj));
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (value === maxVal) {
+      return key;
+    }
+  }
+
+  return Object.entries(obj)[0][0];
+};

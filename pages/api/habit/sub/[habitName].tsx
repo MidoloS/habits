@@ -23,7 +23,7 @@ export default async function handler(
 
   console.log("COSA MAGICA BOLADORA");
 
-  const { habitName } = req.query;
+  const habitName = req.query.habitName as string;
 
   if (!session?.user?.email) {
     return res.status(401).json({ message: "Unauthorized" });
@@ -34,7 +34,6 @@ export default async function handler(
   switch (req.method) {
     case "POST":
       await createSubscriptions({
-        // @ts-ignore
         habitName,
         email: session?.user?.email,
       });
@@ -44,7 +43,6 @@ export default async function handler(
       break;
     case "DELETE":
       await deleteSubscriptions({
-        // @ts-ignore
         habitName,
         email: session?.user?.email,
       });
@@ -60,7 +58,6 @@ export default async function handler(
       console.log("entre");
 
       const sub = await getSubscription({
-        // @ts-ignore
         habitName,
         email: session?.user?.email,
       });

@@ -4,27 +4,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import { PrimaryButton } from "./Button/Primary";
-import { completeHabit, getSubscription } from "@/libs/helpers";
+import {
+  completeHabit,
+  getKeyWithMaxValue,
+  getSubscription,
+} from "@/libs/helpers";
 import { SubscriptionWithHabit } from "@/libs/types";
 import { API_TO_HABIT_NAME } from "@/libs/constants";
 import { HabitCompleteLoading } from "./HabitCompleteLoading";
-
-// @ts-ignore
-function getKeyWithMaxValue(obj) {
-  // Encontrar el valor máximo en el objeto
-  // @ts-ignore
-  const maxVal = Math.max(...Object.values(obj));
-
-  // Iterar sobre el objeto para encontrar la clave asociada al valor máximo
-  for (const [key, value] of Object.entries(obj)) {
-    if (value === maxVal) {
-      return key;
-    }
-  }
-
-  // Si no se encuentra la clave, puedes lanzar una excepción o devolver null, según lo que necesites.
-  return null;
-}
 
 export const Camera = ({ habitName }: { habitName: string }) => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");
@@ -40,10 +27,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const urlFacing = searchParams?.get("facing") || "environment";
   const webcamRef = useRef(null);
   const capture = useCallback(async () => {
-    console.log("--------------------------");
-
-    console.log({ habitName });
-
     if (habitName === "wakeup") {
       const now = new Date();
       const hours = now.getHours();
@@ -51,8 +34,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
       console.log({ hours });
 
       if (hours >= 5 && hours <= 9) {
-        const success = new Audio("/success.mp3");
-        success.play();
         await completeHabit(habitName);
         push(`/home?completed=${habitName}`);
       } else {
@@ -62,15 +43,12 @@ export const Camera = ({ habitName }: { habitName: string }) => {
       return;
     }
     if (["meditate", "read"].includes(habitName)) {
-      const success = new Audio("/success.mp3");
-      success.play();
       push(`/home?completed=${habitName}`);
       await completeHabit(habitName);
       return;
     }
 
     setIsLoading(true);
-    console.log(isLoading);
 
     // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
@@ -91,14 +69,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     const mostLikely = getKeyWithMaxValue(data);
 
-    console.log({ data });
-
-    console.log({ mostLikely, habitName });
-
-    // @ts-ignore
-    console.log({ toKey: API_TO_HABIT_NAME[mostLikely] });
     setIsLoading(false);
-    console.log(isLoading);
 
     // @ts-ignore
     if (API_TO_HABIT_NAME[mostLikely] === habitName) {

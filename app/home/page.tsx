@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { UserHabits } from "@/components/UserHabits";
 import { UserWelcome } from "@/components/UserWelcome";
-import { SearchInput } from "@/components/SearchInput";
 import { HabitCompleted } from "@/components/HabitCompleted";
 import { EmptyHabit } from "@/components/EmptyHabit";
 import { HabitToCompleteSummary } from "@/components/HabitToCompleteSummary";
@@ -17,14 +16,9 @@ const Home = async () => {
     redirect("/signin?callbackUrl=/");
   }
 
-  if (!session?.user) {
-    return null;
-  }
-
-  // @ts-ignore
   if (session?.user?.subs.length === 0) {
     return (
-      <main className="flex flex-col gap-8">
+      <main className="flex flex-col gap-8 px-4 mt-4">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>
@@ -44,7 +38,6 @@ const Home = async () => {
           <UserWelcome img={session.user?.image} name={session.user?.name} />
 
           <div className="flex flex-col gap-2">
-            {/* @ts-ignore */}
             <HabitToCompleteSummary subscriptions={session?.user?.subs} />
             <CountdownHabit />
           </div>

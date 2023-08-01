@@ -21,7 +21,7 @@ export default function BlogLayout({
         <link rel="apple-touch-icon" href="/icon.png"></link>
         <meta name="theme-color" content="#020617" />
         <title>habitai.io</title>
-        <Script
+        {/* <Script
           id="hothatAnalytics"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -36,13 +36,11 @@ export default function BlogLayout({
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
           `,
           }}
-        />
+        /> */}
       </head>
 
       <body className={inter.className}>
-        <Provider>
-          <main className="container mx-auto">{children}</main>
-        </Provider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

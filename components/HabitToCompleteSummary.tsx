@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FC } from "react";
 
 type Props = {
-  subscriptions: SubscriptionWithHabit[];
+  subscriptions: SubscriptionWithHabit[] | undefined;
 };
 
 // @ts-ignore
