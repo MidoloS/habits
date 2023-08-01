@@ -41,6 +41,10 @@ export const HabitCompleted = () => {
     return null;
   }
 
+  if (!habit) {
+    return null;
+  }
+
   return (
     <div className="w-screen h-screen z-10 bg-black bg-opacity-80 flex items-center justify-center absolute top-0 p-8">
       <div className="bg-slate-50 z-20 p-6 rounded-xl gap-4 flex flex-col max-w-md">
@@ -49,7 +53,7 @@ export const HabitCompleted = () => {
             Congratulations!
           </p>
           <h1 className="text-center text-slate-950 text-3xl font-bold font-heading">
-            +{habit?.points || 100} XP
+            {habit?.points === 0 ? "Completed" : `+${habit.points} XP`}
           </h1>
         </div>
         <p className="text-center text-slate-950 text-sm">
