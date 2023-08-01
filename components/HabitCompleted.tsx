@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { SubscriptionWithHabit } from "@/libs/types";
 import { Habit } from "@prisma/client";
+import Link from "next/link";
 
 export const HabitCompleted = () => {
   const { push } = useRouter();
@@ -58,7 +59,7 @@ export const HabitCompleted = () => {
           </span>
         </p>
 
-        <PrimaryButton onClick={() => push("/home")}>Great!</PrimaryButton>
+        <Link href="/home">Great!</Link>
       </div>
     </div>
   );
