@@ -8,6 +8,8 @@ import { HabitCompleted } from "@/components/HabitCompleted";
 import { EmptyHabit } from "@/components/EmptyHabit";
 import { HabitToCompleteSummary } from "@/components/HabitToCompleteSummary";
 import { CountdownHabit } from "@/components/CountdownHabit";
+import { Switch } from "@/components/Switch";
+import { EnableNotification } from "@/components/EnableNotification";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -32,6 +34,7 @@ const Home = async () => {
 
   return (
     <>
+      <EnableNotification />
       <HabitCompleted />
       <main className="flex flex-col gap-8 p-4">
         <div className="flex flex-col gap-8">
