@@ -1,12 +1,7 @@
-"use client";
-
 import { Provider } from "@/components/Provider";
 import "./globals.css";
 import Script from "next/script";
 import { Inter, Montserrat } from "next/font/google";
-import { onMessage } from "firebase/messaging";
-import { app } from "@/firebase/helpers";
-import { useEffect } from "react";
 
 export const metadata = {
   title: "habitai.io",
@@ -19,11 +14,6 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    onMessage({ app }, (a) => {
-      console.log(a);
-    });
-  }, []);
   return (
     <html lang="en">
       <head>
@@ -31,7 +21,7 @@ export default function BlogLayout({
         <link rel="apple-touch-icon" href="/icon.png"></link>
         <meta name="theme-color" content="#020617" />
         <title>habitai.io</title>
-        {/* <Script
+        <Script
           id="hothatAnalytics"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -46,7 +36,7 @@ export default function BlogLayout({
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
           `,
           }}
-        /> */}
+        />
       </head>
 
       <body className={inter.className}>
