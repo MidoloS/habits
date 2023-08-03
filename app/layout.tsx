@@ -1,7 +1,12 @@
+"use client";
+
 import { Provider } from "@/components/Provider";
 import "./globals.css";
 import Script from "next/script";
 import { Inter, Montserrat } from "next/font/google";
+import { onMessage } from "firebase/messaging";
+import { app } from "@/firebase/helpers";
+import { useEffect } from "react";
 
 export const metadata = {
   title: "habitai.io",
@@ -14,6 +19,11 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    onMessage({ app }, (a) => {
+      console.log(a);
+    });
+  }, []);
   return (
     <html lang="en">
       <head>

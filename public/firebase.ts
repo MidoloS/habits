@@ -1,8 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+console.log("Hello World 123");
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -17,7 +19,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
 getToken(messaging, {
@@ -25,11 +27,6 @@ getToken(messaging, {
     "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
 });
 
-export const requestPermission = () => {
-  console.log("Requesting permission...");
-  Notification.requestPermission().then((permission) => {
-    if (permission === "granted") {
-      console.log("Notification permission granted.");
-    }
-  });
-};
+onMessage({ app }, (payload) => {
+  console.log("Message received. ", payload);
+});
