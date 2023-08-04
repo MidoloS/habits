@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Switch } from "./Switch";
-import { requestPermission } from "@/firebase/helpers";
+// import { requestPermission } from "@/firebase/helpers";
 
 export const EnableNotification = () => {
   return (
@@ -14,9 +14,7 @@ export const EnableNotification = () => {
           </h3>
           <p className="text-slate-300 text-sm">Enable Daily Reminder</p>
         </div>
-        <div>
-          <Switch onClick={requestPermission} />
-        </div>
+        <div>{/* <Switch onClick={requestPermission} /> */}</div>
       </div>
     </div>
   );
