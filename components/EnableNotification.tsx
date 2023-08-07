@@ -10,28 +10,33 @@ export const EnableNotification = () => {
   const [permission, setPermission] = useState(false);
 
   useEffect(() => {
-    const messaging = getMessaging();
-    // Add the public key generated from the console here.
-    getToken(messaging, {
-      vapidKey:
-        "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
-    })
-      .then((currentToken) => {
-        if (currentToken) {
-          // Send the token to your server and update the UI if necessary
-          // ...
-        } else {
-          // Show permission request UI
-          console.log(
-            "No registration token available. Request permission to generate one."
-          );
-          // ...
-        }
-      })
-      .catch((err) => {
-        console.log("An error occurred while retrieving token. ", err);
-        // ...
-      });
+    window.addEventListener("load", () => {
+      if ("serviceWorker" in navigator) {
+        const messaging = getMessaging();
+        // Add the public key generated from the console here.
+        getToken(messaging, {
+          vapidKey:
+            "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
+        })
+          .then((currentToken) => {
+            if (currentToken) {
+              // Send the token to your server and update the UI if necessary
+              // ...
+            } else {
+              // Show permission request UI
+              console.log(
+                "No registration token available. Request permission to generate one."
+              );
+              // ...
+            }
+          })
+          .catch((err) => {
+            console.log("An error occurred while retrieving token. ", err);
+            // ...
+          });
+      }
+    });
+
     window.addEventListener("load", () => {
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/firebase-messaging-sw.js");
