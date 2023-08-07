@@ -63,10 +63,6 @@ export const EnableNotification = () => {
         });
     }
 
-    window.addEventListener("load", () => {
-      if ("serviceWorker" in navigator) {
-      }
-    });
     navigator.serviceWorker.ready.then((reg) => {
       reg.pushManager.getSubscription().then((sub) => {
         console.log("sub", sub);
