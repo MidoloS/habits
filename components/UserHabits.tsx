@@ -46,7 +46,7 @@ export const UserHabits = async () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 md:grid grid-cols-5 mb-16">
+    <div className="flex flex-col gap-4 md:grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 mb-16">
       {subscriptions.map((sub: SubscriptionWithHabit) => (
         <Link
           href={`/habit/${sub.habit.name}/complete`}

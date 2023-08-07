@@ -28,3 +28,39 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   console.log("Hello/worker world from the Service Worker 1 🤙");
 });
+
+import { getMessaging } from "firebase/messaging/sw";
+import { onBackgroundMessage } from "firebase/messaging/sw";
+
+onBackgroundMessage(messaging, (payload) => {
+  console.log(
+    "[firebase-messaging-sw.js] Received background message ",
+    payload
+  );
+  // Customize notification here
+  const notificationTitle = "Background Message Title";
+  const notificationOptions = {
+    body: "Background Message body.",
+    icon: "/firebase-logo.png",
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
+  authDomain: "habitai-391719.firebaseapp.com",
+  projectId: "habitai-391719",
+  storageBucket: "habitai-391719.appspot.com",
+  messagingSenderId: "104807834649",
+  appId: "1:104807834649:web:190cc2562190fc8894f688",
+  measurementId: "G-GPFDSMCCZW",
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+
+// Retrieve an instance of Firebase Messaging so that it can handle background
+// messages.
+const messaging = getMessaging(firebaseApp);

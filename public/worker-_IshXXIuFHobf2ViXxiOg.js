@@ -1,1 +1,0 @@
-(()=>{"use strict";self.addEventListener("message",(e=>{console.log("Hello World")})),self.addEventListener("push",(e=>{console.log("push/worker",e)})),self.addEventListener("install",(e=>{console.log("Hello/worker world from the Service Worker 2 🤙")})),self.addEventListener("activate",(e=>{console.log("Hello/worker world from the Service Worker 1 🤙")}))})();
