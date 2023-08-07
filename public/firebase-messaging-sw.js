@@ -1,3 +1,28 @@
+self.addEventListener("message", (event) => {
+  // HOW TO TEST THIS?
+  // Run this in your browser console:
+  //     window.navigator.serviceWorker.controller.postMessage({command: 'log', message: 'hello world'})
+  // OR use next-pwa injected workbox object
+  //     window.workbox.messageSW({command: 'log', message: 'hello world'})
+  console.log("Hello World");
+  console.log(event);
+  self.registration.showNotification("Hello World");
+});
+
+self.addEventListener("push", (event) => {
+  console.log("push/sw/public", event);
+});
+
+// hello world on install
+self.addEventListener("install", (event) => {
+  console.log("Hello/sw/public world from the Service Worker 2 🤙");
+});
+
+// hello world on activate
+self.addEventListener("activate", (event) => {
+  console.log("Hello/sw/public world from the Service Worker 1 🤙");
+});
+
 if ("serviceWorker" in navigator) {
   importScripts(
     "https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"
@@ -31,7 +56,7 @@ if ("serviceWorker" in navigator) {
     // ...
   });
 
-  messaging.onBackgroundMessage(messaging, (payload) => {
+  messaging.onBackgroundMessage((payload) => {
     console.log(
       "[firebase-messaging-sw.js] Received background message ",
       payload
@@ -46,9 +71,9 @@ if ("serviceWorker" in navigator) {
     self.registration.showNotification(notificationTitle, notificationOptions);
   });
 
-  messaging.setBackgroundMessageHandler(messaging, function (payload) {
+  messaging.setBackgroundMessageHandler(function (payload) {
     const title = "Hello World";
-    const option = { body: payload.data.status };
+    const option = { data: { notification: { body: payload.data.status } } };
     return self.registration.showNotification(title, option);
   });
 }
