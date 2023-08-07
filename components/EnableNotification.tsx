@@ -67,13 +67,13 @@ export const EnableNotification = () => {
       reg.pushManager.getSubscription().then((sub) => {
         console.log("sub", sub);
 
-        if (sub === null) {
-          // Update UI to ask user to register for Push
-          console.log("Not subscribed to push service!");
-        } else {
-          // We have a subscription, update the database
-          console.log("Subscription object: ", sub);
+        if (sub) {
+          return sub;
         }
+
+        return reg.pushManager.subscribe({
+          userVisibleOnly: true,
+        });
       });
     });
   }, []);
