@@ -30,12 +30,10 @@ self.addEventListener("activate", (event) => {
   console.log("Hello/worker world from the Service Worker 1 🤙");
 });
 
-importScripts("https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js");
+import { getMessaging } from "firebase/messaging/sw";
+import { onBackgroundMessage } from "firebase/messaging/sw";
+import { initializeApp } from "firebase/app";
 
-console.log("root");
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
   authDomain: "habitai-391719.firebaseapp.com",
@@ -47,5 +45,20 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = firebase.initializeApp(firebaseConfig);
-const messaging = firebase.messaging();
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging(app);
+
+onBackgroundMessage(messaging, (payload) => {
+  console.log(
+    "[firebase-messaging-sw.js] Received background message ",
+    payload
+  );
+  // Customize notification here
+  const notificationTitle = "Background Message Title";
+  const notificationOptions = {
+    body: "Background Message body.",
+    icon: "/firebase-logo.png",
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});

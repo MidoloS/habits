@@ -1,4 +1,9 @@
-importScripts("https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js");
+importScripts(
+  "https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"
+);
+importScripts(
+  "https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging-compat.js"
+);
 
 console.log("root");
 
@@ -15,5 +20,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
+
+console.log("messaging", messaging);
+
+messaging.onBackgroundMessage(messaging, (payload) => {
+  console.log(
+    "[firebase-messaging-sw.js] Received background message ",
+    payload
+  );
+  // Customize notification here
+  const notificationTitle = "Background Message Title";
+  const notificationOptions = {
+    body: "Background Message body.",
+    icon: "/firebase-logo.png",
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
