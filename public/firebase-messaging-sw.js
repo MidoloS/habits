@@ -26,12 +26,12 @@ if ("serviceWorker" in navigator) {
 
   console.log("messaging", messaging);
 
-  messaging.onMessage((payload) => {
+  messaging.onMessage(messaging, (payload) => {
     console.log("Message received. ", payload);
     // ...
   });
 
-  messaging.onBackgroundMessage((payload) => {
+  messaging.onBackgroundMessage(messaging, (payload) => {
     console.log(
       "[firebase-messaging-sw.js] Received background message ",
       payload
@@ -46,7 +46,7 @@ if ("serviceWorker" in navigator) {
     self.registration.showNotification(notificationTitle, notificationOptions);
   });
 
-  messaging.setBackgroundMessageHandler(function (payload) {
+  messaging.setBackgroundMessageHandler(messaging, function (payload) {
     const title = "Hello World";
     const option = { body: payload.data.status };
     return self.registration.showNotification(title, option);
