@@ -10,7 +10,7 @@ self.addEventListener("message", (event) => {
 });
 
 self.addEventListener("push", (event) => {
-  console.log("push/sw/public", event);
+  console.log("push/sw/public", JSON.stringify(event));
   self.registration.showNotification("Background Message Title", {
     body: "Background Message body.",
     icon: "/icon-512x512.png",
