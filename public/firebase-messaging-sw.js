@@ -21,6 +21,16 @@ self.addEventListener("push", (event) => {
   });
 });
 
+self.addEventListener(
+  "notificationclick",
+  (event) => {
+    // open a window to the app's homepage and close the notification
+    event.waitUntil(clients.openWindow("https://habitai.co/home"));
+    event.notification.close();
+  },
+  false
+);
+
 // hello world on install
 self.addEventListener("install", (event) => {
   console.log("Hello/sw/public world from the Service Worker 2 🤙");
