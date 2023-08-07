@@ -13,6 +13,7 @@ self.addEventListener("message", (event) => {
   // OR use next-pwa injected workbox object
   //     window.workbox.messageSW({command: 'log', message: 'hello world'})
   console.log("Hello World");
+  self.registration.showNotification("Hello World");
 });
 
 self.addEventListener("push", (event) => {
@@ -32,6 +33,10 @@ self.addEventListener("activate", (event) => {
 import { getMessaging } from "firebase/messaging/sw";
 import { onBackgroundMessage } from "firebase/messaging/sw";
 
+// Retrieve an instance of Firebase Messaging so that it can handle background
+// messages.
+const messaging = getMessaging();
+
 onBackgroundMessage(messaging, (payload) => {
   console.log(
     "[firebase-messaging-sw.js] Received background message ",
@@ -46,21 +51,3 @@ onBackgroundMessage(messaging, (payload) => {
 
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
-
-import { initializeApp } from "firebase/app";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
-  authDomain: "habitai-391719.firebaseapp.com",
-  projectId: "habitai-391719",
-  storageBucket: "habitai-391719.appspot.com",
-  messagingSenderId: "104807834649",
-  appId: "1:104807834649:web:190cc2562190fc8894f688",
-  measurementId: "G-GPFDSMCCZW",
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-
-// Retrieve an instance of Firebase Messaging so that it can handle background
-// messages.
-const messaging = getMessaging(firebaseApp);
