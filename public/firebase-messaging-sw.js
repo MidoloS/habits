@@ -12,13 +12,45 @@ self.addEventListener("message", (event) => {
 self.addEventListener("push", (event) => {
   const data = event.data?.json() ?? {};
   const title = data.title || "Something Has Happened";
-  const message =
-    data.message || "Here's something you might want to check out.";
-  console.log("push/sw/public", JSON.stringify(event));
-  self.registration.showNotification(title, {
-    body: message || data.body,
-    icon: "/icon-512x512.png",
-  });
+  const date = new Date();
+
+  const hour = date.getHours();
+
+  if ([6, 7, 8, 9].includes(hour)) {
+    self.registration.showNotification("Are you awake? ☀️", {
+      body: "It's time to start your day!",
+      icon: "/icon-512x512.png",
+    });
+    self.registration.showNotification("Tidy bed 🛏️", {
+      body: "Make your bed and tidy your room!",
+      icon: "/icon-512x512.png",
+    });
+  }
+
+  if ([10, 11, 12, 13].includes(hour)) {
+    self.registration.showNotification("Have a healthy meal 🍱", {
+      body: "It's time to eat!",
+      icon: "/icon-512x512.png",
+    });
+  }
+
+  if ([14, 15, 16, 17].includes(hour)) {
+    self.registration.showNotification("Time to exercise 🏃", {
+      body: "It's time to exercise!",
+      icon: "/icon-512x512.png",
+    });
+    self.registration.showNotification("Don't forget to drink 🫗", {
+      body: "Keep hydrated!",
+      icon: "/icon-512x512.png",
+    });
+  }
+
+  if ([18, 19, 20, 21].includes(hour)) {
+    self.registration.showNotification("Time to relax 🧘", {
+      body: "Meditation can help you relax",
+      icon: "/icon-512x512.png",
+    });
+  }
 });
 
 self.addEventListener(
