@@ -11,6 +11,10 @@ self.addEventListener("message", (event) => {
 
 self.addEventListener("push", (event) => {
   console.log("push/sw/public", event);
+  self.registration.showNotification("Background Message Title", {
+    body: "Background Message body.",
+    icon: "/icon-512x512.png",
+  });
 });
 
 // hello world on install
