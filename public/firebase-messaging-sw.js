@@ -10,9 +10,13 @@ self.addEventListener("message", (event) => {
 });
 
 self.addEventListener("push", (event) => {
+  const data = event.data?.json() ?? {};
+  const title = data.title || "Something Has Happened";
+  const message =
+    data.message || "Here's something you might want to check out.";
   console.log("push/sw/public", JSON.stringify(event));
-  self.registration.showNotification("Background Message Title", {
-    body: "Background Message body.",
+  self.registration.showNotification(title, {
+    body: message || data.body,
     icon: "/icon-512x512.png",
   });
 });
