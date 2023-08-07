@@ -1,11 +1,14 @@
+"use client";
+
 import { Provider } from "@/components/Provider";
 import "./globals.css";
 import Script from "next/script";
 import { Inter, Montserrat } from "next/font/google";
+import { useEffect } from "react";
 
-export const metadata = {
-  title: "habitai.io",
-};
+// export const metadata = {
+//   title: "habitai.io",
+// };
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +17,14 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/firebase-messaging-sw.js");
+      }
+    });
+  }, []);
+
   return (
     <html lang="en">
       <head>

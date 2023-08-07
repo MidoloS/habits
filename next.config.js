@@ -6,9 +6,10 @@ const withPWA = require("next-pwa");
 
 const pwa = withPWA({
   pwa: {
-    dest: "public",
     register: true,
     skipWaiting: true,
+    dest: "public",
+    importScripts: ["/worker.js"],
   },
 });
 
