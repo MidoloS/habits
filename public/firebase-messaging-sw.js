@@ -25,7 +25,7 @@ self.addEventListener(
   "notificationclick",
   (event) => {
     // open a window to the app's homepage and close the notification
-    event.waitUntil(clients.openWindow("https://habitai.co/home"));
+    event.waitUntil(clients.openWindow("https://habitai.io/home"));
     event.notification.close();
   },
   false
