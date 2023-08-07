@@ -1,6 +1,9 @@
-import { initializeApp } from "firebase/app";
-import { getMessaging } from "firebase/messaging";
+importScripts("https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js");
 
+console.log("root");
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
   authDomain: "habitai-391719.firebaseapp.com",
@@ -12,6 +15,5 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-const messaging = getMessaging(app);
+export const app = firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
