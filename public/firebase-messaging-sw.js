@@ -22,30 +22,30 @@ if ("serviceWorker" in navigator) {
 
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
-  const messaging = firebase.messaging();
+  const messaging = firebase.messaging(app);
 
   console.log("messaging", messaging);
 
-  // messaging
-  //   .getToken(messaging, {
-  //     vapidKey:
-  //       "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
-  //   })
-  //   .then((currentToken) => {
-  //     if (currentToken) {
-  //       console.log("TOKEN: " + currentToken);
-  //     } else {
-  //       // Show permission request UI
-  //       console.log(
-  //         "No registration token available. Request permission to generate one."
-  //       );
-  //       // ...
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     console.log("An error occurred while retrieving token. ", err);
-  //     // ...
-  //   });
+  messaging
+    .getToken(messaging, {
+      vapidKey:
+        "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
+    })
+    .then((currentToken) => {
+      if (currentToken) {
+        console.log("TOKEN: " + currentToken);
+      } else {
+        // Show permission request UI
+        console.log(
+          "No registration token available. Request permission to generate one."
+        );
+        // ...
+      }
+    })
+    .catch((err) => {
+      console.log("An error occurred while retrieving token. ", err);
+      // ...
+    });
 
   messaging.onBackgroundMessage(messaging, (payload) => {
     console.log(
