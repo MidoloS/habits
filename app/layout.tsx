@@ -25,6 +25,8 @@ export default function BlogLayout({
     });
   }, []);
 
+  console.log(1);
+
   return (
     <html lang="en">
       <head>
