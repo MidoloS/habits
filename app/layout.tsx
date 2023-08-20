@@ -27,6 +27,8 @@ export default function BlogLayout({
 
   console.log(1);
 
+  console.log("nueva layour con el script");
+
   return (
     <html lang="en">
       <head>
@@ -47,6 +49,22 @@ export default function BlogLayout({
               r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
               a.appendChild(r);
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+          `,
+          }}
+        />
+        <Script
+          id="hothatAnalytics"
+          src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+          defer
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.OneSignalDeferred = window.OneSignalDeferred || [];
+              OneSignalDeferred.push(function(OneSignal) {
+                OneSignal.init({
+                  appId: "352fe6f6-53ed-41d6-b473-f42db3f87628",
+                });
+              });
           `,
           }}
         />
