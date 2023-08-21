@@ -32,7 +32,7 @@ export default function BlogLayout({
     OneSignal.push(function () {
       // @ts-ignore
       OneSignal.init({
-        appId: "b40b7cc7-13dc-4662-8b48-efa668f9b72a",
+        appId: "352fe6f6-53ed-41d6-b473-f42db3f87628",
         notifyButton: {
           enable: true,
         },
