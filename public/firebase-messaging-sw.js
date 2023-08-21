@@ -6,7 +6,7 @@ self.addEventListener("message", (event) => {
   //     window.workbox.messageSW({command: 'log', message: 'hello world'})
   console.log("Hello World");
   console.log(event);
-  self.registration.showNotification("Hello World");
+  self.registration.showNotification("puedo cambiar el titulo?");
 });
 
 self.addEventListener("push", (event) => {
