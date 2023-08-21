@@ -8,6 +8,53 @@ self.addEventListener("message", (event) => {
   console.log(event);
 });
 
+const notificationByHour = (hour) => {
+  switch (hour) {
+    case 9:
+      self.registration.showNotification("Are you awake? ☀️", {
+        body: "It's time to start your day!",
+        icon: "/icon-512x512.png",
+      });
+      break;
+    case 10:
+      self.registration.showNotification("Tidy bed 🛏️", {
+        body: "Make your bed and tidy your room!",
+        icon: "/icon-512x512.png",
+      });
+      break;
+    case 12:
+      self.registration.showNotification("Have a healthy meal 🍱", {
+        body: "It's time to eat!",
+        icon: "/icon-512x512.png",
+      });
+      break;
+    case 13:
+      self.registration.showNotification("Brush your teeth 🦷", {
+        body: "It only takes 2 minutes!",
+        icon: "/icon-512x512.png",
+      });
+      break;
+    case 16:
+      self.registration.showNotification("Time to exercise 🏃", {
+        body: "It's time to exercise!",
+        icon: "/icon-512x512.png",
+      });
+      break;
+    case 17:
+      self.registration.showNotification("Don't forget to drink 🫗", {
+        body: "Keep hydrated!",
+        icon: "/icon-512x512.png",
+      });
+      break;
+    case 21:
+      self.registration.showNotification("Time to relax 🧘", {
+        body: "Meditation can help you relax",
+        icon: "/icon-512x512.png",
+      });
+      break;
+  }
+};
+
 self.addEventListener("push", (event) => {
   const data = event.data?.json() ?? {};
   const title = data.title || "Something Has Happened";
@@ -22,41 +69,7 @@ self.addEventListener("push", (event) => {
     icon: "/icon-512x512.png",
   });
 
-  if ([6, 7, 8, 9].includes(hour)) {
-    self.registration.showNotification("Are you awake? ☀️", {
-      body: "It's time to start your day!",
-      icon: "/icon-512x512.png",
-    });
-    self.registration.showNotification("Tidy bed 🛏️", {
-      body: "Make your bed and tidy your room!",
-      icon: "/icon-512x512.png",
-    });
-  }
-
-  if ([10, 11, 12, 13].includes(hour)) {
-    self.registration.showNotification("Have a healthy meal 🍱", {
-      body: "It's time to eat!",
-      icon: "/icon-512x512.png",
-    });
-  }
-
-  if ([14, 15, 16, 17].includes(hour)) {
-    self.registration.showNotification("Time to exercise 🏃", {
-      body: "It's time to exercise!",
-      icon: "/icon-512x512.png",
-    });
-    self.registration.showNotification("Don't forget to drink 🫗", {
-      body: "Keep hydrated!",
-      icon: "/icon-512x512.png",
-    });
-  }
-
-  if ([18, 19, 20, 21].includes(hour)) {
-    self.registration.showNotification("Time to relax 🧘", {
-      body: "Meditation can help you relax",
-      icon: "/icon-512x512.png",
-    });
-  }
+  notificationByHour(hour);
 });
 
 self.addEventListener(
@@ -72,6 +85,8 @@ self.addEventListener(
     console.log(event?.notification?.data);
     console.log("datatype3");
     console.log(event.notification.data?.json());
+    console.log("datatype4");
+    console.log(event.notification);
     event.waitUntil(clients.openWindow("https://habitai.io/home"));
     event.notification.close();
   },
