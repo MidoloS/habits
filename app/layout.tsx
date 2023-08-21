@@ -20,6 +20,8 @@ export default function BlogLayout({
   useEffect(() => {
     window.addEventListener("load", () => {
       if ("serviceWorker" in navigator) {
+        console.log(0);
+
         navigator.serviceWorker.register("/firebase-messaging-sw.js");
         navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
           console.log("restier one signal", a);
