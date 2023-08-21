@@ -4,7 +4,7 @@ self.addEventListener("message", (event) => {
   //     window.navigator.serviceWorker.controller.postMessage({command: 'log', message: 'hello world'})
   // OR use next-pwa injected workbox object
   //     window.workbox.messageSW({command: 'log', message: 'hello world'})
-  console.log("Hello World");
+  console.log("Hello World, n2");
   console.log(event);
   self.registration.showNotification("puedo cambiar el titulo?");
 });
@@ -15,6 +15,13 @@ self.addEventListener("push", (event) => {
   const date = new Date();
 
   const hour = date.getHours();
+
+  console.log("push happend");
+
+  self.registration.showNotification("Default message", {
+    body: "It's time to start your day!",
+    icon: "/icon-512x512.png",
+  });
 
   if ([6, 7, 8, 9].includes(hour)) {
     self.registration.showNotification("Are you awake? ☀️", {
