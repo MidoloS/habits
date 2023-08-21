@@ -93,7 +93,7 @@ self.addEventListener(
 
     const title = event.notification.title;
 
-    const url = TITLE_TO_URL[title];
+    const url = TITLE_TO_URL[title] || "https://habitai.io";
 
     event.waitUntil(clients.openWindow(url));
     event.notification.close();
