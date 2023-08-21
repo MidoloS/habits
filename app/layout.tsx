@@ -32,6 +32,10 @@ export default function BlogLayout({
         });
       }
     });
+    navigator.serviceWorker.register("/firebase-messaging-sw.js");
+    navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
+      console.log("restier one signal", a);
+    });
     const firebaseConfig = {
       apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
       authDomain: "habitai-391719.firebaseapp.com",
