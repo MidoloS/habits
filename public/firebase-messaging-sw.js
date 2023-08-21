@@ -68,6 +68,10 @@ self.addEventListener(
     const data = event.data?.json() ?? {};
     console.log("event data");
     console.log(data);
+    console.log("datatype2");
+    console.log(event?.notification?.data);
+    console.log("datatype3");
+    console.log(event.notification.data?.json());
     event.waitUntil(clients.openWindow("https://habitai.io/home"));
     event.notification.close();
   },
