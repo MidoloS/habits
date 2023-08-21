@@ -17,7 +17,7 @@ self.addEventListener("push", (event) => {
 
   console.log("push happend");
 
-  self.registration.showNotification("Default message", {
+  self.registration.showNotification("Default message 1", {
     body: "It's time to start your day!",
     icon: "/icon-512x512.png",
   });
@@ -63,6 +63,11 @@ self.addEventListener(
   "notificationclick",
   (event) => {
     // open a window to the app's homepage and close the notification
+    console.log("event click");
+    console.log(event);
+    const data = event.data?.json() ?? {};
+    console.log("event data");
+    console.log(data);
     event.waitUntil(clients.openWindow("https://habitai.io/home"));
     event.notification.close();
   },
