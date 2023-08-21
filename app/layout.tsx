@@ -21,7 +21,9 @@ export default function BlogLayout({
     window.addEventListener("load", () => {
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("/firebase-messaging-sw.js");
-        navigator.serviceWorker.register("/OneSignalSDKWorker.js");
+        navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
+          console.log("restier one signal", a);
+        });
       }
     });
   }, []);
