@@ -19,6 +19,8 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
+  console.log("funciona, volver aca en caso de error");
+
   useEffect(() => {
     window.addEventListener("load", () => {
       if ("serviceWorker" in navigator) {
