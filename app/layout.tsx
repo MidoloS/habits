@@ -26,6 +26,9 @@ export default function BlogLayout({
         });
       }
     });
+    navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
+      console.log("restier one signal wwwwww", a);
+    });
   }, []);
 
   console.log(1);
