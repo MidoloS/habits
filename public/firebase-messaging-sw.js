@@ -77,7 +77,6 @@ const notificationByHour = (hour) => {
 
 self.addEventListener("push", (event) => {
   const data = event.data?.json() ?? {};
-  const title = data.title || "Something Has Happened";
   const date = new Date();
 
   const hour = date.getHours();
