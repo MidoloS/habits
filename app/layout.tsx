@@ -26,9 +26,28 @@ export default function BlogLayout({
         });
       }
     });
+    // @ts-ignore
+    window.OneSignal = window.OneSignal || [];
+    // @ts-ignore
+    OneSignal.push(function () {
+      // @ts-ignore
+      OneSignal.init({
+        appId: "b40b7cc7-13dc-4662-8b48-efa668f9b72a",
+        notifyButton: {
+          enable: true,
+        },
+
+        allowLocalhostAsSecureOrigin: true,
+      });
+    });
     navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
       console.log("restier one signal wwwwww", a);
     });
+
+    return () => {
+      // @ts-ignore
+      window.OneSignal = undefined;
+    };
   }, []);
 
   console.log(1);
@@ -59,21 +78,9 @@ export default function BlogLayout({
           }}
         />
         <Script
-          id="hothatAnalytics"
-          src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-          defer
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.OneSignalDeferred = window.OneSignalDeferred || [];
-              OneSignalDeferred.push(function(OneSignal) {
-                OneSignal.init({
-                  appId: "352fe6f6-53ed-41d6-b473-f42db3f87628",
-                });
-              });
-          `,
-          }}
-        />
+          src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+          async
+        ></Script>
       </head>
 
       <body className={inter.className}>
