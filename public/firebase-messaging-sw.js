@@ -87,6 +87,12 @@ self.addEventListener(
     console.log(event.notification.data?.json());
     console.log("datatype4");
     console.log(event.notification);
+    console.log("datatype5");
+    console.log(event?.notification?.data?.FCM_MSG);
+    console.log("datatype6");
+    console.log(event?.notification?.data?.FCM_MSG?.data);
+    console.log("datatype7");
+    console.log(event?.notification?.data?.FCM_MSG?.data?.redirectoTo);
     event.waitUntil(clients.openWindow("https://habitai.io/home"));
     event.notification.close();
   },
