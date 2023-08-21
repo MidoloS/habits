@@ -8,46 +8,66 @@ self.addEventListener("message", (event) => {
   console.log(event);
 });
 
+const TITLES = {
+  GOOD_MORNING: "Are you awake? ☀️",
+  TIDY_BED: "Tidy bed 🛏️",
+  HEALTHY_MEAL: "Have a healthy meal 🍱",
+  BRUSH_TEETH: "Brush your teeth 🦷",
+  EXERCISE: "Time to exercise 🏃",
+  DRINK: "Don't forget to drink 🫗",
+  RELAX: "Time to relax 🧘",
+};
+
+const TITLE_TO_URL = {
+  [TITLES.GOOD_MORNING]: "https://habitai.io/habit/wakeup/complete",
+  [TITLES.TIDY_BED]: "https://habitai.io/habit/tidy/complete",
+  [TITLES.HEALTHY_MEAL]: "https://habitai.io/habit/eat/complete",
+  [TITLES.BRUSH_TEETH]: "https://habitai.io/habit/brush/complete",
+  [TITLES.EXERCISE]: "https://habitai.io/habit/train/complete",
+  [TITLES.DRINK]: "https://habitai.io/habit/drink/complete",
+  [TITLES.RELAX]: "https://habitai.io/habit/meditate/complete",
+};
+
 const notificationByHour = (hour) => {
   switch (hour) {
     case 9:
-      self.registration.showNotification("Are you awake? ☀️", {
+      self.registration.showNotification(TITLES.GOOD_MORNING, {
         body: "It's time to start your day!",
         icon: "/icon-512x512.png",
       });
       break;
     case 10:
-      self.registration.showNotification("Tidy bed 🛏️", {
+      self.registration.showNotification(TITLES.TIDY_BED, {
         body: "Make your bed and tidy your room!",
         icon: "/icon-512x512.png",
       });
       break;
     case 12:
-      self.registration.showNotification("Have a healthy meal 🍱", {
+      self.registration.showNotification(TITLES.HEALTHY_MEAL, {
         body: "It's time to eat!",
         icon: "/icon-512x512.png",
       });
       break;
     case 13:
-      self.registration.showNotification("Brush your teeth 🦷", {
+      self.registration.showNotification(TITLES.BRUSH_TEETH, {
         body: "It only takes 2 minutes!",
         icon: "/icon-512x512.png",
       });
       break;
     case 16:
-      self.registration.showNotification("Time to exercise 🏃", {
+      self.registration.showNotification(TITLES.EXERCISE, {
         body: "It's time to exercise!",
         icon: "/icon-512x512.png",
       });
       break;
     case 17:
-      self.registration.showNotification("Don't forget to drink 🫗", {
+      self.registration.showNotification(TITLES.DRINK, {
         body: "Keep hydrated!",
         icon: "/icon-512x512.png",
       });
       break;
     case 21:
-      self.registration.showNotification("Time to relax 🧘", {
+      self.registration.showNotification(TITLES.RELAX, {
         body: "Meditation can help you relax",
         icon: "/icon-512x512.png",
       });
@@ -64,11 +84,6 @@ self.addEventListener("push", (event) => {
 
   console.log("push happend");
 
-  self.registration.showNotification("Default message 1", {
-    body: "It's time to start your day!",
-    icon: "/icon-512x512.png",
-  });
-
   notificationByHour(hour);
 });
 
@@ -76,24 +91,12 @@ self.addEventListener(
   "notificationclick",
   (event) => {
     // open a window to the app's homepage and close the notification
-    console.log("event click");
-    console.log(event);
-    const data = event.data?.json() ?? {};
-    console.log("event data");
-    console.log(data);
-    console.log("datatype2");
-    console.log(event?.notification?.data);
-    console.log("datatype3");
-    console.log(event.notification.data?.json());
-    console.log("datatype4");
-    console.log(event.notification);
-    console.log("datatype5");
-    console.log(event?.notification?.data?.FCM_MSG);
-    console.log("datatype6");
-    console.log(event?.notification?.data?.FCM_MSG?.data);
-    console.log("datatype7");
-    console.log(event?.notification?.data?.FCM_MSG?.data?.redirectoTo);
-    event.waitUntil(clients.openWindow("https://habitai.io/home"));
+
+    const title = event.notification.title;
+
+    const url = TITLE_TO_URL[title];
+
+    event.waitUntil(clients.openWindow(url));
     event.notification.close();
   },
   false
