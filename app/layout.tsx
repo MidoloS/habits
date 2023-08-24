@@ -3,14 +3,9 @@
 import { Provider } from "@/components/Provider";
 import "./globals.css";
 import Script from "next/script";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import { useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getMessaging } from "firebase/messaging";
-
-// export const metadata = {
-//   title: "habitai.io",
-// };
 
 const inter = Inter({ subsets: ["latin"] });
 
