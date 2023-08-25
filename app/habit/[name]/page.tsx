@@ -50,6 +50,11 @@ export default async function Page({
             <div className="flex flex-row justify-between text-center">
               <HabitFeatures habit={habit} />
             </div>
+            <div>
+              <button className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl p-3 flex items-center justify-center font-medium text-sm w-full">
+                Read More
+              </button>
+            </div>
           </div>
         </main>
       </div>

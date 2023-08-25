@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Switch } from "./Switch";
 import { getMessaging, getToken } from "firebase/messaging";
 import { initializeApp } from "firebase/app";
 import { createPortal } from "react-dom";
