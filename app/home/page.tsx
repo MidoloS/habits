@@ -34,7 +34,7 @@ const Home = async () => {
 
   return (
     <>
-      <EnableNotification />
+      {/* <EnableNotification /> */}
       <HabitCompleted />
       <main className="flex flex-col gap-8 p-4">
         <div className="flex flex-col gap-8">
