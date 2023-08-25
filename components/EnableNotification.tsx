@@ -104,7 +104,7 @@ export const EnableNotification = () => {
             Would you like to improve?
           </p>
           <h1 className="font-heading text-lg font-semibold text-center">
-            Daily Reminder's
+            Daily Reminder&apos;s
           </h1>
         </div>
         <p>
