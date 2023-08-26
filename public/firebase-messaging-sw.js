@@ -37,53 +37,53 @@ const notificationByHour = (hour) => {
     self.registration.showNotification(TITLES.GOOD_MORNING, {
       body: "Rise & shine",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.TIDY_BED, {
       body: "Start Fresh!",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.LAUNDRY, {
       body: "Act and Achieve!",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
   }
   if (hour >= 10 && hour <= 13) {
     self.registration.showNotification(TITLES.HEALTHY_MEAL, {
       body: "Fuel Up!",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.BRUSH_TEETH, {
       body: "Fresh smile",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
   }
   if (hour >= 14 && hour <= 17) {
     self.registration.showNotification(TITLES.EXERCISE, {
       body: "Sweat It Out!",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.DRINK, {
       body: "Hydrate & Thrive!",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
   }
   if (hour >= 18 && hour <= 21) {
     self.registration.showNotification(TITLES.READ, {
       body: "Enrich mind!",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.RELAX, {
       body: "Breathe deeply",
       icon: "/icon-512x512.png",
-      badge: "/badge.svg",
+      badge: "/badge.png",
     });
   }
 };
