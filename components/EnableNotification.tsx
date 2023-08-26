@@ -1,41 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Switch } from "./Switch";
 import { getMessaging, getToken } from "firebase/messaging";
 import { initializeApp } from "firebase/app";
-import { createPortal } from "react-dom";
 
 // import { requestPermission } from "@/firebase/helpers";
 
 export const EnableNotification = () => {
-  const [permission, setPermission] = useState(true);
-
-  function requestPermission() {
-    console.log("Requesting permission...");
-    Notification.requestPermission().then((a) => {
-      console.log({ a });
-      setPermission(a === "granted");
-
-      if (a === "granted") {
-        console.log("Notification permission granted.");
-      }
-    });
-  }
+  const [permission, setPermission] = useState(false);
 
   useEffect(() => {
     console.log("useEffect");
 
-    if ("serviceWorker" in navigator && "PushManager" in window) {
-      (async () => {
-        console.log("navigator", navigator);
-        console.log("support", "serviceWorker" in navigator);
+    (async () => {
+      console.log("navigator", navigator);
+      console.log("support", "serviceWorker" in navigator);
 
-        const res = await navigator.serviceWorker.register(
-          "/firebase-messaging-sw.js"
-        );
-        console.log("response");
-        console.log(res);
-      })();
+      const res = await navigator.serviceWorker.register(
+        "/firebase-messaging-sw.js"
+      );
+      console.log("response");
+      console.log(res);
+    })();
+
+    if ("serviceWorker" in navigator && "PushManager" in window) {
       const firebaseConfig = {
         apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
         authDomain: "habitai-391719.firebaseapp.com",
@@ -87,31 +76,36 @@ export const EnableNotification = () => {
         });
       });
     });
-
-    requestPermission();
   }, []);
 
   if (permission) {
     return null;
   }
 
-  return createPortal(
-    <div className="absolute top-0 left-0 bg-slate-950 bg-opacity-80 w-screen h-screen z-50 p-8 flex justify-center items-center">
-      <div className="bg-slate-50 p-6 rounded-xl relative flex flex-col gap-4 max-w-md">
-        <div>
-          <p className="text-center text-slate-500 text-sm mb-2">
-            Would you like to improve?
-          </p>
-          <h1 className="font-heading text-lg font-semibold text-center">
-            Daily Reminder&apos;s
-          </h1>
+  function requestPermission() {
+    console.log("Requesting permission...");
+    Notification.requestPermission().then((permission) => {
+      console.log({ permission });
+
+      if (permission === "granted") {
+        console.log("Notification permission granted.");
+      }
+    });
+  }
+
+  return (
+    <div className="absolute">
+      <div className="bg-slate-950 flex justify-between items-center p-4 rounded-lg w-screen">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-slate-50 font-medium">
+            Wanna improve your habits?
+          </h3>
+          <p className="text-slate-300 text-sm">Enable Daily Reminder</p>
         </div>
-        <p>
-          People who turn on notifications are 60% more likely to compel their
-          habits.
-        </p>
+        <div>
+          <Switch onClick={requestPermission} />
+        </div>
       </div>
-    </div>,
-    document.body
+    </div>
   );
 };
