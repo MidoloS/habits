@@ -9,69 +9,82 @@ self.addEventListener("message", (event) => {
 });
 
 const TITLES = {
-  GOOD_MORNING: "Are you awake? ☀️",
+  GOOD_MORNING: "Good Morning! ☀️",
   TIDY_BED: "Tidy bed 🛏️",
-  HEALTHY_MEAL: "Have a healthy meal 🍱",
-  BRUSH_TEETH: "Brush your teeth 🦷",
-  EXERCISE: "Time to exercise 🏃",
-  DRINK: "Don't forget to drink 🫗",
+  LAUNDRY: "Do the laundry 🧺",
+  HEALTHY_MEAL: "Healthy Lunch 🥪",
+  BRUSH_TEETH: "Brush teeth 😁",
+  EXERCISE: "Let's move! 🏃",
+  DRINK: "Drink Water 🌊",
   RELAX: "Time to relax 🧘",
+  READ: "Read 5 pages 📖",
 };
 
 const TITLE_TO_URL = {
   [TITLES.GOOD_MORNING]: "https://habitai.io/habit/wakeup/complete",
   [TITLES.TIDY_BED]: "https://habitai.io/habit/tidy/complete",
+  [TITLES.LAUNDRY]: "https://habitai.io/habit/laundry/complete",
   [TITLES.HEALTHY_MEAL]: "https://habitai.io/habit/eat/complete",
   [TITLES.BRUSH_TEETH]: "https://habitai.io/habit/brush/complete",
   [TITLES.EXERCISE]: "https://habitai.io/habit/train/complete",
   [TITLES.DRINK]: "https://habitai.io/habit/drink/complete",
   [TITLES.RELAX]: "https://habitai.io/habit/meditate/complete",
+  [TITLES.READ]: "https://habitai.io/habit/read/complete",
 };
 
 const notificationByHour = (hour) => {
-  switch (hour) {
-    case 9:
-      self.registration.showNotification(TITLES.GOOD_MORNING, {
-        body: "It's time to start your day!",
-        icon: "/icon-512x512.png",
-      });
-      break;
-    case 10:
-      self.registration.showNotification(TITLES.TIDY_BED, {
-        body: "Make your bed and tidy your room!",
-        icon: "/icon-512x512.png",
-      });
-      break;
-    case 12:
-      self.registration.showNotification(TITLES.HEALTHY_MEAL, {
-        body: "It's time to eat!",
-        icon: "/icon-512x512.png",
-      });
-      break;
-    case 13:
-      self.registration.showNotification(TITLES.BRUSH_TEETH, {
-        body: "It only takes 2 minutes!",
-        icon: "/icon-512x512.png",
-      });
-      break;
-    case 16:
-      self.registration.showNotification(TITLES.EXERCISE, {
-        body: "It's time to exercise!",
-        icon: "/icon-512x512.png",
-      });
-      break;
-    case 17:
-      self.registration.showNotification(TITLES.DRINK, {
-        body: "Keep hydrated!",
-        icon: "/icon-512x512.png",
-      });
-      break;
-    case 21:
-      self.registration.showNotification(TITLES.RELAX, {
-        body: "Meditation can help you relax",
-        icon: "/icon-512x512.png",
-      });
-      break;
+  if (hour >= 6 && hour <= 9) {
+    self.registration.showNotification(TITLES.GOOD_MORNING, {
+      body: "Rise & shine",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+    self.registration.showNotification(TITLES.TIDY_BED, {
+      body: "Start Fresh!",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+    self.registration.showNotification(TITLES.LAUNDRY, {
+      body: "Act and Achieve!",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+  }
+  if (hour >= 10 && hour <= 13) {
+    self.registration.showNotification(TITLES.HEALTHY_MEAL, {
+      body: "Fuel Up!",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+    self.registration.showNotification(TITLES.BRUSH_TEETH, {
+      body: "Fresh smile",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+  }
+  if (hour >= 14 && hour <= 17) {
+    self.registration.showNotification(TITLES.EXERCISE, {
+      body: "Sweat It Out!",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+    self.registration.showNotification(TITLES.DRINK, {
+      body: "Hydrate & Thrive!",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+  }
+  if (hour >= 18 && hour <= 21) {
+    self.registration.showNotification(TITLES.READ, {
+      body: "Enrich mind!",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
+    self.registration.showNotification(TITLES.RELAX, {
+      body: "Breathe deeply",
+      icon: "/icon-512x512.png",
+      badge: "/icon-512x512.png",
+    });
   }
 };
 
