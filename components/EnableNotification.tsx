@@ -101,7 +101,7 @@ export const EnableNotification = () => {
 
   return createPortal(
     <div className="absolute top-0 left-0 bg-slate-950 bg-opacity-80 w-screen h-screen z-50 p-10 flex justify-center items-center">
-      <div className="bg-slate-50 p-8 rounded-xl relative flex flex-col gap-4 max-w-md">
+      <div className="bg-slate-50 p-8 rounded-xl relative flex flex-col gap-4 max-w-xs items-center">
         <div>
           <p className="text-center text-slate-500 text-sm mb-2">
             Wanna improve your habits?
@@ -110,7 +110,7 @@ export const EnableNotification = () => {
             Enable Daily Reminder
           </h1>
         </div>
-        <p className="text-center">
+        <p className="text-center text-sm">
           People who turn on notifications are{" "}
           <span className="font-semibold ">
             60% more likely to compel their habits.
