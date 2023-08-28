@@ -10,11 +10,11 @@ self.addEventListener("message", (event) => {
 
 const TITLES = {
   GOOD_MORNING: "Good Morning! ☀️",
-  TIDY_BED: "Tidy bed 🛏️",
-  LAUNDRY: "Do the laundry 🧺",
+  TIDY_BED: "Make the Bed 🛏️",
+  LAUNDRY: "Laundry Time! 👕",
   HEALTHY_MEAL: "Healthy Lunch 🥪",
-  BRUSH_TEETH: "Brush teeth 😁",
-  EXERCISE: "Let's move! 🏃",
+  BRUSH_TEETH: "Brush Teeth 😁",
+  EXERCISE: "Let's Move! 🏃",
   DRINK: "Drink Water 🌊",
   RELAX: "Time to relax 🧘",
   READ: "Read 5 pages 📖",
