@@ -33,55 +33,55 @@ const TITLE_TO_URL = {
 };
 
 const notificationByHour = (hour) => {
-  if (hour >= 6 && hour <= 9) {
+  if (hour >= 7 && hour <= 10) {
     self.registration.showNotification(TITLES.GOOD_MORNING, {
-      body: "Rise & shine",
+      body: "Rise & shine! Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.TIDY_BED, {
-      body: "Start Fresh!",
+      body: "Start Fresh! Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.LAUNDRY, {
-      body: "Act and Achieve!",
+      body: "Act and Achieve! Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
   }
-  if (hour >= 10 && hour <= 13) {
+  if (hour >= 11 && hour <= 14) {
     self.registration.showNotification(TITLES.HEALTHY_MEAL, {
-      body: "Fuel Up!",
+      body: "Fuel Up! Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.BRUSH_TEETH, {
-      body: "Fresh smile",
+      body: "Fresh smile. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
   }
-  if (hour >= 14 && hour <= 17) {
+  if (hour >= 15 && hour <= 18) {
     self.registration.showNotification(TITLES.EXERCISE, {
-      body: "Sweat It Out!",
+      body: "Sweat It Out! Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.DRINK, {
-      body: "Hydrate & Thrive!",
+      body: "Hydrate & Thrive! Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
   }
-  if (hour >= 18 && hour <= 21) {
+  if (hour >= 19 && hour <= 22) {
     self.registration.showNotification(TITLES.READ, {
-      body: "Enrich mind!",
+      body: "Enrich mind! Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.RELAX, {
-      body: "Breathe deeply",
+      body: "Breathe deeply. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
