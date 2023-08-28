@@ -12,7 +12,7 @@ const TITLES = {
   GOOD_MORNING: "Good Morning! ☀️",
   TIDY_BED: "Make the Bed 🛏️",
   LAUNDRY: "Laundry Time! 👕",
-  HEALTHY_MEAL: "Healthy Lunch 🥪",
+  HEALTHY_MEAL: "Eat Fruit 🍎",
   BRUSH_TEETH: "Brush Teeth 😁",
   EXERCISE: "Let's Move! 🏃",
   DRINK: "Drink Water 🌊",
