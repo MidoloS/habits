@@ -4,11 +4,15 @@ import { useEffect, useState } from "react";
 import { Switch } from "./Switch";
 import { getMessaging, getToken } from "firebase/messaging";
 import { initializeApp } from "firebase/app";
+import { Modal } from "./Button/Modal";
+import { createPortal } from "react-dom";
+import { PrimaryButton } from "./Button/Primary";
 
 // import { requestPermission } from "@/firebase/helpers";
 
 export const EnableNotification = () => {
   const [permission, setPermission] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     console.log("useEffect");
@@ -47,8 +51,7 @@ export const EnableNotification = () => {
         .then((currentToken) => {
           console.log("currentToken: ", currentToken);
           if (currentToken) {
-            // Send the token to your server and update the UI if necessary
-            // ...
+            setPermission(true);
           } else {
             // Show permission request UI
             console.log(
@@ -58,6 +61,7 @@ export const EnableNotification = () => {
           }
         })
         .catch((err) => {
+          setPermission(false);
           console.log("An error occurred while retrieving token. ", err);
           // ...
         });
@@ -78,7 +82,9 @@ export const EnableNotification = () => {
     });
   }, []);
 
-  if (permission) {
+  console.log({ permission });
+
+  if (!permission) {
     return null;
   }
 
@@ -93,19 +99,28 @@ export const EnableNotification = () => {
     });
   }
 
-  return (
-    <div className="absolute">
-      <div className="bg-slate-950 flex justify-between items-center p-4 rounded-lg w-screen">
-        <div className="flex flex-col gap-1">
-          <h3 className="text-slate-50 font-medium">
-            Wanna improve your habits?
-          </h3>
-          <p className="text-slate-300 text-sm">Enable Daily Reminder</p>
-        </div>
+  return createPortal(
+    <div className="absolute top-0 left-0 bg-slate-950 bg-opacity-80 w-screen h-screen z-50 p-8 flex justify-center items-center">
+      <div className="bg-slate-50 p-6 rounded-xl relative flex flex-col gap-4 max-w-md">
         <div>
-          <Switch onClick={requestPermission} />
+          <p className="text-center text-slate-500 text-sm mb-2">
+            Wanna improve your habits?
+          </p>
+          <h1 className="font-heading text-lg font-semibold text-center">
+            Enable Daily Reminder
+          </h1>
         </div>
+        <p>
+          People who turn on notifications are
+          <span className="font-medium">
+            60% more likely to compel their habits.
+          </span>
+        </p>
+        <PrimaryButton onClick={requestPermission}>
+          Enable daily remainder
+        </PrimaryButton>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
