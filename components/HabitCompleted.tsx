@@ -31,10 +31,7 @@ export const HabitCompleted = () => {
     success.play();
 
     const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti({
-      emojis: ["⚡️", "💥", "✨", "💫", "🌸"],
-      emojiSize: 150,
-    });
+    jsConfetti.addConfetti();
   }, [sub?.habit?.name]);
 
   if (!sub) {
@@ -45,6 +42,9 @@ export const HabitCompleted = () => {
     return null;
   }
 
+  if (!sub?.habit?.name) {
+    return null;
+  }
   return (
     <div className="w-screen h-screen z-10 bg-black bg-opacity-80 flex items-center justify-center absolute top-0 p-8">
       <div className="bg-slate-50 z-20 p-6 rounded-xl gap-4 flex flex-col max-w-md">
