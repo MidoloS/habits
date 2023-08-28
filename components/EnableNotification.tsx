@@ -84,7 +84,7 @@ export const EnableNotification = () => {
 
   console.log({ permission });
 
-  if (!permission) {
+  if (permission) {
     return null;
   }
 
