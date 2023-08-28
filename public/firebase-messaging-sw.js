@@ -33,7 +33,7 @@ const TITLE_TO_URL = {
 };
 
 const notificationByHour = (hour) => {
-  if (hour >= 7 && hour <= 10) {
+  if (hour >= 7 && hour <= 9) {
     self.registration.showNotification(TITLES.GOOD_MORNING, {
       body: "Rise & shine! Click here to complete habit",
       icon: "/icon-512x512.png",
@@ -50,7 +50,7 @@ const notificationByHour = (hour) => {
       badge: "/badge.png",
     });
   }
-  if (hour >= 11 && hour <= 14) {
+  if (hour >= 12 && hour <= 14) {
     self.registration.showNotification(TITLES.HEALTHY_MEAL, {
       body: "Fuel Up! Click here to complete habit",
       icon: "/icon-512x512.png",
