@@ -35,53 +35,53 @@ const TITLE_TO_URL = {
 const notificationByHour = (hour) => {
   if (hour >= 7 && hour <= 9) {
     self.registration.showNotification(TITLES.GOOD_MORNING, {
-      body: "Rise & shine! Click here to complete habit",
+      body: "1 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.TIDY_BED, {
-      body: "Start Fresh! Click here to complete habit",
+      body: "5 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.LAUNDRY, {
-      body: "Act and Achieve! Click here to complete habit",
+      body: "5 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
   }
   if (hour >= 12 && hour <= 14) {
     self.registration.showNotification(TITLES.HEALTHY_MEAL, {
-      body: "Fuel Up! Click here to complete habit",
+      body: "3 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.BRUSH_TEETH, {
-      body: "Fresh smile. Click here to complete habit",
+      body: "2 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
   }
   if (hour >= 15 && hour <= 18) {
     self.registration.showNotification(TITLES.EXERCISE, {
-      body: "Sweat It Out! Click here to complete habit",
+      body: "30 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.DRINK, {
-      body: "Hydrate & Thrive! Click here to complete habit",
+      body: "1 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
   }
   if (hour >= 19 && hour <= 22) {
     self.registration.showNotification(TITLES.READ, {
-      body: "Enrich mind! Click here to complete habit",
+      body: "20 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
     self.registration.showNotification(TITLES.RELAX, {
-      body: "Breathe deeply. Click here to complete habit",
+      body: "10 min. Click here to complete habit",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
