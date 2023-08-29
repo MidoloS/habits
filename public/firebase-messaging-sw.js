@@ -14,7 +14,7 @@ const TITLES = {
   LAUNDRY: "Laundry Time! 👕",
   HEALTHY_MEAL: "Eat Fruit 🍎",
   BRUSH_TEETH: "Brush Teeth 😁",
-  EXERCISE: "Let's Move! 🏃",
+  WALK: "Touch grass 🌳",
   DRINK: "Drink Water 🌊",
   RELAX: "Time to relax 🧘",
   READ: "Read 5 pages 📖",
@@ -26,7 +26,7 @@ const TITLE_TO_URL = {
   [TITLES.LAUNDRY]: "https://habitai.io/habit/laundry/complete",
   [TITLES.HEALTHY_MEAL]: "https://habitai.io/habit/eat/complete",
   [TITLES.BRUSH_TEETH]: "https://habitai.io/habit/brush/complete",
-  [TITLES.EXERCISE]: "https://habitai.io/habit/train/complete",
+  [TITLES.WALK]: "https://habitai.io/habit/walk/complete",
   [TITLES.DRINK]: "https://habitai.io/habit/drink/complete",
   [TITLES.RELAX]: "https://habitai.io/habit/meditate/complete",
   [TITLES.READ]: "https://habitai.io/habit/read/complete",
@@ -63,8 +63,8 @@ const notificationByHour = (hour) => {
     });
   }
   if (hour >= 15 && hour <= 18) {
-    self.registration.showNotification(TITLES.EXERCISE, {
-      body: "30 min. Click here to complete.",
+    self.registration.showNotification(TITLES.WALK, {
+      body: "15 min. Click here to complete.",
       icon: "/icon-512x512.png",
       badge: "/badge.png",
     });
