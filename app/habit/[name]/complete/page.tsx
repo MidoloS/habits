@@ -17,6 +17,8 @@ export default async function Page({
     redirect("/signin?callbackUrl=/");
   }
 
+  console.log("123");
+
   const subscriptions = session?.user?.subs || [];
 
   if (!subscriptions.map((sub) => sub.habitName).includes(name)) {
