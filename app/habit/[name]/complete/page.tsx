@@ -17,6 +17,12 @@ export default async function Page({
     redirect("/signin?callbackUrl=/");
   }
 
+  const subscriptions = session?.user?.subs || [];
+
+  if (!subscriptions.map((sub) => sub.habitName).includes(name)) {
+    redirect(`https://www.habitai.io/habit/${name}`);
+  }
+
   const { data: habit } = await getHabit(name);
 
   if (!habit?.createdAt) {
