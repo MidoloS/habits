@@ -74,7 +74,7 @@ const notificationByHour = (hour) => {
       badge: "/badge.png",
     });
   }
-  if (hour >= 19 && hour <= 22) {
+  if (hour >= 19 && hour <= 21) {
     self.registration.showNotification(TITLES.READ, {
       body: "20 min. Click here to complete.",
       icon: "/icon-512x512.png",
