@@ -13,6 +13,11 @@ const pointsToLevel = (points: number) => {
   return Math.floor(boost * Math.sqrt(points));
 };
 
+const formatName = (name: string) => {
+  const [first, last] = name.split(" ");
+  return `${first}. ${last[0]}`;
+};
+
 export default async function Page() {
   const session = await getServerSession(authOptions);
 
@@ -24,45 +29,62 @@ export default async function Page() {
 
   console.log({ session });
 
+  const [first, second, third, ...otherUsers] = users;
+
   return (
     <>
       <Header />
-      <div className="relative w-full">
-        <Image
-          className="h-full w-full"
-          src="/leaderboard.png"
-          alt="leaderboard"
-          height={300}
-          width={252}
-        />
+      <h1 className="mt-8 absolute  flex w-full justify-center text-slate-900 font-semibold">
+        Leaderboard
+      </h1>
 
-        <div
-          className="
-      absolute bottom-0 flex h-full w-full items-center justify-center rounded-xl bg-gradient-to-t from-black to-transparent
-      "
-        >
-          <figure className="text-center w-full flex flex-col justify-center items-center h-full gap-4 mt-8">
+      <div className="p-6 bg-slate-100">
+        <h2 className="text-gray-500 font-semibold mt-20">Top Rankers</h2>
+        <div className="flex justify-around">
+          <div className="flex flex-col justify-center items-center">
             <Image
-              className="rounded-full border-2 border-slate-100 p-1"
-              src={session?.user?.image || "/default_user.png"}
-              height={100}
-              width={100}
+              className="rounded-full border-2 border-slate-950 p-[2px]"
+              src={second.img || "/default_user.png"}
+              width={70}
+              height={70}
               alt="user profile picture"
             />
-            <div>
-              <figcaption className="text-slate-200 font-medium">
-                {session?.user?.name}
-              </figcaption>
-              <figcaption className="text-slate-500 text-sm">
-                Lvl {pointsToLevel(session?.user?.points)} •
-                {session?.user?.points} xp
-              </figcaption>
-            </div>
-          </figure>
+            <p className="font-medium mt-2">{formatName(second.name)}</p>
+            <p className="text-sm text-slate-500">
+              Lvl {pointsToLevel(second.points)} • {second.points} xp
+            </p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <Image
+              className="rounded-full border-2 border-slate-950  p-[2px]"
+              src={first.img || "/default_user.png"}
+              width={90}
+              height={90}
+              alt="user profile picture"
+            />
+            <p className="font-medium mt-2">{formatName(first.name)}</p>
+            <p className="text-sm text-slate-500">
+              Lvl {pointsToLevel(first.points)} • {first.points} xp
+            </p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <Image
+              className="rounded-full border-2 border-slate-950 p-[2px]"
+              src={third.img || "/default_user.png"}
+              width={70}
+              height={70}
+              alt="user profile picture"
+            />
+            <p className="font-medium mt-2">{formatName(third.name)}</p>
+            <p className="text-sm text-slate-500">
+              Lvl {pointsToLevel(third.points)} • {third.points} xp
+            </p>
+          </div>
         </div>
       </div>
-      <div className="p-6 flex flex-col gap-4 max-h-96 overflow-y-auto">
-        {users.map((user, rank) => (
+      <div className="p-6 flex flex-col gap-4 ">
+        <h2 className="text-gray-500 font-semibold">All Rankers</h2>
+        {otherUsers.map((user, rank) => (
           <div
             className="flex items-center justify-between gap-4"
             key={user.email}
@@ -71,8 +93,8 @@ export default async function Page() {
               <Image
                 className="rounded-full"
                 src={user.img || "/default_user.png"}
-                width={70}
-                height={70}
+                width={50}
+                height={50}
                 alt="user profile picture"
               />
               <div className="flex flex-col">
