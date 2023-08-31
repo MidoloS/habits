@@ -83,11 +83,11 @@ export default async function Page() {
         </div>
       </div>
       <div className="p-6 flex flex-col  max-h-[30rem] ">
-        <h2 className="text-gray-500 font-semibold gap-4">All Rankers</h2>
-        <div className="overflow-y-auto flex flex-col gap-4 mt-4">
+        <h2 className="text-gray-500 font-semibold gap-4 ">All Rankers</h2>
+        <div className="overflow-y-auto flex flex-col gap-4 mt-4 mb-14">
           {otherUsers.map((user, rank) => (
             <div
-              className="flex items-center justify-between gap-4"
+              className="flex items-center justify-between gap-4 "
               key={user.email}
             >
               <div className="flex items-center gap-4">
