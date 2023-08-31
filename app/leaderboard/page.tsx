@@ -40,7 +40,7 @@ export default async function Page() {
 
       <div className="p-6 bg-slate-100">
         <h2 className="text-gray-500 font-semibold mt-20">Top Rankers</h2>
-        <div className="flex justify-around">
+        <div className="flex justify-around mb-8">
           <div className="flex flex-col justify-center items-center">
             <Image
               className="rounded-full border-2 border-slate-950 p-[2px]"
@@ -51,7 +51,7 @@ export default async function Page() {
             />
             <p className="font-medium mt-2">{formatName(second.name)}</p>
             <p className="text-sm text-slate-500">
-              Lvl {pointsToLevel(second.points)} • {second.points} xp
+              Lvl {pointsToLevel(second.points)}
             </p>
           </div>
           <div className="flex flex-col justify-center items-center">
@@ -64,7 +64,7 @@ export default async function Page() {
             />
             <p className="font-medium mt-2">{formatName(first.name)}</p>
             <p className="text-sm text-slate-500">
-              Lvl {pointsToLevel(first.points)} • {first.points} xp
+              Lvl {pointsToLevel(first.points)}
             </p>
           </div>
           <div className="flex flex-col justify-center items-center">
@@ -77,38 +77,40 @@ export default async function Page() {
             />
             <p className="font-medium mt-2">{formatName(third.name)}</p>
             <p className="text-sm text-slate-500">
-              Lvl {pointsToLevel(third.points)} • {third.points} xp
+              Lvl {pointsToLevel(third.points)}
             </p>
           </div>
         </div>
       </div>
-      <div className="p-6 flex flex-col gap-4 ">
-        <h2 className="text-gray-500 font-semibold">All Rankers</h2>
-        {otherUsers.map((user, rank) => (
-          <div
-            className="flex items-center justify-between gap-4"
-            key={user.email}
-          >
-            <div className="flex items-center gap-4">
-              <Image
-                className="rounded-full"
-                src={user.img || "/default_user.png"}
-                width={50}
-                height={50}
-                alt="user profile picture"
-              />
-              <div className="flex flex-col">
-                <h1 className="text-slate-950 font-medium">{user.name}</h1>
-                <p className="text-sm text-slate-500">
-                  Lvl {pointsToLevel(user.points)} • {user.points} xp
-                </p>
+      <div className="p-6 flex flex-col  max-h-[30rem] ">
+        <h2 className="text-gray-500 font-semibold gap-4">All Rankers</h2>
+        <div className="overflow-y-auto flex flex-col gap-4 mt-4">
+          {otherUsers.map((user, rank) => (
+            <div
+              className="flex items-center justify-between gap-4"
+              key={user.email}
+            >
+              <div className="flex items-center gap-4">
+                <Image
+                  className="rounded-full"
+                  src={user.img || "/default_user.png"}
+                  width={50}
+                  height={50}
+                  alt="user profile picture"
+                />
+                <div className="flex flex-col">
+                  <h1 className="text-slate-950 font-medium">{user.name}</h1>
+                  <p className="text-sm text-slate-500">
+                    Lvl {pointsToLevel(user.points)}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p className="font-bold">#{rank + 4}</p>
               </div>
             </div>
-            <div>
-              <p className="font-bold">#{rank + 1}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <Navigator />
     </>
