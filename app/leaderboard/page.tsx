@@ -34,16 +34,18 @@ export default async function Page() {
   return (
     <>
       <Header />
-      <h1 className="mt-8 absolute  flex w-full justify-center text-slate-900 font-semibold">
+      <h1 className="mt-[36px] absolute  flex w-full justify-center items-center text-slate-900 font-semibold">
         Leaderboard
       </h1>
 
       <div className="p-6 bg-slate-100">
-        <h2 className="text-gray-500 font-semibold mt-20">Top Rankers</h2>
+        <h2 className="text-gray-500 font-semibold mt-20 mb-4">
+          Top 3 Rankers
+        </h2>
         <div className="flex justify-around mb-8">
           <div className="flex flex-col justify-center items-center">
             <Image
-              className="rounded-full border-2 border-slate-950 p-[3px]"
+              className="rounded-full border-[3px] border-slate-950 p-[3px]"
               src={second.img || "/default_user.png"}
               width={70}
               height={70}
@@ -56,7 +58,7 @@ export default async function Page() {
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
-              className="rounded-full border-2 border-slate-950  p-[3px]"
+              className="rounded-full border-[3px] border-slate-950  p-[3px]"
               src={first.img || "/default_user.png"}
               width={100}
               height={100}
@@ -69,7 +71,7 @@ export default async function Page() {
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
-              className="rounded-full border-2 border-slate-950 p-[3px]"
+              className="rounded-full border-[3px] border-slate-950 p-[3px]"
               src={third.img || "/default_user.png"}
               width={70}
               height={70}
