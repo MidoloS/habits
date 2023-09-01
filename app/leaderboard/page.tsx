@@ -84,9 +84,9 @@ export default async function Page() {
           </div>
         </div>
       </div>
-      <div className="p-6 flex flex-col  max-h-[30rem] ">
+      <div className="p-6 flex flex-col  max-h-96">
         <h2 className="text-gray-500 font-semibold gap-4 ">All Rankers</h2>
-        <div className="overflow-y-auto flex flex-col gap-4 mt-4">
+        <div className="overflow-y-auto flex flex-col gap-4 mt-4 max-h-96">
           {otherUsers.map((user, rank) => (
             <div
               className="flex items-center justify-between gap-4 "
