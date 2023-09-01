@@ -43,7 +43,7 @@ export default async function Page() {
         <div className="flex justify-around mb-8">
           <div className="flex flex-col justify-center items-center">
             <Image
-              className="rounded-full border-2 border-slate-950 p-[2px]"
+              className="rounded-full border-2 border-slate-950 p-[3px]"
               src={second.img || "/default_user.png"}
               width={70}
               height={70}
@@ -56,10 +56,10 @@ export default async function Page() {
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
-              className="rounded-full border-2 border-slate-950  p-[2px]"
+              className="rounded-full border-2 border-slate-950  p-[3px]"
               src={first.img || "/default_user.png"}
-              width={90}
-              height={90}
+              width={100}
+              height={100}
               alt="user profile picture"
             />
             <p className="font-medium mt-2">{formatName(first.name)}</p>
@@ -69,7 +69,7 @@ export default async function Page() {
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
-              className="rounded-full border-2 border-slate-950 p-[2px]"
+              className="rounded-full border-2 border-slate-950 p-[3px]"
               src={third.img || "/default_user.png"}
               width={70}
               height={70}
@@ -84,7 +84,7 @@ export default async function Page() {
       </div>
       <div className="p-6 flex flex-col  max-h-[30rem] ">
         <h2 className="text-gray-500 font-semibold gap-4 ">All Rankers</h2>
-        <div className="overflow-y-auto flex flex-col gap-4 mt-4 mb-14">
+        <div className="overflow-y-auto flex flex-col gap-4 mt-4">
           {otherUsers.map((user, rank) => (
             <div
               className="flex items-center justify-between gap-4 "
