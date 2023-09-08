@@ -52,9 +52,7 @@ export default async function Page() {
               alt="user profile picture"
             />
             <p className="font-medium mt-2">{formatName(second.name)}</p>
-            <p className="text-sm text-slate-500">
-              Lvl {pointsToLevel(second.points)}
-            </p>
+            <p className="text-sm text-slate-500">{second.points}xp</p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
@@ -65,9 +63,7 @@ export default async function Page() {
               alt="user profile picture"
             />
             <p className="font-medium mt-2">{formatName(first.name)}</p>
-            <p className="text-sm text-slate-500">
-              Lvl {pointsToLevel(first.points)}
-            </p>
+            <p className="text-sm text-slate-500">{first.points}xp</p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
@@ -78,9 +74,7 @@ export default async function Page() {
               alt="user profile picture"
             />
             <p className="font-medium mt-2">{formatName(third.name)}</p>
-            <p className="text-sm text-slate-500">
-              Lvl {pointsToLevel(third.points)}
-            </p>
+            <p className="text-sm text-slate-500">{third.points}xp</p>
           </div>
         </div>
       </div>
@@ -102,9 +96,7 @@ export default async function Page() {
                 />
                 <div className="flex flex-col">
                   <h1 className="text-slate-950 font-medium">{user.name}</h1>
-                  <p className="text-sm text-slate-500">
-                    Lvl {pointsToLevel(user.points)}
-                  </p>
+                  <p className="text-sm text-slate-500">{user.points}xp</p>
                 </div>
               </div>
               <div>
