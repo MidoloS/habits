@@ -53,6 +53,7 @@ export const EnableNotification = () => {
             setPermission(true);
           } else {
             // Show permission request UI
+            setPermission(false);
             console.log(
               "No registration token available. Request permission to generate one."
             );
