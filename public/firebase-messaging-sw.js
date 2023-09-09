@@ -37,38 +37,38 @@ const notificationByHour = (hour) => {
     self.registration.showNotification(TITLES.TIDY_BED, {
       body: "5 min. Click here to complete.",
       badge: "/badge.png",
-      icon: null,
+      icon: "/pixel.png",
     });
     self.registration.showNotification(TITLES.LAUNDRY, {
       body: "5 min. Click here to complete.",
       badge: "/badge.png",
-      icon: null,
+      icon: "/pixel.png",
     });
   }
   if (hour >= 12 && hour <= 14) {
     self.registration.showNotification(TITLES.HEALTHY_MEAL, {
       body: "3 min. Click here to complete.",
       badge: "/badge.png",
-      icon: null,
+      icon: "/pixel.png",
     });
     self.registration.showNotification(TITLES.BRUSH_TEETH, {
       body: "2 min. Click here to complete.",
       badge: "/badge.png",
-      icon: null,
+      icon: "/pixel.png",
     });
   }
   if (hour >= 15 && hour <= 18) {
     self.registration.showNotification(TITLES.WALK, {
       body: "15 min. Click here to complete.",
       badge: "/badge.png",
-      icon: null,
+      icon: "/pixel.png",
     });
   }
   if (hour >= 19 && hour <= 21) {
     self.registration.showNotification(TITLES.READ, {
       body: "20 min. Click here to complete.",
       badge: "/badge.png",
-      icon: null,
+      icon: "/pixel.png",
     });
   }
 };
