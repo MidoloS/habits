@@ -11,8 +11,7 @@ import { PrimaryButton } from "./Button/Primary";
 // import { requestPermission } from "@/firebase/helpers";
 
 export const EnableNotification = () => {
-  const [permission, setPermission] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [permission, setPermission] = useState(true);
 
   useEffect(() => {
     console.log("useEffect");
