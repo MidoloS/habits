@@ -13,14 +13,14 @@ const LOADING_SIZES = {
   "2xl": 50,
 };
 
-export const Loading: FC<Props> = ({ size = "xl" }) => {
+export const Loading: FC<Props> = ({ size = "lg" }) => {
   const sizeToUse = LOADING_SIZES[size];
 
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`w-${sizeToUse} h-${sizeToUse} w-xs text-gray-800 animate-spin  fill-slate-50`}
+        className={`w-${sizeToUse} h-${sizeToUse} mr-2 text-gray-800 animate-spin  fill-slate-50`}
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
