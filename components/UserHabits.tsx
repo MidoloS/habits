@@ -42,12 +42,33 @@ export const UserHabits = async () => {
     if (!completedAt) {
       return null;
     }
-    return <div className="bg-slate-50 p-3 rounded-lg">{COMPLETED_ICON}</div>;
+    return (
+      <div className="bg-slate-50 p-3 rounded-lg flex gap-2 font-medium text-sm items-center">
+        {COMPLETED_ICON}Completed
+      </div>
+    );
   };
+
+  console.log("subscriptions123", subscriptions);
 
   return (
     <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-16">
-      {subscriptions.map((sub: SubscriptionWithHabit) => (
+      {[
+        ...subscriptions.sort((a, b) => {
+          console.log({ a, b });
+
+          if (a.completedAt && b.completedAt) {
+            return 0;
+          }
+          if (a.completedAt && !b.completedAt) {
+            return 1;
+          }
+          if (!a.completedAt && b.completedAt) {
+            return -1;
+          }
+          return 0;
+        }),
+      ].map((sub: SubscriptionWithHabit) => (
         <Link
           href={`/habit/${sub.habit.name}/complete`}
           key={sub.habit.name}
