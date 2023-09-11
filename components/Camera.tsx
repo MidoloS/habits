@@ -74,8 +74,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     // @ts-ignore
     if (API_TO_HABIT_NAME[mostLikely] === habitName) {
       console.log("Habit completed");
-      const success = new Audio("/success.mp3");
-      success.play();
       await completeHabit(habitName);
       push(`/home?completed=${habitName}`);
     } else {
