@@ -95,6 +95,7 @@ export const EnableNotification = () => {
 
       if (permission === "granted") {
         console.log("Notification permission granted.");
+        setPermission(true);
       }
     });
   }
