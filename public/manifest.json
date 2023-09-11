@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "habitai.io",
-  "short_name": "habitai.io",
+  "name": "Habit AI",
+  "short_name": "Habit AI",
   "description": "App of self improvement",
   "gcm_sender_id": "104807834649",
   "icons": [

@@ -23,13 +23,13 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex flex-col gap-6 p-4">
+      <main className="flex flex-col gap-6 p-7">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>
         <div>
-          <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading">
-            Habits
+          <h1 className="text-slate-400 font-medium mb-4 text-sm tracking-wide">
+            AVAILABLE HABITS
           </h1>
           <HabitList habits={habits} urlPattern="/habit/{habitName}" />
         </div>
