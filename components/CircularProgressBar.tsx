@@ -9,7 +9,7 @@ type Props = {
 export const CircularProgressbar: FC<Props> = ({
   strokeWidth,
   percentage,
-  size = 35,
+  size = 32,
 }) => {
   const radius = size - strokeWidth / 2;
   const pathDescription = `
@@ -20,7 +20,7 @@ export const CircularProgressbar: FC<Props> = ({
 
   const diameter = Math.PI * 2 * radius;
   const progressStyle = {
-    stroke: "#F8FAFC",
+    stroke: "#020617",
     strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - percentage) / 100) * diameter}px`,
@@ -39,7 +39,7 @@ export const CircularProgressbar: FC<Props> = ({
         strokeWidth={strokeWidth}
         fillOpacity={0}
         style={{
-          stroke: "#1E293B",
+          stroke: "#E2E8F0",
         }}
       />
 
@@ -57,7 +57,7 @@ export const CircularProgressbar: FC<Props> = ({
         x={50}
         y={50}
         style={{
-          fill: "#F8FAFC",
+          fill: "#020617",
           fontSize: "14px",
           dominantBaseline: "central",
           textAnchor: "middle",

@@ -36,7 +36,7 @@ const Home = async () => {
     <>
       <EnableNotification />
       <HabitCompleted />
-      <main className="flex flex-col gap-8 p-4">
+      <main className="flex flex-col gap-8 p-7">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
 
@@ -47,8 +47,8 @@ const Home = async () => {
         </div>
 
         <div>
-          <h1 className="font-bold text-slate-950 text-lg mb-2 font-heading">
-            Your Habits
+          <h1 className="text-slate-400 font-medium mb-4 text-sm tracking-wide">
+            TODAY'S HABITS
           </h1>
           {/* @ts-ignore */}
           <UserHabits />

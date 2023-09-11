@@ -22,7 +22,7 @@ export const HabitToCompleteSummary: FC<Props> = async ({
 
   const percentajeCompleted = (completedSubs / totalSubs) * 100;
 
-  const title = percentajeCompleted > 50 ? "Good job!" : "Keep going!";
+  const title = percentajeCompleted > 50 ? "GOOD JOB!" : "KEEP GOING!";
 
   const uncompletedHabit = subscriptions.filter((sub) => !sub.completedAt)[0];
 
@@ -52,11 +52,14 @@ export const HabitToCompleteSummary: FC<Props> = async ({
       legacyBehavior
     >
       <a>
-        <div className="bg-slate-950 flex justify-between px-6 items-center rounded-xl">
-          <div className="flex flex-col gap-2">
-            <h1 className="text-slate-50 font-medium">{title}</h1>
-            <p className="text-slate-500 text-sm">
-              {completedSubs} of {totalSubs} habits completed
+        {/* shadow with 0, 3, 30 */}
+        <div className="bg-white flex justify-between px-6 items-center rounded-xl shadow-slate-200 shadow-2xl">
+          <div className="flex flex-col gap-1">
+            <h1 className="text-slate-400 font-medium text-xs tracking-wide">
+              {title}
+            </h1>
+            <p className="text-slate-950 font-semibold text-sm ">
+              {completedSubs} of {totalSubs} Habits completed
             </p>
           </div>
           <div>
