@@ -41,7 +41,7 @@ export default async function Page({
                 <h1 className="text-lg font-bold font-heading">
                   {habit.title}
                 </h1>
-                <p className="text-sm text-slate-500">We will Validate</p>
+                <p className="text-sm text-slate-500">{habit.subtitle}</p>
               </div>
               <div>
                 <SwapCamera />
