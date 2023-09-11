@@ -48,7 +48,7 @@ const Home = async () => {
 
         <div>
           <h1 className="text-slate-400 font-medium mb-4 text-sm tracking-wide">
-            TODAY'S HABITS
+            TODAY&aposS HABITS
           </h1>
           {/* @ts-ignore */}
           <UserHabits />
