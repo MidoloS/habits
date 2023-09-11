@@ -28,9 +28,10 @@ export default async function Page() {
           <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>
         <div>
-          <h1 className="text-slate-400 font-medium mb-4 text-sm tracking-wide">
+          <h1 className="text-2xl font-bold mb-3">Add Habit</h1>
+          <h2 className="text-slate-400 font-medium mb-4 text-sm tracking-wide">
             AVAILABLE HABITS
-          </h1>
+          </h2>
           <HabitList habits={habits} urlPattern="/habit/{habitName}" />
         </div>
       </main>
