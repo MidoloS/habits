@@ -1,11 +1,11 @@
+import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { getHabit } from "@/prisma/helpers";
+
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { FollowButton } from "@/components/Button/Follow";
-import { Modal } from "@/components/Button/Modal";
 import { HabitFeatures } from "@/components/Info/HabitFeatures";
-import { getHabit } from "@/prisma/helpers";
-import { getServerSession } from "next-auth";
-import Image from "next/image";
-import { redirect } from "next/navigation";
 
 export default async function Page({
   params: { name },
@@ -15,7 +15,7 @@ export default async function Page({
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/signin?callbackUrl=/");
+    redirect(`/signin?callbackUrl=/habit/${name}`);
   }
 
   const { data: habit, error } = await getHabit(name);

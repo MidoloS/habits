@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Loading } from "../Loading";
+import { Loading } from "../Info/Loading";
 
 type Props = {
   children: React.ReactNode;

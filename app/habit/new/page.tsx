@@ -1,18 +1,17 @@
-import { Navigator } from "@/components/Navigator";
-import { HabitCard } from "@/components/HabitCard";
+import { Navigator } from "@/components/Navigator/Navigator";
 import { getHabits } from "@/prisma/helpers";
-import Link from "next/link";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import { UserWelcome } from "@/components/UserWelcome";
-import { HabitList } from "@/components/HabitList";
+import { UserWelcome } from "@/components/User/Welcome";
+import { HabitList } from "@/components/Habit/List";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/signin?callbackUrl=/");
+    redirect("/signin?callbackUrl=/habit/new");
   }
 
   const { data: habits, error } = await getHabits();
@@ -29,9 +28,7 @@ export default async function Page() {
         </div>
         <div>
           <h1 className="text-2xl font-bold mb-3">Add Habit</h1>
-          <h2 className="text-slate-400 font-medium mb-4 text-sm tracking-wide">
-            AVAILABLE HABITS
-          </h2>
+          <h2 className="subheading-1 mb-4">AVAILABLE HABITS</h2>
           <HabitList habits={habits} urlPattern="/habit/{habitName}" />
         </div>
       </main>

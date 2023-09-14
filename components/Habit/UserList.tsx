@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HabitCard } from "./HabitCard";
+import { HabitCard } from "./Card";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { SubscriptionWithHabit } from "@/libs/types";

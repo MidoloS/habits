@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Switch } from "./Switch";
 import { getMessaging, getToken } from "firebase/messaging";
 import { initializeApp } from "firebase/app";
-import { Modal } from "./Button/Modal";
+import { Modal } from "../Button/Modal";
 import { createPortal } from "react-dom";
-import { PrimaryButton } from "./Button/Primary";
+import { PrimaryButton } from "../Button/Primary";
 
 // import { requestPermission } from "@/firebase/helpers";
 

@@ -1,5 +1,6 @@
-import { GoogleSignInButton } from "@/components/GoogleSignInButton";
 import Image from "next/image";
+
+import { GoogleSignInButton } from "@/components/Button/GoogleSignIn";
 
 const SignInPage = () => {
   return (

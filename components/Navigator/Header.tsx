@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { ShareButton } from "./ShareButton";
-import GoBackButton from "./GoBackButton";
+import { ShareButton } from "../Button/Share";
+import GoBackButton from "../Button/GoBack";
 
 type Props = {
   route?: string;
@@ -22,7 +22,7 @@ export const LOGO_ICON = (
   </svg>
 );
 
-const Header: FC<Props> = () => {
+export const Header: FC<Props> = () => {
   return (
     <header className="absolute flex justify-between items-center top-0 z-10 container mx-auto p-7 mt-2">
       <GoBackButton />
@@ -30,5 +30,3 @@ const Header: FC<Props> = () => {
     </header>
   );
 };
-
-export default Header;

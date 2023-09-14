@@ -109,3 +109,13 @@ export const getKeyWithMaxValue = (obj: Object) => {
 
   return Object.entries(obj)[0][0];
 };
+
+export const formatName = (name: string) => {
+  if (!name) return "Anonymous";
+
+  const [first, last = ""] = name.split(" ");
+
+  if (!last) return first;
+
+  return `${first}. ${last[0]}`;
+};

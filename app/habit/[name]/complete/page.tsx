@@ -1,10 +1,11 @@
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { SwapCamera } from "@/components/Button/SwapCamera";
-import { Camera } from "@/components/Camera";
+import { SwapCamera } from "@/components/Camera/SwapButton";
+import { Camera } from "@/components/Camera/Camera";
 import { SubFeatures } from "@/components/Info/SubFeatures";
 import { getHabit } from "@/prisma/helpers";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 
 export default async function Page({
   params: { name },
@@ -14,14 +15,14 @@ export default async function Page({
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/signin?callbackUrl=/");
+    redirect(`/signin?callbackUrl=/habit/${name}/complete`);
   }
-
-  console.log("123");
 
   const subscriptions = session?.user?.subs || [];
 
-  if (!subscriptions.map((sub) => sub.habitName).includes(name)) {
+  const isntSubscribed = !subscriptions.some((sub) => sub.habitName === name);
+
+  if (isntSubscribed) {
     redirect(`https://www.habitai.io/habit/${name}`);
   }
 

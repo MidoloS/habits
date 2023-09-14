@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HabitCard } from "./HabitCard";
+import { HabitCard } from "./Card";
 
 export const EmptyHabit = () => (
   <HabitCard

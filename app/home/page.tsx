@@ -1,31 +1,31 @@
-import { Navigator } from "@/components/Navigator";
+import { Navigator } from "@/components/Navigator/Navigator";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+
 import { authOptions } from "../api/auth/[...nextauth]/route";
-import { UserHabits } from "@/components/UserHabits";
-import { UserWelcome } from "@/components/UserWelcome";
-import { HabitCompleted } from "@/components/HabitCompleted";
-import { EmptyHabit } from "@/components/EmptyHabit";
-import { HabitToCompleteSummary } from "@/components/HabitToCompleteSummary";
-import { CountdownHabit } from "@/components/CountdownHabit";
-import { Switch } from "@/components/Switch";
-import { EnableNotification } from "@/components/EnableNotification";
+import { UserHabits } from "@/components/Habit/UserList";
+import { UserWelcome } from "@/components/User/Welcome";
+import { HabitCompleted } from "@/components/Modal/HabitCompleted";
+import { EmptyHabit } from "@/components/Habit/Empty";
+import { HabitToCompleteSummary } from "@/components/Habit/ToCompleteSummary";
+import { CountdownHabit } from "@/components/Habit/Countdown";
+import { EnableNotification } from "@/components/Modal/EnableNotification";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/signin?callbackUrl=/");
+    redirect("/signin?callbackUrl=/home");
   }
 
   if (session?.user?.subs.length === 0) {
     return (
       <main className="flex flex-col gap-8 px-4 mt-4">
-        <div className="flex flex-col gap-8">
+        <div>
           <UserWelcome img={session.user?.image} name={session.user?.name} />
         </div>
 
-        <div className="flex  justify-center">
+        <div className="flex justify-center">
           <EmptyHabit />
         </div>
       </main>
@@ -47,9 +47,7 @@ const Home = async () => {
         </div>
 
         <div>
-          <h1 className="text-slate-400 font-medium mb-4 text-sm tracking-wide">
-            TODAYS HABITS
-          </h1>
+          <h1 className="subheading-1 mb-4">TODAYS HABITS</h1>
           {/* @ts-ignore */}
           <UserHabits />
         </div>

@@ -1,7 +1,7 @@
 import { Habit, Subscriptions } from "@prisma/client";
 import { FC } from "react";
 import Link from "next/link";
-import { HabitCard } from "./HabitCard";
+import { HabitCard } from "./Card";
 import { SubscriptionWithHabit } from "@/libs/types";
 
 type Props = {

@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
-import { PrimaryButton } from "./Button/Primary";
+import { PrimaryButton } from "../Button/Primary";
 import {
   completeHabit,
   getKeyWithMaxValue,
@@ -11,7 +11,7 @@ import {
 } from "@/libs/helpers";
 import { SubscriptionWithHabit } from "@/libs/types";
 import { API_TO_HABIT_NAME } from "@/libs/constants";
-import { HabitCompleteLoading } from "./HabitCompleteLoading";
+import { HabitCompleteLoading } from "../HabitCompleteLoading";
 
 export const Camera = ({ habitName }: { habitName: string }) => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");

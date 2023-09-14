@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { CircularProgressbar } from "./CircularProgressBar";
+import { CircularProgressbar } from "../Info/CircularProgressBar";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { SubscriptionWithHabit } from "@/libs/types";
 import Link from "next/link";

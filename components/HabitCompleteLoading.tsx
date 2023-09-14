@@ -1,4 +1,4 @@
-import { Loading } from "./Loading";
+import { Loading } from "./Info/Loading";
 
 export const HabitCompleteLoading = () => (
   <article className="h-screen w-screen z-50 bg-slate-950 flex flex-col gap-8 absolute top-0 left-0 justify-center items-center">

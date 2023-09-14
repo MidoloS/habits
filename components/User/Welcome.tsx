@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SignOutButton } from "./Button/Logout";
+import { SignOutButton } from "../Button/Logout";
 import { FC } from "react";
 
 type Props = {

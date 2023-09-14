@@ -36,7 +36,7 @@ const INCOMPLETED_ICON = (
   </svg>
 );
 
-export const Completed: FC<Props> = ({ completed = false }) => {
+export const HabitCompletedSuffix: FC<Props> = ({ completed = false }) => {
   const text = completed ? "Completed" : "To Complete";
   const opacity = completed ? "opacity-100" : "opacity-70";
   return (

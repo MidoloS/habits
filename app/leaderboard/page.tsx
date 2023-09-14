@@ -1,33 +1,21 @@
-import { Navigator } from "@/components/Navigator";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+
+import { Navigator } from "@/components/Navigator/Navigator";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getUsers } from "@/libs/helpers";
-import Header from "@/components/Header";
-import Image from "next/image";
-import { TopUser } from "@/components/TopUser";
-import { TopUsers } from "@/components/TopUsers";
-
-const formatName = (name: string) => {
-  if (!name) return "Anonymous";
-
-  const [first, last = ""] = name.split(" ");
-
-  if (!last) return first;
-
-  return `${first}. ${last[0]}`;
-};
+import { Header } from "@/components/Navigator/Header";
+import { TopUser } from "@/components/User/TopUser";
+import { LeaderboardItem } from "@/components/User/LeaderboardItem";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/signin?callbackUrl=/");
+    redirect("/signin?callbackUrl=/leaderboard");
   }
 
   const { data: users } = await getUsers();
-
-  console.log({ session });
 
   const [first, second, third, ...otherUsers] = users;
 
@@ -38,80 +26,22 @@ export default async function Page() {
       <div className="px-7 py-4">
         <div className="mt-24 mb-4 flex flex-col gap-2">
           <h1 className="text-2xl font-bold">Leaderboard</h1>
-          <h2 className="text-slate-400 font-medium text-sm tracking-wide ">
-            TOP 3 RANKERS
-          </h2>
+          <h2 className="subheading-1">TOP 3 RANKERS</h2>
         </div>
 
         <div className="flex justify-between items-end">
-          <div className="flex flex-col justify-center items-center">
-            <Image
-              className="rounded-full border-[3px] border-slate-950 p-[3px]"
-              src={second.img || "/default_user.png"}
-              width={70}
-              height={70}
-              alt="user profile picture"
-            />
-            <p className="font-medium mt-2 mb-1">{formatName(second.name)}</p>
-            <p className="text-xs text-slate-400">{second.points} Points</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <Image
-              className="rounded-full border-[3px] border-slate-950  p-[3px]"
-              src={first.img || "/default_user.png"}
-              width={100}
-              height={100}
-              alt="user profile picture"
-            />
-            <p className="font-medium mt-2 mb-1">{formatName(first.name)}</p>
-            <p className="text-xs text-slate-400">{first.points} Points</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <Image
-              className="rounded-full border-[3px] border-slate-950 p-[3px]"
-              src={third.img || "/default_user.png"}
-              width={70}
-              height={70}
-              alt="user profile picture"
-            />
-            <p className="font-medium mt-2 mb-1">{formatName(third.name)}</p>
-            <p className="text-xs text-slate-400">{third.points} Points</p>
-          </div>
+          <TopUser user={second} size={70} />
+          <TopUser user={first} size={100} />
+          <TopUser user={third} size={70} />
         </div>
       </div>
       <div className="p-7 flex flex-col">
-        <h2 className="text-slate-400 font-medium mb-2 text-sm tracking-wide gap-4">
-          ALL RANKERS
-        </h2>
-        <div className="flex flex-col mt-4 mb-20">
+        <h2 className="subheading-1 mb-2 gap-4">ALL RANKERS</h2>
+        <ul className="flex flex-col mt-4 mb-20">
           {otherUsers.map((user, rank) => (
-            <div
-              className="flex items-center justify-between border-b border-slate-200 p-3 py-4"
-              key={user.email}
-            >
-              <div className="flex items-center gap-4 justify-center">
-                <h2 className="text-slate-400 font-medium text-sm tracking-wide gap-4">
-                  {rank + 4}
-                </h2>
-                <Image
-                  className="rounded-full"
-                  src={user.img || "/default_user.png"}
-                  width={40}
-                  height={40}
-                  alt="user profile picture"
-                />
-                <div className="flex flex-col">
-                  <h1 className="text-slate-950 text-sm font-medium">
-                    {formatName(user.name)}
-                  </h1>
-                  <p className="text-xs text-slate-400 mt-1">
-                    {user.points} Points
-                  </p>
-                </div>
-              </div>
-            </div>
+            <LeaderboardItem user={user} rank={rank + 4} key={user.email} />
           ))}
-        </div>
+        </ul>
       </div>
       <Navigator />
     </>

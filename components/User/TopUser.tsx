@@ -24,13 +24,13 @@ export const TopUser: FC<Props> = ({ user, size }) => (
       width={size}
       height={size}
       alt="User profile picture"
-      className="rounded-full border-2 border-slate-950 p-0.5"
+      className="rounded-full border-[3px] border-slate-950 p-[3px]"
     />
     <figcaption className="text-center font-medium">
       {formatName(user.name)}
     </figcaption>
     <figcaption className="text-center text-slate-500 text-sm">
-      {user.points} pts
+      {user.points} Points
     </figcaption>
   </figure>
 );

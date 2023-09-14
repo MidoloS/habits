@@ -1,6 +1,4 @@
-import Header from "@/components/Header";
-// import "./globals.css";
-import { Inter, Montserrat } from "next/font/google";
+import { Header } from "@/components/Navigator/Header";
 
 export const metadata = {
   title: "habitai.io",

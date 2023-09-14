@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { PrimaryButton } from "./Button/Primary";
+import { PrimaryButton } from "../Button/Primary";
 import JSConfetti from "js-confetti";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";

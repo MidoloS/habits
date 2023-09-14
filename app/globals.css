@@ -5,3 +5,9 @@
 body {
   background-color: #f9faff;
 }
+
+@layer components {
+  .subheading-1 {
+    @apply text-slate-400 font-medium text-sm tracking-wide;
+  }
+}
