@@ -1,7 +1,6 @@
 import { Navigator } from "@/components/Navigator/Navigator";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import dynamic, { DynamicOptions } from "next/dynamic";
 
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { UserHabits } from "@/components/Habit/UserList";
@@ -9,26 +8,7 @@ import { UserWelcome } from "@/components/User/Welcome";
 import { EmptyHabit } from "@/components/Habit/Empty";
 import { HabitToCompleteSummary } from "@/components/Habit/ToCompleteSummary";
 import { CountdownHabit } from "@/components/Habit/Countdown";
-
-const DynamicEnableNotification = dynamic(
-  () =>
-    import("@/components/Modal/EnableNotification").then(
-      (mod) => mod.EnableNotification
-    ),
-  {
-    loading: () => null,
-  } as DynamicOptions<{}>
-);
-
-const DynamicHabitCompleted = dynamic(
-  () =>
-    import("@/components/Modal/HabitCompleted").then(
-      (mod) => mod.HabitCompleted
-    ),
-  {
-    loading: () => null,
-  } as DynamicOptions<{}>
-);
+import { EnableNotification } from "@/components/Modal/EnableNotification";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -53,8 +33,7 @@ const Home = async () => {
 
   return (
     <>
-      <DynamicEnableNotification />
-      <DynamicHabitCompleted />
+      <EnableNotification />
       <main className="flex flex-col gap-8 p-7">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />

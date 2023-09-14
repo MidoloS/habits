@@ -15,7 +15,7 @@ export default async function Page({
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect(`/signin?callbackUrl=/habit/${name}/complete`);
+    redirect(`/signin?callbackUrl=/home`);
   }
 
   const subscriptions = session?.user?.subs || [];

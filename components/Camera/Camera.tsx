@@ -35,7 +35,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
       if (hours >= 5 && hours <= 9) {
         await completeHabit(habitName);
-        push(`/home?completed=${habitName}`);
+        push(`/habit/${habitName}/congratulations`);
       } else {
         const failure = new Audio("/failure.mp3");
         failure.play();
@@ -43,7 +43,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
       return;
     }
     if (["meditate", "read"].includes(habitName)) {
-      push(`/home?completed=${habitName}`);
+      push(`/habit/${habitName}/congratulations`);
       await completeHabit(habitName);
       return;
     }
@@ -73,9 +73,8 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     // @ts-ignore
     if (API_TO_HABIT_NAME[mostLikely] === habitName) {
-      console.log("Habit completed");
       await completeHabit(habitName);
-      push(`/home?completed=${habitName}`);
+      push(`/habit/${habitName}/congratulations`);
     } else {
       const failure = new Audio("/failure.mp3");
       failure.play();
