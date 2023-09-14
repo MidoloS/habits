@@ -8,13 +8,13 @@ import Image from "next/image";
 import { TopUser } from "@/components/TopUser";
 import { TopUsers } from "@/components/TopUsers";
 
-const pointsToLevel = (points: number) => {
-  const boost = 0.5;
-  return Math.floor(boost * Math.sqrt(points));
-};
-
 const formatName = (name: string) => {
-  const [first, last] = name.split(" ");
+  if (!name) return "Anonymous";
+
+  const [first, last = ""] = name.split(" ");
+
+  if (!last) return first;
+
   return `${first}. ${last[0]}`;
 };
 
@@ -102,7 +102,7 @@ export default async function Page() {
                 />
                 <div className="flex flex-col">
                   <h1 className="text-slate-950 text-sm font-medium">
-                    {user.name}
+                    {formatName(user.name)}
                   </h1>
                   <p className="text-xs text-slate-400 mt-1">
                     {user.points} Points
