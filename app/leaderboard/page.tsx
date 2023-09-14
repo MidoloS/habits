@@ -36,7 +36,7 @@ export default async function Page() {
       <Header />
 
       <div className="px-7 py-4">
-        <div className="mt-20 mb-4 flex flex-col gap-2">
+        <div className="mt-24 mb-4 flex flex-col gap-2">
           <h1 className="text-2xl font-bold">Leaderboard</h1>
           <h2 className="text-slate-400 font-medium text-sm tracking-wide ">
             TOP 3 RANKERS
