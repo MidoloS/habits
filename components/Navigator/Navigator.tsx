@@ -163,13 +163,13 @@ export const Navigator: FC = () => {
   const isAddHabit = path === "/habit/new";
   return (
     <footer className="fixed p-5 bg-[#f9faff] bottom-0 flex justify-around w-full items-center">
-      <Link href="/home">
+      <Link href="/home" aria-label="home">
         <HomeIcon isActive={isHome} />
       </Link>
-      <Link href="/leaderboard">
+      <Link href="/leaderboard" aria-label="leaderboard">
         <LeaderboardIcon isActive={isLeaderboard} />
       </Link>
-      <Link href="/habit/new">
+      <Link href="/habit/new" aria-label="new-habit">
         <AddHabitIcon isActive={isAddHabit} />
       </Link>
     </footer>
