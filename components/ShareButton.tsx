@@ -40,7 +40,7 @@ export const ShareButton = () => {
   return (
     <button
       onClick={handleShare}
-      className="bg-white shadow-sm border border-slate-200 text-slate-950 p-4 rounded-lg flex items-center justify-center"
+      className="bg-white shadow-md border-slate-200 text-slate-950 p-4 rounded-lg flex items-center justify-center"
       aria-label="Share"
     >
       {SHARE_ICON}

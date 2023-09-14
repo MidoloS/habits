@@ -4,7 +4,7 @@ const GoBackButton = () => {
   return (
     <Link
       href="/home"
-      className="shadow-sm border border-slate-200 bg-white text-slate-950 p-4 rounded-lg flex items-center justify-center"
+      className="shadow-md border-slate-200 bg-white text-slate-950 p-4 rounded-lg flex items-center justify-center"
       aria-label="Go back"
     >
       <svg

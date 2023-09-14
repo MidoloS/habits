@@ -6,7 +6,7 @@ export const SignOutButton = () => {
   return (
     <>
       <button
-        className="shadow-sm border border-slate-200 rounded-lg p-4 text-sm bg-white"
+        className="shadow-md border-slate-200 rounded-lg p-4 text-sm bg-white"
         onClick={() => signOut({ callbackUrl: "/login" })}
       >
         <svg

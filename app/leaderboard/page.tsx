@@ -43,7 +43,7 @@ export default async function Page() {
           </h2>
         </div>
 
-        <div className="flex justify-around">
+        <div className="flex justify-between items-end">
           <div className="flex flex-col justify-center items-center">
             <Image
               className="rounded-full border-[3px] border-slate-950 p-[3px]"
@@ -53,9 +53,7 @@ export default async function Page() {
               alt="user profile picture"
             />
             <p className="font-medium mt-2 mb-1">{formatName(second.name)}</p>
-            <p className="text-xs text-slate-400 font-medium">
-              {second.points}pts
-            </p>
+            <p className="text-xs text-slate-400">{second.points} Points</p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
@@ -66,9 +64,7 @@ export default async function Page() {
               alt="user profile picture"
             />
             <p className="font-medium mt-2 mb-1">{formatName(first.name)}</p>
-            <p className="text-xs text-slate-400 font-medium">
-              {first.points}pts
-            </p>
+            <p className="text-xs text-slate-400">{first.points} Points</p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <Image
@@ -79,9 +75,7 @@ export default async function Page() {
               alt="user profile picture"
             />
             <p className="font-medium mt-2 mb-1">{formatName(third.name)}</p>
-            <p className="text-xs text-slate-400 font-medium">
-              {third.points}pts
-            </p>
+            <p className="text-xs text-slate-400">{third.points} Points</p>
           </div>
         </div>
       </div>
@@ -89,29 +83,31 @@ export default async function Page() {
         <h2 className="text-slate-400 font-medium mb-2 text-sm tracking-wide gap-4">
           ALL RANKERS
         </h2>
-        <div className="overflow-y-auto flex flex-col gap-4 mt-4 max-h-[40rem]">
+        <div className="overflow-y-auto flex flex-col mt-4 max-h-[40rem]">
           {otherUsers.map((user, rank) => (
             <div
-              className="flex items-center justify-between gap-4 shadow-sm rounded-lg bg-white p-3"
+              className="flex items-center justify-between shadow-sm rounded-lg p-3"
               key={user.email}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 justify-center">
+                <h2 className="text-slate-400 font-medium text-sm tracking-wide gap-4">
+                  {rank + 4}
+                </h2>
                 <Image
                   className="rounded-full"
                   src={user.img || "/default_user.png"}
-                  width={50}
-                  height={50}
+                  width={40}
+                  height={40}
                   alt="user profile picture"
                 />
                 <div className="flex flex-col">
-                  <h1 className="text-slate-950 font-medium">{user.name}</h1>
-                  <p className="text-xs text-slate-400 font-medium">
-                    {user.points}pts
+                  <h1 className="text-slate-950 text-sm font-medium">
+                    {user.name}
+                  </h1>
+                  <p className="text-xs text-slate-400 mt-1">
+                    {user.points} Points
                   </p>
                 </div>
-              </div>
-              <div>
-                <p className="font-bold">#{rank + 4}</p>
               </div>
             </div>
           ))}
