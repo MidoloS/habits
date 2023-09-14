@@ -22,15 +22,9 @@ export default function BlogLayout({
         console.log(0);
 
         navigator.serviceWorker.register("/firebase-messaging-sw.js");
-        navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
-          console.log("restier one signal", a);
-        });
       }
     });
     navigator.serviceWorker.register("/firebase-messaging-sw.js");
-    navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
-      console.log("restier one signal", a);
-    });
     const firebaseConfig = {
       apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
       authDomain: "habitai-391719.firebaseapp.com",
@@ -43,28 +37,6 @@ export default function BlogLayout({
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    // @ts-ignore
-    window.OneSignal = window.OneSignal || [];
-    // @ts-ignore
-    OneSignal.push(function () {
-      // @ts-ignore
-      OneSignal.init({
-        appId: "352fe6f6-53ed-41d6-b473-f42db3f87628",
-        notifyButton: {
-          enable: true,
-        },
-
-        allowLocalhostAsSecureOrigin: true,
-      });
-    });
-    navigator.serviceWorker.register("/OneSignalSDKWorker.js").then((a) => {
-      console.log("restier one signal wwwwww", a);
-    });
-
-    return () => {
-      // @ts-ignore
-      window.OneSignal = undefined;
-    };
   }, []);
 
   console.log(1);
@@ -94,10 +66,6 @@ export default function BlogLayout({
           `,
           }}
         />
-        <Script
-          src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
-          async
-        ></Script>
       </head>
 
       <body className={inter.className}>
