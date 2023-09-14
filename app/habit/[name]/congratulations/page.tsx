@@ -46,7 +46,7 @@ export default async function Page({
             height={120}
             alt="olive wreath left"
           />
-          {habit.points <= 0 ? (
+          {habit.points >= 0 ? (
             <div className="flex flex-col items-center justify-center gap-1">
               <h2 className="subheading-1">EARNED</h2>
               <p className="text-xl font-semibold">+{habit.points} XP</p>

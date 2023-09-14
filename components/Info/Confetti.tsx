@@ -9,7 +9,9 @@ export const Confetti = () => {
     success.play();
 
     const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti();
+    jsConfetti.addConfetti({
+      confettiNumber: 300,
+    });
   }, []);
 
   return <></>;
