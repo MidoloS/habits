@@ -20,12 +20,12 @@ export const LeaderboardItem: FC<Props> = ({ user, rank }) => (
         height={40}
         alt="user profile picture"
       />
-      <figcaption className="text-center font-medium">
-        {formatName(user.name)}
-      </figcaption>
-      <figcaption className="text-center text-slate-500 text-sm">
-        {user.points} Points
-      </figcaption>
+      <div className="flex flex-col gap-1">
+        <figcaption className="font-medium">{formatName(user.name)}</figcaption>
+        <figcaption className="text-slate-500 text-sm">
+          {user.points} Points
+        </figcaption>
+      </div>
     </figure>
   </li>
 );
