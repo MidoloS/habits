@@ -45,6 +45,7 @@ export default async function Page({
             width={70}
             height={120}
             alt="olive wreath left"
+            unoptimized
           />
           {habit.points >= 0 ? (
             <div className="flex flex-col items-center justify-center gap-1">
@@ -59,6 +60,7 @@ export default async function Page({
             width={70}
             height={120}
             alt="olive wreath right"
+            unoptimized
           />
         </div>
         <p className="text-center text-slate-950 text-sm">
