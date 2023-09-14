@@ -86,7 +86,7 @@ export default async function Page() {
         <div className="flex flex-col mt-4 mb-20">
           {otherUsers.map((user, rank) => (
             <div
-              className="flex items-center justify-between shadow-sm rounded-lg p-3"
+              className="flex items-center justify-between border-b border-slate-200 p-3 py-4"
               key={user.email}
             >
               <div className="flex items-center gap-4 justify-center">
