@@ -11,6 +11,7 @@ export const Confetti = () => {
     const jsConfetti = new JSConfetti();
     jsConfetti.addConfetti({
       confettiNumber: 300,
+      confettiColors: ["#FCA5A5", "#FCD34D", "#FCD34D", "#FCD34D", "#FCD34D"],
     });
   }, []);
 

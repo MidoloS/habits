@@ -27,6 +27,10 @@ export default async function Page({
     redirect(`https://www.habitai.io/habit/${name}`);
   }
 
+  const uncompletedHabit = subscriptions.find((sub) => !sub.completedAt);
+
+  console.log("uncompletedHabit", uncompletedHabit);
+
   const { data: habit } = await getHabit(name);
 
   if (!habit?.createdAt) {
@@ -37,44 +41,56 @@ export default async function Page({
     <>
       <Header />
       <Confetti />
-      <main className="p-7 flex flex-col gap-10 h-screen justify-center">
+      <main className="p-7 flex flex-col gap-14 h-screen justify-center">
         <h1 className="text-center font-semibold text-xl">Congratulations!</h1>
-        <div className="flex justify-between items-end">
-          <Image
-            src="/images/olive-left.png"
-            width={70}
-            height={120}
-            alt="olive wreath left"
-            unoptimized
-          />
-          {habit.points >= 0 ? (
-            <div className="flex flex-col items-center justify-center gap-1">
-              <h2 className="subheading-1">EARNED</h2>
-              <p className="text-xl font-semibold">+{habit.points} XP</p>
-            </div>
-          ) : (
-            <h2 className="subheading-1">NO POINTS EARNED</h2>
-          )}
-          <Image
-            src="/images/olive-right.png"
-            width={70}
-            height={120}
-            alt="olive wreath right"
-            unoptimized
-          />
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between">
+            <Image
+              src="/images/olive-left.png"
+              width={70}
+              height={120}
+              alt="olive wreath left"
+              unoptimized
+            />
+            {habit.points >= 0 ? (
+              <div className="flex flex-col items-center justify-center gap-1">
+                <h2 className="subheading-1">EARNED</h2>
+                <p className="text-xl font-semibold">+{habit.points} XP</p>
+              </div>
+            ) : (
+              <h2 className="subheading-1">NO POINTS EARNED</h2>
+            )}
+            <Image
+              src="/images/olive-right.png"
+              width={70}
+              height={120}
+              alt="olive wreath right"
+              unoptimized
+            />
+          </div>
+
+          <p className="text-center text-slate-950 text-sm leading-7">
+            Dont forget that its the small accomplishments that make a{" "}
+            <span className="text-slate-950 font-bold">
+              big change over time!
+            </span>
+          </p>
         </div>
-        <p className="text-center text-slate-950 text-sm">
-          Dont forget that its the small accomplishments that make a{" "}
-          <span className="text-slate-950 font-bold">
-            big change over time!
-          </span>
-        </p>
-        <Link
-          className="bg-slate-950 text-white p-4 w-full rounded-xl text-center text-sm font-medium"
-          href="/home"
-        >
-          Keep Improving
-        </Link>
+
+        <div className="w-full flex flex-col gap-4">
+          <Link
+            className="bg-slate-950 text-white p-4 rounded-xl text-center text-sm font-medium w-full"
+            href={`/habit/${uncompletedHabit?.habitName}/complete`}
+          >
+            Next Habit
+          </Link>
+          <Link
+            className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl p-4 flex items-center justify-center text-sm font-medium w-full"
+            href="/home"
+          >
+            Go Home
+          </Link>
+        </div>
       </main>
     </>
   );
