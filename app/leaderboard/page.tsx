@@ -79,11 +79,11 @@ export default async function Page() {
           </div>
         </div>
       </div>
-      <div className="p-7 flex flex-col  max-h-[30rem]">
+      <div className="p-7 flex flex-col">
         <h2 className="text-slate-400 font-medium mb-2 text-sm tracking-wide gap-4">
           ALL RANKERS
         </h2>
-        <div className="overflow-y-auto flex flex-col mt-4 max-h-[40rem]">
+        <div className="flex flex-col mt-4 mb-20">
           {otherUsers.map((user, rank) => (
             <div
               className="flex items-center justify-between shadow-sm rounded-lg p-3"
