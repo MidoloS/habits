@@ -25,12 +25,14 @@ export const HabitCard: FC<Props> = ({ subtitle, src, title, suffix }) => {
       absolute bottom-0 flex w-full items-center justify-between rounded-xl bg-gradient-to-t from-black to-transparent px-7 py-5
       "
       >
-        <figcaption className="text-center w-full">
-          <h3 className="text-lg font-heading font-semibold mb-1 text-white">
+        <div className="text-center w-full">
+          <figcaption className="text-lg font-heading font-semibold mb-1 text-white">
             {title}
-          </h3>
-          <p className="font-medium text-slate-300 font-sans">{subtitle}</p>
-        </figcaption>
+          </figcaption>
+          <figcaption className="font-medium text-slate-300 font-sans">
+            {subtitle}
+          </figcaption>
+        </div>
       </div>
     </figure>
   );

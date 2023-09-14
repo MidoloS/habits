@@ -8,6 +8,7 @@ export const SignOutButton = () => {
       <button
         className="shadow-md shadow-slate-100 border border-slate-200 rounded-lg p-4 text-sm bg-slate-50"
         onClick={() => signOut({ callbackUrl: "/login" })}
+        aria-label="Sign out"
       >
         <svg
           id="exit"
