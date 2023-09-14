@@ -11,16 +11,20 @@ import { HabitToCompleteSummary } from "@/components/Habit/ToCompleteSummary";
 import { CountdownHabit } from "@/components/Habit/Countdown";
 
 const DynamicEnableNotification = dynamic(
-  // @ts-ignore
-  () => import("@/components/Modal/EnableNotification"),
+  () =>
+    import("@/components/Modal/EnableNotification").then(
+      (mod) => mod.EnableNotification
+    ),
   {
     loading: () => null,
   } as DynamicOptions<{}>
 );
 
 const DynamicHabitCompleted = dynamic(
-  // @ts-ignore
-  () => import("@/components/Modal/HabitCompleted"),
+  () =>
+    import("@/components/Modal/HabitCompleted").then(
+      (mod) => mod.HabitCompleted
+    ),
   {
     loading: () => null,
   } as DynamicOptions<{}>
