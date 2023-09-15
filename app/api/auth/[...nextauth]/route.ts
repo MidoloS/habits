@@ -39,10 +39,13 @@ export const authOptions: NextAuthOptions = {
 
     async signIn({ profile }) {
       try {
+        console.log({ profile });
+
         const res = await createUser({
           email: profile?.email,
           name: profile?.name,
-          img: profile?.image || "/default_user.png",
+          // @ts-ignore
+          img: profile?.image || profile?.picture || "/default_user.png",
         });
         console.log({ res });
 
