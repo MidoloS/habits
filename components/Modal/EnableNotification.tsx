@@ -120,10 +120,7 @@ export const EnableNotification = () => {
         <PrimaryButton onClick={requestPermission}>
           Enable daily remainder
         </PrimaryButton>
-        <button
-          onClick={handleClose}
-          className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl py-4 px-6 flex items-center justify-center text-sm font-medium w-full"
-        >
+        <button onClick={handleClose} className="text-slate-500 text-sm pt-2">
           Maybe later
         </button>
       </div>
