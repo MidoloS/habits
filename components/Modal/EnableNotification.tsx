@@ -96,6 +96,10 @@ export const EnableNotification = () => {
     });
   }
 
+  const handleClose = () => {
+    setPermission(true);
+  };
+
   return createPortal(
     <div className="absolute top-0 left-0 bg-slate-950 bg-opacity-80 w-screen h-screen z-50 p-10 flex justify-center items-center">
       <div className="bg-slate-50 p-8 rounded-xl relative flex flex-col gap-4 max-w-xs items-center">
@@ -116,6 +120,12 @@ export const EnableNotification = () => {
         <PrimaryButton onClick={requestPermission}>
           Enable daily remainder
         </PrimaryButton>
+        <button
+          onClick={handleClose}
+          className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl py-4 px-6 flex items-center justify-center text-sm font-medium w-full"
+        >
+          Maybe later
+        </button>
       </div>
     </div>,
     document.body
