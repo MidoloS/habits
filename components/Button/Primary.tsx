@@ -19,7 +19,7 @@ export const PrimaryButton: FC<Props> = ({
     disabled={disabled}
     onClick={onClick}
   >
-    <div>{isLoading && <Loading size="xl" />}</div>
+    <div>{isLoading && <Loading size={9} />}</div>
     {!isLoading && children}
   </button>
 );

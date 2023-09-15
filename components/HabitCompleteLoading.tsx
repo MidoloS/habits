@@ -19,7 +19,7 @@ export const HabitCompleteLoading = () => (
       <p className="text-slate-500 text-sm">This might take a few seconds</p>
     </div>
     <div>
-      <Loading size="sm" />
+      <Loading size={9} />
     </div>
   </article>
 );
