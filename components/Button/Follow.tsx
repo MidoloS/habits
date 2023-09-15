@@ -35,30 +35,22 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
         .then((res) => {
           setIsFollowing(false);
           setLoading(false);
-          toast("Successfully unsubscribed!", {
-            icon: "👏",
-          });
+          toast.success("Successfully unsubscribed!");
         })
         .catch((err) => {
           setLoading(false);
-          toast("Something went wrong!", {
-            icon: "👎",
-          });
+          toast.error("Something went wrong!");
         });
     } else {
       subscribeToHabit(habitName)
         .then((res) => {
           setIsFollowing(true);
           setLoading(false);
-          toast("Successfully subscribed!", {
-            icon: "👏",
-          });
+          toast.success("Successfully subscribed!");
         })
         .catch((err) => {
           setLoading(false);
-          toast("Something went wrong!", {
-            icon: "👎",
-          });
+          toast.error("Something went wrong!");
         });
     }
   };
