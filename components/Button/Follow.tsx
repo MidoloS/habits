@@ -7,6 +7,7 @@ import {
 } from "@/libs/helpers";
 import { FC, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { Loading } from "../Info/Loading";
 
 type Props = {
   habitName: string;
@@ -87,7 +88,8 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
         onClick={handleClick}
         disabled={loading}
       >
-        {isFollowing && icon}
+        {loading && <Loading size={5} />}
+        {isFollowing && !loading && icon}
         {text}
       </button>
     </>
