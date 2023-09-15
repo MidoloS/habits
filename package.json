@@ -29,6 +29,7 @@
     "react-webcam": "latest",
     "sharp": "latest",
     "tailwindcss": "latest",
+    "tailwindcss-animated": "^1.0.1",
     "typescript": "latest"
   },
   "devDependencies": {

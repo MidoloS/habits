@@ -1,7 +1,7 @@
 import { Header } from "@/components/Navigator/Header";
 
 export const metadata = {
-  title: "habitai.io",
+  title: "HabitAI",
 };
 
 export default function BlogLayout({

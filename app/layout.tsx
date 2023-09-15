@@ -17,26 +17,29 @@ export default function BlogLayout({
   console.log("funciona, volver aca en caso de error");
 
   useEffect(() => {
-    window.addEventListener("load", () => {
-      if ("serviceWorker" in navigator) {
-        console.log(0);
-
-        navigator.serviceWorker.register("/firebase-messaging-sw.js");
-      }
-    });
-    navigator.serviceWorker.register("/firebase-messaging-sw.js");
-    const firebaseConfig = {
-      apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
-      authDomain: "habitai-391719.firebaseapp.com",
-      projectId: "habitai-391719",
-      storageBucket: "habitai-391719.appspot.com",
-      messagingSenderId: "104807834649",
-      appId: "1:104807834649:web:190cc2562190fc8894f688",
-      measurementId: "G-GPFDSMCCZW",
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+    if ("serviceWorker" in navigator) { 
+      window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+          console.log(0);
+  
+          navigator.serviceWorker.register("/firebase-messaging-sw.js");
+        }
+      });
+      navigator.serviceWorker.register("/firebase-messaging-sw.js");
+      const firebaseConfig = {
+        apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
+        authDomain: "habitai-391719.firebaseapp.com",
+        projectId: "habitai-391719",
+        storageBucket: "habitai-391719.appspot.com",
+        messagingSenderId: "104807834649",
+        appId: "1:104807834649:web:190cc2562190fc8894f688",
+        measurementId: "G-GPFDSMCCZW",
+      };
+  
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    }
+   
   }, []);
 
   console.log(1);
@@ -49,7 +52,7 @@ export default function BlogLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon.png"></link>
         <meta name="theme-color" content="#020617" />
-        <title>habitai.io</title>
+        <title>HabitAI</title>
         <Script
           id="hothatAnalytics"
           strategy="afterInteractive"
