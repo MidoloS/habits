@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const SWAP_ICON = (
+const SwapIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18"
@@ -45,7 +45,7 @@ export const SwapCamera = () => {
       className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl p-4 flex items-center justify-center"
       onClick={handleToggle}
     >
-      {SWAP_ICON}
+      <SwapIcon />
     </Link>
   );
 };
