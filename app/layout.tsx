@@ -17,11 +17,11 @@ export default function BlogLayout({
   console.log("funciona, volver aca en caso de error");
 
   useEffect(() => {
-    if ("serviceWorker" in navigator) { 
+    if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         if ("serviceWorker" in navigator) {
           console.log(0);
-  
+
           navigator.serviceWorker.register("/firebase-messaging-sw.js");
         }
       });
@@ -35,11 +35,10 @@ export default function BlogLayout({
         appId: "1:104807834649:web:190cc2562190fc8894f688",
         measurementId: "G-GPFDSMCCZW",
       };
-  
+
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
     }
-   
   }, []);
 
   console.log(1);
@@ -70,7 +69,6 @@ export default function BlogLayout({
           }}
         />
       </head>
-
       <body className={inter.className}>
         <Provider>{children}</Provider>
       </body>

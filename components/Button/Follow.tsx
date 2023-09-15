@@ -6,6 +6,7 @@ import {
   unsubscribeToHabit,
 } from "@/libs/helpers";
 import { FC, useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 type Props = {
   habitName: string;
@@ -13,6 +14,7 @@ type Props = {
 
 export const FollowButton: FC<Props> = ({ habitName }) => {
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     getSubscription(habitName)
       .then((sub) => {
@@ -26,12 +28,39 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
   const text = isFollowing ? "Following" : "Follow";
 
   const handleClick = () => {
+    setLoading(true);
+
     if (isFollowing) {
-      unsubscribeToHabit(habitName);
+      unsubscribeToHabit(habitName)
+        .then((res) => {
+          setIsFollowing(false);
+          setLoading(false);
+          toast("Successfully unsubscribed!", {
+            icon: "👏",
+          });
+        })
+        .catch((err) => {
+          setLoading(false);
+          toast("Something went wrong!", {
+            icon: "👎",
+          });
+        });
     } else {
-      subscribeToHabit(habitName);
+      subscribeToHabit(habitName)
+        .then((res) => {
+          setIsFollowing(true);
+          setLoading(false);
+          toast("Successfully subscribed!", {
+            icon: "👏",
+          });
+        })
+        .catch((err) => {
+          setLoading(false);
+          toast("Something went wrong!", {
+            icon: "👎",
+          });
+        });
     }
-    setIsFollowing((prev) => !prev);
   };
 
   const style = isFollowing
@@ -59,12 +88,16 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
   );
 
   return (
-    <button
-      className={`font-medium font-sans text-sm rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
-      onClick={handleClick}
-    >
-      {isFollowing && icon}
-      {text}
-    </button>
+    <>
+      <Toaster />
+      <button
+        className={`font-medium font-sans text-sm rounded-xl px-5 py-3 ${style} duration-500 inline-flex items-center h-fit`}
+        onClick={handleClick}
+        disabled={loading}
+      >
+        {isFollowing && icon}
+        {text}
+      </button>
+    </>
   );
 };
