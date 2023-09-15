@@ -40,7 +40,7 @@ export default async function Page({
   return (
     <>
       <Header />
-      <Confetti />
+      <Confetti msDelay={800} />
       <main className="p-7 flex flex-col gap-14 h-screen justify-center animate-jump-in animate-duration-500 overflow-hidden">
         <h1 className="text-center font-semibold text-xl">Congratulations!</h1>
         <div className="flex flex-col gap-2">
