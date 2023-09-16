@@ -31,7 +31,7 @@ export const PrimaryButton: FC<Props> = ({
     : "border-slate-900 text-slate-900 border-2";
   return (
     <button
-      className={`${style} ${DICT[size]} font-medium font-sans text-center text-sm rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-slate-400`}
+      className={`${style} ${DICT[size]} font-medium font-sans text-center text-sm rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-slate-400 w-full md:w-fit`}
       onClick={onClick}
       disabled={isLoading || disabled}
     >
