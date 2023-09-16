@@ -6,6 +6,7 @@ import { getHabit } from "@/prisma/helpers";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { FollowButton } from "@/components/Button/Follow";
 import { HabitFeatures } from "@/components/Info/HabitFeatures";
+import { SecondaryButton } from "@/components/Button/Secondary";
 
 export default async function Page({
   params: { name },
@@ -51,9 +52,7 @@ export default async function Page({
               <HabitFeatures habit={habit} />
             </div>
             <div>
-              <button className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl p-3 flex items-center justify-center font-medium text-sm w-full">
-                Read More
-              </button>
+              <SecondaryButton>Read More</SecondaryButton>
             </div>
           </div>
         </main>

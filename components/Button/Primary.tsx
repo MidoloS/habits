@@ -6,6 +6,8 @@ type Props = {
   onClick?: () => void;
   disabled?: boolean;
   isLoading?: boolean;
+  isActive?: boolean;
+  icon?: React.ReactNode;
 };
 
 export const PrimaryButton: FC<Props> = ({
@@ -13,13 +15,21 @@ export const PrimaryButton: FC<Props> = ({
   disabled,
   onClick,
   isLoading,
-}) => (
-  <button
-    className="flex justify-center bg-slate-950 font-sans w-full text-white rounded-xl text-sm font-medium py-4 px-6 md:w-fit disabled:bg-slate-200 disabled:text-slate-400"
-    disabled={disabled}
-    onClick={onClick}
-  >
-    <div>{isLoading && <Loading size={9} />}</div>
-    {!isLoading && children}
-  </button>
-);
+  isActive = false,
+  icon,
+}) => {
+  const style = isActive
+    ? "bg-slate-950 text-slate-50"
+    : "border-slate-900 text-slate-900 border-2";
+  return (
+    <button
+      className={`${style} font-medium font-sans text-sm rounded-xl px-5 py-3 duration-500 inline-flex items-center h-fit disabled:text-slate-400`}
+      onClick={onClick}
+      disabled={isLoading || disabled}
+    >
+      {isLoading && <Loading size={5} />}
+      {isActive && !isLoading && icon}
+      {children}
+    </button>
+  );
+};
