@@ -41,6 +41,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
         })
         .catch(() => {
           setLoading(false);
+          setIsFollowing(true);
           toast.error("Something went wrong!");
         });
     } else {
@@ -51,6 +52,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
           toast.success("Successfully subscribed!");
         })
         .catch(() => {
+          setIsFollowing(false);
           setLoading(false);
           toast.error("Something went wrong!");
         });

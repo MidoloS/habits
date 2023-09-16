@@ -117,12 +117,14 @@ export const EnableNotification = () => {
             60% more likely to compel their habits.
           </span>
         </p>
-        <PrimaryButton onClick={requestPermission}>
-          Enable daily remainder
-        </PrimaryButton>
-        <button onClick={handleClose} className="text-slate-500 text-sm pt-2">
-          Maybe later
-        </button>
+        <div className="flex justify-center flex-col gap-2">
+          <PrimaryButton onClick={requestPermission} size="lg">
+            Enable daily remainder
+          </PrimaryButton>
+          <button onClick={handleClose} className="text-slate-500 text-sm pt-2">
+            Maybe later
+          </button>
+        </div>
       </div>
     </div>,
     document.body

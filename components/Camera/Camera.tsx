@@ -12,6 +12,7 @@ import {
 import { SubscriptionWithHabit } from "@/libs/types";
 import { API_TO_HABIT_NAME } from "@/libs/constants";
 import { HabitCompleteLoading } from "../HabitCompleteLoading";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Camera = ({ habitName }: { habitName: string }) => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");
@@ -37,6 +38,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
         await completeHabit(habitName);
         push(`/habit/${habitName}/congratulations`);
       } else {
+        toast.error("You need to wake up between 5am and 9am");
         const failure = new Audio("/failure.mp3");
         failure.play();
       }
@@ -77,6 +79,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
       push(`/habit/${habitName}/congratulations`);
     } else {
       const failure = new Audio("/failure.mp3");
+      toast.error("Please try again");
       failure.play();
       setIsLoading(false);
     }
@@ -102,6 +105,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
   return (
     <>
+      <Toaster />
       {isLoading && <HabitCompleteLoading />}
       <div className="w-full -z-10 absolute top-0 h-full left-0 ">
         <Webcam
@@ -127,6 +131,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
         isLoading={isLoading}
         onClick={capture}
         disabled={!!subscription.completedAt}
+        isActive
       >
         {text}
       </PrimaryButton>
