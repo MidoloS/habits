@@ -3,6 +3,6 @@ export const API_TO_HABIT_NAME = {
   "brushing teeth": "brush",
   "person drinking water": "drink",
   "made bed": "tidy",
-  "healthy food": "eat",
-  exterior: "walk",
+  fruit: "eat",
+  park: "walk",
 };
