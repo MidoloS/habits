@@ -27,7 +27,7 @@ const SignInPage = () => {
         </div>
         <div className="flex flex-col grow justify-between md:gap-6 md:max-w-sm">
           <div className="flex flex-col gap-2">
-            <h1 className="text-center font-heading font-semibold text-3xl text-slate-950 md:text-left">
+            <h1 className="text-center font-heading font-semibold text-2xl text-slate-950 md:text-left">
               Begin Journey
             </h1>
             <p className="text-slate-600 text-center text-sm md:text-left">

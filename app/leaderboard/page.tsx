@@ -29,7 +29,7 @@ export default async function Page() {
           <h2 className="subheading-1">TOP 3 RANKERS</h2>
         </div>
 
-        <div className="flex justify-between items-end">
+        <div className="flex justify-center gap-5 items-end">
           <TopUser user={second} size={70} />
           <TopUser user={first} size={100} />
           <TopUser user={third} size={70} />
