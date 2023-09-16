@@ -9,7 +9,7 @@ export const Loading: FC<Props> = ({ size = 9 }) => {
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`w-${size} h-${size} mr-2 text-gray-800 animate-spin  fill-slate-950`}
+        className={`w-5 h-5 mr-2 text-gray-800 animate-spin  fill-slate-950`}
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

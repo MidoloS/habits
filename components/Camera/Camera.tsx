@@ -69,6 +69,8 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     const data = await res.json();
 
+    console.log("---------WEADOOOOOOOOR----------", { data });
+
     const mostLikely = getKeyWithMaxValue(data);
 
     setIsLoading(false);
