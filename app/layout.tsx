@@ -14,14 +14,10 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log("funciona, volver aca en caso de error");
-
   useEffect(() => {
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         if ("serviceWorker" in navigator) {
-          console.log(0);
-
           navigator.serviceWorker.register("/firebase-messaging-sw.js");
         }
       });
@@ -40,10 +36,6 @@ export default function BlogLayout({
       const app = initializeApp(firebaseConfig);
     }
   }, []);
-
-  console.log(1);
-
-  console.log("nueva layour con el script");
 
   return (
     <html lang="en">

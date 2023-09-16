@@ -112,8 +112,6 @@ export const deleteSubscriptions = async ({
   email: string;
   habitName: string;
 }) => {
-  console.log(email, habitName, "DELETE");
-
   return prisma.habit.update({
     where: {
       name: habitName,
@@ -167,12 +165,9 @@ export const createUser = async ({
   name: string | undefined;
   img: string | undefined;
 }) => {
-  console.log({ email, name });
-
   if (!email || !name) {
     return null;
   }
-  console.log(1);
 
   try {
     return prisma.user.upsert({
@@ -191,8 +186,6 @@ export const createUser = async ({
       },
     });
   } catch (err) {
-    console.log(err);
-
     return null;
   }
 };

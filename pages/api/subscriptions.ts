@@ -10,17 +10,11 @@ export default async function handler(
 ) {
   const session = await getServerSession(req, res, authOptions);
 
-  console.log({ sess2: session });
-
   if (!session?.user?.email) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  console.log(4);
-
   const prisma = generatePrismaClient();
-
-  console.log(5);
 
   const subs = await prisma.subscriptions.findMany({
     where: {
@@ -32,10 +26,6 @@ export default async function handler(
       habit: true,
     },
   });
-
-  console.log(6);
-
-  console.log("weador", subs);
 
   return res.status(200).json(subs);
 }

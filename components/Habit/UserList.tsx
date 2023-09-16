@@ -49,14 +49,10 @@ export const UserHabits = async () => {
     );
   };
 
-  console.log("subscriptions123", subscriptions);
-
   return (
     <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-16">
       {[
         ...subscriptions.sort((a, b) => {
-          console.log({ a, b });
-
           if (a.completedAt && b.completedAt) {
             return 0;
           }

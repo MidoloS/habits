@@ -3,8 +3,6 @@ import { generatePrismaClient } from "./client";
 const prisma = generatePrismaClient();
 
 prisma.$use(async (params, next) => {
-  console.log("params", params);
-
   if (params.model == "Subscriptions") {
     switch (params.action) {
       case "delete":

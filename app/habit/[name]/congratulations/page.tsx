@@ -29,8 +29,6 @@ export default async function Page({
 
   const uncompletedHabit = subscriptions.find((sub) => !sub.completedAt);
 
-  console.log("uncompletedHabit", uncompletedHabit);
-
   const { data: habit } = await getHabit(name);
 
   if (!habit?.createdAt) {

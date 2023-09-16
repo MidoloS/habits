@@ -22,16 +22,10 @@ export default async function handler(
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  console.log(req.body, habitName, 1);
-
-  console.log("habit completed");
-
   const wea = await completeHabit({
     email: session.user.email,
     habitName: habitName as string,
   });
-
-  console.log(wea);
 
   res.status(200).json({ data: {}, error: null, message: "" });
 }

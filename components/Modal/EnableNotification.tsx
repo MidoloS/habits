@@ -10,17 +10,10 @@ export const EnableNotification = () => {
   const [permission, setPermission] = useState(true);
 
   useEffect(() => {
-    console.log("useEffect");
-
     (async () => {
-      console.log("navigator", navigator);
-      console.log("support", "serviceWorker" in navigator);
-
       const res = await navigator.serviceWorker.register(
         "/firebase-messaging-sw.js"
       );
-      console.log("response");
-      console.log(res);
     })();
 
     if ("serviceWorker" in navigator && "PushManager" in window) {
@@ -37,36 +30,29 @@ export const EnableNotification = () => {
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const messaging = getMessaging(app);
-      console.log({ messaging });
       // Add the public key generated from the console here.
       getToken(messaging, {
         vapidKey:
           "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
       })
         .then((currentToken) => {
-          console.log("currentToken: ", currentToken);
           if (currentToken) {
             setPermission(true);
           } else {
             // Show permission request UI
             setPermission(false);
-            console.log(
-              "No registration token available. Request permission to generate one."
-            );
+
             // ...
           }
         })
         .catch((err) => {
           setPermission(false);
-          console.log("An error occurred while retrieving token. ", err);
           // ...
         });
     }
 
     navigator.serviceWorker.ready.then((reg) => {
       reg.pushManager.getSubscription().then((sub) => {
-        console.log("sub", sub);
-
         if (sub) {
           return sub;
         }
@@ -78,19 +64,13 @@ export const EnableNotification = () => {
     });
   }, []);
 
-  console.log({ permission });
-
   if (permission) {
     return null;
   }
 
   function requestPermission() {
-    console.log("Requesting permission...");
     Notification.requestPermission().then((permission) => {
-      console.log({ permission });
-
       if (permission === "granted") {
-        console.log("Notification permission granted.");
         setPermission(true);
       }
     });

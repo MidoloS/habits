@@ -18,15 +18,11 @@ export const HabitToCompleteSummary: FC<Props> = async ({
     (sub: SubscriptionWithHabit) => sub.completedAt
   ).length;
 
-  console.log({ totalSubs, completedSubs });
-
   const percentajeCompleted = (completedSubs / totalSubs) * 100;
 
   const title = percentajeCompleted > 50 ? "GOOD JOB!" : "KEEP GOING!";
 
   const uncompletedHabit = subscriptions.filter((sub) => !sub.completedAt)[0];
-
-  console.log({ uncompletedHabit });
 
   if (!uncompletedHabit) {
     return (

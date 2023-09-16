@@ -5,8 +5,6 @@ export const config = {
 };
 
 export default async function handler(req: NextRequest) {
-  console.log(1);
-
   await update();
 
   return new NextResponse(JSON.stringify({ message: "subs updated" }), {
@@ -17,8 +15,6 @@ export default async function handler(req: NextRequest) {
 async function update() {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/sub/reset`);
   const data = await res.json();
-
-  console.log({ data });
 
   return data;
 }

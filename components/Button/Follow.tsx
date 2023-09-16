@@ -18,13 +18,9 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
-    getSubscription(habitName)
-      .then((sub) => {
-        setIsFollowing(!!sub.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getSubscription(habitName).then((sub) => {
+      setIsFollowing(!!sub.data);
+    });
   }, [habitName]);
 
   const text = isFollowing ? "Following" : "Follow";
@@ -38,6 +34,15 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
           setIsFollowing(false);
           setLoading(false);
           toast.success("Successfully unsubscribed!");
+          navigator.serviceWorker.ready.then((registration) => {
+            if (!registration.active) return;
+
+            registration.active.postMessage(
+              JSON.stringify({
+                type: "UNFOLLOW_HABIT",
+              })
+            );
+          });
         })
         .catch(() => {
           setLoading(false);
@@ -50,6 +55,15 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
           setIsFollowing(true);
           setLoading(false);
           toast.success("Successfully subscribed!");
+          navigator.serviceWorker.ready.then((registration) => {
+            if (!registration.active) return;
+
+            registration.active.postMessage(
+              JSON.stringify({
+                type: "FOLLOW_HABIT",
+              })
+            );
+          });
         })
         .catch(() => {
           setIsFollowing(false);

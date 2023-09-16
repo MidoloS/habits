@@ -16,13 +16,9 @@ export const SubFeatures: FC<Props> = ({ habit }) => {
   );
 
   useEffect(() => {
-    getSubscription(habit.name)
-      .then((sub) => {
-        setSubscription(sub.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getSubscription(habit.name).then((sub) => {
+      setSubscription(sub.data);
+    });
   }, []);
 
   const pointsToDisplay =

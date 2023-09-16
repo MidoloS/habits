@@ -22,8 +22,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   );
   const { push } = useRouter();
 
-  console.log({ habitName });
-
   const searchParams = useSearchParams();
   const urlFacing = searchParams?.get("facing") || "environment";
   const webcamRef = useRef(null);
@@ -31,8 +29,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     if (habitName === "wakeup") {
       const now = new Date();
       const hours = now.getHours();
-
-      console.log({ hours });
 
       if (hours >= 5 && hours <= 9) {
         await completeHabit(habitName);
@@ -57,8 +53,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     const b64img = imageSrc.replace(/^.*?base64,/, "");
 
-    console.log("imageSrc", imageSrc);
-
     const res = await fetch(
       "https://wmoy6ravk5hlbzhskyaotl3bei0gfmeb.lambda-url.us-east-1.on.aws/",
       {
@@ -68,8 +62,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     );
 
     const data = await res.json();
-
-    console.log("---------WEADOOOOOOOOR----------", { data });
 
     const mostLikely = getKeyWithMaxValue(data);
 
@@ -96,14 +88,11 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   useEffect(() => {
     (async () => {
       const res = await getSubscription(habitName);
-      console.log({ res });
       setSubscription(res.data);
     })();
   }, []);
 
   const text = subscription.completedAt ? "Already done" : "Complete";
-
-  console.log({ subscription });
 
   return (
     <>
@@ -118,8 +107,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
           width={430}
           ref={webcamRef}
           imageSmoothing={true}
-          onUserMedia={() => console.log("User media loaded")}
-          onUserMediaError={() => console.log("User media error")}
           screenshotQuality={1}
           videoConstraints={{
             facingMode: facing,

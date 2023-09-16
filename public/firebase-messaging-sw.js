@@ -6,6 +6,11 @@ self.addEventListener("message", (event) => {
   //     window.workbox.messageSW({command: 'log', message: 'hello world'})
   console.log("Hello World, n2");
   console.log(event);
+  console.log("Hello World", {
+    event,
+    workbox: window.workbox,
+    navigator: window.navigator,
+  });
 });
 
 const TITLES = {
@@ -79,8 +84,6 @@ self.addEventListener("push", (event) => {
 
   const hour = date.getHours();
 
-  console.log("push happend");
-
   notificationByHour(hour);
 });
 
@@ -101,15 +104,12 @@ self.addEventListener(
 
 // hello world on install
 self.addEventListener("install", (event) => {
-  console.log("Hello/sw/public world from the Service Worker 2 🤙");
   importScripts(
     "https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"
   );
   importScripts(
     "https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging-compat.js"
   );
-
-  console.log("root");
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -127,18 +127,11 @@ self.addEventListener("install", (event) => {
   firebase.initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
 
-  console.log("messaging", messaging);
-
   messaging.onMessage(messaging, (payload) => {
-    console.log("Message received. ", payload);
     // ...
   });
 
   messaging.onBackgroundMessage((payload) => {
-    console.log(
-      "[firebase-messaging-sw.js] Received background message ",
-      payload
-    );
     // Customize notification here
     const notificationTitle = "Background Message Title";
     const notificationOptions = {
@@ -158,15 +151,12 @@ self.addEventListener("install", (event) => {
 
 // hello world on activate
 self.addEventListener("activate", (event) => {
-  console.log("Hello/sw/public world from the Service Worker 1 🤙");
   importScripts(
     "https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"
   );
   importScripts(
     "https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging-compat.js"
   );
-
-  console.log("root");
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -184,18 +174,11 @@ self.addEventListener("activate", (event) => {
   firebase.initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
 
-  console.log("messaging", messaging);
-
   messaging.onMessage(messaging, (payload) => {
-    console.log("Message received. ", payload);
     // ...
   });
 
   messaging.onBackgroundMessage((payload) => {
-    console.log(
-      "[firebase-messaging-sw.js] Received background message ",
-      payload
-    );
     // Customize notification here
     const notificationTitle = "Background Message Title";
     const notificationOptions = {
@@ -221,8 +204,6 @@ if ("serviceWorker" in navigator) {
     "https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging-compat.js"
   );
 
-  console.log("root");
-
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
@@ -239,18 +220,11 @@ if ("serviceWorker" in navigator) {
   firebase.initializeApp(firebaseConfig);
   const messaging = firebase.messaging();
 
-  console.log("messaging", messaging);
-
   messaging.onMessage(messaging, (payload) => {
-    console.log("Message received. ", payload);
     // ...
   });
 
   messaging.onBackgroundMessage((payload) => {
-    console.log(
-      "[firebase-messaging-sw.js] Received background message ",
-      payload
-    );
     // Customize notification here
     const notificationTitle = "Background Message Title";
     const notificationOptions = {

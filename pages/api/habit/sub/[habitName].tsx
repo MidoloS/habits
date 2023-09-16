@@ -15,21 +15,11 @@ export default async function handler(
 ) {
   const session = await getServerSession(req, res, authOptions);
 
-  console.log({ cookies: req.cookies });
-
-  console.log("subs", { session });
-
-  console.log({ session });
-
-  console.log("COSA MAGICA BOLADORA");
-
   const habitName = req.query.habitName as string;
 
   if (!session?.user?.email) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-
-  console.log("wea1", req.method);
 
   switch (req.method) {
     case "POST":
@@ -53,15 +43,10 @@ export default async function handler(
       });
       break;
     case "GET":
-      console.log("----------------------- 1 ---------------");
-
-      console.log("entre");
-
       const sub = await getSubscription({
         habitName,
         email: session?.user?.email,
       });
-      console.log("wea2", sub);
 
       res.status(200).json({ error: null, data: sub, message: "" });
       break;
