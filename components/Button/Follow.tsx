@@ -81,6 +81,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
         isLoading={loading}
         isActive={isFollowing}
         icon={<CheckmarkIcon />}
+        fullWidth={false}
       >
         {text}
       </PrimaryButton>

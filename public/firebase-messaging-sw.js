@@ -141,12 +141,6 @@ self.addEventListener("install", (event) => {
 
     self.registration.showNotification(notificationTitle, notificationOptions);
   });
-
-  messaging.setBackgroundMessageHandler(function (payload) {
-    const title = "Hello World";
-    const option = { data: { notification: { body: payload.data.status } } };
-    return self.registration.showNotification(title, option);
-  });
 });
 
 // hello world on activate
@@ -188,12 +182,6 @@ self.addEventListener("activate", (event) => {
 
     self.registration.showNotification(notificationTitle, notificationOptions);
   });
-
-  messaging.setBackgroundMessageHandler(function (payload) {
-    const title = "Hello World";
-    const option = { data: { notification: { body: payload.data.status } } };
-    return self.registration.showNotification(title, option);
-  });
 });
 
 if ("serviceWorker" in navigator) {
@@ -233,11 +221,5 @@ if ("serviceWorker" in navigator) {
     };
 
     self.registration.showNotification(notificationTitle, notificationOptions);
-  });
-
-  messaging.setBackgroundMessageHandler(function (payload) {
-    const title = "Hello World";
-    const option = { data: { notification: { body: payload.data.status } } };
-    return self.registration.showNotification(title, option);
   });
 }
