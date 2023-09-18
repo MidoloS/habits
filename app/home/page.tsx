@@ -20,7 +20,7 @@ const Home = async () => {
     redirect("/signin?callbackUrl=/home");
   }
 
-  if (session?.user?.subs.length !== 0) {
+  if (session?.user?.subs.length === 0) {
     return (
       <>
         <main className="flex flex-col gap-8 p-7 justify-between h-[90vh] ">
