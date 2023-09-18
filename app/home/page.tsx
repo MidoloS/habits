@@ -19,11 +19,19 @@ const Home = async () => {
     redirect("/signin?callbackUrl=/home");
   }
 
-  if (session?.user?.subs.length === 0) {
+  if (session?.user?.subs.length !== 0) {
     return (
       <>
-        <main className="flex flex-col gap-8 px-4 mt-4 justify-between h-[87vh] ">
-          <div />
+        <main className="flex flex-col gap-8 p-7 justify-between h-[90vh] ">
+          <div className="flex items-center gap-2">
+            <Image
+              src="/icon-192x192.png"
+              alt="wonderful big tree vectorial design"
+              height={50}
+              width={50}
+            />
+            <p className="font-heading font-semibold text-slate-950">HabitAI</p>
+          </div>
           <div className="text-center flex flex-col items-center gap-8">
             <Image
               src="/images/empty.png"
@@ -34,7 +42,7 @@ const Home = async () => {
             />
             <div className="flex flex-col gap-1">
               <h1 className="text-2xl font-semibold">Nothing here</h1>
-              <h2 className="text-slate-500 font-sans">
+              <h2 className="text-slate-600 text-center text-sm">
                 Begin your journey finding new habits
               </h2>
             </div>

@@ -9,7 +9,7 @@ export const GoogleSignInButton = () => {
       onClick={() => signIn("google", { callbackUrl: "/home" })}
       size="lg"
     >
-      Create Account
+      Join Now
     </PrimaryButton>
   );
 };
