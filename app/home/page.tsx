@@ -11,6 +11,7 @@ import { CountdownHabit } from "@/components/Habit/Countdown";
 import { EnableNotification } from "@/components/Modal/EnableNotification";
 import Image from "next/image";
 import { PrimaryButton } from "@/components/Button/Primary";
+import Link from "next/link";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -19,11 +20,11 @@ const Home = async () => {
     redirect("/signin?callbackUrl=/home");
   }
 
-  if (session?.user?.subs.length !== 0) {
+  if (session?.user?.subs.length === 0) {
     return (
       <>
         <main className="flex flex-col gap-8 p-7 justify-between h-[90vh] ">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ">
             <Image
               src="/icon-192x192.png"
               alt="wonderful big tree vectorial design"
@@ -32,7 +33,7 @@ const Home = async () => {
             />
             <p className="font-heading font-semibold text-slate-950">HabitAI</p>
           </div>
-          <div className="text-center flex flex-col items-center gap-8">
+          <div className="text-center flex flex-col items-center gap-8 justify-center ">
             <Image
               src="/images/empty.png"
               width={300}
@@ -47,7 +48,14 @@ const Home = async () => {
               </h2>
             </div>
           </div>
-          <PrimaryButton size="lg">Find Habits</PrimaryButton>
+          <div className="flex items-center justify-center">
+            <Link
+              className="bg-slate-950 text-slate-50 font-medium font-sans text-center text-sm rounded-xl px-5 py-4"
+              href="/habit/new"
+            >
+              Find Habits
+            </Link>
+          </div>
         </main>
         <Navigator />
       </>
