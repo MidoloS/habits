@@ -1,3 +1,19 @@
+import { openDB, deleteDB, wrap, unwrap } from "idb";
+
+const request = indexedDB.open("myDatabase", 1);
+
+request.onupgradeneeded = (event) => {
+  const db = event.target.result;
+  const objectStore = db.createObjectStore("messages", {
+    keyPath: "id",
+    autoIncrement: true,
+  });
+};
+
+request.onerror = (event) => {
+  console.error("Database error: " + event.target.errorCode);
+};
+
 self.addEventListener("message", (event) => {
   // HOW TO TEST THIS?
   // Run this in your browser console:
@@ -10,6 +26,21 @@ self.addEventListener("message", (event) => {
     workbox: window.workbox,
     navigator: window.navigator,
   });
+
+  const db = request.result;
+  const transaction = db.transaction(["messages"], "readwrite");
+  const objectStore = transaction.objectStore("messages");
+
+  // Store the event data in the database
+  objectStore.add({ data: event.data });
+
+  // Close the transaction and database
+  transaction.oncomplete = () => {
+    console.log("Data stored in IndexedDB: ", event.data);
+  };
+  transaction.onerror = (error) => {
+    console.error("Error storing data in IndexedDB: ", error);
+  };
 });
 
 const TITLES = {
