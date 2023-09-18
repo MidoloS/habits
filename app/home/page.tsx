@@ -20,7 +20,7 @@ const Home = async () => {
     redirect("/signin?callbackUrl=/home");
   }
 
-  if (session?.user?.subs.length === 0) {
+  if (session?.user?.subs.length !== 0) {
     return (
       <>
         <main className="flex flex-col gap-8 p-7 justify-between h-[90vh] ">
@@ -50,7 +50,7 @@ const Home = async () => {
           </div>
           <div className="flex items-center justify-center">
             <Link
-              className="bg-slate-950 text-slate-50 font-medium font-sans text-center text-sm rounded-xl px-5 py-4"
+              className="bg-slate-950 text-slate-50 font-medium font-sans text-center text-sm rounded-xl px-5 py-4 w-full md:w-fit"
               href="/habit/new"
             >
               Find Habits
