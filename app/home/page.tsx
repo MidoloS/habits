@@ -24,14 +24,8 @@ const Home = async () => {
     return (
       <>
         <main className="flex flex-col gap-8 p-7 justify-between h-[90vh] ">
-          <div className="flex items-center gap-2 ">
-            <Image
-              src="/icon-192x192.png"
-              alt="wonderful big tree vectorial design"
-              height={50}
-              width={50}
-            />
-            <p className="font-heading font-semibold text-slate-950">HabitAI</p>
+          <div className="container mx-auto">
+            <UserWelcome name={session.user.name} img={session.user.image} />
           </div>
           <div className="text-center flex flex-col items-center gap-8 justify-center ">
             <Image
