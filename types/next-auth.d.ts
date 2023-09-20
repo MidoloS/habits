@@ -9,6 +9,10 @@ declare module "next-auth" {
     user: {
       subs: SubscriptionWithHabit[];
       points: number;
+      isPro: boolean;
+      name: string;
+      email: string;
+      image: string | null;
     } & DefaultSession["user"];
   }
 }
