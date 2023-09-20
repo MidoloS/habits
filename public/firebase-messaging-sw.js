@@ -1,19 +1,3 @@
-import { openDB, deleteDB, wrap, unwrap } from "idb";
-
-const request = indexedDB.open("myDatabase", 1);
-
-request.onupgradeneeded = (event) => {
-  const db = event.target.result;
-  const objectStore = db.createObjectStore("messages", {
-    keyPath: "id",
-    autoIncrement: true,
-  });
-};
-
-request.onerror = (event) => {
-  console.error("Database error: " + event.target.errorCode);
-};
-
 self.addEventListener("message", (event) => {
   // HOW TO TEST THIS?
   // Run this in your browser console:
