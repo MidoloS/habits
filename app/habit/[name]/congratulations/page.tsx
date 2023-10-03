@@ -81,7 +81,7 @@ export default async function Page({
             </span>
           </p>
           <div className="flex justify-center">
-            <StreakProgress streakDays={21} />
+            <StreakProgress streakDays={currentHabit?.streak || 1} />
           </div>
         </div>
 
