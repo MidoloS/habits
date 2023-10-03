@@ -54,18 +54,29 @@ export const completeHabit = async ({
   email: string;
   habitName: string;
 }) => {
-  const habit = await prisma.habit.findUnique({
+  const sub = await prisma.subscriptions.findUnique({
     where: {
-      name: habitName,
+      userEmail_habitName: {
+        habitName,
+        userEmail: email,
+      },
+    },
+    include: {
+      habit: true,
     },
   });
+
+  const xpBoost = 1 + (sub?.streak || 1) / 10;
+
+  console.log({ xpBoost });
+
   return prisma.user.update({
     where: {
       email,
     },
     data: {
       points: {
-        increment: habit?.points,
+        increment: (sub?.habit?.points || 1) * xpBoost,
       },
       subscriptions: {
         update: {

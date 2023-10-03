@@ -7,6 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getHabit } from "@/prisma/helpers";
 import { Header } from "@/components/Navigator/Header";
 import { Confetti } from "@/components/Info/Confetti";
+import { StreakProgress } from "@/components/Habit/StreakProgress";
 
 export default async function Page({
   params: { name },
@@ -28,6 +29,12 @@ export default async function Page({
   }
 
   const uncompletedHabit = subscriptions.find((sub) => !sub.completedAt);
+
+  const currentHabit = subscriptions.find((sub) => sub.habitName === name);
+
+  console.log(12345);
+
+  console.log({ currentHabit });
 
   const { data: habit } = await getHabit(name);
 
@@ -73,6 +80,9 @@ export default async function Page({
               big change over time!
             </span>
           </p>
+          <div className="flex justify-center">
+            <StreakProgress streakDays={21} />
+          </div>
         </div>
 
         <div className="w-full flex flex-col gap-4">

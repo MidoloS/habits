@@ -6,3 +6,5 @@ export const API_TO_HABIT_NAME = {
   fruit: "eat",
   park: "walk",
 };
+
+export const DAYS_UNTIL_HABIT = 21;

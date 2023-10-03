@@ -2,14 +2,18 @@ import { FC } from "react";
 
 type Props = {
   strokeWidth: number;
+  strokeColor?: string;
   percentage: number;
   size?: number;
+  children?: React.ReactNode;
 };
 
 export const CircularProgressbar: FC<Props> = ({
   strokeWidth,
+  strokeColor = "#020617",
   percentage,
   size = 32,
+  children,
 }) => {
   const radius = size - strokeWidth / 2;
   const pathDescription = `
@@ -20,7 +24,7 @@ export const CircularProgressbar: FC<Props> = ({
 
   const diameter = Math.PI * 2 * radius;
   const progressStyle = {
-    stroke: "#020617",
+    stroke: strokeColor,
     strokeLinecap: "round",
     strokeDasharray: `${diameter}px ${diameter}px`,
     strokeDashoffset: `${((100 - percentage) / 100) * diameter}px`,
@@ -52,20 +56,24 @@ export const CircularProgressbar: FC<Props> = ({
         style={progressStyle}
       />
 
-      <text
-        className="CircularProgressbar-text"
-        x={50}
-        y={50}
-        style={{
-          fill: "#020617",
-          fontSize: "14px",
-          dominantBaseline: "central",
-          textAnchor: "middle",
-          fontWeight: "bold",
-        }}
-      >
-        {`${Math.round(percentage)}%`}
-      </text>
+      {children ? (
+        children
+      ) : (
+        <text
+          className="CircularProgressbar-text"
+          x={50}
+          y={50}
+          style={{
+            fill: "#020617",
+            fontSize: "14px",
+            dominantBaseline: "central",
+            textAnchor: "middle",
+            fontWeight: "bold",
+          }}
+        >
+          {Math.round(percentage)}%
+        </text>
+      )}
     </svg>
   );
 };
