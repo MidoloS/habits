@@ -1,3 +1,4 @@
+import { formatName } from "@/libs/helpers";
 import { User } from "@prisma/client";
 import Image from "next/image";
 import { FC } from "react";
@@ -5,19 +6,10 @@ import { FC } from "react";
 type Props = {
   user: User;
   size: number;
+  currentUser: boolean;
 };
 
-const formatName = (name: string) => {
-  const [firstName = "", lastName = ""] = name.split(" ");
-
-  if (lastName.length === 0) {
-    return firstName;
-  }
-
-  return `${firstName}. ${lastName[0]}`;
-};
-
-export const TopUser: FC<Props> = ({ user, size }) => (
+export const TopUser: FC<Props> = ({ user, size, currentUser }) => (
   <figure className="flex flex-col justify-center items-center">
     <Image
       src={user.img || ""}
@@ -27,7 +19,7 @@ export const TopUser: FC<Props> = ({ user, size }) => (
       className="rounded-full border-[3px] border-slate-950 p-[3px]"
     />
     <figcaption className="text-center font-medium">
-      {formatName(user.name)}
+      {formatName(user.name, currentUser)}
     </figcaption>
     <figcaption className="text-center text-slate-500 text-sm">
       {user.points} Points

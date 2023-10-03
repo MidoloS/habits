@@ -17,7 +17,19 @@ export default async function Page() {
 
   const { data: users } = await getUsers();
 
+  const currentUser = {
+    name: session.user.name,
+    email: session.user.email,
+    img: session.user.image,
+    points: session.user.points,
+    isPro: session.user.isPro,
+  };
+
   const [first, second, third, ...otherUsers] = users;
+
+  const currentUserIsOnTopTen = users.some(
+    (user) => user.email === currentUser.email
+  );
 
   return (
     <>
@@ -29,18 +41,46 @@ export default async function Page() {
           <h2 className="subheading-1">TOP 3 RANKERS</h2>
         </div>
 
-        <div className="flex justify-center gap-5 items-end">
-          <TopUser user={second} size={70} />
-          <TopUser user={first} size={100} />
-          <TopUser user={third} size={70} />
+        <div className="flex justify-between items-end">
+          <TopUser
+            user={second}
+            size={80}
+            currentUser={currentUser.email === second.email}
+          />
+          <TopUser
+            user={first}
+            size={100}
+            currentUser={currentUser.email === first.email}
+          />
+          <TopUser
+            user={third}
+            size={60}
+            currentUser={currentUser.email === third.email}
+          />
         </div>
       </div>
       <div className="p-7 flex flex-col">
         <h2 className="subheading-1 mb-2 gap-4">ALL RANKERS</h2>
         <ul className="flex flex-col mt-4 mb-20">
           {otherUsers.map((user, rank) => (
-            <LeaderboardItem user={user} rank={rank + 4} key={user.email} />
+            <LeaderboardItem
+              user={user}
+              rank={rank + 4}
+              key={user.email}
+              currentUser={currentUser.email === user.email}
+            />
           ))}
+          {!currentUserIsOnTopTen && (
+            <>
+              <div className="flex items-center justify-center mt-4 mb-2">
+                <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                <div className="w-2 h-2 bg-gray-300 rounded-full mx-1"></div>
+                <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+              </div>
+
+              <LeaderboardItem user={currentUser} currentUser />
+            </>
+          )}
         </ul>
       </div>
       <Navigator />

@@ -8,7 +8,7 @@ export default async function handler(
   const prisma = generatePrismaClient();
 
   const users = await prisma.user.findMany({
-    take: 100,
+    take: 10,
     orderBy: {
       points: "desc",
     },
