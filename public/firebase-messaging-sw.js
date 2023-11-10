@@ -1,30 +1,87 @@
-self.addEventListener("message", (event) => {
-  // HOW TO TEST THIS?
-  // Run this in your browser console:
-  //     window.navigator.serviceWorker.controller.postMessage({command: 'log', message: 'hello world'})
-  // OR use next-pwa injected workbox object
-  //     window.workbox.messageSW({command: 'log', message: 'hello world'})
-  console.log(event);
-  console.log("Hello World", {
-    event,
-    workbox: window.workbox,
-    navigator: window.navigator,
+importScripts("https://unpkg.com/idb@4.0.3/build/iife/index-min.js");
+
+const isJson = (str) => {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+};
+
+const getItemFromDB = (storeName) => async (key) => {
+  console.log({ key, storeName });
+
+  if (!key) {
+    return null;
+  }
+
+  const dbPromise = idb.openDB("habitai", 1, {
+    upgrade(db) {
+      db.createObjectStore(storeName);
+    },
   });
+  const valueFromDB = await (await dbPromise).get(storeName, key);
 
-  const db = request.result;
-  const transaction = db.transaction(["messages"], "readwrite");
-  const objectStore = transaction.objectStore("messages");
+  if (isJson(valueFromDB)) {
+    return JSON.parse(valueFromDB);
+  }
 
-  // Store the event data in the database
-  objectStore.add({ data: event.data });
+  return valueFromDB;
+};
 
-  // Close the transaction and database
-  transaction.oncomplete = () => {
-    console.log("Data stored in IndexedDB: ", event.data);
-  };
-  transaction.onerror = (error) => {
-    console.error("Error storing data in IndexedDB: ", error);
-  };
+const deleteItemFromDB = (storeName) => async (key) => {
+  const dbPromise = idb.openDB("habitai", 1, {
+    upgrade(db) {
+      db.createObjectStore(storeName);
+    },
+  });
+  return (await dbPromise).delete(storeName, key);
+};
+
+const setItemInDB = (storeName) => async (key, val) => {
+  const dbPromise = idb.openDB("habitai", 1, {
+    upgrade(db) {
+      db.createObjectStore(storeName);
+    },
+  });
+  await deleteItemFromDB("habits")(key);
+  return await (await dbPromise).put(storeName, val, key);
+};
+
+const isFollowing = async (habitName) => {
+  try {
+    const res = await getItemFromDB("habits")(habitName);
+
+    const data = isJson(res) ? JSON.parse(res) : res;
+
+    console.log("isFollowing");
+    console.log({ data });
+
+    if (data.type === "FOLLOW_HABIT") {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return false;
+  }
+};
+
+self.addEventListener("message", async (event) => {
+  console.log({ event });
+  const data = JSON.parse(event?.data || {});
+  console.log({ data });
+  console.log("recieved button");
+  await setItemInDB("habits")(data.name, event.data);
+
+  const wea = await getItemFromDB("habits")(data.name);
+
+  console.log({ wea });
+
+  const follow = await isFollowing(data.name);
+
+  console.log({ follow });
 });
 
 const TITLES = {
@@ -51,44 +108,57 @@ const TITLE_TO_URL = {
   [TITLES.READ]: "https://habitai.io/habit/read/complete",
 };
 
-const notificationByHour = (hour) => {
+const notificationByHour = async (hour) => {
   if (hour >= 7 && hour <= 9) {
-    self.registration.showNotification(TITLES.TIDY_BED, {
-      body: "5 min. Click here to complete.",
-      badge: "/badge.png",
-      icon: "/pixel.png",
-    });
-    self.registration.showNotification(TITLES.LAUNDRY, {
-      body: "5 min. Click here to complete.",
-      badge: "/badge.png",
-      icon: "/pixel.png",
-    });
+    if (await isFollowing("tidy")) {
+      self.registration.showNotification(TITLES.TIDY_BED, {
+        body: "5 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
+
+    if (await isFollowing("laundry")) {
+      self.registration.showNotification(TITLES.LAUNDRY, {
+        body: "5 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
   }
   if (hour >= 12 && hour <= 14) {
-    self.registration.showNotification(TITLES.HEALTHY_MEAL, {
-      body: "3 min. Click here to complete.",
-      badge: "/badge.png",
-      icon: "/pixel.png",
-    });
-    self.registration.showNotification(TITLES.BRUSH_TEETH, {
-      body: "2 min. Click here to complete.",
-      badge: "/badge.png",
-      icon: "/pixel.png",
-    });
+    if (await isFollowing("eat")) {
+      self.registration.showNotification(TITLES.HEALTHY_MEAL, {
+        body: "3 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
+    if (await isFollowing("brush")) {
+      self.registration.showNotification(TITLES.BRUSH_TEETH, {
+        body: "2 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
   }
   if (hour >= 15 && hour <= 18) {
-    self.registration.showNotification(TITLES.WALK, {
-      body: "15 min. Click here to complete.",
-      badge: "/badge.png",
-      icon: "/pixel.png",
-    });
+    if (await isFollowing("walk")) {
+      self.registration.showNotification(TITLES.WALK, {
+        body: "15 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
   }
   if (hour >= 19 && hour <= 21) {
-    self.registration.showNotification(TITLES.READ, {
-      body: "20 min. Click here to complete.",
-      badge: "/badge.png",
-      icon: "/pixel.png",
-    });
+    if (await isFollowing("read")) {
+      self.registration.showNotification(TITLES.READ, {
+        body: "20 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
   }
 };
 

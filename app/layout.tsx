@@ -16,6 +16,7 @@ export default function BlogLayout({
 }) {
   useEffect(() => {
     if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/firebase-messaging-sw.js");
       window.addEventListener("load", () => {
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.register("/firebase-messaging-sw.js");

@@ -40,6 +40,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
             registration.active.postMessage(
               JSON.stringify({
                 type: "UNFOLLOW_HABIT",
+                name: habitName,
               })
             );
           });
@@ -61,6 +62,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
             registration.active.postMessage(
               JSON.stringify({
                 type: "FOLLOW_HABIT",
+                name: habitName,
               })
             );
           });
