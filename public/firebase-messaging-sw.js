@@ -70,6 +70,7 @@ const isFollowing = async (habitName) => {
 
 self.addEventListener("message", async (event) => {
   console.log({ event });
+  console.log("wea");
   const data = JSON.parse(event?.data || {});
   console.log({ data });
   console.log("recieved button");
