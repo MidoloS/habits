@@ -23,30 +23,53 @@ export default async function handler(
 
   switch (req.method) {
     case "POST":
-      await createSubscriptions({
-        habitName,
-        email: session?.user?.email,
-      });
-      res
-        .status(200)
-        .json({ error: null, data: null, message: "Successfully Subscribed" });
+      try {
+        await createSubscriptions({
+          habitName,
+          email: session?.user?.email,
+        });
+        res.status(200).json({
+          error: null,
+          data: null,
+          message: "Successfully Subscribed",
+        });
+      } catch (error) {
+        res.status(500).json({
+          error: "Couldn't follow habit",
+          data: null,
+          message: "",
+        });
+      }
+
       break;
     case "DELETE":
-      await deleteSubscriptions({
-        habitName,
-        email: session?.user?.email,
-      });
-      res.status(200).json({
-        error: null,
-        data: null,
-        message: "Successfully Unsubscribed",
-      });
+      try {
+        await deleteSubscriptions({
+          habitName,
+          email: session?.user?.email,
+        });
+        res.status(200).json({
+          error: null,
+          data: null,
+          message: "Successfully Unsubscribed",
+        });
+      } catch (error) {
+        res.status(500).json({
+          error: null,
+          data: null,
+          message: "Couldn't unfollow habit",
+        });
+      }
       break;
     case "GET":
+      console.log({ email: session?.user?.email, habitName });
+
       const sub = await getSubscription({
         habitName,
         email: session?.user?.email,
       });
+
+      console.log({ sub });
 
       res.status(200).json({ error: null, data: sub, message: "" });
       break;

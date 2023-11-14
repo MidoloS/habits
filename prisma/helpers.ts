@@ -10,6 +10,9 @@ export const getUser = async (email: string) => {
     },
     include: {
       subscriptions: {
+        where: {
+          isFollowing: true,
+        },
         include: {
           habit: true,
         },
@@ -132,10 +135,15 @@ export const deleteSubscriptions = async ({
         decrement: 1,
       },
       subscriptions: {
-        delete: {
-          userEmail_habitName: {
-            habitName,
-            userEmail: email,
+        update: {
+          where: {
+            userEmail_habitName: {
+              habitName,
+              userEmail: email,
+            },
+          },
+          data: {
+            isFollowing: false,
           },
         },
       },
@@ -159,8 +167,19 @@ export const createSubscriptions = async ({
         increment: 1,
       },
       subscriptions: {
-        create: {
-          userEmail: email,
+        upsert: {
+          where: {
+            userEmail_habitName: {
+              habitName,
+              userEmail: email,
+            },
+          },
+          create: {
+            userEmail: email,
+          },
+          update: {
+            isFollowing: true,
+          },
         },
       },
     },
@@ -225,6 +244,7 @@ export const getSubscriptions = async ({ email }: { email: string }) => {
   return prisma.subscriptions.findMany({
     where: {
       userEmail: email,
+      isFollowing: true,
     },
     include: {
       habit: true,

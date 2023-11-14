@@ -32,6 +32,16 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
       if (hours >= 5 && hours <= 9) {
         await completeHabit(habitName);
+        navigator.serviceWorker.ready.then((registration) => {
+          if (!registration.active) return;
+
+          registration.active.postMessage(
+            JSON.stringify({
+              completed: true,
+              name: "wakeup",
+            })
+          );
+        });
         push(`/habit/${habitName}/congratulations`);
       } else {
         toast.error("You need to wake up between 5am and 9am");
@@ -43,6 +53,17 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     if (["meditate", "read"].includes(habitName)) {
       push(`/habit/${habitName}/congratulations`);
       await completeHabit(habitName);
+      navigator.serviceWorker.ready.then((registration) => {
+        if (!registration.active) return;
+
+        registration.active.postMessage(
+          JSON.stringify({
+            completed: true,
+            name: habitName,
+            isFollowing: true,
+          })
+        );
+      });
       return;
     }
 
@@ -70,6 +91,17 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     // @ts-ignore
     if (API_TO_HABIT_NAME[mostLikely] === habitName) {
       await completeHabit(habitName);
+      navigator.serviceWorker.ready.then((registration) => {
+        if (!registration.active) return;
+
+        registration.active.postMessage(
+          JSON.stringify({
+            completed: true,
+            name: habitName,
+            isFollowing: true,
+          })
+        );
+      });
       push(`/habit/${habitName}/congratulations`);
     } else {
       const failure = new Audio("/failure.mp3");

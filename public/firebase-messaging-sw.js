@@ -1,20 +1,7 @@
 importScripts("https://unpkg.com/idb@4.0.3/build/iife/index-min.js");
 
-const isJson = (str) => {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};
-
-const getItemFromDB = (storeName) => async (key) => {
+const getItemFromDBSW = (storeName) => async (key) => {
   console.log({ key, storeName });
-
-  if (!key) {
-    return null;
-  }
 
   const dbPromise = idb.openDB("habitai", 1, {
     upgrade(db) {
@@ -23,14 +10,15 @@ const getItemFromDB = (storeName) => async (key) => {
   });
   const valueFromDB = await (await dbPromise).get(storeName, key);
 
-  if (isJson(valueFromDB)) {
-    return JSON.parse(valueFromDB);
-  }
+  console.log({ valueFromDB });
 
-  return valueFromDB;
+  if (valueFromDB?.name) {
+    return valueFromDB;
+  }
+  return JSON.parse(valueFromDB);
 };
 
-const deleteItemFromDB = (storeName) => async (key) => {
+const deleteItemFromDBSW = (storeName) => async (key) => {
   const dbPromise = idb.openDB("habitai", 1, {
     upgrade(db) {
       db.createObjectStore(storeName);
@@ -39,79 +27,72 @@ const deleteItemFromDB = (storeName) => async (key) => {
   return (await dbPromise).delete(storeName, key);
 };
 
-const setItemInDB = (storeName) => async (key, val) => {
+const setItemInDBSW = (storeName) => async (key, val) => {
   const dbPromise = idb.openDB("habitai", 1, {
     upgrade(db) {
       db.createObjectStore(storeName);
     },
   });
-  await deleteItemFromDB("habits")(key);
-  return await (await dbPromise).put(storeName, val, key);
+  const prevData = await getItemFromDBSW("habits")(key);
+
+  console.log("setItemInDBSW", prevData, val);
+
+  const newData = {
+    ...prevData,
+    ...JSON.parse(val),
+  };
+
+  console.log(123);
+  console.log({ newData });
+  console.log("string", JSON.stringify(newData));
+
+  return await (await dbPromise).put(storeName, JSON.stringify(newData), key);
 };
 
-const isFollowing = async (habitName) => {
+const isFollowingSW = async (habitName) => {
   try {
-    const res = await getItemFromDB("habits")(habitName);
-
-    const data = isJson(res) ? JSON.parse(res) : res;
+    const data = await getItemFromDBSW("habits")(habitName);
 
     console.log("isFollowing");
     console.log({ data });
 
-    if (data.type === "FOLLOW_HABIT") {
-      return true;
-    } else {
-      return false;
-    }
+    return !!data?.isFollowing;
   } catch (error) {
     return false;
   }
 };
 
+const isCompletedSW = async (habitName) => {
+  try {
+    const data = await getItemFromDBSW("habits")(habitName);
+
+    console.log("isCompleted");
+    console.log({ data });
+
+    return !!data?.completed;
+  } catch (error) {
+    return false;
+  }
+};
+
+const shouldSendNotification = async (habitName) => {
+  const follow = await isFollowingSW(habitName);
+  const completed = await isCompletedSW(habitName);
+
+  return follow && !completed;
+};
+
 self.addEventListener("message", async (event) => {
-  console.log({ event });
-  console.log("wea");
+  console.log("post event");
   const data = JSON.parse(event?.data || {});
-  console.log({ data });
-  console.log("recieved button");
-  await setItemInDB("habits")(data.name, event.data);
-
-  const wea = await getItemFromDB("habits")(data.name);
-
+  await setItemInDBSW("habits")(data.name, event.data);
+  const wea = await getItemFromDBSW("habits")(data.name);
   console.log({ wea });
-
-  const follow = await isFollowing(data.name);
-
-  console.log({ follow });
 });
-
-const TITLES = {
-  GOOD_MORNING: "Good Morning! ☀️",
-  TIDY_BED: "Make the Bed 🛏️",
-  LAUNDRY: "Laundry Time! 👕",
-  HEALTHY_MEAL: "Eat Fruit 🍎",
-  BRUSH_TEETH: "Brush Teeth 😁",
-  WALK: "Touch grass 🌳",
-  DRINK: "Drink Water 🌊",
-  RELAX: "Time to relax 🧘",
-  READ: "Read 5 pages 📖",
-};
-
-const TITLE_TO_URL = {
-  [TITLES.GOOD_MORNING]: "https://habitai.io/habit/wakeup/complete",
-  [TITLES.TIDY_BED]: "https://habitai.io/habit/tidy/complete",
-  [TITLES.LAUNDRY]: "https://habitai.io/habit/laundry/complete",
-  [TITLES.HEALTHY_MEAL]: "https://habitai.io/habit/eat/complete",
-  [TITLES.BRUSH_TEETH]: "https://habitai.io/habit/brush/complete",
-  [TITLES.WALK]: "https://habitai.io/habit/walk/complete",
-  [TITLES.DRINK]: "https://habitai.io/habit/drink/complete",
-  [TITLES.RELAX]: "https://habitai.io/habit/meditate/complete",
-  [TITLES.READ]: "https://habitai.io/habit/read/complete",
-};
 
 const notificationByHour = async (hour) => {
   if (hour >= 7 && hour <= 9) {
-    if (await isFollowing("tidy")) {
+    if (await shouldSendNotification("tidy")) {
       self.registration.showNotification(TITLES.TIDY_BED, {
         body: "5 min. Click here to complete.",
         badge: "/badge.png",
@@ -119,7 +100,7 @@ const notificationByHour = async (hour) => {
       });
     }
 
-    if (await isFollowing("laundry")) {
+    if (await shouldSendNotification("laundry")) {
       self.registration.showNotification(TITLES.LAUNDRY, {
         body: "5 min. Click here to complete.",
         badge: "/badge.png",
@@ -128,14 +109,14 @@ const notificationByHour = async (hour) => {
     }
   }
   if (hour >= 12 && hour <= 14) {
-    if (await isFollowing("eat")) {
+    if (await shouldSendNotification("eat")) {
       self.registration.showNotification(TITLES.HEALTHY_MEAL, {
         body: "3 min. Click here to complete.",
         badge: "/badge.png",
         icon: "/pixel.png",
       });
     }
-    if (await isFollowing("brush")) {
+    if (await shouldSendNotification("brush")) {
       self.registration.showNotification(TITLES.BRUSH_TEETH, {
         body: "2 min. Click here to complete.",
         badge: "/badge.png",
@@ -144,7 +125,7 @@ const notificationByHour = async (hour) => {
     }
   }
   if (hour >= 15 && hour <= 18) {
-    if (await isFollowing("walk")) {
+    if (await shouldSendNotification("walk")) {
       self.registration.showNotification(TITLES.WALK, {
         body: "15 min. Click here to complete.",
         badge: "/badge.png",
@@ -153,7 +134,7 @@ const notificationByHour = async (hour) => {
     }
   }
   if (hour >= 19 && hour <= 21) {
-    if (await isFollowing("read")) {
+    if (await shouldSendNotification("read")) {
       self.registration.showNotification(TITLES.READ, {
         body: "20 min. Click here to complete.",
         badge: "/badge.png",
@@ -164,7 +145,6 @@ const notificationByHour = async (hour) => {
 };
 
 self.addEventListener("push", (event) => {
-  const data = event.data?.json() ?? {};
   const date = new Date();
 
   const hour = date.getHours();
@@ -175,8 +155,6 @@ self.addEventListener("push", (event) => {
 self.addEventListener(
   "notificationclick",
   (event) => {
-    // open a window to the app's homepage and close the notification
-
     const title = event.notification.title;
 
     const url = TITLE_TO_URL[title] || "https://habitai.io";

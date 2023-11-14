@@ -20,5 +20,8 @@ export default async function handler(
   const subs = await getSubscriptions({
     email: session?.user?.email,
   });
+
+  console.log({ subs });
+
   res.status(200).json({ error: null, data: subs, message: "" });
 }
