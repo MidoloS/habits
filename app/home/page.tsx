@@ -5,12 +5,10 @@ import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { UserHabits } from "@/components/Habit/UserList";
 import { UserWelcome } from "@/components/User/Welcome";
-import { EmptyHabit } from "@/components/Habit/Empty";
 import { HabitToCompleteSummary } from "@/components/Habit/ToCompleteSummary";
 import { CountdownHabit } from "@/components/Habit/Countdown";
 import { EnableNotification } from "@/components/Modal/EnableNotification";
 import Image from "next/image";
-import { PrimaryButton } from "@/components/Button/Primary";
 import Link from "next/link";
 
 const Home = async () => {

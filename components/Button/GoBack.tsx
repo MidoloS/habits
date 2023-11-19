@@ -1,9 +1,12 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 const GoBackButton = () => {
+  const router = useRouter();
   return (
-    <Link
-      href="/home"
+    <button
+      onClick={router.back}
       className="bg-slate-50  border border-slate-200 text-slate-950 p-4 rounded-lg flex items-center justify-center"
       aria-label="Go back"
     >
@@ -25,7 +28,7 @@ const GoBackButton = () => {
           strokeWidth="2"
         />
       </svg>
-    </Link>
+    </button>
   );
 };
 

@@ -79,6 +79,8 @@ const shouldSendNotification = async (habitName) => {
   const follow = await isFollowingSW(habitName);
   const completed = await isCompletedSW(habitName);
 
+  console.log({ follow, completed });
+
   return follow && !completed;
 };
 
@@ -88,10 +90,30 @@ self.addEventListener("message", async (event) => {
   await setItemInDBSW("habits")(data.name, event.data);
   const wea = await getItemFromDBSW("habits")(data.name);
   console.log({ wea });
+  console.log("send noti?", await shouldSendNotification(data.name));
 });
 
+const clearHabits = async () => {
+  const habits = [
+    "meditate",
+    "walk",
+    "eat",
+    "read",
+    "wakeup",
+    "tidy",
+    "train",
+    "drink",
+    "laundry",
+    "brush",
+  ];
+
+  for (habit of habits) {
+    await setItemInDBSW("habits")(habit, { completed: false });
+  }
+};
+
 const notificationByHour = async (hour) => {
-  if (hour >= 7 && hour <= 9) {
+  if (hour >= 7 && hour <= 10) {
     if (await shouldSendNotification("tidy")) {
       self.registration.showNotification(TITLES.TIDY_BED, {
         body: "5 min. Click here to complete.",
@@ -107,6 +129,10 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
+    return;
+  }
+  if (hour == 11) {
+    return;
   }
   if (hour >= 12 && hour <= 14) {
     if (await shouldSendNotification("eat")) {
@@ -123,6 +149,7 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
+    return;
   }
   if (hour >= 15 && hour <= 18) {
     if (await shouldSendNotification("walk")) {
@@ -132,6 +159,7 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
+    return;
   }
   if (hour >= 19 && hour <= 21) {
     if (await shouldSendNotification("read")) {
@@ -141,7 +169,10 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
+    return;
   }
+  await clearHabits();
+  return;
 };
 
 self.addEventListener("push", (event) => {
