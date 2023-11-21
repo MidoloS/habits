@@ -10,21 +10,17 @@ const getItemFromDBSW = (storeName) => async (key) => {
   });
   const valueFromDB = await (await dbPromise).get(storeName, key);
 
-  console.log({ valueFromDB });
+  console.log("getItemFromDBSW", { valueFromDB });
 
   if (valueFromDB?.name) {
-    return valueFromDB;
+    return {};
   }
-  return JSON.parse(valueFromDB);
-};
 
-const deleteItemFromDBSW = (storeName) => async (key) => {
-  const dbPromise = idb.openDB("habitai", 1, {
-    upgrade(db) {
-      db.createObjectStore(storeName);
-    },
-  });
-  return (await dbPromise).delete(storeName, key);
+  if (!valueFromDB) {
+    return {};
+  }
+
+  return JSON.parse(valueFromDB);
 };
 
 const setItemInDBSW = (storeName) => async (key, val) => {
@@ -39,7 +35,7 @@ const setItemInDBSW = (storeName) => async (key, val) => {
 
   const newData = {
     ...prevData,
-    ...JSON.parse(val),
+    ...(typeof val === "string" ? JSON.parse(val) : val),
   };
 
   console.log(123);
@@ -94,6 +90,7 @@ self.addEventListener("message", async (event) => {
 });
 
 const clearHabits = async () => {
+  console.log("clear habits");
   const habits = [
     "meditate",
     "walk",
@@ -108,7 +105,7 @@ const clearHabits = async () => {
   ];
 
   for (habit of habits) {
-    await setItemInDBSW("habits")(habit, { completed: false });
+    await setItemInDBSW("habits")(habit, { name: habit, completed: false });
   }
 };
 
