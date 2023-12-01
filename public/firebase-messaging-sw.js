@@ -89,11 +89,31 @@ const devMessage = (debug) => (text) => {
   });
 };
 
+const getAllHabitsOnDB = async () => {
+  let data = [];
+  const habits = [
+    "meditate",
+    "walk",
+    "eat",
+    "read",
+    "wakeup",
+    "tidy",
+    "train",
+    "drink",
+    "laundry",
+    "brush",
+  ];
+  for (habit of habits) {
+    const newData = await getItemFromDBSW("habits")(habit);
+    data.push(newData);
+  }
+  return data;
+};
+
 self.addEventListener("message", async (event) => {
   console.log("post event");
-  const tidy = await getItemFromDBSW("habits")("tidy");
   const data = JSON.parse(event?.data || {});
-  devMessage(data.debug)({ tidy });
+  devMessage(data.debug)({ all: await getAllHabitsOnDB() });
   await setItemInDBSW("habits")(data.name, event.data);
   const wea = await getItemFromDBSW("habits")(data.name);
   console.log({ wea });
