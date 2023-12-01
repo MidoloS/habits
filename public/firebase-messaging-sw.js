@@ -204,10 +204,14 @@ const notificationByHour = async (hour) => {
     return;
   }
   if (hour >= 19 && hour <= 22) {
+    const notiRead = await shouldSendNotification("read");
     devMessage(true)({
-      notiRead: await shouldSendNotification("read"),
+      notiRead1: notiRead,
     });
-    if (await shouldSendNotification("read")) {
+    self.registration.showNotification("Prueba sencilla 📖", {
+      body: "20 min. Click here to complete.",
+    });
+    if (notiRead) {
       self.registration.showNotification("Read 5 pages 📖", {
         body: "20 min. Click here to complete.",
       });
