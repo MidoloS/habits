@@ -141,7 +141,9 @@ const clearHabits = async () => {
 };
 
 const notificationByHour = async (hour) => {
-  if (hour >= 7 && hour <= 10) {
+  devMessage(true)({ notificationByHour: true, hour });
+  if (hour >= 7 && hour <= 11) {
+    devMessage(true)({ notiTidy: await shouldSendNotification("tidy") });
     if (await shouldSendNotification("tidy")) {
       self.registration.showNotification(TITLES.TIDY_BED, {
         body: "5 min. Click here to complete.",
@@ -149,7 +151,9 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
-
+    devMessage(true)({
+      notiLaundry: await shouldSendNotification("laundry"),
+    });
     if (await shouldSendNotification("laundry")) {
       self.registration.showNotification(TITLES.LAUNDRY, {
         body: "5 min. Click here to complete.",
@@ -159,10 +163,10 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour == 11) {
-    return;
-  }
   if (hour >= 12 && hour <= 14) {
+    devMessage(true)({
+      notiEat: await shouldSendNotification("eat"),
+    });
     if (await shouldSendNotification("eat")) {
       self.registration.showNotification(TITLES.HEALTHY_MEAL, {
         body: "3 min. Click here to complete.",
@@ -170,6 +174,9 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
+    devMessage(true)({
+      notiBrush: await shouldSendNotification("brush"),
+    });
     if (await shouldSendNotification("brush")) {
       self.registration.showNotification(TITLES.BRUSH_TEETH, {
         body: "2 min. Click here to complete.",
@@ -180,6 +187,9 @@ const notificationByHour = async (hour) => {
     return;
   }
   if (hour >= 15 && hour <= 18) {
+    devMessage(true)({
+      notiWalk: await shouldSendNotification("walk"),
+    });
     if (await shouldSendNotification("walk")) {
       self.registration.showNotification(TITLES.WALK, {
         body: "15 min. Click here to complete.",
@@ -190,6 +200,9 @@ const notificationByHour = async (hour) => {
     return;
   }
   if (hour >= 19 && hour <= 22) {
+    devMessage(true)({
+      notiRead: await shouldSendNotification("read"),
+    });
     if (await shouldSendNotification("read")) {
       self.registration.showNotification(TITLES.READ, {
         body: "20 min. Click here to complete.",
