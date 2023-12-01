@@ -149,8 +149,6 @@ const notificationByHour = async (hour) => {
     if (await shouldSendNotification("tidy")) {
       self.registration.showNotification(TITLES.TIDY_BED, {
         body: "5 min. Click here to complete.",
-        badge: "/badge.png",
-        icon: "/pixel.png",
       });
     }
     devMessage(true)({
@@ -159,8 +157,6 @@ const notificationByHour = async (hour) => {
     if (await shouldSendNotification("laundry")) {
       self.registration.showNotification(TITLES.LAUNDRY, {
         body: "5 min. Click here to complete.",
-        badge: "/badge.png",
-        icon: "/pixel.png",
       });
     }
     return;
@@ -172,8 +168,6 @@ const notificationByHour = async (hour) => {
     if (await shouldSendNotification("eat")) {
       self.registration.showNotification(TITLES.HEALTHY_MEAL, {
         body: "3 min. Click here to complete.",
-        badge: "/badge.png",
-        icon: "/pixel.png",
       });
     }
     devMessage(true)({
@@ -182,8 +176,6 @@ const notificationByHour = async (hour) => {
     if (await shouldSendNotification("brush")) {
       self.registration.showNotification(TITLES.BRUSH_TEETH, {
         body: "2 min. Click here to complete.",
-        badge: "/badge.png",
-        icon: "/pixel.png",
       });
     }
     return;
@@ -195,8 +187,6 @@ const notificationByHour = async (hour) => {
     if (await shouldSendNotification("walk")) {
       self.registration.showNotification(TITLES.WALK, {
         body: "15 min. Click here to complete.",
-        badge: "/badge.png",
-        icon: "/pixel.png",
       });
     }
     return;
@@ -208,8 +198,6 @@ const notificationByHour = async (hour) => {
     if (await shouldSendNotification("read")) {
       self.registration.showNotification(TITLES.READ, {
         body: "20 min. Click here to complete.",
-        badge: "/badge.png",
-        icon: "/pixel.png",
       });
     }
     return;
