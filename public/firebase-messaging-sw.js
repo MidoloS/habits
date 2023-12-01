@@ -75,6 +75,8 @@ const shouldSendNotification = async (habitName) => {
   const follow = await isFollowingSW(habitName);
   const completed = await isCompletedSW(habitName);
 
+  devMessage(true)({ habitName, follow, completed });
+
   console.log({ follow, completed });
 
   return follow && !completed;
