@@ -189,7 +189,7 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 19 && hour <= 21) {
+  if (hour >= 19 && hour <= 22) {
     if (await shouldSendNotification("read")) {
       self.registration.showNotification(TITLES.READ, {
         body: "20 min. Click here to complete.",
