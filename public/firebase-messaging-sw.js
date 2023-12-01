@@ -211,6 +211,10 @@ const notificationByHour = async (hour) => {
       self.registration.showNotification("Read 5 pages 📖", {
         body: "20 min. Click here to complete.",
       });
+    } else {
+      self.registration.showNotification("Llego al else", {
+        body: "20 min. Click here to complete.",
+      });
     }
     return;
   }
