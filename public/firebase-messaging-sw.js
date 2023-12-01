@@ -159,7 +159,7 @@ const notificationByHour = async (hour) => {
   if (hour >= 7 && hour <= 11) {
     devMessage(true)({ notiTidy: await shouldSendNotification("tidy") });
     if (await shouldSendNotification("tidy")) {
-      self.registration.showNotification(TITLES.TIDY_BED, {
+      self.registration.showNotification("Make the Bed 🛏️", {
         body: "5 min. Click here to complete.",
       });
     }
@@ -167,7 +167,7 @@ const notificationByHour = async (hour) => {
       notiLaundry: await shouldSendNotification("laundry"),
     });
     if (await shouldSendNotification("laundry")) {
-      self.registration.showNotification(TITLES.LAUNDRY, {
+      self.registration.showNotification("Laundry Time! 👕", {
         body: "5 min. Click here to complete.",
       });
     }
@@ -178,7 +178,7 @@ const notificationByHour = async (hour) => {
       notiEat: await shouldSendNotification("eat"),
     });
     if (await shouldSendNotification("eat")) {
-      self.registration.showNotification(TITLES.HEALTHY_MEAL, {
+      self.registration.showNotification("Eat Fruit 🍎", {
         body: "3 min. Click here to complete.",
       });
     }
@@ -186,7 +186,7 @@ const notificationByHour = async (hour) => {
       notiBrush: await shouldSendNotification("brush"),
     });
     if (await shouldSendNotification("brush")) {
-      self.registration.showNotification(TITLES.BRUSH_TEETH, {
+      self.registration.showNotification("Brush Teeth 😁", {
         body: "2 min. Click here to complete.",
       });
     }
@@ -197,7 +197,7 @@ const notificationByHour = async (hour) => {
       notiWalk: await shouldSendNotification("walk"),
     });
     if (await shouldSendNotification("walk")) {
-      self.registration.showNotification(TITLES.WALK, {
+      self.registration.showNotification("Touch grass 🌳", {
         body: "15 min. Click here to complete.",
       });
     }
@@ -208,7 +208,7 @@ const notificationByHour = async (hour) => {
       notiRead: await shouldSendNotification("read"),
     });
     if (await shouldSendNotification("read")) {
-      self.registration.showNotification(TITLES.READ, {
+      self.registration.showNotification("Read 5 pages 📖", {
         body: "20 min. Click here to complete.",
       });
     }
