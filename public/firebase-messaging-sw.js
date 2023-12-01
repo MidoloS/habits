@@ -80,9 +80,20 @@ const shouldSendNotification = async (habitName) => {
   return follow && !completed;
 };
 
+const devMessage = (debug) => (text) => {
+  if (!debug) {
+    return;
+  }
+  self.registration.showNotification("DEV DEBUGGER", {
+    body: JSON.stringify(text),
+  });
+};
+
 self.addEventListener("message", async (event) => {
   console.log("post event");
+  const tidy = await getItemFromDBSW("habits")("tidy");
   const data = JSON.parse(event?.data || {});
+  devMessage(data.debug)({ tidy });
   await setItemInDBSW("habits")(data.name, event.data);
   const wea = await getItemFromDBSW("habits")(data.name);
   console.log({ wea });

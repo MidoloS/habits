@@ -16,6 +16,11 @@ export default function BlogLayout({
 }) {
   useEffect(() => {
     if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.addEventListener("message", function (event) {
+        // Receive the message from the service worker
+        console.log(event); // {data: 'Hello from the service worker!'}
+        alert(event);
+      });
       navigator.serviceWorker.register("/firebase-messaging-sw.js");
       window.addEventListener("load", () => {
         if ("serviceWorker" in navigator) {

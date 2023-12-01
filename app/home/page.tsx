@@ -10,6 +10,7 @@ import { CountdownHabit } from "@/components/Habit/Countdown";
 import { EnableNotification } from "@/components/Modal/EnableNotification";
 import Image from "next/image";
 import Link from "next/link";
+import { DebugButton } from "@/components/Button/Debug";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -57,6 +58,7 @@ const Home = async () => {
   return (
     <>
       <EnableNotification />
+      <DebugButton />
       <main className="flex flex-col gap-8 p-7 container mx-auto">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
