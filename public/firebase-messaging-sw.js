@@ -196,15 +196,8 @@ const notificationByHour = async (hour) => {
     devMessage(true)({
       notiRead1: notiRead,
     });
-    self.registration.showNotification("Prueba sencilla 📖", {
-      body: "20 min. Click here to complete.",
-    });
     if (notiRead) {
       self.registration.showNotification("Read 5 pages 📖", {
-        body: "20 min. Click here to complete.",
-      });
-    } else {
-      self.registration.showNotification("Llego al else", {
         body: "20 min. Click here to complete.",
       });
     }
