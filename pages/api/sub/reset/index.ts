@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   const prisma = generatePrismaClient();
 
-  await prisma.subscriptions.updateMany({
+  const nonStreak = await prisma.subscriptions.updateMany({
     where: {
       completedAt: null,
     },
@@ -16,11 +16,13 @@ export default async function handler(
     },
   });
 
-  await prisma.subscriptions.updateMany({
+  const streak = await prisma.subscriptions.updateMany({
     data: {
       completedAt: null,
     },
   });
+
+  console.log({ nonStreak, streak });
 
   return res.status(200).json({ message: "OK" });
 }
