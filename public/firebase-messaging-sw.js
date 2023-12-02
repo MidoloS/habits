@@ -115,7 +115,7 @@ const getAllHabitsOnDB = async () => {
 self.addEventListener("message", async (event) => {
   console.log("post event");
   const data = JSON.parse(event?.data || {});
-  devMessage(data.debug)({ all: await getAllHabitsOnDB() });
+  devMessage(false)({ all: await getAllHabitsOnDB() });
   await setItemInDBSW("habits")(data.name, event.data);
   const wea = await getItemFromDBSW("habits")(data.name);
   console.log({ wea });
@@ -143,62 +143,74 @@ const clearHabits = async () => {
 };
 
 const notificationByHour = async (hour) => {
-  devMessage(true)({ notificationByHour: true, hour });
+  devMessage(false)({ notificationByHour: true, hour });
   if (hour >= 7 && hour <= 11) {
-    devMessage(true)({ notiTidy: await shouldSendNotification("tidy") });
+    devMessage(false)({ notiTidy: await shouldSendNotification("tidy") });
     if (await shouldSendNotification("tidy")) {
       self.registration.showNotification("Make the Bed 🛏️", {
         body: "5 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
       });
     }
-    devMessage(true)({
+    devMessage(false)({
       notiLaundry: await shouldSendNotification("laundry"),
     });
     if (await shouldSendNotification("laundry")) {
       self.registration.showNotification("Laundry Time! 👕", {
         body: "5 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
       });
     }
     return;
   }
   if (hour >= 12 && hour <= 14) {
-    devMessage(true)({
+    devMessage(false)({
       notiEat: await shouldSendNotification("eat"),
     });
     if (await shouldSendNotification("eat")) {
       self.registration.showNotification("Eat Fruit 🍎", {
         body: "3 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
       });
     }
-    devMessage(true)({
+    devMessage(false)({
       notiBrush: await shouldSendNotification("brush"),
     });
     if (await shouldSendNotification("brush")) {
       self.registration.showNotification("Brush Teeth 😁", {
         body: "2 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
       });
     }
     return;
   }
   if (hour >= 15 && hour <= 18) {
-    devMessage(true)({
+    devMessage(false)({
       notiWalk: await shouldSendNotification("walk"),
     });
     if (await shouldSendNotification("walk")) {
       self.registration.showNotification("Touch grass 🌳", {
         body: "15 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
       });
     }
     return;
   }
   if (hour >= 19 && hour <= 22) {
     const notiRead = await shouldSendNotification("read");
-    devMessage(true)({
+    devMessage(false)({
       notiRead1: notiRead,
     });
     if (notiRead) {
       self.registration.showNotification("Read 5 pages 📖", {
         body: "20 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
       });
     }
     return;
