@@ -194,7 +194,7 @@ const notificationByHour = async (hour) => {
       });
     }
     if (await shouldSendNotification("drink")) {
-      self.registration.showNotification("Drink some water 🥤", {
+      self.registration.showNotification("Drink Water 🥤", {
         body: "2 min. Click here to complete.",
         badge: "/badge.png",
         icon: "/pixel.png",
@@ -221,7 +221,7 @@ const notificationByHour = async (hour) => {
       notiRead1: notiRead,
     });
     if (await shouldSendNotification("drink")) {
-      self.registration.showNotification("Drink some water 🥤", {
+      self.registration.showNotification("Drink Water 🥤", {
         body: "2 min. Click here to complete.",
         badge: "/badge.png",
         icon: "/pixel.png",
