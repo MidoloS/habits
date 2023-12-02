@@ -163,6 +163,13 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
+    if (await shouldSendNotification("wakeup")) {
+      self.registration.showNotification("Are you Awake? ☀️", {
+        body: "Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
     return;
   }
   if (hour >= 12 && hour <= 14) {
@@ -181,6 +188,13 @@ const notificationByHour = async (hour) => {
     });
     if (await shouldSendNotification("brush")) {
       self.registration.showNotification("Brush Teeth 😁", {
+        body: "2 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
+    if (await shouldSendNotification("drink")) {
+      self.registration.showNotification("Drink some water 🥤", {
         body: "2 min. Click here to complete.",
         badge: "/badge.png",
         icon: "/pixel.png",
@@ -206,6 +220,13 @@ const notificationByHour = async (hour) => {
     devMessage(false)({
       notiRead1: notiRead,
     });
+    if (await shouldSendNotification("drink")) {
+      self.registration.showNotification("Drink some water 🥤", {
+        body: "2 min. Click here to complete.",
+        badge: "/badge.png",
+        icon: "/pixel.png",
+      });
+    }
     if (notiRead) {
       self.registration.showNotification("Read 5 pages 📖", {
         body: "20 min. Click here to complete.",
