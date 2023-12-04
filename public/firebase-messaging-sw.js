@@ -144,7 +144,7 @@ const clearHabits = async () => {
 
 const notificationByHour = async (hour) => {
   devMessage(true)({ notificationByHour: true, hour });
-  if (hour >= 7 && hour <= 9) {
+  if (hour >= 6 && hour <= 9) {
     devMessage(true)({ notiTidy: await shouldSendNotification("tidy") });
     if (await shouldSendNotification("tidy")) {
       self.registration.showNotification("Make the Bed 🛏️", {
@@ -172,7 +172,7 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 12 && hour <= 14) {
+  if (hour >= 12 && hour <= 15) {
     devMessage(true)({
       notiEat: await shouldSendNotification("eat"),
     });
@@ -202,7 +202,7 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 15 && hour <= 18) {
+  if (hour >= 16 && hour <= 19) {
     devMessage(true)({
       notiWalk: await shouldSendNotification("walk"),
     });
@@ -215,7 +215,7 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 19 && hour <= 22) {
+  if (hour >= 20 && hour <= 23) {
     const notiRead = await shouldSendNotification("read");
     devMessage(true)({
       notiRead1: notiRead,
