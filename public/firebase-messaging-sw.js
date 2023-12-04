@@ -143,9 +143,9 @@ const clearHabits = async () => {
 };
 
 const notificationByHour = async (hour) => {
-  devMessage(false)({ notificationByHour: true, hour });
-  if (hour >= 7 && hour <= 11) {
-    devMessage(false)({ notiTidy: await shouldSendNotification("tidy") });
+  devMessage(true)({ notificationByHour: true, hour });
+  if (hour >= 7 && hour <= 9) {
+    devMessage(true)({ notiTidy: await shouldSendNotification("tidy") });
     if (await shouldSendNotification("tidy")) {
       self.registration.showNotification("Make the Bed 🛏️", {
         body: "5 min. Click here to complete.",
@@ -153,7 +153,7 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
-    devMessage(false)({
+    devMessage(true)({
       notiLaundry: await shouldSendNotification("laundry"),
     });
     if (await shouldSendNotification("laundry")) {
@@ -172,8 +172,8 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 12 && hour <= 14) {
-    devMessage(false)({
+  if (hour >= 12 && hour <= 15) {
+    devMessage(true)({
       notiEat: await shouldSendNotification("eat"),
     });
     if (await shouldSendNotification("eat")) {
@@ -183,7 +183,7 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
-    devMessage(false)({
+    devMessage(true)({
       notiBrush: await shouldSendNotification("brush"),
     });
     if (await shouldSendNotification("brush")) {
@@ -202,8 +202,8 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 15 && hour <= 18) {
-    devMessage(false)({
+  if (hour >= 16 && hour <= 18) {
+    devMessage(true)({
       notiWalk: await shouldSendNotification("walk"),
     });
     if (await shouldSendNotification("walk")) {
@@ -217,7 +217,7 @@ const notificationByHour = async (hour) => {
   }
   if (hour >= 19 && hour <= 22) {
     const notiRead = await shouldSendNotification("read");
-    devMessage(false)({
+    devMessage(true)({
       notiRead1: notiRead,
     });
     if (await shouldSendNotification("drink")) {
@@ -227,7 +227,7 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
-    if (notiRead) {
+    if (await shouldSendNotification("read")) {
       self.registration.showNotification("Read 5 pages 📖", {
         body: "20 min. Click here to complete.",
         badge: "/badge.png",
