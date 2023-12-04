@@ -60,7 +60,9 @@ export const EnableNotification = () => {
         return reg.pushManager.subscribe({
           userVisibleOnly: true,
         });
-      });
+      }).catch((err) => {
+        setPermission(false)
+      })
     });
   }, []);
 

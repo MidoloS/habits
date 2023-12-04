@@ -21,7 +21,6 @@ const SHARE_ICON = (
 export const ShareButton = () => {
   const pathname = usePathname();
   const [isNativeShareSupported, setShare] = useState<boolean>(false);
-  console.log(pathname);
 
   useEffect(() => {
     if (navigator) {

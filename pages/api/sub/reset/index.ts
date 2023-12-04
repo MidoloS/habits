@@ -22,7 +22,6 @@ export default async function handler(
     },
   });
 
-  console.log({ nonStreak, streak });
 
   return res.status(200).json({ message: "OK" });
 }

@@ -27,7 +27,6 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     getSubscription(habitName).then((sub) => {
-      console.log({ sub });
 
       setIsFollowing(!!sub.data?.isFollowing);
     });
@@ -38,7 +37,6 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
   const handleSubscribe = async (habitName: string) => {
     try {
       const res = await subscribeToHabit(habitName);
-      console.log("res", res);
 
       // @ts-ignore
       if (!!res?.error) {
@@ -65,7 +63,6 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
   const handleUnsubscribe = async (habitName: string) => {
     try {
       const res = await unsubscribeToHabit(habitName);
-      console.log("res", res);
 
       // @ts-ignore
       if (!!res?.error) {

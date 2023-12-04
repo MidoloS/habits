@@ -62,14 +62,12 @@ export default async function handler(
       }
       break;
     case "GET":
-      console.log({ email: session?.user?.email, habitName });
 
       const sub = await getSubscription({
         habitName,
         email: session?.user?.email,
       });
 
-      console.log({ sub });
 
       res.status(200).json({ error: null, data: sub, message: "" });
       break;

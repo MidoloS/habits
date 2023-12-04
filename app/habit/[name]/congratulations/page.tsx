@@ -32,9 +32,7 @@ export default async function Page({
 
   const currentHabit = subscriptions.find((sub) => sub.habitName === name);
 
-  console.log(12345);
 
-  console.log({ currentHabit });
 
   const { data: habit } = await getHabit(name);
 
