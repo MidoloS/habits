@@ -172,7 +172,7 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 12 && hour <= 15) {
+  if (hour >= 12 && hour <= 14) {
     devMessage(true)({
       notiEat: await shouldSendNotification("eat"),
     });
@@ -202,7 +202,7 @@ const notificationByHour = async (hour) => {
     }
     return;
   }
-  if (hour >= 16 && hour <= 18) {
+  if (hour >= 15 && hour <= 18) {
     devMessage(true)({
       notiWalk: await shouldSendNotification("walk"),
     });
