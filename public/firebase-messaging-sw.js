@@ -115,7 +115,7 @@ const getAllHabitsOnDB = async () => {
 self.addEventListener("message", async (event) => {
   console.log("post event");
   const data = JSON.parse(event?.data || {});
-  devMessage(false)({ all: await getAllHabitsOnDB() });
+  devMessage(true)({ all: await getAllHabitsOnDB() });
   await setItemInDBSW("habits")(data.name, event.data);
   const wea = await getItemFromDBSW("habits")(data.name);
   console.log({ wea });
