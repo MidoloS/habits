@@ -24,6 +24,14 @@ const next = {
       "lh3.googleusercontent.com",
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/validateHabit",
+        destination: 'https://wmoy6ravk5hlbzhskyaotl3bei0gfmeb.lambda-url.us-east-1.on.aws',
+      }
+    ]
+  }
 };
 
 module.exports = { ...pwa, ...next };

@@ -75,7 +75,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     const b64img = imageSrc.replace(/^.*?base64,/, "");
 
     const res = await fetch(
-      "https://wmoy6ravk5hlbzhskyaotl3bei0gfmeb.lambda-url.us-east-1.on.aws/",
+      "/validateHabit",
       {
         method: "POST",
         body: b64img,
