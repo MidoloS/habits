@@ -1,5 +1,7 @@
 importScripts("https://unpkg.com/idb@4.0.3/build/iife/index-min.js");
 
+const ENABLE_DEV_MESSAGE = false;
+
 const getItemFromDBSW = (storeName) => async (key) => {
   console.log({ key, storeName });
 
@@ -75,7 +77,7 @@ const shouldSendNotification = async (habitName) => {
   const follow = await isFollowingSW(habitName);
   const completed = await isCompletedSW(habitName);
 
-  devMessage(true)({ habitName, follow, completed });
+  devMessage(ENABLE_DEV_MESSAGE)({ habitName, follow, completed });
 
   console.log({ follow, completed });
 
@@ -115,7 +117,7 @@ const getAllHabitsOnDB = async () => {
 self.addEventListener("message", async (event) => {
   console.log("post event");
   const data = JSON.parse(event?.data || {});
-  devMessage(true)({ all: await getAllHabitsOnDB() });
+  devMessage(ENABLE_DEV_MESSAGE)({ all: await getAllHabitsOnDB() });
   await setItemInDBSW("habits")(data.name, event.data);
   const wea = await getItemFromDBSW("habits")(data.name);
   console.log({ wea });
@@ -143,9 +145,9 @@ const clearHabits = async () => {
 };
 
 const notificationByHour = async (hour) => {
-  devMessage(true)({ notificationByHour: true, hour });
+  devMessage(ENABLE_DEV_MESSAGE)({ notificationByHour: true, hour });
   if (hour >= 6 && hour <= 9) {
-    devMessage(true)({ notiTidy: await shouldSendNotification("tidy") });
+    devMessage(ENABLE_DEV_MESSAGE)({ notiTidy: await shouldSendNotification("tidy") });
     if (await shouldSendNotification("tidy")) {
       self.registration.showNotification("Make the Bed 🛏️", {
         body: "5 min. Click here to complete.",
@@ -153,7 +155,7 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
-    devMessage(true)({
+    devMessage(ENABLE_DEV_MESSAGE)({
       notiLaundry: await shouldSendNotification("laundry"),
     });
     if (await shouldSendNotification("laundry")) {
@@ -173,7 +175,7 @@ const notificationByHour = async (hour) => {
     return;
   }
   if (hour >= 12 && hour <= 15) {
-    devMessage(true)({
+    devMessage(ENABLE_DEV_MESSAGE)({
       notiEat: await shouldSendNotification("eat"),
     });
     if (await shouldSendNotification("eat")) {
@@ -183,7 +185,7 @@ const notificationByHour = async (hour) => {
         icon: "/pixel.png",
       });
     }
-    devMessage(true)({
+    devMessage(ENABLE_DEV_MESSAGE)({
       notiBrush: await shouldSendNotification("brush"),
     });
     if (await shouldSendNotification("brush")) {
@@ -203,7 +205,7 @@ const notificationByHour = async (hour) => {
     return;
   }
   if (hour >= 16 && hour <= 19) {
-    devMessage(true)({
+    devMessage(ENABLE_DEV_MESSAGE)({
       notiWalk: await shouldSendNotification("walk"),
     });
     if (await shouldSendNotification("walk")) {
@@ -217,7 +219,7 @@ const notificationByHour = async (hour) => {
   }
   if (hour >= 20 && hour <= 23) {
     const notiRead = await shouldSendNotification("read");
-    devMessage(true)({
+    devMessage(ENABLE_DEV_MESSAGE)({
       notiRead1: notiRead,
     });
     if (await shouldSendNotification("drink")) {

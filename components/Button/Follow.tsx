@@ -50,6 +50,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
       sendMessageToSW({
         isFollowing: true,
         name: habitName,
+        completed: false
       });
     } catch (error) {
       await handleUnsubscribe(habitName);
@@ -76,6 +77,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
       sendMessageToSW({
         isFollowing: false,
         name: habitName,
+        completed: false
       });
     } catch (error) {
       await handleSubscribe(habitName);
