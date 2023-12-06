@@ -1,0 +1,8 @@
+io/habitai/twa/Application.java
+ io.habitai.twa.Application
+io/habitai/twa/BuildConfig.java
+ io.habitai.twa.BuildConfig
+io/habitai/twa/LauncherActivity.java
+ io.habitai.twa.LauncherActivity
+io/habitai/twa/DelegationService.java
+ io.habitai.twa.DelegationService

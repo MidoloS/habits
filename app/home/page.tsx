@@ -58,7 +58,6 @@ const Home = async () => {
   return (
     <>
       <EnableNotification />
-      <DebugButton />
       <main className="flex flex-col gap-8 p-7 container mx-auto">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
