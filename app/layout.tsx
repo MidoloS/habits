@@ -6,6 +6,7 @@ import Script from "next/script";
 import { Inter } from "next/font/google";
 import { useEffect } from "react";
 import { initializeApp } from "firebase/app";
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,6 +73,7 @@ export default function BlogLayout({
       </head>
       <body className={inter.className}>
         <Provider>{children}</Provider>
+        <Analytics />
       </body>
     </html>
   );
