@@ -73,15 +73,29 @@ const isCompletedSW = async (habitName) => {
   }
 };
 
+const hasSentSW = async (habitName) => {
+  try {
+    const data = await getItemFromDBSW("habits")(habitName);
+
+    console.log("isCompleted");
+    console.log({ data });
+
+    return !!data?.hasSent;
+  } catch (error) {
+    return false;
+  }
+};
+
 const shouldSendNotification = async (habitName) => {
   const follow = await isFollowingSW(habitName);
   const completed = await isCompletedSW(habitName);
+  const hasSent = await hasSentSW(habitName);
 
   devMessage(ENABLE_DEV_MESSAGE)({ habitName, follow, completed });
 
   console.log({ follow, completed });
 
-  return follow && !completed;
+  return follow && !completed && !hasSent;
 };
 
 const devMessage = (debug) => (text) => {
@@ -140,7 +154,7 @@ const clearHabits = async () => {
   ];
 
   for (habit of habits) {
-    await setItemInDBSW("habits")(habit, { name: habit, completed: false });
+    await setItemInDBSW("habits")(habit, { name: habit, completed: false, hasSent: false });
   }
 };
 
@@ -154,6 +168,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("tidy", {
+        hasSent: true
+      })
     }
     devMessage(ENABLE_DEV_MESSAGE)({
       notiLaundry: await shouldSendNotification("laundry"),
@@ -164,6 +181,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("laundry", {
+        hasSent: true
+      })
     }
     if (await shouldSendNotification("wakeup")) {
       self.registration.showNotification("Are you Awake? ☀️", {
@@ -171,6 +191,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("wakeup", {
+        hasSent: true
+      })
     }
     return;
   }
@@ -184,6 +207,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("eat", {
+        hasSent: true
+      })
     }
     devMessage(ENABLE_DEV_MESSAGE)({
       notiBrush: await shouldSendNotification("brush"),
@@ -194,6 +220,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("brush", {
+        hasSent: true
+      })
     }
     if (await shouldSendNotification("drink")) {
       self.registration.showNotification("Drink Water 🥤", {
@@ -201,6 +230,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("drink", {
+        hasSent: true
+      })
     }
     return;
   }
@@ -214,6 +246,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("walk", {
+        hasSent: true
+      })
     }
     return;
   }
@@ -228,6 +263,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("drink", {
+        hasSent: true
+      })
     }
     if (await shouldSendNotification("read")) {
       self.registration.showNotification("Read 5 pages 📖", {
@@ -235,6 +273,9 @@ const notificationByHour = async (hour) => {
         badge: "/badge.png",
         icon: "/pixel.png",
       });
+      setItemInDBSW("read", {
+        hasSent: true
+      })
     }
     return;
   }

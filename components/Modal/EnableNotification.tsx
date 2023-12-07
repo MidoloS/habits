@@ -74,6 +74,8 @@ export const EnableNotification = () => {
     Notification.requestPermission().then((permission) => {
       if (permission === "granted") {
         setPermission(true);
+      } else {
+        setPermission(false)
       }
     });
   }
