@@ -10,7 +10,6 @@ import { CountdownHabit } from "@/components/Habit/Countdown";
 import { EnableNotification } from "@/components/Modal/EnableNotification";
 import Image from "next/image";
 import Link from "next/link";
-import { DebugButton } from "@/components/Button/Debug";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
