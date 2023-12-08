@@ -296,7 +296,7 @@ self.addEventListener(
   (event) => {
     const title = event.notification.title;
 
-    const url = TITLE_TO_URL[title] || "https://habitai.io";
+    const url = `https://www.habitai.io/habit/${title}/complete`
 
     event.waitUntil(clients.openWindow(url));
     event.notification.close();
