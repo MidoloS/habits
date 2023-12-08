@@ -9,6 +9,9 @@ import { PrimaryButton } from "../Button/Primary";
 export const EnableNotification = () => {
   const [permission, setPermission] = useState(true);
 
+  console.log("noti");
+  
+
   useEffect(() => {
     (async () => {
       const res = await navigator.serviceWorker.register(
@@ -17,6 +20,8 @@ export const EnableNotification = () => {
     })();
 
     if ("serviceWorker" in navigator && "PushManager" in window) {
+      console.log("sw");
+      
       const firebaseConfig = {
         apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
         authDomain: "habitai-391719.firebaseapp.com",
@@ -36,6 +41,8 @@ export const EnableNotification = () => {
           "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
       })
         .then((currentToken) => {
+          console.log("getToken", currentToken);
+          
           if (currentToken) {
             setPermission(true);
           } else {
@@ -46,6 +53,8 @@ export const EnableNotification = () => {
           }
         })
         .catch((err) => {
+          console.log("error", err);
+          
           setPermission(false);
           // ...
         });
@@ -56,6 +65,8 @@ export const EnableNotification = () => {
         if (sub) {
           return sub;
         }
+
+        setPermission(true)
 
         return reg.pushManager.subscribe({
           userVisibleOnly: true,
