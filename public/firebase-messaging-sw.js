@@ -158,6 +158,17 @@ const clearHabits = async () => {
   }
 };
 
+export const TITLES_TO_NAME = {
+  "Are you Awake? ☀️": "",
+  "Make the Bed 🛏️": "tidy",
+  "Laundry Time! 👕": "laundry",
+  "Eat Fruit 🍎": "eat",
+  "Brush Teeth 😁": "brush",
+  "Touch grass 🌳": "walk",
+  "Drink Water 🥤": "drink",
+  "Time to relax 🧘": "meditate",
+  "Read 5 pages 📖": "read",
+};
 const notificationByHour = async (hour) => {
   devMessage(ENABLE_DEV_MESSAGE)({ notificationByHour: true, hour });
   if (hour >= 6 && hour <= 9) {
@@ -296,7 +307,7 @@ self.addEventListener(
   (event) => {
     const title = event.notification.title;
 
-    const url = `https://www.habitai.io/habit/${title}/complete`
+    const url = `https://www.habitai.io/habit/${TITLES_TO_NAME[title]}/complete`
 
     event.waitUntil(clients.openWindow(url));
     event.notification.close();
