@@ -159,7 +159,7 @@ const clearHabits = async () => {
 };
 
 export const TITLES_TO_NAME = {
-  "Are you Awake? ☀️": "",
+  "Are you Awake? ☀️": "wakeup",
   "Make the Bed 🛏️": "tidy",
   "Laundry Time! 👕": "laundry",
   "Eat Fruit 🍎": "eat",
