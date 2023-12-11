@@ -306,8 +306,8 @@ self.addEventListener(
   "notificationclick",
   (event) => {
     const title = event.notification.title;
-    
-    const url = `https://www.habitai.io/habit/${TITLES_TO_NAME[title]}/complete`
+
+    const url = `https://habitai.io/habit/${TITLES_TO_NAME[title]}/complete`
 
     event.waitUntil(clients.openWindow(url));
     event.notification.close();
