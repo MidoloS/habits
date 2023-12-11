@@ -307,6 +307,12 @@ self.addEventListener(
   (event) => {
     const title = event.notification.title;
 
+    self.registration.showNotification(`title: ${title}`, {
+      body: title,
+      badge: "/badge.png",
+      icon: "/pixel.png",
+    });
+
     const url = `https://www.habitai.io/habit/${TITLES_TO_NAME[title]}/complete`
 
     event.waitUntil(clients.openWindow(url));
