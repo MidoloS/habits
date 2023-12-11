@@ -158,7 +158,7 @@ const clearHabits = async () => {
   }
 };
 
-export const TITLES_TO_NAME = {
+const TITLES_TO_NAME = {
   "Are you Awake? ☀️": "wakeup",
   "Make the Bed 🛏️": "tidy",
   "Laundry Time! 👕": "laundry",
@@ -306,13 +306,7 @@ self.addEventListener(
   "notificationclick",
   (event) => {
     const title = event.notification.title;
-
-    self.registration.showNotification(`title: ${title}`, {
-      body: title,
-      badge: "/badge.png",
-      icon: "/pixel.png",
-    });
-
+    
     const url = `https://www.habitai.io/habit/${TITLES_TO_NAME[title]}/complete`
 
     event.waitUntil(clients.openWindow(url));
