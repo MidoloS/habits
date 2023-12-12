@@ -60,18 +60,11 @@ export const getUsers = async (): Promise<{
   error: string | null;
   message: string;
 }> => {
-  try {
-    const response = await fetch(`/api/users`);
+  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/users`);
 
-    const data = await response.json();
+  const data = await response.json();
 
-    return data;
-  } catch (error) {
-    console.log({ error });
-    return new Promise((req, rej) =>
-      rej({ data: [], error: error, message: error })
-    );
-  }
+  return data;
 };
 
 export const createDateWithTimezone = (
