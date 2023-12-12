@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.habitai.twa",
+      "sha256_cert_fingerprints": [
+        "D0:9F:33:91:B2:EA:65:20:E5:6A:6A:EE:CF:6B:28:F8:A3:2B:12:E5:77:D3:A7:CE:BB:37:04:57:B3:52:F0:E2"
+      ]
+    }
+  }
+]
