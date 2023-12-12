@@ -31,8 +31,8 @@ export default async function Page({
         <figure className="w-full">
           <Image
             alt={name}
-            height={677}
-            width={452}
+            height={777}
+            width={552}
             src={habit.tallImage || "/images/placeholder.png"}
             className="md:rounded-xl"
           />
