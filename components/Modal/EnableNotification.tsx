@@ -10,7 +10,6 @@ export const EnableNotification = () => {
   const [permission, setPermission] = useState(true);
 
   console.log("noti");
-  
 
   useEffect(() => {
     (async () => {
@@ -21,7 +20,7 @@ export const EnableNotification = () => {
 
     if ("serviceWorker" in navigator && "PushManager" in window) {
       console.log("sw");
-      
+
       const firebaseConfig = {
         apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
         authDomain: "habitai-391719.firebaseapp.com",
@@ -42,38 +41,37 @@ export const EnableNotification = () => {
       })
         .then((currentToken) => {
           console.log("getToken", currentToken);
-          
+
           if (currentToken) {
             setPermission(true);
           } else {
-            // Show permission request UI
             setPermission(false);
-
-            // ...
           }
         })
         .catch((err) => {
           console.log("error", err);
-          
           setPermission(false);
-          // ...
         });
     }
 
     navigator.serviceWorker.ready.then((reg) => {
-      reg.pushManager.getSubscription().then((sub) => {
-        if (sub) {
-          return sub;
-        }
+      reg.pushManager
+        .getSubscription()
+        .then((sub) => {
+          if (sub) {
+            setPermission(true);
+            return sub;
+          }
 
-        setPermission(true)
+          setPermission(false);
 
-        return reg.pushManager.subscribe({
-          userVisibleOnly: true,
+          return reg.pushManager.subscribe({
+            userVisibleOnly: true,
+          });
+        })
+        .catch((err) => {
+          setPermission(false);
         });
-      }).catch((err) => {
-        setPermission(false)
-      })
     });
   }, []);
 
@@ -82,13 +80,18 @@ export const EnableNotification = () => {
   }
 
   function requestPermission() {
-    Notification.requestPermission().then((permission) => {
-      if (permission === "granted") {
-        setPermission(true);
-      } else {
-        setPermission(false)
-      }
-    });
+    Notification.requestPermission()
+      .then((permission) => {
+        if (permission === "granted") {
+          setPermission(true);
+        } else {
+          setPermission(false);
+        }
+      })
+      .catch((err) => {
+        console.log({ err });
+        setPermission(false);
+      });
   }
 
   const handleClose = () => {
