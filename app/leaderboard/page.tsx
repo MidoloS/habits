@@ -17,6 +17,8 @@ export default async function Page() {
 
   const { data: users } = await getUsers();
 
+  console.log({ users });
+
   const currentUser = {
     name: session.user.name,
     email: session.user.email,
