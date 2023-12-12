@@ -6,7 +6,7 @@ import Script from "next/script";
 import { Inter } from "next/font/google";
 import { useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,6 +48,7 @@ export default function BlogLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon.png"></link>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#020617" />
         <meta
           name="description"
