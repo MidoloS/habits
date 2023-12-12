@@ -61,7 +61,7 @@ export const getUsers = async (): Promise<{
   message: string;
 }> => {
   try {
-    const response = await fetch(`${process.env.NEXTAUTH_URL}/api/users`);
+    const response = await fetch(`/api/users`);
 
     const data = await response.json();
 
