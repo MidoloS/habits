@@ -118,8 +118,8 @@ androidx.annotation.WorkerThread
 androidx.core.graphics.TypefaceCompatBaseImpl$2
 androidx.core.view.accessibility.AccessibilityManagerCompat
 androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2
-androidx.core.content.PermissionChecker
 androidx.browser.customtabs.CustomTabsSession$MockSession
+androidx.core.content.PermissionChecker
 com.google.androidbrowserhelper.R$attr
 android.support.customtabs.trusted.ITrustedWebActivityCallback$Stub:
     public void <init>()
