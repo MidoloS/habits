@@ -3,7 +3,7 @@ import { Loading } from "../Info/Loading";
 
 type Props = {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
   disabled?: boolean;
   isLoading?: boolean;
   isActive?: boolean;
@@ -35,7 +35,7 @@ export const PrimaryButton: FC<Props> = ({
     <button
       className={`${style} ${
         DICT[size]
-      } font-medium font-sans text-center text-sm rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-slate-400 ${
+      } font-medium font-sans text-center text-sm rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-slate-500 disabled:bg-slate-300 disabled:cursor-not-allowed ${
         fullWidth ? "w-full" : "w-fit"
       } md:w-fit`}
       onClick={onClick}

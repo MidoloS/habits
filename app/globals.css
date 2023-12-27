@@ -10,4 +10,8 @@ body {
   .subheading-1 {
     @apply text-slate-400 font-medium text-sm tracking-wide;
   }
+  .landing-back {
+    background-color: #f9faff;
+    background-image: -webkit-linear-gradient(30deg, #f3f3f3 55%, #f9faff 50%);
+  }
 }

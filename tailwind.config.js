@@ -6,6 +6,11 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    extend: {
+      screens: {
+        xs: "380px",
+      },
+    },
     colors: {
       ...require("tailwindcss/colors"),
       "slate-400": "#94A3B8",
@@ -15,7 +20,5 @@ module.exports = {
       sans: ["Inter", "sans-serif"],
     },
   },
-  plugins: [
-    require('tailwindcss-animated')
-  ],
+  plugins: [require("tailwindcss-animated")],
 };
