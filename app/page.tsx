@@ -6,24 +6,19 @@ import Link from "next/link";
 const Index = async () => {
   return (
     <div className="landing-back">
-      <div className="p-7 container mx-auto  justify-evenly h-screen flex relative">
-        <header className="absolute top-0 left-0 p-4 w-full">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/logo.png"
-                width={50}
-                height={50}
-                alt="habitai logo"
-              />
-            </div>
-            <div>
-              <Link href="/signin">
-                <PrimaryButton>Sign In</PrimaryButton>
-              </Link>
-            </div>
+      <header className="absolute px-32 top-0 left-0 p-4 w-full">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <Image src="/logo.png" width={50} height={50} alt="habitai logo" />
           </div>
-        </header>
+          <div>
+            <Link href="/signin">
+              <PrimaryButton>Sign In</PrimaryButton>
+            </Link>
+          </div>
+        </div>
+      </header>
+      <div className="p-7 container mx-auto  justify-evenly h-screen flex relative">
         <div className="flex flex-col justify-center items-center gap-8 max-w-lg ">
           <h1 className="md:text-4xl text-2xl font-bold text-center">
             Enchase your habits with AI
@@ -61,6 +56,9 @@ const Index = async () => {
             alt="mobile portrait"
           />
         </div>
+        <Link href="/privacy" className="absolute bottom-0">
+          Privacy
+        </Link>
       </div>
     </div>
   );

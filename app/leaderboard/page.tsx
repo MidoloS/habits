@@ -20,6 +20,7 @@ export default async function Page() {
   console.log({ users });
 
   const currentUser = {
+    id: "",
     name: session.user.name,
     email: session.user.email,
     img: session.user.image,

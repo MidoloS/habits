@@ -26,6 +26,7 @@ model Habit {
 }
 
 model User {
+  id            String          @unique @default(uuid())
   name          String
   email         String          @id
   isPro         Boolean         @default(false)
