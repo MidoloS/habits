@@ -26,7 +26,7 @@ export const HabitCard: FC<Props> = ({ subtitle, src, title, suffix }) => {
       "
       >
         <div className="text-center w-full">
-          <figcaption className="text-lg font-heading font-semibold mb-1 text-white">
+          <figcaption className="text-lg font-bold mb-1 text-white">
             {title}
           </figcaption>
           <figcaption className="font-medium text-slate-300 font-sans">

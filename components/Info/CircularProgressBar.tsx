@@ -10,7 +10,7 @@ type Props = {
 
 export const CircularProgressbar: FC<Props> = ({
   strokeWidth,
-  strokeColor = "#020617",
+  strokeColor = "#fafafa",
   percentage,
   size = 32,
   children,
@@ -43,7 +43,7 @@ export const CircularProgressbar: FC<Props> = ({
         strokeWidth={strokeWidth}
         fillOpacity={0}
         style={{
-          stroke: "#f1f5f9",
+          stroke: "#09090b",
         }}
       />
 
@@ -64,7 +64,7 @@ export const CircularProgressbar: FC<Props> = ({
           x={50}
           y={50}
           style={{
-            fill: "#020617",
+            fill: "#fafafa",
             fontSize: "14px",
             dominantBaseline: "central",
             textAnchor: "middle",

@@ -20,9 +20,7 @@ export const UserWelcome: FC<Props> = ({ name, img }) => {
         />
         <figcaption>
           <p className="text-xs text-slate-500">Hi,</p>
-          <h2 className="text-slate-900 text-sm font-semibold font-heading">
-            {name}
-          </h2>
+          <h2 className="text-zinc-50 font-semibold">{name}</h2>
         </figcaption>
       </div>
       <div>

@@ -13,6 +13,7 @@ import { SubscriptionWithHabit } from "@/libs/types";
 import { API_TO_HABIT_NAME } from "@/libs/constants";
 import { HabitCompleteLoading } from "../HabitCompleteLoading";
 import toast, { Toaster } from "react-hot-toast";
+import { SwapCamera } from "./SwapButton";
 
 export const Camera = ({ habitName }: { habitName: string }) => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");
@@ -74,13 +75,10 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     const b64img = imageSrc.replace(/^.*?base64,/, "");
 
-    const res = await fetch(
-      "/validateHabit",
-      {
-        method: "POST",
-        body: b64img,
-      }
-    );
+    const res = await fetch("/validateHabit", {
+      method: "POST",
+      body: b64img,
+    });
 
     const data = await res.json();
 
@@ -124,7 +122,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     })();
   }, []);
 
-  const text = subscription.completedAt ? "Already done" : "Complete";
+  const text = subscription.completedAt ? "Already done" : "Complete Task";
 
   return (
     <>
@@ -148,14 +146,17 @@ export const Camera = ({ habitName }: { habitName: string }) => {
           }}
         />
       </div>
-      <PrimaryButton
-        isLoading={isLoading}
-        onClick={capture}
-        disabled={!!subscription.completedAt}
-        isActive
-      >
-        {text}
-      </PrimaryButton>
+      <div className="flex gap-4">
+        <PrimaryButton
+          isLoading={isLoading}
+          onClick={capture}
+          disabled={!!subscription.completedAt}
+          isActive
+        >
+          {text}
+        </PrimaryButton>
+        <SwapCamera />
+      </div>
     </>
   );
 };

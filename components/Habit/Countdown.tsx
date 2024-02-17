@@ -17,5 +17,5 @@ export const CountdownHabit = () => {
     setHours(hoursUntil12UTC());
   }, ONE_HOUR);
 
-  return <p className="text-center text-slate-500">{hours}h until reset</p>;
+  return <p className="text-center text-zinc-400">{hours}h until reset</p>;
 };

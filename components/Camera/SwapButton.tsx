@@ -10,6 +10,7 @@ const SwapIcon = () => (
     width="18"
     height="18"
     viewBox="0 0 18 18"
+    fill="#fafafa"
   >
     <g id="refresh_2_" data-name="refresh (2)" transform="translate(-2.461)">
       <path
@@ -42,7 +43,7 @@ export const SwapCamera = () => {
   return (
     <Link
       href={`${path}?facing=${facing}`}
-      className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl p-4 flex items-center justify-center"
+      className="bg-zinc-950 border-zinc-500 border shadow-sm rounded-xl p-4 flex items-center justify-center"
       onClick={handleToggle}
     >
       <SwapIcon />

@@ -111,3 +111,15 @@ export const formatName = (name: string, currentUser: boolean) => {
 
   return `${first}. ${last[0]} ${currentUser ? "(You)" : ""}`;
 };
+
+export const formatNumber = (number: number) => {
+  if (number >= 1000000) {
+    return (number / 1000000).toFixed(1) + ' M';
+  }
+
+  if (number >= 1000) {
+    return (number / 1000).toFixed(0) + ' K';
+  }
+
+  return number.toString();
+}

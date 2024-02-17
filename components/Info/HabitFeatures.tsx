@@ -1,91 +1,27 @@
 import { FC } from "react";
-import { Feature } from "./Feature";
 import { Habit } from "@prisma/client";
+import { Statistic } from "./Statistic";
+import { formatNumber } from "@/libs/helpers";
 
 type Props = {
   habit: Habit;
 };
 
 export const HabitFeatures: FC<Props> = ({ habit }) => {
-  const pointsToDisplay =
-    habit.points === 0 ? "No Ranked" : `${habit.points} pts`;
+  if (!habit) {
+    return null;
+  }
+
+  const { points, minutes, followersQty } = habit;
+
+  const pointsToDisplay = points === 0 ? "No Ranked" : habit.points;
 
   return (
-    <>
-      <Feature key={habit.name} text={`${habit.minutes} mins`}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-        >
-          <path
-            id="time-quarter-past_1_"
-            data-name="time-quarter-past (1)"
-            d="M20,10a.833.833,0,1,1-1.667,0A8.343,8.343,0,0,0,10,1.667.833.833,0,1,1,10,0,10.011,10.011,0,0,1,20,10Zm-6.667.833a.833.833,0,1,0,0-1.667h-1.9a1.667,1.667,0,0,0-.6-.6V5.833a.833.833,0,1,0-1.667,0V8.564a1.662,1.662,0,1,0,2.269,2.269ZM1.522,5.653a.833.833,0,1,0,.833.833A.833.833,0,0,0,1.522,5.653ZM1.667,10a.833.833,0,1,0-.833.833A.833.833,0,0,0,1.667,10ZM10,18.333a.833.833,0,1,0,.833.833A.833.833,0,0,0,10,18.333ZM3.518,2.673a.833.833,0,1,0,.833.833A.833.833,0,0,0,3.518,2.673ZM6.483.7a.833.833,0,1,0,.833.833A.833.833,0,0,0,6.483.7ZM1.523,12.68a.833.833,0,1,0,.833.833A.833.833,0,0,0,1.523,12.68Zm2,2.981a.833.833,0,1,0,.833.833A.833.833,0,0,0,3.518,15.661Zm2.965,1.972a.833.833,0,1,0,.833.833A.833.833,0,0,0,6.483,17.633ZM18.478,12.68a.833.833,0,1,0,.833.833A.833.833,0,0,0,18.478,12.68Zm-1.995,2.981a.833.833,0,1,0,.833.833A.833.833,0,0,0,16.483,15.661Zm-2.965,1.972a.833.833,0,1,0,.833.833A.833.833,0,0,0,13.517,17.633Z"
-            fill="#94a3b8"
-          />
-        </svg>
-      </Feature>
-      <Feature key={habit.name} text={pointsToDisplay}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="22.096"
-          height="22"
-          viewBox="0 0 22 11.2"
-        >
-          <path
-            id="Path_98"
-            data-name="Path 98"
-            d="M10.96,0,6.752-5.792l3.92-5.408H8.416L5.584-7.216,2.72-11.2H.368L4.3-5.712.144,0H2.512L5.52-4.256,8.56,0Zm6.512-11.2H12.864V0h2.08V-3.232h2.528c2.944,0,4.768-1.52,4.768-3.984C22.24-9.7,20.416-11.2,17.472-11.2Zm-.1,6.208H14.944V-9.44h2.432c1.824,0,2.768.816,2.768,2.224S19.2-4.992,17.376-4.992Z"
-            transform="translate(-0.144 11.2)"
-            fill="#94a3b8"
-          />
-        </svg>
-      </Feature>
-      <Feature key={habit.name} text={`${habit.followersQty} Followers`}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-        >
-          <path
-            id="users"
-            d="M6.25,10.833A3.75,3.75,0,1,1,10,7.083a3.75,3.75,0,0,1-3.75,3.75ZM6.25,5A2.083,2.083,0,1,0,8.333,7.083,2.083,2.083,0,0,0,6.25,5ZM12.5,19.167V18.75a6.25,6.25,0,0,0-12.5,0v.417a.833.833,0,1,0,1.667,0V18.75a4.583,4.583,0,1,1,9.167,0v.417a.833.833,0,1,0,1.667,0ZM20,15a5.833,5.833,0,0,0-9.722-4.348.833.833,0,1,0,1.112,1.242A4.167,4.167,0,0,1,18.333,15,.833.833,0,0,0,20,15ZM14.583,7.5a3.75,3.75,0,1,1,3.75-3.75,3.75,3.75,0,0,1-3.75,3.75Zm0-5.833A2.083,2.083,0,1,0,16.667,3.75,2.083,2.083,0,0,0,14.583,1.667Z"
-            fill="#94a3b8"
-          />
-        </svg>
-      </Feature>
-      <Feature key={habit.name} text="Inside">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="21.484"
-          viewBox="0 0 18 21.484"
-        >
-          <g
-            id="marker_1_"
-            data-name="marker (1)"
-            transform="translate(-1.945 0.002)"
-          >
-            <path
-              id="Path_44"
-              data-name="Path 44"
-              d="M12,6a4,4,0,1,0,4,4A4,4,0,0,0,12,6Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,12Z"
-              transform="translate(-1.055 -0.945)"
-              fill="#94a3b8"
-            />
-            <path
-              id="Path_45"
-              data-name="Path 45"
-              d="M10.945,21.482a4.718,4.718,0,0,1-3.859-1.969C3.675,14.807,1.945,11.27,1.945,9a9,9,0,1,1,18,0c0,2.272-1.73,5.809-5.141,10.514a4.718,4.718,0,0,1-3.859,1.969Zm0-19.53A7.056,7.056,0,0,0,3.9,9c0,1.8,1.694,5.126,4.77,9.368a2.815,2.815,0,0,0,4.556,0C16.3,14.126,17.993,10.8,17.993,9a7.056,7.056,0,0,0-7.048-7.048Z"
-              transform="translate(0)"
-              fill="#94a3b8"
-            />
-          </g>
-        </svg>
-      </Feature>
-    </>
+    <article className="flex justify-between w-full">
+      <Statistic value={minutes} description="Minutes" />
+      <Statistic value={pointsToDisplay} description="Points" />
+      <Statistic value={formatNumber(followersQty)} description="Followers" />
+      <Statistic value="5" description="Day Streak" />
+    </article>
   );
 };

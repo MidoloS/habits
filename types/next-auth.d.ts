@@ -12,7 +12,7 @@ declare module "next-auth" {
       isPro: boolean;
       name: string;
       email: string;
-      image: string | null;
+      img: string | null;
     } & DefaultSession["user"];
   }
 }

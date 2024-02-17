@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const StreakProgress: FC<Props> = ({ streakDays }) => {
-  const percentage = (streakDays / DAYS_UNTIL_HABIT) * 100;
+  const percentage = (1 / DAYS_UNTIL_HABIT) * 100;
   const totalBoost = streakDays * 10;
 
   const isCompleted = streakDays === DAYS_UNTIL_HABIT;

@@ -17,13 +17,13 @@ export default async function Page() {
 
   const { data: users } = await getUsers();
 
-  console.log({ users });
+  console.log({ users, session });
 
   const currentUser = {
     id: "",
     name: session.user.name,
     email: session.user.email,
-    img: session.user.image,
+    img: session.user.img,
     points: session.user.points,
     isPro: session.user.isPro,
   };
@@ -40,7 +40,7 @@ export default async function Page() {
 
       <div className="px-7 py-4">
         <div className="mt-24 mb-4 flex flex-col gap-2">
-          <h1 className="text-2xl font-bold">Leaderboard</h1>
+          <h1 className="text-2xl font-bold text-zinc-50">Leaderboard</h1>
           <h2 className="subheading-1">TOP 3 RANKERS</h2>
         </div>
 
@@ -48,17 +48,17 @@ export default async function Page() {
           <TopUser
             user={second}
             size={80}
-            currentUser={currentUser.email === second.email}
+            currentUser={currentUser.email === second?.email}
           />
           <TopUser
             user={first}
             size={100}
-            currentUser={currentUser.email === first.email}
+            currentUser={currentUser.email === first?.email}
           />
           <TopUser
             user={third}
             size={60}
-            currentUser={currentUser.email === third.email}
+            currentUser={currentUser.email === third?.email}
           />
         </div>
       </div>

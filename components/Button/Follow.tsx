@@ -27,7 +27,6 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     getSubscription(habitName).then((sub) => {
-
       setIsFollowing(!!sub.data?.isFollowing);
     });
   }, [habitName]);
@@ -50,7 +49,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
       sendMessageToSW({
         isFollowing: true,
         name: habitName,
-        completed: false
+        completed: false,
       });
     } catch (error) {
       await handleUnsubscribe(habitName);
@@ -77,7 +76,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
       sendMessageToSW({
         isFollowing: false,
         name: habitName,
-        completed: false
+        completed: false,
       });
     } catch (error) {
       await handleSubscribe(habitName);
@@ -106,7 +105,7 @@ export const FollowButton: FC<Props> = ({ habitName }) => {
         isLoading={loading}
         isActive={isFollowing}
         icon={<CheckmarkIcon />}
-        fullWidth={false}
+        fullWidth={true}
       >
         {text}
       </PrimaryButton>

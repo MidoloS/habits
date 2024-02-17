@@ -37,22 +37,23 @@ export default async function Page({
             className="md:rounded-xl"
           />
         </figure>
-        <main className="z-10 bottom-0 absolute bg-slate-50 w-full rounded-3xl">
-          <div className="container mx-auto p-6 flex flex-col h-full gap-4 ">
+        <main className="z-10 bottom-0 absolute bg-zinc-950 w-full rounded-t-3xl">
+          <div className="mx-auto py-8 px-12 flex flex-col h-full gap-10 ">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-lg font-bold">{habit.title}</h1>
-                <p className="text-sm font-sans text-slate-500">
+                <h1 className="text-xl font-bold text-zinc-50">
+                  {habit.title}
+                </h1>
+                <p className="text-sm font-sans text-zinc-400">
                   {habit.subtitle}
                 </p>
               </div>
-              <FollowButton habitName={habit.name} />
             </div>
             <div className="flex flex-row justify-between text-center">
               <HabitFeatures habit={habit} />
             </div>
             <div>
-              <SecondaryButton>Read More</SecondaryButton>
+              <FollowButton habitName={habit.name} />
             </div>
           </div>
         </main>

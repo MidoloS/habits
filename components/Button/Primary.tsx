@@ -29,15 +29,15 @@ export const PrimaryButton: FC<Props> = ({
   };
 
   const style = isActive
-    ? "bg-slate-950 text-slate-50"
-    : "border-slate-900 text-slate-900 border-2";
+    ? "bg-zinc-50 text-zinc-950"
+    : "border-zinc-50 text-zinc-50 border-2";
   return (
     <button
       className={`${style} ${
         DICT[size]
-      } font-medium font-sans text-center text-sm rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-slate-500 disabled:bg-slate-300 disabled:cursor-not-allowed ${
+      } font-medium font-sans text-center rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-zinc-500 disabled:bg-zinc-300 disabled:cursor-not-allowed ${
         fullWidth ? "w-full" : "w-fit"
-      } md:w-fit`}
+      }`}
       onClick={onClick}
       disabled={isLoading || disabled}
     >

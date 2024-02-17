@@ -17,7 +17,7 @@ export const HomeIcon = ({ isActive }: { isActive: boolean }) =>
         data-name="house-chimney-blank (1)"
         d="M22,5.735V1.987a1,1,0,0,0-2,0V4.366L14.8.855A4.981,4.981,0,0,0,9.2.855l-7,4.724A4.99,4.99,0,0,0,0,9.724V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9.724a4.988,4.988,0,0,0-2-3.989Z"
         transform="translate(0 0.005)"
-        fill="#020617"
+        fill="#fafafa"
       />
     </svg>
   ) : (
@@ -31,7 +31,7 @@ export const HomeIcon = ({ isActive }: { isActive: boolean }) =>
         id="house-chimney-blank"
         d="M22,5.724V1.987a1,1,0,0,0-2,0V4.366L14.8.855A4.981,4.981,0,0,0,9.2.855l-7,4.724A4.99,4.99,0,0,0,0,9.724V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9.724a4.992,4.992,0,0,0-2-4ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V9.724A2.992,2.992,0,0,1,3.322,7.238l7-4.724a2.982,2.982,0,0,1,3.356,0l7,4.724A2.994,2.994,0,0,1,22,9.724V19Z"
         transform="translate(0 0.004)"
-        fill="#cbd5e1"
+        fill="#71717a"
       />
     </svg>
   );
@@ -43,6 +43,7 @@ export const LeaderboardIcon = ({ isActive }: { isActive: boolean }) =>
       width="23.642"
       height="23.966"
       viewBox="0 0 23.642 23.966"
+      fill="#fafafa"
     >
       <g
         id="chart-pyramid_1_"
@@ -77,7 +78,7 @@ export const LeaderboardIcon = ({ isActive }: { isActive: boolean }) =>
         id="chart-pyramid"
         d="M23.765,18.266,15.826,2.278a4.085,4.085,0,0,0-7.294,0L.593,18.266a3.959,3.959,0,0,0,.2,3.882A4.074,4.074,0,0,0,4.24,24.034H20.117a4.074,4.074,0,0,0,3.446-1.886,3.959,3.959,0,0,0,.2-3.883Zm-3.871-3.245H4.464l2.487-5.007H17.407ZM10.352,3.159a2.043,2.043,0,0,1,3.646,0l2.413,4.852H7.946ZM21.837,21.085a2,2,0,0,1-1.726.943H4.24a2.037,2.037,0,0,1-1.726-.941,1.979,1.979,0,0,1-.1-1.943l1.058-2.12H20.887l1.054,2.123a1.941,1.941,0,0,1-.1,1.941Z"
         transform="translate(-0.179 -0.034)"
-        fill="#cbd5e1"
+        fill="#71717a"
       />
     </svg>
   );
@@ -96,28 +97,28 @@ export const AddHabitIcon = ({ isActive }: { isActive: boolean }) =>
         id="Path_32"
         data-name="Path 32"
         d="M4,0H7a4,4,0,0,1,4,4V7a4,4,0,0,1-4,4H4A4,4,0,0,1,0,7V4A4,4,0,0,1,4,0Z"
-        fill="#020617"
+        fill="#fafafa"
       />
       <path
         id="Path_33"
         data-name="Path 33"
         d="M4,277.333H7a4,4,0,0,1,4,4v3a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4v-3A4,4,0,0,1,4,277.333Z"
         transform="translate(0 -264.333)"
-        fill="#020617"
+        fill="#fafafa"
       />
       <path
         id="Path_34"
         data-name="Path 34"
         d="M281.334,277.333h3a4,4,0,0,1,4,4v3a4,4,0,0,1-4,4h-3a4,4,0,0,1-4-4v-3A4,4,0,0,1,281.334,277.333Z"
         transform="translate(-264.334 -264.333)"
-        fill="#020617"
+        fill="#fafafa"
       />
       <path
         id="Path_35"
         data-name="Path 35"
         d="M278.334,27.334h3v3a1,1,0,1,0,2,0v-3h3a1,1,0,1,0,0-2h-3v-3a1,1,0,1,0-2,0v3h-3a1,1,0,1,0,0,2Z"
         transform="translate(-264.334 -20.334)"
-        fill="#020617"
+        fill="#fafafa"
       />
     </svg>
   ) : (
@@ -133,25 +134,25 @@ export const AddHabitIcon = ({ isActive }: { isActive: boolean }) =>
         id="Path_28"
         data-name="Path 28"
         d="M7,0H4A4,4,0,0,0,0,4V7a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V4A4,4,0,0,0,7,0ZM9,7A2,2,0,0,1,7,9H4A2,2,0,0,1,2,7V4A2,2,0,0,1,4,2H7A2,2,0,0,1,9,4Z"
-        fill="#cbd5e1"
+        fill="#71717a"
       />
       <path
         id="Path_29"
         data-name="Path 29"
         d="M7,13H4a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V17A4,4,0,0,0,7,13Zm2,7a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2H7a2,2,0,0,1,2,2Z"
-        fill="#cbd5e1"
+        fill="#71717a"
       />
       <path
         id="Path_30"
         data-name="Path 30"
         d="M20,13H17a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V17A4,4,0,0,0,20,13Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z"
-        fill="#cbd5e1"
+        fill="#71717a"
       />
       <path
         id="Path_31"
         data-name="Path 31"
         d="M14,7h3v3a1,1,0,0,0,2,0V7h3a1,1,0,0,0,0-2H19V2a1,1,0,0,0-2,0V5H14a1,1,0,0,0,0,2Z"
-        fill="#cbd5e1"
+        fill="#71717a"
       />
     </svg>
   );
@@ -162,7 +163,7 @@ export const Navigator: FC = () => {
   const isLeaderboard = path === "/leaderboard";
   const isAddHabit = path === "/habit/new";
   return (
-    <footer className="fixed p-5 bg-[#f9faff] bottom-0 flex justify-around w-full items-center">
+    <footer className="fixed p-5 bg-zinc-950 border-t border-zinc-600 bottom-0 flex justify-around w-full items-center">
       <Link href="/home" aria-label="home">
         <HomeIcon isActive={isHome} />
       </Link>

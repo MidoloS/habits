@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 body {
-  background-color: #f9faff;
+  background-color: #09090b;
 }
 
 @layer components {
   .subheading-1 {
-    @apply text-slate-400 font-medium text-sm tracking-wide;
+    @apply text-zinc-400 font-medium text-sm tracking-wide;
   }
   .landing-back {
     background-color: #f9faff;

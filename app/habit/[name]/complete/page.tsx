@@ -34,18 +34,15 @@ export default async function Page({
 
   return (
     <>
-      <div className="flex flex-col  w-screen h-screen relative justify-end">
-        <main className="bg-slate-50 w-full rounded-3xl">
-          <div className="container mx-auto p-6 flex flex-col justify-end h-full  gap-4 ">
-            <div className="flex justify-between items-center">
+      <div className="flex flex-col w-full h-screen relative justify-end">
+        <main className="bg-zinc-950 w-full rounded-t-3xl">
+          <div className="px-8 py-8 w-full flex flex-col justify-end h-full  gap-10 ">
+            <div className="flex justify-between items-center w-full">
               <div>
-                <h1 className="text-lg font-bold font-heading">
+                <h1 className="text-2xl font-bold text-zinc-50">
                   {habit.title}
                 </h1>
-                <p className="text-sm text-slate-500">{habit.subtitle}</p>
-              </div>
-              <div>
-                <SwapCamera />
+                <p className="text-sm text-zinc-400">{habit.subtitle}</p>
               </div>
             </div>
             <div className="flex flex-row justify-between text-center">

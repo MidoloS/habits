@@ -7,7 +7,7 @@ const GoBackButton = () => {
   return (
     <button
       onClick={router.back}
-      className="bg-slate-50  border border-slate-200 text-slate-950 p-4 rounded-lg flex items-center justify-center"
+      className="bg-zinc-950  border border-zinc-500 text-slate-950 p-4 rounded-lg flex items-center justify-center"
       aria-label="Go back"
     >
       <svg
@@ -22,7 +22,7 @@ const GoBackButton = () => {
           d="M19.5,13.5,12,21m0,0L4.5,13.5M12,21V3"
           transform="matrix(0.017, 1, -1, 0.017, 22.357, -3.12)"
           fill="none"
-          stroke="#020617"
+          stroke="#fafafa"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="2"
