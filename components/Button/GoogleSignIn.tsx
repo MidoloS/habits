@@ -13,7 +13,7 @@ export const GoogleSignInButton = () => {
       }}
       size="lg"
     >
-      Join Now
+      Sign In
     </PrimaryButton>
   );
 };

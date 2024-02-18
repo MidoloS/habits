@@ -1,9 +1,18 @@
 import { DownloadApp } from "@/components/Button/DownloadApp";
 import { PrimaryButton } from "@/components/Button/Primary";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+import { GoogleSignInButton } from "@/components/Button/GoogleSignIn";
 
 const Index = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect("/home");
+  }
   return (
     <div className="landing-back">
       <header className="absolute px-32 top-0 left-0 p-4 w-full">
@@ -12,9 +21,7 @@ const Index = async () => {
             <Image src="/logo.png" width={50} height={50} alt="habitai logo" />
           </div>
           <div>
-            <Link href="/signin">
-              <PrimaryButton>Sign In</PrimaryButton>
-            </Link>
+            <GoogleSignInButton />
           </div>
         </div>
       </header>

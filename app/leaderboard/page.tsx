@@ -12,7 +12,7 @@ export default async function Page() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/signin?callbackUrl=/leaderboard");
+    redirect("/?callbackUrl=/leaderboard");
   }
 
   const { data: users } = await getUsers();

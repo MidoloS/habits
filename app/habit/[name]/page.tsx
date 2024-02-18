@@ -16,7 +16,7 @@ export default async function Page({
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect(`/signin?callbackUrl=/habit/${name}`);
+    redirect(`/?callbackUrl=/habit/${name}`);
   }
 
   const { data: habit, error } = await getHabit(name);

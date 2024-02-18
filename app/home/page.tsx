@@ -15,7 +15,7 @@ const Home = async () => {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/signin?callbackUrl=/home");
+    redirect("/?callbackUrl=/home");
   }
 
   if (session?.user?.subs.length === 0) {
