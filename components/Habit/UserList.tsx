@@ -43,14 +43,14 @@ export const UserHabits = async () => {
       return null;
     }
     return (
-      <div className="bg-slate-50 p-3 rounded-lg flex gap-2 font-medium text-sm items-center">
-        {COMPLETED_ICON}Completed
+      <div className="bg-slate-50 py-2 px-4 rounded-lg flex gap-2 font-medium text-sm items-center">
+        Completed
       </div>
     );
   };
 
   return (
-    <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-16">
+    <div className="flex flex-col gap-6 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-16">
       {[
         ...subscriptions.sort((a, b) => {
           if (a.completedAt && b.completedAt) {

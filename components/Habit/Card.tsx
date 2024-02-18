@@ -22,10 +22,10 @@ export const HabitCard: FC<Props> = ({ subtitle, src, title, suffix }) => {
 
       <div
         className="
-      absolute bottom-0 flex w-full items-center justify-between rounded-xl bg-gradient-to-t from-black to-transparent px-7 py-5
+      absolute bottom-0 flex w-full items-center justify-between rounded-xl bg-gradient-to-t from-zinc-950 to-transparent h-full px-7 py-5
       "
       >
-        <div className="text-center w-full">
+        <div className="w-full relative top-10">
           <figcaption className="text-lg font-bold mb-1 text-white">
             {title}
           </figcaption>
