@@ -19,7 +19,7 @@ export const UserWelcome: FC<Props> = ({ name, img }) => {
           className="rounded-full"
         />
         <figcaption>
-          <p className="text-xs text-slate-500">Hi,</p>
+          <p className="text-xs text-zinc-500">Hi,</p>
           <h2 className="text-zinc-50 font-semibold">{name}</h2>
         </figcaption>
       </div>

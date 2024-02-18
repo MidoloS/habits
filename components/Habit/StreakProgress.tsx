@@ -15,7 +15,7 @@ export const StreakProgress: FC<Props> = ({ streakDays }) => {
     ? `Habit Completed!`
     : `${DAYS_UNTIL_HABIT - streakDays} days left`;
 
-  const color = isCompleted ? "#E9B230" : "#94A3B8";
+  const color = isCompleted ? "#E9B230" : "#fafafa";
 
   return (
     <div className="flex items-center">
@@ -31,8 +31,10 @@ export const StreakProgress: FC<Props> = ({ streakDays }) => {
         />
       </CircularProgressbar>
       <div>
-        <p className="text-sm text-slate-500">{message}</p>
-        <h2 className="text-lg font-semibold">{totalBoost}% Boost XP</h2>
+        <p className="text-sm text-zinc-500">{message}</p>
+        <h2 className="text-lg text-zinc-50 font-semibold">
+          {totalBoost}% Boost XP
+        </h2>
       </div>
     </div>
   );

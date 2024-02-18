@@ -14,19 +14,21 @@ export const HabitToCompleteSummary: FC<Props> = async ({
   subscriptions = [],
 }) => {
   const totalSubs = subscriptions.length;
-  const completedSubs = 1;
+  const completedSubs = subscriptions.filter(
+    (sub: SubscriptionWithHabit) => sub.completedAt
+  ).length;
   const percentajeCompleted = (completedSubs / totalSubs) * 100;
-
-  const title = percentajeCompleted > 50 ? "GOOD JOB!" : "KEEP GOING!";
 
   const uncompletedHabit = subscriptions.filter((sub) => !sub.completedAt)[0];
 
+  console.log({ subscriptions, completedSubs, uncompletedHabit });
+
   if (!uncompletedHabit) {
     return (
-      <div className="bg-zinc-950 flex justify-between py-2 px-6 items-center rounded-xl">
+      <div className="bg-zinc-950 border border-zinc-500 flex justify-between py-2 px-6 items-center rounded-xl">
         <div className="flex flex-col gap-2">
-          <h1 className="text-slate-50 font-medium">Congratulations!</h1>
-          <p className="text-slate-500 text-sm">
+          <h1 className="text-zinc-50 font-semibold">Congratulations!</h1>
+          <p className="text-zinc-500 text-sm">
             You have completed all your habits
           </p>
         </div>

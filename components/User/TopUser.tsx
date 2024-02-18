@@ -21,10 +21,10 @@ export const TopUser: FC<Props> = ({ user, size, currentUser }) => {
         alt="User profile picture"
         className="rounded-full border-[3px] border-slate-950 p-[3px]"
       />
-      <figcaption className="text-center font-medium">
+      <figcaption className="text-center text-zinc-50 font-medium">
         {formatName(user?.name, currentUser)}
       </figcaption>
-      <figcaption className="text-center text-slate-500 text-sm">
+      <figcaption className="text-center text-zinc-500 text-sm">
         {user?.points || 0} Points
       </figcaption>
     </figure>

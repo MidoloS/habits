@@ -32,8 +32,6 @@ export default async function Page({
 
   const currentHabit = subscriptions.find((sub) => sub.habitName === name);
 
-
-
   const { data: habit } = await getHabit(name);
 
   if (!habit?.createdAt) {
@@ -45,7 +43,9 @@ export default async function Page({
       <Header />
       <Confetti msDelay={800} />
       <main className="p-7 flex flex-col gap-14 h-screen justify-center animate-jump-in animate-duration-500 overflow-hidden">
-        <h1 className="text-center font-semibold text-xl">Congratulations!</h1>
+        <h1 className="text-center font-semibold text-zinc-50 text-xl">
+          Congratulations!
+        </h1>
         <div className="flex flex-col gap-2">
           <div className="flex justify-between">
             <Image
@@ -56,9 +56,11 @@ export default async function Page({
               unoptimized
             />
             {habit.points >= 0 ? (
-              <div className="flex flex-col items-center justify-center gap-1">
+              <div className="flex flex-col items-center justify-center gap-1 text-zinc-50">
                 <h2 className="subheading-1">EARNED</h2>
-                <p className="text-xl font-semibold">+{habit.points} XP</p>
+                <p className="text-xl text-zinc-50 font-semibold">
+                  +{habit.points} XP
+                </p>
               </div>
             ) : (
               <h2 className="subheading-1">NO POINTS EARNED</h2>
@@ -72,9 +74,9 @@ export default async function Page({
             />
           </div>
 
-          <p className="text-center text-slate-950 text-sm leading-7">
+          <p className="text-center text-zinc-400 text-sm leading-7">
             Dont forget that its the small accomplishments that make a{" "}
-            <span className="text-slate-950 font-bold">
+            <span className="text-zinc-50 font-bold">
               big change over time!
             </span>
           </p>
@@ -84,14 +86,16 @@ export default async function Page({
         </div>
 
         <div className="w-full flex flex-col gap-4">
+          {uncompletedHabit?.habitName && (
+            <Link
+              className="bg-zinc-50 text-zinc-950 p-4 rounded-xl text-center text-sm font-medium w-full"
+              href={`/habit/${uncompletedHabit?.habitName}/complete`}
+            >
+              Next Habit
+            </Link>
+          )}
           <Link
-            className="bg-slate-950 text-white p-4 rounded-xl text-center text-sm font-medium w-full"
-            href={`/habit/${uncompletedHabit?.habitName}/complete`}
-          >
-            Next Habit
-          </Link>
-          <Link
-            className="bg-slate-50 border-slate-200 border shadow-sm rounded-xl p-4 flex items-center justify-center text-sm font-medium w-full"
+            className="border-zinc-500 text-zinc-50 border shadow-sm rounded-xl p-4 flex items-center justify-center text-sm font-medium w-full"
             href="/home"
           >
             Go Home
