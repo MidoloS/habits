@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { SwapCamera } from "@/components/Camera/SwapButton";
 import { Camera } from "@/components/Camera/Camera";
 import { SubFeatures } from "@/components/Info/SubFeatures";
 import { getHabit } from "@/prisma/helpers";
