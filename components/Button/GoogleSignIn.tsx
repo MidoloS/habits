@@ -12,6 +12,7 @@ export const GoogleSignInButton = () => {
         redirect("/home");
       }}
       size="lg"
+      fullWidth={false}
     >
       Sign In
     </PrimaryButton>

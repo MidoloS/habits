@@ -7,6 +7,27 @@ import { authOptions } from "./api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { GoogleSignInButton } from "@/components/Button/GoogleSignIn";
 
+const APP_LOGO = (
+  <svg version="1.0" width="52" height="52" viewBox="0 0 499.000000 499.000000">
+    <g
+      transform="translate(0.000000,499.000000) scale(0.100000,-0.100000)"
+      fill="#fff"
+      stroke="none"
+    >
+      <path
+        d="M760 2500 l0 -1820 1055 0 1055 0 0 745 0 745 -363 0 -364 0 -6 -367
+c-4 -201 -8 -368 -10 -369 -1 -1 -137 -4 -302 -5 l-300 -3 -3 1447 -2 1447
+-380 0 -380 0 0 -1820z"
+      />
+      <path
+        d="M2140 3575 l0 -745 363 0 364 0 6 366 c3 201 7 367 9 369 1 2 138 5
+303 6 l300 3 3 -1447 2 -1447 375 0 375 0 0 1820 0 1820 -1050 0 -1050 0 0
+-745z"
+      />
+    </g>
+  </svg>
+);
+
 const Index = async () => {
   const session = await getServerSession(authOptions);
 
@@ -14,59 +35,29 @@ const Index = async () => {
     redirect("/home");
   }
   return (
-    <div className="landing-back">
-      <header className="absolute px-32 top-0 left-0 p-4 w-full">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <Image src="/logo.png" width={50} height={50} alt="habitai logo" />
-          </div>
-          <div>
-            <GoogleSignInButton />
-          </div>
-        </div>
+    <div className="container mx-auto">
+      <header className="flex items-center justify-between py-6">
+        {APP_LOGO}
+        <GoogleSignInButton />
       </header>
-      <div className="p-7 container mx-auto  justify-evenly h-screen flex relative">
-        <div className="flex flex-col justify-center items-center gap-8 max-w-lg ">
-          <h1 className="md:text-4xl text-2xl font-bold text-center">
+      <main className="flex flex-col">
+        <div className="flex flex-col gap-6">
+          <h1 className="text-2xl font-bold md:text-4xl text-center text-zinc-50">
             Enchase your habits with AI
           </h1>
-          <p className="text-center">
+          <p className="text-center text-zinc-400">
             HabitAI is a cutting-edge app that supercharges your journey to
             healthier habits through friendly competition.
-            <b className="block">Take pictures, gain XP, create habits!</b>
+            <b className="block text-zinc-50">
+              Take pictures, gain XP, create habits!
+            </b>
           </p>
-          <div className="flex">
-            <DownloadApp />
-          </div>
-          <div className="flex justify-evenly w-full items-center text-center gap-4 flex-col xs:flex-row">
-            <div>
-              <h2 className="subheading-1">HABITS</h2>
-              <p className="font-bold text-2xl">15</p>
-            </div>
-            <div>
-              <h2 className="subheading-1">USERS</h2>
-              <p className="font-bold text-2xl">+100.000</p>
-            </div>
-
-            <div>
-              <h2 className="subheading-1">HABITS CREATED</h2>
-              <p className="font-bold text-2xl">+500.000</p>
-            </div>
-          </div>
+          <DownloadApp />
         </div>
-        <div className="flex justify-center items-center">
-          <Image
-            className="hidden md:block "
-            src="/home-portrait.png"
-            width={300}
-            height={600}
-            alt="mobile portrait"
-          />
-        </div>
-        <Link href="/privacy" className="absolute bottom-0">
-          Privacy
-        </Link>
-      </div>
+      </main>
+      <Link href="/privacy" className="absolute bottom-0">
+        Privacy
+      </Link>
     </div>
   );
 };
