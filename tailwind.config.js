@@ -16,8 +16,7 @@ module.exports = {
       "slate-400": "#94A3B8",
     },
     fontFamily: {
-      heading: ["Montserrat", "sans-serif"],
-      sans: ["Inter", "sans-serif"],
+      sans: ["Roboto", "sans-serif"],
     },
   },
   plugins: [require("tailwindcss-animated")],
