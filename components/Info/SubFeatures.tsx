@@ -24,7 +24,7 @@ export const SubFeatures: FC<Props> = ({ habit }) => {
   const streak = subscription?.streak || 0;
 
   return (
-    <article className="flex justify-between w-full">
+    <article className="flex justify-around w-full">
       <Statistic description="Minutes" value={habit.minutes} />
       <Statistic description="Points" value={habit.points} />
       <Statistic
