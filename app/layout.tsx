@@ -3,12 +3,12 @@
 import { Provider } from "@/components/Provider";
 import "./globals.css";
 import Script from "next/script";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { Analytics } from "@vercel/analytics/react";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ weight: ["300", "400", "500", "700"] });
 
 export default function BlogLayout({
   children,
@@ -72,7 +72,7 @@ export default function BlogLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <Provider>{children}</Provider>
         <Analytics />
       </body>

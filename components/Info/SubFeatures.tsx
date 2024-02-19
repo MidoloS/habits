@@ -21,14 +21,12 @@ export const SubFeatures: FC<Props> = ({ habit }) => {
     });
   }, []);
 
-  const pointsToDisplay = habit.points === 0 ? "No Ranked" : habit.points;
-
   const streak = subscription?.streak || 0;
 
   return (
     <article className="flex justify-between w-full">
       <Statistic description="Minutes" value={habit.minutes} />
-      <Statistic description="Points" value={pointsToDisplay} />
+      <Statistic description="Points" value={habit.points} />
       <Statistic
         description="Followers"
         value={formatNumber(habit.followersQty)}
