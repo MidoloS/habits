@@ -30,16 +30,11 @@ export const authOptions: NextAuthOptions = {
 
       const dbUser = await getUser(session.user?.email);
 
-      if (!dbUser) {
-        Promise.reject(null);
-        return null;
-      }
+      session.user.subs = dbUser?.subscriptions || [];
 
-      session.user.subs = dbUser.subscriptions || [];
+      session.user.points = dbUser?.points || 0;
 
-      session.user.points = dbUser.points || 0;
-
-      session.user.id = dbUser.id;
+      session.user.id = dbUser?.id || "";
 
       return Promise.resolve(session);
     },
