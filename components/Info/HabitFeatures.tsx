@@ -17,7 +17,7 @@ export const HabitFeatures: FC<Props> = ({ habit }) => {
   return (
     <article className="flex justify-between w-full">
       <Statistic value={minutes} description="Minutes" />
-      <Statistic value={habit.points} description="Points" />
+      <Statistic value={points} description="Points" />
       <Statistic value={formatNumber(followersQty)} description="Followers" />
       <Statistic value="5" description="Day Streak" />
     </article>

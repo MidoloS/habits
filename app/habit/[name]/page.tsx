@@ -41,7 +41,7 @@ export default async function Page({
           <div className="mx-auto py-8 px-12 flex flex-col h-full gap-10 ">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-xl font-bold text-zinc-50">
+                <h1 className="text-lg font-bold text-zinc-50">
                   {habit.title}
                 </h1>
                 <p className="text-sm font-sans text-zinc-400">
