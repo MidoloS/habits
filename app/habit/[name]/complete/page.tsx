@@ -35,7 +35,7 @@ export default async function Page({
     <>
       <div className="flex flex-col w-full h-screen relative justify-end">
         <main className="bg-zinc-950 w-full rounded-t-3xl">
-          <div className="px-8 py-8 w-full flex flex-col justify-end h-full gap-8 ">
+          <div className="px-6 py-8 w-full flex flex-col justify-end h-full gap-8 ">
             <div className="flex justify-between items-center w-full">
               <div>
                 <h1 className="text-2xl font-bold text-zinc-50">

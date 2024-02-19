@@ -35,7 +35,7 @@ export const PrimaryButton: FC<Props> = ({
     <button
       className={`${style} ${
         DICT[size]
-      } font-sans text-center rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-zinc-500 disabled:bg-zinc-300 disabled:cursor-not-allowed ${
+      }  font-sans text-center rounded-xl px-5 py-3 duration-500 justify-center inline-flex items-center disabled:text-zinc-500 disabled:bg-zinc-300 disabled:cursor-not-allowed ${
         fullWidth ? "w-full" : "w-fit"
       }`}
       onClick={onClick}

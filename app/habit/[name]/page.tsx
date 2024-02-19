@@ -34,11 +34,11 @@ export default async function Page({
             height={777}
             width={552}
             src={habit.tallImage || "/images/placeholder.png"}
-            className="md:rounded-xl relative bottom-[20vh]"
+            className="md:rounded-xl relative bottom-[9vh]"
           />
         </figure>
         <main className="z-10 bottom-0 absolute bg-zinc-950 w-full rounded-t-3xl">
-          <div className="mx-auto py-8 px-12 flex flex-col h-full gap-8 ">
+          <div className="mx-auto py-6 px-8 flex flex-col h-full gap-8 ">
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-2xl font-bold text-zinc-50">
