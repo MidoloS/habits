@@ -2,9 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { Camera } from "@/components/Camera/Camera";
-import { SubFeatures } from "@/components/Info/SubFeatures";
-import { getHabit } from "@/prisma/helpers";
+import { UserWelcome } from "@/components/User/Welcome";
 
 export default async function Page({
   params: { name },
@@ -20,8 +18,8 @@ export default async function Page({
   console.log({ session });
 
   return (
-    <>
-      <h1>user profile</h1>
-    </>
+    <main className="flex flex-col gap-8 p-7 container mx-auto">
+      <UserWelcome img={session?.user?.image} name={session?.user?.name} />
+    </main>
   );
 }

@@ -17,8 +17,6 @@ export default async function Page() {
 
   const { data: users } = await getUsers();
 
-  console.log({ users, session });
-
   const currentUser = {
     id: "",
     name: session.user.name,

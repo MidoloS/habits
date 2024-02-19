@@ -10,6 +10,7 @@ import { CountdownHabit } from "@/components/Habit/Countdown";
 import { EnableNotification } from "@/components/Modal/EnableNotification";
 import Image from "next/image";
 import Link from "next/link";
+import { NotificationRedirect } from "@/components/Info/NotificationRedirect";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -54,14 +55,17 @@ const Home = async () => {
     );
   }
 
+  console.log({ session });
+
   return (
     <>
-      <EnableNotification />
       <main className="flex flex-col gap-8 p-7 container mx-auto">
         <div className="flex flex-col gap-8">
           <UserWelcome img={session.user?.image} name={session.user?.name} />
 
           <div className="flex flex-col gap-2">
+            <NotificationRedirect userId={session?.user?.id} />
+
             <HabitToCompleteSummary subscriptions={session?.user?.subs} />
             <CountdownHabit />
           </div>
