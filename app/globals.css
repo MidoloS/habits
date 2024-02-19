@@ -14,4 +14,14 @@ body {
     background-color: #f9faff;
     background-image: -webkit-linear-gradient(30deg, #f3f3f3 55%, #f9faff 50%);
   }
+  .backGradient {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.6628852224483543) 33%,
+      rgba(0, 0, 0, 0) 56%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
 }
