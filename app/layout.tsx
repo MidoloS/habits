@@ -8,7 +8,10 @@ import { useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { Analytics } from "@vercel/analytics/react";
 
-const roboto = Roboto({ weight: ["300", "400", "500", "700"] });
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+});
 
 export default function BlogLayout({
   children,
