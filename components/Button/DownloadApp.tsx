@@ -33,6 +33,7 @@ export const DownloadApp = () => {
       <PrimaryButton
         disabled={!promptInstall || !supportsPWA}
         onClick={onClick}
+        fullWidth={false}
       >
         Download for free!
       </PrimaryButton>

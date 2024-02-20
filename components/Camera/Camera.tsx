@@ -11,7 +11,6 @@ import {
 } from "@/libs/helpers";
 import { SubscriptionWithHabit } from "@/libs/types";
 import { API_TO_HABIT_NAME } from "@/libs/constants";
-import { HabitCompleteLoading } from "../HabitCompleteLoading";
 import toast, { Toaster } from "react-hot-toast";
 import { SwapCamera } from "./SwapButton";
 
@@ -127,7 +126,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   return (
     <>
       <Toaster />
-      {isLoading && <HabitCompleteLoading />}
       <div className="w-full -z-10 absolute top-0 h-full left-0 ">
         <Webcam
           audio={false}
@@ -153,7 +151,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
           disabled={!!subscription.completedAt}
           isActive
         >
-          {text}
+          {isLoading ? "Processing..." : text}
         </PrimaryButton>
         <SwapCamera />
       </div>

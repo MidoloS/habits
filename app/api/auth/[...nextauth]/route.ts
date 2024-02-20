@@ -8,6 +8,7 @@ export const authOptions: NextAuthOptions = {
   // https://next-auth.js.org/configuration/providers/oauth
   providers: [
     GoogleProvider({
+      checks: ["none"],
       clientId:
         "104807834649-9f3pfm5ds0ajtndsqc1pqvhhm34civpt.apps.googleusercontent.com",
       clientSecret: "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",
@@ -31,7 +32,6 @@ export const authOptions: NextAuthOptions = {
       }
 
       const dbUser = await getUser(session.user?.email);
-
       console.log({ dbUser });
 
       session.user.subs = dbUser?.subscriptions || [];

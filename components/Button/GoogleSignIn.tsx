@@ -1,20 +1,18 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { PrimaryButton } from "./Primary";
 import { redirect } from "next/navigation";
 
 export const GoogleSignInButton = () => {
   return (
-    <PrimaryButton
+    <button
       onClick={async () => {
         await signIn("google", { redirect: true, callbackUrl: "/home" });
         redirect("/home");
       }}
-      size="lg"
-      fullWidth={false}
+      className="text-zinc-50 font-medium"
     >
       Sign In
-    </PrimaryButton>
+    </button>
   );
 };
