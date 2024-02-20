@@ -8,6 +8,7 @@ export const authOptions: NextAuthOptions = {
   // https://next-auth.js.org/configuration/providers/oauth
   providers: [
     GoogleProvider({
+      checks: ["none"],
       clientId:
         "104807834649-9f3pfm5ds0ajtndsqc1pqvhhm34civpt.apps.googleusercontent.com",
       clientSecret: "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",
@@ -20,6 +21,8 @@ export const authOptions: NextAuthOptions = {
     },
     // @ts-ignore
     session: async ({ session, token }) => {
+      console.log({ session, token });
+
       if (!session || !token) {
         return null;
       }
@@ -29,17 +32,13 @@ export const authOptions: NextAuthOptions = {
       }
 
       const dbUser = await getUser(session.user?.email);
+      console.log({ dbUser });
 
-      if (!dbUser) {
-        Promise.reject(null);
-        return null;
-      }
+      session.user.subs = dbUser?.subscriptions || [];
 
-      session.user.subs = dbUser.subscriptions || [];
+      session.user.points = dbUser?.points || 0;
 
-      session.user.points = dbUser.points || 0;
-
-      session.user.id = dbUser.id;
+      session.user.id = dbUser?.id || "";
 
       return Promise.resolve(session);
     },

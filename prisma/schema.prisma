@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:xsGPNFAYUJJEV9Xp@db.mabfjyjbggqdwqtjdwip.supabase.co:5432/postgres?connection_limit=50&pool_timeout=200"
+  url      = "postgres://postgres.mabfjyjbggqdwqtjdwip:xsGPNFAYUJJEV9Xp@aws-0-us-east-1.pooler.supabase.com:5432/postgres?connection_limit=50&pool_timeout=200"
 }
 
 model Habit {
