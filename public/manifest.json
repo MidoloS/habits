@@ -11,11 +11,6 @@
   "icons": [
     {
       "src": "/logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/logo.svg",
       "sizes": "144x144",
       "type": "image/svg+xml"
     }
