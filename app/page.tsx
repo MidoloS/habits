@@ -35,29 +35,40 @@ const Index = async () => {
     redirect("/home");
   }
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-6">
       <header className="flex items-center justify-between py-6">
         {APP_LOGO}
         <GoogleSignInButton />
       </header>
-      <main className="flex flex-col">
-        <div className="flex flex-col gap-6">
-          <h1 className="text-2xl font-bold md:text-4xl text-center text-zinc-50">
+      <main className="flex flex-col items-center gap-8 md:flex-row md:justify-between md:mt-20">
+        <div className="flex flex-col gap-8 md:items-start max-w-2xl ">
+          <h1 className="text-4xl font-bold leading-[3rem] md:text-5xl text-center md:text-left text-zinc-50 ">
             Enchase your habits with AI
           </h1>
-          <p className="text-center text-zinc-400">
-            HabitAI is a cutting-edge app that supercharges your journey to
-            healthier habits through friendly competition.
-            <b className="block text-zinc-50">
+          <p className="text-center text-lg md:text-left text-zinc-400 leading-8">
+            <b className=" text-zinc-300">HabitAI </b> is a cutting-edge app
+            that supercharges your journey to healthier habits through friendly
+            competition.
+            <b className="block text-zinc-300 italic">
               Take pictures, gain XP, create habits!
             </b>
           </p>
           <DownloadApp />
         </div>
+        <div>
+          <Image
+            src="/images/phone.jpeg"
+            height={500}
+            width={300}
+            className="border border-zinc-500 rounded-2xl"
+          />
+        </div>
       </main>
-      <Link href="/privacy" className="absolute bottom-0">
-        Privacy
-      </Link>
+      <footer className="py-6  flex justify-center">
+        <Link href="/privacy" className=" text-zinc-50 underline">
+          Privacy
+        </Link>
+      </footer>
     </div>
   );
 };
