@@ -57,6 +57,7 @@ const Index = async () => {
         </div>
         <div>
           <Image
+            alt="phone frame"
             src="/images/phone.jpeg"
             height={500}
             width={300}
