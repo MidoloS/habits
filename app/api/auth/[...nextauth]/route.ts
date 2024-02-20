@@ -20,6 +20,8 @@ export const authOptions: NextAuthOptions = {
     },
     // @ts-ignore
     session: async ({ session, token }) => {
+      console.log({ session, token });
+
       if (!session || !token) {
         return null;
       }
@@ -29,6 +31,8 @@ export const authOptions: NextAuthOptions = {
       }
 
       const dbUser = await getUser(session.user?.email);
+
+      console.log({ dbUser });
 
       session.user.subs = dbUser?.subscriptions || [];
 
