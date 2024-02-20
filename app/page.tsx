@@ -35,8 +35,8 @@ const Index = async () => {
     redirect("/home");
   }
   return (
-    <div className="container mx-auto px-6">
-      <header className="flex items-center justify-between py-6">
+    <div className="container mx-auto px-6 ">
+      <header className="flex items-center justify-between py-6 ">
         {APP_LOGO}
         <GoogleSignInButton />
       </header>
