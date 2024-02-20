@@ -19,7 +19,6 @@ export const HabitFeatures: FC<Props> = ({ habit }) => {
       <Statistic value={minutes} description="Minutes" />
       <Statistic value={points} description="Points" />
       <Statistic value={formatNumber(followersQty)} description="Followers" />
-      <Statistic value="5" description="Day Streak" />
     </article>
   );
 };
