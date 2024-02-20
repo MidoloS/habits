@@ -57,7 +57,7 @@ export default function BlogLayout({
           name="description"
           content="HabitAI is a cutting-edge app that supercharges your journey to healthier habits through friendly competition. Turn your wellness goals into an exhilarating personal challenge by facing off against fellow users in the pursuit of a healthier life. Discover how HabitAI can transform your daily routine and drive you towards your goals with excitement and motivation!"
         />
-        <title>HabitAI</title>
+        <title>HabitAI ─ Create habits healthy using AI</title>
         <Script
           id="hothatAnalytics"
           strategy="afterInteractive"
