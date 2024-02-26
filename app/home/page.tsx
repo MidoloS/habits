@@ -22,8 +22,8 @@ const Home = async () => {
   if (session?.user?.subs.length === 0) {
     return (
       <>
-        <main className="flex flex-col gap-8 p-7 justify-between h-[90vh] ">
-          <div className="container mx-auto">
+        <main className="flex flex-col gap-8 p-7 justify-between h-[90vh] container mx-auto">
+          <div>
             <UserWelcome name={session.user.name} img={session.user.image} />
           </div>
           <div className="text-center flex flex-col items-center gap-8 justify-center ">
@@ -35,15 +35,17 @@ const Home = async () => {
               style={{ borderRadius: 12 }}
             />
             <div className="flex flex-col gap-1">
-              <h1 className="text-2xl font-semibold">Nothing here</h1>
-              <h2 className="text-slate-600 text-center text-sm">
+              <h1 className="text-2xl font-semibold text-zinc-50">
+                Nothing here
+              </h1>
+              <h2 className="text-zinc-500 text-center">
                 Begin your journey finding new habits
               </h2>
             </div>
           </div>
           <div className="flex items-center justify-center">
             <Link
-              className="bg-slate-950 text-slate-50 font-medium font-sans text-center text-sm rounded-xl px-5 py-4 w-full md:w-fit"
+              className="bg-zinc-50 text-zinc-950 font-medium font-sans text-center rounded-xl px-5 py-4 w-full md:w-fit"
               href="/habit/new"
             >
               Find Habits

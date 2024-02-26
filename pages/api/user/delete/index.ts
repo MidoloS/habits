@@ -11,9 +11,13 @@ export default async function handler(
 
   const session = await getServerSession(req, res, authOptions);
 
+  console.log("---------------DELETE------------------");
+
   if (!session) {
     return res.status(404).json({ message: "Session not started" });
   }
+
+  console.log("deleting", session?.user?.email);
 
   const user = await prisma.user.delete({
     where: {
