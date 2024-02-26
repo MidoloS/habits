@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
 const BELL_ICON = (
@@ -35,6 +34,16 @@ export const NotificationRedirect: FC<Props> = ({ userId }) => {
     }
   }, []);
 
+  const handleRequestPermission = () => {
+    Notification.requestPermission().then((per) => {
+      if (per === "granted") {
+        setPermission(true);
+      } else {
+        setPermission(false);
+      }
+    });
+  };
+
   if (!userId) {
     return null;
   }
@@ -44,12 +53,12 @@ export const NotificationRedirect: FC<Props> = ({ userId }) => {
   }
 
   return (
-    <Link
-      href={`${process.env.NEXTAUTH_URL}/user/${userId}`}
+    <div
       className="flex bg-zinc-50 items-center p-4 gap-4 rounded-xl"
+      onClick={handleRequestPermission}
     >
       {BELL_ICON}
       <p className="font-medium">Enable notifications</p>
-    </Link>
+    </div>
   );
 };

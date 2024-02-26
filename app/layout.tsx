@@ -4,9 +4,10 @@ import { Provider } from "@/components/Provider";
 import "./globals.css";
 import Script from "next/script";
 import { Roboto } from "next/font/google";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { Analytics } from "@vercel/analytics/react";
+import { getMessaging, getToken } from "firebase/messaging";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -18,19 +19,23 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [permission, setPermission] = useState(true);
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.addEventListener("message", function (event) {
-        // Receive the message from the service worker
-        alert(event);
-      });
-      navigator.serviceWorker.register("/firebase-messaging-sw.js");
+    (async () => {
+      const res = await navigator.serviceWorker.register(
+        "/firebase-messaging-sw.js"
+      );
+
       window.addEventListener("load", () => {
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.register("/firebase-messaging-sw.js");
         }
       });
-      navigator.serviceWorker.register("/firebase-messaging-sw.js");
+    })();
+
+    if ("serviceWorker" in navigator && "PushManager" in window) {
+      console.log("sw");
+
       const firebaseConfig = {
         apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
         authDomain: "habitai-391719.firebaseapp.com",
@@ -43,7 +48,46 @@ export default function BlogLayout({
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
+      const messaging = getMessaging(app);
+      // Add the public key generated from the console here.
+      getToken(messaging, {
+        vapidKey:
+          "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
+      })
+        .then((currentToken) => {
+          console.log("getToken", currentToken);
+
+          if (currentToken) {
+            setPermission(true);
+          } else {
+            setPermission(false);
+          }
+        })
+        .catch((err) => {
+          console.log("error", err);
+          setPermission(false);
+        });
     }
+
+    navigator.serviceWorker.ready.then((reg) => {
+      reg.pushManager
+        .getSubscription()
+        .then((sub) => {
+          if (sub) {
+            setPermission(true);
+            return sub;
+          }
+
+          setPermission(false);
+
+          return reg.pushManager.subscribe({
+            userVisibleOnly: true,
+          });
+        })
+        .catch((err) => {
+          setPermission(false);
+        });
+    });
   }, []);
 
   return (
