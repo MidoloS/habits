@@ -84,7 +84,7 @@ export default async function Page() {
           )}
         </ul>
       </div>
-      <Navigator />
+      <Navigator userId={session?.user?.id} />
     </>
   );
 }

@@ -50,7 +50,7 @@ const Home = async () => {
             </Link>
           </div>
         </main>
-        <Navigator />
+        <Navigator userId={session?.user?.id} />
       </>
     );
   }
@@ -77,7 +77,7 @@ const Home = async () => {
           <UserHabits />
         </div>
       </main>
-      <Navigator />
+      <Navigator userId={session?.user?.id} />
     </>
   );
 };

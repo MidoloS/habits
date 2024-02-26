@@ -32,7 +32,7 @@ export default async function Page() {
           <HabitList habits={habits} urlPattern="/habit/{habitName}" />
         </div>
       </main>
-      <Navigator />
+      <Navigator userId={session?.user?.id} />
     </>
   );
 }
