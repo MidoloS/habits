@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { Analytics } from "@vercel/analytics/react";
 import { getMessaging, getToken } from "firebase/messaging";
+import { usePathname } from "next/navigation";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -20,74 +21,78 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   const [permission, setPermission] = useState(true);
+  const path = usePathname();
+  const isLanding = path === "/" || path === "";
   useEffect(() => {
-    (async () => {
-      const res = await navigator.serviceWorker.register(
-        "/firebase-messaging-sw.js"
-      );
+    if (!isLanding) {
+      (async () => {
+        const res = await navigator.serviceWorker.register(
+          "/firebase-messaging-sw.js"
+        );
 
-      window.addEventListener("load", () => {
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("/firebase-messaging-sw.js");
-        }
-      });
-    })();
+        window.addEventListener("load", () => {
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/firebase-messaging-sw.js");
+          }
+        });
+      })();
 
-    if ("serviceWorker" in navigator && "PushManager" in window) {
-      console.log("sw");
+      if ("serviceWorker" in navigator && "PushManager" in window) {
+        console.log("sw");
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
-        authDomain: "habitai-391719.firebaseapp.com",
-        projectId: "habitai-391719",
-        storageBucket: "habitai-391719.appspot.com",
-        messagingSenderId: "104807834649",
-        appId: "1:104807834649:web:190cc2562190fc8894f688",
-        measurementId: "G-GPFDSMCCZW",
-      };
+        const firebaseConfig = {
+          apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
+          authDomain: "habitai-391719.firebaseapp.com",
+          projectId: "habitai-391719",
+          storageBucket: "habitai-391719.appspot.com",
+          messagingSenderId: "104807834649",
+          appId: "1:104807834649:web:190cc2562190fc8894f688",
+          measurementId: "G-GPFDSMCCZW",
+        };
 
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const messaging = getMessaging(app);
-      // Add the public key generated from the console here.
-      getToken(messaging, {
-        vapidKey:
-          "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
-      })
-        .then((currentToken) => {
-          console.log("getToken", currentToken);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const messaging = getMessaging(app);
+        // Add the public key generated from the console here.
+        getToken(messaging, {
+          vapidKey:
+            "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
+        })
+          .then((currentToken) => {
+            console.log("getToken", currentToken);
 
-          if (currentToken) {
-            setPermission(true);
-          } else {
+            if (currentToken) {
+              setPermission(true);
+            } else {
+              setPermission(false);
+            }
+          })
+          .catch((err) => {
+            console.log("error", err);
             setPermission(false);
-          }
-        })
-        .catch((err) => {
-          console.log("error", err);
-          setPermission(false);
-        });
-    }
-
-    navigator.serviceWorker.ready.then((reg) => {
-      reg.pushManager
-        .getSubscription()
-        .then((sub) => {
-          if (sub) {
-            setPermission(true);
-            return sub;
-          }
-
-          setPermission(false);
-
-          return reg.pushManager.subscribe({
-            userVisibleOnly: true,
           });
-        })
-        .catch((err) => {
-          setPermission(false);
-        });
-    });
+      }
+
+      navigator.serviceWorker.ready.then((reg) => {
+        reg.pushManager
+          .getSubscription()
+          .then((sub) => {
+            if (sub) {
+              setPermission(true);
+              return sub;
+            }
+
+            setPermission(false);
+
+            return reg.pushManager.subscribe({
+              userVisibleOnly: true,
+            });
+          })
+          .catch((err) => {
+            setPermission(false);
+          });
+      });
+    }
   }, []);
 
   return (
