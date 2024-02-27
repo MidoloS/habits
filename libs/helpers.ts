@@ -102,14 +102,18 @@ export const getKeyWithMaxValue = (obj: Object) => {
   return Object.entries(obj)[0][0];
 };
 
-export const formatName = (name: string, currentUser: boolean = false) => {
+export const formatName = (name: string, isCurrentUser: boolean = false) => {
+  if (isCurrentUser) {
+    return "You";
+  }
+
   if (!name) return "Anonymous";
 
   const [first, last = ""] = name.split(" ");
 
   if (!last) return first;
 
-  return `${first}. ${last[0]} ${currentUser ? "(You)" : ""}`;
+  return `${first}. ${last[0]}`;
 };
 
 export const formatNumber = (number: number) => {
