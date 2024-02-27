@@ -45,17 +45,17 @@ export default async function Page() {
         <div className="flex justify-between items-end">
           <TopUser
             user={second}
-            size={80}
+            size={70}
             currentUser={currentUser.email === second?.email}
           />
           <TopUser
             user={first}
-            size={100}
+            size={90}
             currentUser={currentUser.email === first?.email}
           />
           <TopUser
             user={third}
-            size={60}
+            size={70}
             currentUser={currentUser.email === third?.email}
           />
         </div>
