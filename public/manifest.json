@@ -10,7 +10,7 @@
   "gcm_sender_id": "104807834649",
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/icon-512x512.png",
       "sizes": "144x144 192x192 256x256 384x384 512x512",
       "type": "image/png"
     }
