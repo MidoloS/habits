@@ -34,7 +34,7 @@ export default async function Page({
     <>
       <Header />
 
-      <main className="flex flex-col gap-8 p-7 container mx-auto absolute top-[10%] w-full">
+      <main className="flex flex-col gap-8 p-7 container mx-auto absolute top-[11%] w-full">
         <article className="flex gap-6">
           <Image
             src={user?.img}
@@ -51,6 +51,8 @@ export default async function Page({
           </section>
         </article>
         <div className="flex flex-col gap-6 w-full">
+          <h2 className="subheading-1">MY HABITS</h2>
+
           {user.subscriptions.map((sub) => (
             <HabitCard
               key={sub.habitName}
