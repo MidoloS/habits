@@ -50,29 +50,34 @@ export default async function Page({
             </p>
           </section>
         </article>
-        <div className="flex flex-col gap-6 w-full">
-          <h2 className="subheading-1">MY HABITS</h2>
+        {user.subscriptions.length && (
+          <div className="flex flex-col gap-6 w-full">
+            <h2 className="subheading-1">MY HABITS</h2>
 
-          {user.subscriptions.map((sub) => (
-            <HabitCard
-              key={sub.habitName}
-              // @ts-ignore
-              title={
-                habits.data.find((habit) => habit.name === sub.habitName)?.title
-              }
-              habitName={sub.habitName}
-              subtitle={`${sub.streak} Days`}
-              // @ts-ignore
-              src={
-                habits.data.find((habit) => habit.name === sub.habitName)
-                  ?.wideImage
-              }
-            />
-          ))}
-        </div>
-        <div>
-          <DeleteAccount />
-        </div>
+            {user.subscriptions.map((sub) => (
+              <HabitCard
+                key={sub.habitName}
+                // @ts-ignore
+                title={
+                  habits.data.find((habit) => habit.name === sub.habitName)
+                    ?.title
+                }
+                habitName={sub.habitName}
+                subtitle={`${sub.streak} Days`}
+                // @ts-ignore
+                src={
+                  habits.data.find((habit) => habit.name === sub.habitName)
+                    ?.wideImage
+                }
+              />
+            ))}
+          </div>
+        )}
+        {user?.id === session?.user?.id && (
+          <div className="mb-20">
+            <DeleteAccount />
+          </div>
+        )}
       </main>
       <Navigator userId={session?.user?.id} />
     </>
