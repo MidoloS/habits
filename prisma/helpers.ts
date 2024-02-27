@@ -220,6 +220,25 @@ export const createUser = async ({
   }
 };
 
+export const getUserById = (id: string) => {
+  if (!id) {
+    return null;
+  }
+
+  try {
+    return prisma.user.findFirst({
+      where: {
+        id,
+      },
+      include: {
+        subscriptions: true,
+      },
+    });
+  } catch (error) {
+    return null;
+  }
+};
+
 export const getSubscription = async ({
   habitName,
   email,

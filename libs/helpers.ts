@@ -102,7 +102,7 @@ export const getKeyWithMaxValue = (obj: Object) => {
   return Object.entries(obj)[0][0];
 };
 
-export const formatName = (name: string, currentUser: boolean) => {
+export const formatName = (name: string, currentUser: boolean = false) => {
   if (!name) return "Anonymous";
 
   const [first, last = ""] = name.split(" ");
