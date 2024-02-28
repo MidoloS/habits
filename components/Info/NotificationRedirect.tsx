@@ -35,10 +35,7 @@ export const NotificationRedirect: FC<Props> = ({ userId }) => {
   }, []);
 
   const handleRequestPermission = () => {
-    alert("hello");
     Notification.requestPermission().then((per) => {
-      alert(JSON.stringify(per));
-
       if (per === "granted") {
         setPermission(true);
       } else {
