@@ -13,7 +13,7 @@ type Props = {
 
 export const LeaderboardItem: FC<Props> = ({ user, rank, currentUser }) => {
   return (
-    <li className="flex items-center justify-between border-b border-slate-200 p-3 py-4">
+    <li className="flex items-center justify-between border-b border-zinc-500 p-3 py-4">
       <figure className="flex items-center gap-4 justify-center">
         <figcaption className="subheading-1 gap-4">
           {rank ? rank : "###"}

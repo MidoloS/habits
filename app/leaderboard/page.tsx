@@ -38,15 +38,13 @@ export default async function Page() {
 
   return (
     <>
-      <Header />
       <Head>
         <meta
           name="description"
-          content={`I have ${session?.user?.points} on HabitAI can you beat me?
-          HabitAI is a platform to create healthy using AI.
-`}
+          content="These are the players with the highest score in HabitAI, do you think we can surpass them?"
         />
       </Head>
+      <Header />
 
       <div className="px-7 py-4">
         <div className="mt-24 mb-4 flex flex-col gap-2">
