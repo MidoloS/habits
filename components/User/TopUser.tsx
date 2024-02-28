@@ -26,7 +26,7 @@ export const TopUser: FC<Props> = ({ user, size, currentUser }) => {
         width={size}
         height={size}
         alt="User profile picture"
-        className="rounded-full border-[3px] border-zinc-50 p-[3px]"
+        className="rounded-full border-[3px] border-zinc-50 p-[3px] mb-1"
       />
       <Link
         href={`/user/${user.id}`}
