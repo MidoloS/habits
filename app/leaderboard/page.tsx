@@ -7,6 +7,8 @@ import { getUsers } from "@/libs/helpers";
 import { Header } from "@/components/Navigator/Header";
 import { TopUser } from "@/components/User/TopUser";
 import { LeaderboardItem } from "@/components/User/LeaderboardItem";
+import Head from "next/head";
+import { getUserRank } from "@/prisma/helpers";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
@@ -32,9 +34,19 @@ export default async function Page() {
     (user) => user.email === currentUser.email
   );
 
+  const currentUserRank = await getUserRank(session?.user);
+
   return (
     <>
       <Header />
+      <Head>
+        <meta
+          name="description"
+          content={`I have ${session?.user?.points} on HabitAI can you beat me?
+          HabitAI is a platform to create healthy using AI.
+`}
+        />
+      </Head>
 
       <div className="px-7 py-4">
         <div className="mt-24 mb-4 flex flex-col gap-2">
@@ -79,7 +91,11 @@ export default async function Page() {
                 <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
               </div>
 
-              <LeaderboardItem user={currentUser} currentUser />
+              <LeaderboardItem
+                user={currentUser}
+                currentUser
+                rank={currentUserRank}
+              />
             </>
           )}
         </ul>

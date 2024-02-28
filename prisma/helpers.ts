@@ -1,4 +1,4 @@
-import { Habit } from "@prisma/client";
+import { Habit, User } from "@prisma/client";
 import { generatePrismaClient } from "./client";
 
 const prisma = generatePrismaClient();
@@ -237,6 +237,17 @@ export const getUserById = (id: string) => {
   } catch (error) {
     return null;
   }
+};
+
+export const getUserRank = (user: User) => {
+  if (!user) {
+    return undefined;
+  }
+  return prisma.user.count({
+    where: {
+      points: { gte: user.points },
+    },
+  });
 };
 
 export const getSubscription = async ({
