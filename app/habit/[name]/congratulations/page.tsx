@@ -55,7 +55,7 @@ export default async function Page({
               alt="olive wreath left"
               unoptimized
             />
-            {habit.points >= 0 ? (
+            {habit.points > 0 ? (
               <div className="flex flex-col items-center justify-center gap-1 text-zinc-50">
                 <h2 className="subheading-1">EARNED</h2>
                 <p className="text-xl text-zinc-50 font-semibold">
@@ -63,7 +63,12 @@ export default async function Page({
                 </p>
               </div>
             ) : (
-              <h2 className="subheading-1">No points earned</h2>
+              <div className="flex flex-col items-center justify-center gap-1 text-zinc-50">
+                <h2 className="subheading-1">NO RANKED</h2>
+                <p className="text-xl text-zinc-50 font-semibold">
+                  No points earned
+                </p>
+              </div>
             )}
             <Image
               src="/images/olive-right.png"
@@ -81,7 +86,10 @@ export default async function Page({
             </span>
           </p>
           <div className="flex justify-center">
-            <StreakProgress streakDays={currentHabit?.streak || 1} />
+            <StreakProgress
+              streakDays={currentHabit?.streak || 1}
+              isRanked={habit.points > 0}
+            />
           </div>
         </div>
 

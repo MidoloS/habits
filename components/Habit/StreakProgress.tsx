@@ -4,9 +4,10 @@ import { DAYS_UNTIL_HABIT } from "@/libs/constants";
 
 type Props = {
   streakDays: number;
+  isRanked: boolean;
 };
 
-export const StreakProgress: FC<Props> = ({ streakDays }) => {
+export const StreakProgress: FC<Props> = ({ streakDays, isRanked }) => {
   const percentage = (1 / DAYS_UNTIL_HABIT) * 100;
   const totalBoost = streakDays * 10;
 
@@ -16,6 +17,8 @@ export const StreakProgress: FC<Props> = ({ streakDays }) => {
     : `${DAYS_UNTIL_HABIT - streakDays} days left`;
 
   const color = isCompleted ? "#E9B230" : "#fafafa";
+
+  const textBoost = isRanked ? `${totalBoost}% Boost Points` : "No Boost";
 
   return (
     <div className="flex items-center">
@@ -32,9 +35,7 @@ export const StreakProgress: FC<Props> = ({ streakDays }) => {
       </CircularProgressbar>
       <div>
         <p className="text-sm text-zinc-500">{message}</p>
-        <h2 className="text-lg text-zinc-50 font-semibold">
-          {totalBoost}% Boost Points
-        </h2>
+        <h2 className="text-lg text-zinc-50 font-semibold">{textBoost}</h2>
       </div>
     </div>
   );
