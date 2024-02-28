@@ -59,11 +59,11 @@ export default async function Page({
               <div className="flex flex-col items-center justify-center gap-1 text-zinc-50">
                 <h2 className="subheading-1">EARNED</h2>
                 <p className="text-xl text-zinc-50 font-semibold">
-                  +{habit.points} XP
+                  +{habit.points} Points
                 </p>
               </div>
             ) : (
-              <h2 className="subheading-1">NO POINTS EARNED</h2>
+              <h2 className="subheading-1">No points earned</h2>
             )}
             <Image
               src="/images/olive-right.png"

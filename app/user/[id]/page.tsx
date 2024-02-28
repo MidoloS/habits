@@ -46,7 +46,7 @@ export default async function Page({
           <section className="flex flex-col justify-center">
             <p className="text-zinc-50 font-medium">{formatName(user.name)}</p>
             <p className="text-zinc-400 text-sm">
-              {user.points}pts • {user.subscriptions.length} Habits
+              {user.points} Points • {user.subscriptions.length} Habits
             </p>
           </section>
         </article>

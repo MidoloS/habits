@@ -33,7 +33,7 @@ export const StreakProgress: FC<Props> = ({ streakDays }) => {
       <div>
         <p className="text-sm text-zinc-500">{message}</p>
         <h2 className="text-lg text-zinc-50 font-semibold">
-          {totalBoost}% Boost XP
+          {totalBoost}% Boost Points
         </h2>
       </div>
     </div>
