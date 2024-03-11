@@ -10,7 +10,6 @@ export const DownloadApp = () => {
   useEffect(() => {
     const handler = (e: any) => {
       e.preventDefault();
-      console.log("we are being triggered :D");
       setSupportsPWA(true);
       setPromptInstall(e);
     };
@@ -25,8 +24,6 @@ export const DownloadApp = () => {
     // @ts-ignore
     promptInstall.prompt();
   };
-
-  console.log({ promptInstall, supportsPWA });
 
   return (
     <div className="flex flex-col gap-2 items-center">

@@ -29,7 +29,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const capture = useCallback(async () => {
     // @ts-ignore
     const per = await navigator.permissions.query({ name: "camera" });
-    console.log({ per, state: per.state });
 
     if (per.state !== "granted") {
       toast.error("Please enable the camera");

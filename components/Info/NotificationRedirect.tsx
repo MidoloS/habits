@@ -24,8 +24,6 @@ export const NotificationRedirect: FC<Props> = ({ userId }) => {
   const [permission, setPermission] = useState(true);
 
   useEffect(() => {
-    console.log("Noti", { not: Notification, per: Notification.permission });
-
     if (
       Notification.permission === "denied" ||
       Notification.permission === "default"

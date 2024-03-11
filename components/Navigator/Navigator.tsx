@@ -199,8 +199,6 @@ export const Navigator: FC<Props> = ({ userId }) => {
   const isAddHabit = path === "/habit/new";
   const isProfile = path === "/user/" + userId;
 
-  console.log({ isProfile });
-
   return (
     <footer className="fixed p-5 bg-zinc-950 border-t border-zinc-600 bottom-0 flex justify-between w-full items-center">
       <div className="container mx-auto flex  justify-between w-full items-center px-7">

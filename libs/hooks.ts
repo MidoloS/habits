@@ -12,8 +12,6 @@ export const useNotification = () => {
     })();
 
     if ("serviceWorker" in navigator && "PushManager" in window) {
-      console.log("sw");
-
       const firebaseConfig = {
         apiKey: "AIzaSyATF4b77jYWBTyWUa70ONitSxUwZ7QtQCU",
         authDomain: "habitai-391719.firebaseapp.com",
@@ -33,8 +31,6 @@ export const useNotification = () => {
           "BPq2545hDXGs4Gx2RqWw_dtokiqEQDjoG81YoUjV30j3wk5nZ9jwxK7_kj01Cwrm1h4tenvje8saelksUkVoSWs",
       })
         .then((currentToken) => {
-          console.log("getToken", currentToken);
-
           if (currentToken) {
             setPermission(true);
           } else {

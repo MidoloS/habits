@@ -71,8 +71,6 @@ export const completeHabit = async ({
 
   const xpBoost = 1 + (sub?.streak || 1) / 10;
 
-  console.log({ xpBoost });
-
   return prisma.user.update({
     where: {
       email,
