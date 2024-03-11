@@ -30,8 +30,9 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const capture = useCallback(async () => {
     // @ts-ignore
     navigator.permissions.query({ name: "camera" }).then((res) => {
+      console.log({ res, state: res.state });
+
       setPermission(res.state);
-      console.log({ res });
     });
 
     if (habitName === "wakeup") {
@@ -81,6 +82,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     if (permission !== "granted") {
       toast.error("Please enable the camera");
+      return;
     }
 
     // @ts-ignore
