@@ -29,11 +29,10 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const webcamRef = useRef(null);
   const capture = useCallback(async () => {
     // @ts-ignore
-    navigator.permissions.query({ name: "camera" }).then((res) => {
-      console.log({ res, state: res.state });
+    const per = await navigator.permissions.query({ name: "camera" });
+    console.log({ per, state: per.state });
 
-      setPermission(res.state);
-    });
+    setPermission(per.state);
 
     if (habitName === "wakeup") {
       const now = new Date();
