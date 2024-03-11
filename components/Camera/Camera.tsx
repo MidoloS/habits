@@ -31,6 +31,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     // @ts-ignore
     navigator.permissions.query({ name: "camera" }).then((res) => {
       setPermission(res.state);
+      console.log({ res });
     });
 
     if (habitName === "wakeup") {
