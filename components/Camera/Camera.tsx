@@ -20,7 +20,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
   const [subscription, setSubscription] = useState<SubscriptionWithHabit>(
     {} as SubscriptionWithHabit
   );
-  const [permission, setPermission] = useState<PermissionState>("denied");
 
   const { push } = useRouter();
 
@@ -32,7 +31,10 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     const per = await navigator.permissions.query({ name: "camera" });
     console.log({ per, state: per.state });
 
-    setPermission(per.state);
+    if (per.state !== "granted") {
+      toast.error("Please enable the camera");
+      return;
+    }
 
     if (habitName === "wakeup") {
       const now = new Date();
@@ -76,13 +78,6 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     }
 
     setIsLoading(true);
-
-    console.log({ permission });
-
-    if (permission !== "granted") {
-      toast.error("Please enable the camera");
-      return;
-    }
 
     // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
