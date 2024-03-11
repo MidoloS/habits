@@ -77,6 +77,8 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     setIsLoading(true);
 
+    console.log({ permission });
+
     if (permission !== "granted") {
       toast.error("Please enable the camera");
     }
