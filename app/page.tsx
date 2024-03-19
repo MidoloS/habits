@@ -97,14 +97,17 @@ const Index = async () => {
   }
   return (
     <>
-      <main className="flex flex-col justify-center gap-8 bg-gradient-to-t from-zinc-900 to-zinc-950 min-h-[100vh] py-16">
+      <header className="mx-auto container px-8 mt-6 flex justify-center md:justify-start">
+        <div className="md:absolute md:top-6">{APP_LOGO}</div>
+      </header>
+      <main className="flex flex-col justify-center gap-8 bg-gradient-to-t from-zinc-900 to-zinc-950 min-h-[100vh] py-16 pb-16 pt-4">
         <div className="container mx-auto px-8 flex items-center justify-center flex-col md:flex-row gap-14">
           <div className="gap-8 flex flex-col mx-auto container">
             <h1 className="text-white mb text-center text-3xl font-semibold leading-10 md:text-6xl md:max-w-3xl md:text-left md:leading-[6rem]">
               Level Up Your Life: AI-Powered Habit Formation
             </h1>
             <p className="text-center text-zinc-400 md:max-w-xl md:text-left leading-8">
-              <span className="text-white font-semibold">
+              <span className="text-zinc-50 font-medium">
                 Building habits is hard. HabitAI uses AI to make it easy.{" "}
               </span>
               Set goals, snap a pic to verify completion, and earn points. Climb
@@ -132,22 +135,22 @@ const Index = async () => {
               Unique Features
             </h1>
             <p className=" text-zinc-400 leading-7">
-              Let&quot;s be real, there are a ton of habit tracker apps out
+              Let&#39;s be real, there are a ton of habit tracker apps out
               there.
-              <span className="text-white font-semibold">
+              <span className="text-white font-medium">
                 So why choose HabitAI?
               </span>
             </p>
             <p className=" text-zinc-400 leading-7">
-              <span className="text-white font-semibold">
-                Here&quot;s the deal: most apps leave you hanging.
+              <span className="text-white font-medium">
+                Here&#39;s the deal: most apps leave you hanging.
               </span>
-              They&quot;re all about logging and checking boxes, but they lack
+              They&#39;re all about logging and checking boxes, but they lack
               the secret sauce to make habits actually stick.
             </p>
             <p className=" text-zinc-400 leading-7">
               HabitAI is different.
-              <span className="text-white font-semibold">
+              <span className="text-white font-medium">
                 {" "}
                 We combine cutting-edge AI validation with powerful psychology
               </span>{" "}
@@ -217,7 +220,7 @@ const Index = async () => {
               name="James Clear"
               quote={
                 <p className="text-zinc-400 leading-7">
-                  <span className="text-white font-semibold">
+                  <span className="text-white font-medium">
                     The first mistake is never the one that ruins you.
                   </span>
                   It is the spiral of repeated mistakes that follows. Missing
@@ -233,7 +236,7 @@ const Index = async () => {
                 <p className="text-zinc-400 leading-7">
                   The secret of getting ahead is getting started. The secret of
                   getting started is{" "}
-                  <span className="text-white font-semibold">
+                  <span className="text-white font-medium">
                     breaking your complex overwhelming tasks into small
                     manageable tasks
                   </span>
@@ -261,10 +264,10 @@ const Index = async () => {
               Why HabitAI works?
             </h1>
             <p className=" text-zinc-400 leading-7">
-              Sticking to new habits is tough. We get it. That&quot;s why
-              HabitAI uses a powerful combo of cutting-edge science and engaging
-              features to turn &quot;wish I could&quot; into &quot;watch me
-              crush it.&quot;
+              Sticking to new habits is tough. We get it. That&#39;s why HabitAI
+              uses a powerful combo of cutting-edge science and engaging
+              features to turn &#39;wish I could&#39; into &#39;watch me crush
+              it.&#39;
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-6">
@@ -276,7 +279,7 @@ const Index = async () => {
             />
             <FeatureCard
               title="Gamilification"
-              description='Points, badges, leaderboards – yep, we"ve got it all. HabitAI turns habit-building into a thrilling game.'
+              description="Points, badges, leaderboards – yep, we&#39;ve got it all. HabitAI turns habit-building into a thrilling game."
               icon={GAMIFICATION}
               square={false}
             />
