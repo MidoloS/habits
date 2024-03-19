@@ -166,7 +166,7 @@ const Index = async () => {
             />
             <FeatureCard
               title="Take a Snap"
-              description="Follow any of the 8 habits there is."
+              description="Take a picture completing the habit, we validate it using AI."
               icon={TAKE_SNAP}
               square
             />
@@ -178,7 +178,7 @@ const Index = async () => {
             />
             <FeatureCard
               title="Daily Boost"
-              description="Follow any of the 8 habits there is."
+              description="Every day you complete a habit boost your points by another 10%."
               icon={BOOST}
               square
             />
