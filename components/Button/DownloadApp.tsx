@@ -26,14 +26,15 @@ export const DownloadApp = () => {
   };
 
   return (
-    <div className="flex flex-col gap-2 items-center">
-      <PrimaryButton
+    <div className="flex flex-col gap-2 items-center md:items-start">
+      <button
         disabled={!promptInstall || !supportsPWA}
         onClick={onClick}
-        fullWidth={false}
+        className="px-8 py-3 rounded-md text-sm text-white bg-gradient-to-r from-[#E94646] to-[#9821FF] hover:scale-110 duration-200 z-10"
+        style={{ boxShadow: "1px 1px 68px 5px #6D1717" }}
       >
         Download for free!
-      </PrimaryButton>
+      </button>
       {(!promptInstall || !supportsPWA) && (
         <p className="text-slate-400 text-sm max-w-xs text-center">
           The download button doesnt work in your browser,
