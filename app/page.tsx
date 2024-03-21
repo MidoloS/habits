@@ -93,7 +93,7 @@ const Index = async () => {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    redirect("/signin");
+    redirect("/home");
   }
   return (
     <>
