@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { Analytics } from "@vercel/analytics/react";
 import { getMessaging, getToken } from "firebase/messaging";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -24,12 +24,11 @@ export default function BlogLayout({
   const path = usePathname();
   const isLanding = path === "/" || path === "";
   useEffect(() => {
+    if (window.matchMedia("(display-mode: standalone)").matches) {
+      redirect("/signin");
+    }
     if (!isLanding) {
       (async () => {
-        const res = await navigator.serviceWorker.register(
-          "/firebase-messaging-sw.js"
-        );
-
         window.addEventListener("load", () => {
           if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("/firebase-messaging-sw.js");
@@ -67,27 +66,27 @@ export default function BlogLayout({
             console.log("error", err);
             setPermission(false);
           });
-      }
 
-      navigator.serviceWorker.ready.then((reg) => {
-        reg.pushManager
-          .getSubscription()
-          .then((sub) => {
-            if (sub) {
-              setPermission(true);
-              return sub;
-            }
+        navigator.serviceWorker.ready.then((reg) => {
+          reg.pushManager
+            .getSubscription()
+            .then((sub) => {
+              if (sub) {
+                setPermission(true);
+                return sub;
+              }
 
-            setPermission(false);
+              setPermission(false);
 
-            return reg.pushManager.subscribe({
-              userVisibleOnly: true,
+              return reg.pushManager.subscribe({
+                userVisibleOnly: true,
+              });
+            })
+            .catch((err) => {
+              setPermission(false);
             });
-          })
-          .catch((err) => {
-            setPermission(false);
-          });
-      });
+        });
+      }
     }
   }, []);
 
