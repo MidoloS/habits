@@ -13,9 +13,9 @@ type Props = {
 
 export const LeaderboardItem: FC<Props> = ({ user, rank, currentUser }) => {
   return (
-    <li className="flex items-center justify-between border-b border-zinc-500 p-3 py-4">
+    <li className="flex items-center justify-between border-zinc-600 border px-6 py-3 rounded-xl bg-zinc-900">
       <figure className="flex items-center gap-4 justify-center">
-        <figcaption className="subheading-1 gap-4">
+        <figcaption className="subheading-1 gap-4 text-zinc-50">
           {rank ? rank : "###"}
         </figcaption>
         <Image
@@ -29,7 +29,7 @@ export const LeaderboardItem: FC<Props> = ({ user, rank, currentUser }) => {
           <Link href={`/user/${user.id}`} className="font-medium text-zinc-50">
             {formatName(user.name, currentUser)}
           </Link>
-          <figcaption className="text-zinc-500 text-sm">
+          <figcaption className="text-zinc-400 text-sm">
             {user.points} Points
           </figcaption>
         </div>
