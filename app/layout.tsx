@@ -2,7 +2,6 @@
 
 import { Provider } from "@/components/Provider";
 import "./globals.css";
-import Script from "next/script";
 import { Roboto } from "next/font/google";
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
@@ -24,7 +23,7 @@ export default function BlogLayout({
   const path = usePathname();
   const isLanding = path === "/" || path === "";
   useEffect(() => {
-    if (window.matchMedia("(display-mode: standalone)").matches) {
+    if (window.matchMedia("(display-mode: standalone)").matches && isLanding) {
       redirect("/signin");
     }
     if (!isLanding) {
@@ -102,22 +101,6 @@ export default function BlogLayout({
           content="HabitAI is a cutting-edge app that supercharges your journey to healthier habits through friendly competition. Turn your wellness goals into an exhilarating personal challenge by facing off against fellow users in the pursuit of a healthier life. Discover how HabitAI can transform your daily routine and drive you towards your goals with excitement and motivation!"
         />
         <title>HabitAI ─ Create habits healthy using AI</title>
-        <Script
-          id="hothatAnalytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:3589171,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-          `,
-          }}
-        />
       </head>
       <body className={roboto.className}>
         <Provider>{children}</Provider>

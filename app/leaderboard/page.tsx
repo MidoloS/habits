@@ -14,7 +14,7 @@ export default async function Page() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/?callbackUrl=/leaderboard");
+    redirect("/signin?callbackUrl=/leaderboard");
   }
 
   const { data: users } = await getUsers();
