@@ -113,7 +113,7 @@ const Index = async () => {
               Set goals, snap a pic to verify completion, and earn points. Climb
               the leaderboard and crush your goals with AI by your side!
             </p>
-            <div className="flex flex-col gap-4 items-center md:flex-row">
+            <div className="flex flex-col gap-4 items-center md:flex-row md:items-start">
               <DownloadApp />
               <GoogleSignInButton />
             </div>
