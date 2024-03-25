@@ -298,6 +298,36 @@ const Index = async () => {
           </div>
         </div>
       </section>
+      <section className="bg-zinc-900 border-t border-b border-zinc-700 pt-16 md:pt-32 px-8">
+        <div className="container mx-auto flex flex-col text-center items-center gap-16">
+          <div className="justify-center flex flex-col gap-4 max-w-2xl">
+            <h1 className="text-white text-3xl font-semibold md:text-5xl">
+              Open Beta
+            </h1>
+            <p className=" text-zinc-400 leading-7">
+              Hey there!
+              <br />{" "}
+              <span className="text-white font-medium">
+                I&#39;m a solo developer pouring my heart into HabitAI.{" "}
+              </span>
+              <br />
+              Feeling stuck hitting those goals? Me too, man. That&#39;s why I
+              built HabitAI. <br />
+              But guess what? I can&#39;t perfect it alone.{" "}
+              <span className="text-white font-medium">
+                I need you fedback.
+              </span>
+              <br />
+              The Open Beta is our chance to work together, you and me, to make
+              HabitAI the ultimate tool for guys like us. Let&#39;s get this
+              done!
+            </p>
+          </div>
+          <div className="flex flex-col md:flex-row gap-6">
+            <Image src="/people.svg" alt="people" height={300} width={500} />
+          </div>
+        </div>
+      </section>
       <footer>
         <p className="text-zinc-400 text-center py-8">
           Made with <span>❤️</span> in Argentina •{" "}
