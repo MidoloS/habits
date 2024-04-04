@@ -72,7 +72,7 @@ export default async function Page() {
       </div>
       <div className="p-7 flex flex-col">
         <h2 className="subheading-1 mb-2 gap-4">ALL RANKERS</h2>
-        <ul className="flex flex-col mt-4 mb-20">
+        <ul className="flex flex-col mt-4 mb-20 gap-4">
           {otherUsers.map((user, rank) => (
             <LeaderboardItem
               user={user}

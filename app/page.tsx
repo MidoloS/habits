@@ -74,7 +74,7 @@ const Quote = ({
   quote: ReactNode;
 }) => {
   return (
-    <div className="max-w-lg flex flex-col md:flex-row items-center gap-6 md:items-start">
+    <div className="max-w-lg flex flex-col lg:flex-row items-center gap-6 lg:items-start">
       <Image
         className="rounded-full max-h-[70px]"
         width={70}
@@ -82,7 +82,7 @@ const Quote = ({
         src={imgUrl}
         alt={name}
       />
-      <div className="flex flex-col gap-2 items-center text-center md:text-left md:items-start">
+      <div className="flex flex-col gap-2 items-center text-center lg:text-left lg:items-start">
         <p className="text-white">─ {name}</p>
         {quote}
       </div>
@@ -97,23 +97,23 @@ const Index = async () => {
   }
   return (
     <>
-      <header className="mx-auto container px-8 mt-6 flex justify-center md:justify-start">
-        <div className="md:absolute md:top-6">{APP_LOGO}</div>
+      <header className="mx-auto container px-8 mt-6 flex justify-center lg:justify-start">
+        <div className="lg:absolute lg:top-6">{APP_LOGO}</div>
       </header>
       <main className="flex flex-col justify-center gap-8 bg-gradient-to-t from-zinc-900 to-zinc-950 min-h-[100vh] py-16 pb-16 pt-4">
-        <div className="container mx-auto px-8 flex items-center justify-center flex-col md:flex-row gap-14">
+        <div className="container mx-auto px-8 flex items-center justify-center flex-col lg:flex-row gap-14">
           <div className="gap-8 flex flex-col mx-auto container">
-            <h1 className="text-white mb text-center text-3xl font-semibold leading-10 md:text-6xl md:max-w-3xl md:text-left md:leading-[6rem]">
+            <h1 className="text-white mb text-center text-3xl font-semibold leading-10 lg:text-6xl lg:max-w-3xl lg:text-left lg:leading-[6rem]">
               Level Up Your Life: AI-Powered Habit Formation
             </h1>
-            <p className="text-center text-zinc-400 md:max-w-xl md:text-left leading-8">
+            <p className="text-center text-zinc-400 lg:max-w-xl lg:text-left leading-8">
               <span className="text-zinc-50 font-medium">
                 Building habits is hard. HabitAI uses AI to make it easy.{" "}
               </span>
               Set goals, snap a pic to verify completion, and earn points. Climb
               the leaderboard and crush your goals with AI by your side!
             </p>
-            <div className="flex flex-col gap-4 items-center md:flex-row md:items-start">
+            <div className="flex flex-col gap-4 items-center lg:flex-row lg:items-start">
               <DownloadApp />
               <GoogleSignInButton />
             </div>
@@ -128,10 +128,10 @@ const Index = async () => {
           />
         </div>
       </main>
-      <section className="bg-zinc-900 border-t border-b border-zinc-700 py-16 md:py-52">
-        <div className="container mx-auto flex flex-col text-center md:text-left px-8 md:flex-row justify-between items-center gap-12">
+      <section className="bg-zinc-900 border-t border-b border-zinc-700 py-16 lg:py-52">
+        <div className="container mx-auto flex flex-col text-center lg:text-left px-8 lg:flex-row justify-between items-center gap-12">
           <div className="justify-center flex flex-col gap-8 max-w-lg">
-            <h1 className="text-white text-3xl font-semibold md:text-5xl">
+            <h1 className="text-white text-3xl font-semibold lg:text-5xl">
               Unique Features
             </h1>
             <p className=" text-zinc-400 leading-7">
@@ -157,7 +157,7 @@ const Index = async () => {
               to transform goal-setting into a game you can win.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 w-fit gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 w-fit gap-6">
             <FeatureCard
               title="Follow Habit"
               description="Follow any of the 8 habits there is."
@@ -185,7 +185,7 @@ const Index = async () => {
           </div>
         </div>
       </section>
-      <section className="bg-zinc-950  md:py-16">
+      <section className="bg-zinc-950  lg:py-16">
         <div className="container mx-auto p-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +214,7 @@ const Index = async () => {
               />
             </g>
           </svg>
-          <div className="flex flex-col md:flex-row gap-10">
+          <div className="flex flex-col lg:flex-row gap-10">
             <Quote
               imgUrl="/jclear.png"
               name="James Clear"
@@ -257,10 +257,10 @@ const Index = async () => {
           </div>
         </div>
       </section>
-      <section className="bg-zinc-900 border-t border-b border-zinc-700 py-16 md:py-32 px-8">
+      <section className="bg-zinc-900 border-t border-b border-zinc-700 py-16 lg:py-32 px-8">
         <div className="container mx-auto flex flex-col text-center items-center gap-16">
           <div className="justify-center flex flex-col gap-4 max-w-lg">
-            <h1 className="text-white text-3xl font-semibold md:text-5xl">
+            <h1 className="text-white text-3xl font-semibold lg:text-5xl">
               Why HabitAI works?
             </h1>
             <p className=" text-zinc-400 leading-7">
@@ -270,7 +270,7 @@ const Index = async () => {
               it.&#39;
             </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-6">
+          <div className="flex flex-col lg:flex-row gap-6">
             <FeatureCard
               title="AI Validation"
               description='No more wondering if you"re fooling anyone (especially yourself)'
@@ -295,6 +295,36 @@ const Index = async () => {
               icon={PSYCOLOGY}
               square={false}
             />
+          </div>
+        </div>
+      </section>
+      <section className="bg-zinc-900 border-t border-b border-zinc-700 pt-16 lg:pt-32 px-8">
+        <div className="container mx-auto flex flex-col text-center items-center gap-16">
+          <div className="justify-center flex flex-col gap-4 max-w-2xl">
+            <h1 className="text-white text-3xl font-semibold lg:text-5xl">
+              Open Beta
+            </h1>
+            <p className=" text-zinc-400 leading-7">
+              Hey there!
+              <br />{" "}
+              <span className="text-white font-medium">
+                I&#39;m a solo developer pouring my heart into HabitAI.{" "}
+              </span>
+              <br />
+              Feeling stuck hitting those goals? Me too, man. That&#39;s why I
+              built HabitAI. <br />
+              But guess what? I can&#39;t perfect it alone.{" "}
+              <span className="text-white font-medium">
+                I need you fedback.
+              </span>
+              <br />
+              The Open Beta is our chance to work together, you and me, to make
+              HabitAI the ultimate tool for guys like us. Let&#39;s get this
+              done!
+            </p>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-6">
+            <Image src="/people.svg" alt="people" height={300} width={500} />
           </div>
         </div>
       </section>
