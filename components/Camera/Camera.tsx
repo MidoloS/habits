@@ -85,10 +85,24 @@ export const Camera = ({ habitName }: { habitName: string }) => {
 
     const res = await fetch("/validateHabit", {
       method: "POST",
-      body: b64img,
+      body: JSON.stringify({
+        b64img,
+        tags: [
+          "fruit",
+          "fast food",
+          "brushing teeth",
+          "person drinking water",
+          "washing machine",
+          "park",
+          "mess bed",
+          "neat bed",
+        ],
+      }),
     });
 
     const data = await res.json();
+
+    console.log({ data });
 
     const mostLikely = getKeyWithMaxValue(data);
 
