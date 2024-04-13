@@ -72,11 +72,11 @@ export default async function Page({
             {user.name}
           </figcaption>
         </figure>
-        <div className="flex justify-between w-full mt-4 container mx-auto p-7 md:justify-center gap-10">
+        <div className="flex justify-between w-full mt-4 container mx-auto p-7 md:justify-center md:gap-14">
           {stats.map((stat) => (
             <div className="flex flex-col items-center" key={stat.label}>
               <h4 className="text-white text-2xl font-bold">{stat.value}</h4>
-              <p className="text-zinc-500">{stat.label}</p>
+              <p className="text-zinc-500 text-sm">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -112,7 +112,7 @@ export default async function Page({
         </div>
 
         {user?.id === session?.user?.id && (
-          <div className="mb-20 mt-5 text-center">
+          <div className="pb-20 pt-5 text-center">
             <DeleteAccount />
           </div>
         )}
