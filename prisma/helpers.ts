@@ -1,4 +1,4 @@
-import { Habit, User } from "@prisma/client";
+import { Habit, Subscriptions, User } from "@prisma/client";
 import { generatePrismaClient } from "./client";
 
 const prisma = generatePrismaClient();
@@ -50,6 +50,139 @@ export const getHabit = async (name: string) => {
   };
 };
 
+export type SubscriptionWithHabit = Subscriptions & {
+  habit: Habit;
+};
+
+export const addBadge = async ({
+  sub,
+  email,
+}: {
+  sub: SubscriptionWithHabit;
+  email: string;
+}) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+  console.log(sub, email);
+
+  const userRange = (await getUserRank(user?.points || 0)) || 0;
+
+  if (userRange <= 10) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "TOP_RANKER",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "TOP_RANKER",
+      },
+    });
+  }
+
+  if (user?.points || 0 >= 2000) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "COLLECTOR",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "COLLECTOR",
+      },
+    });
+  }
+
+  if (user?.points || 0 >= 6969) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "NICE",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "NICE",
+      },
+    });
+  }
+
+  if (user?.points || 0 >= 10000) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "MARATHONER",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "MARATHONER",
+      },
+    });
+  }
+
+  if (user?.points || 0 >= 10000) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "MARATHONER",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "MARATHONER",
+      },
+    });
+  }
+
+  if (sub?.streak || 0 >= 21) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "ON_STREAK",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "ON_STREAK",
+      },
+    });
+  }
+
+  if (sub?.streak || 0 >= 100) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "ON_FIRE",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "ON_FIRE",
+      },
+    });
+  }
+};
+
 export const completeHabit = async ({
   email,
   habitName,
@@ -67,6 +200,12 @@ export const completeHabit = async ({
     include: {
       habit: true,
     },
+  });
+
+  await addBadge({
+    email,
+    // @ts-ignore
+    sub,
   });
 
   const xpBoost = 1 + (sub?.streak || 1) / 10;
@@ -156,6 +295,47 @@ export const createSubscriptions = async ({
   email: string;
   habitName: string;
 }) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+    include: {
+      subscriptions: true,
+    },
+  });
+
+  if (user?.subscriptions.length || 0 >= 0) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "FIRST_STEPS",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "FIRST_STEPS",
+      },
+    });
+  }
+
+  if (user?.subscriptions.length || 0 >= 2) {
+    await prisma.badgeOfUser.upsert({
+      where: {
+        userEmail_badgeTitle: {
+          badgeTitle: "CONNOISSEUR",
+          userEmail: email,
+        },
+      },
+      update: {},
+      create: {
+        userEmail: email,
+        badgeTitle: "CONNOISSEUR",
+      },
+    });
+  }
+
   return prisma.habit.update({
     where: {
       name: habitName,
@@ -198,6 +378,22 @@ export const createUser = async ({
   }
 
   try {
+    const userCount = await prisma.user.count();
+    if (userCount <= 1000) {
+      await prisma.badgeOfUser.upsert({
+        where: {
+          userEmail_badgeTitle: {
+            badgeTitle: "PIOONER",
+            userEmail: email,
+          },
+        },
+        update: {},
+        create: {
+          userEmail: email,
+          badgeTitle: "PIOONER",
+        },
+      });
+    }
     return prisma.user.upsert({
       where: {
         email,

@@ -11,7 +11,7 @@ export const StreakProgress: FC<Props> = ({ streakDays, isRanked }) => {
   const percentage = (1 / DAYS_UNTIL_HABIT) * 100;
   const totalBoost = streakDays * 10;
 
-  const isCompleted = streakDays === DAYS_UNTIL_HABIT;
+  const isCompleted = streakDays >= DAYS_UNTIL_HABIT;
   const message = isCompleted
     ? `Habit Completed!`
     : `${DAYS_UNTIL_HABIT - streakDays} days left`;

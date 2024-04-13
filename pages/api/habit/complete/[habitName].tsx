@@ -12,8 +12,6 @@ export default async function handler(
     return res.status(405).json({ message: "Method Not Allowed", data: null });
   }
 
-  const prisma = generatePrismaClient();
-
   const session = await getServerSession(req, res, authOptions);
 
   const { habitName } = req.query;
@@ -22,7 +20,7 @@ export default async function handler(
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  const wea = await completeHabit({
+  await completeHabit({
     email: session.user.email,
     habitName: habitName as string,
   });

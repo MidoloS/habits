@@ -11,6 +11,7 @@ import { Header } from "@/components/Navigator/Header";
 import Image from "next/image";
 import { formatName, formatNumber } from "@/libs/helpers";
 import { HabitCard } from "@/components/Habit/Card";
+import { BadgeList } from "@/components/Badges/List";
 
 export default async function Page({
   params: { id },
@@ -84,6 +85,12 @@ export default async function Page({
 
       <div className="bg-zinc-900">
         <div className="container mx-auto px-5">
+          <div>
+            <h2 className="subheading-1 mt-8 mb-4">ACHIEVEMENT BADGES</h2>
+            {/* @ts-ignore */}
+            <BadgeList userEmail={user.email} />
+          </div>
+
           {user.subscriptions.length && (
             <div className="flex flex-col gap-6 w-full">
               <h2 className="subheading-1 mt-8">FOLLOWING HABITS</h2>

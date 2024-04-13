@@ -33,7 +33,7 @@ model User {
   points        Int             @default(0)
   img           String?
   subscriptions Subscriptions[]
-  badges        Badge[]
+  badges        BadgeOfUser[]
 }
 
 model Subscriptions {
@@ -53,9 +53,17 @@ model Subscriptions {
 }
 
 model Badge {
-  id    String @unique @default(uuid())
-  title String
+  title  String        @unique
+  badges BadgeOfUser[]
+}
 
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
+model BadgeOfUser {
+  obtainedAt DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  User       User     @relation(fields: [userEmail], references: [email])
+  userEmail  String
+  Badge      Badge    @relation(fields: [badgeTitle], references: [title])
+  badgeTitle String
+
+  @@id([userEmail, badgeTitle])
 }

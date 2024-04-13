@@ -59,7 +59,7 @@ export default async function Page({
               <div className="flex flex-col items-center justify-center gap-1 text-zinc-50">
                 <h2 className="subheading-1">EARNED</h2>
                 <p className="text-xl text-zinc-50 font-semibold">
-                  +{habit.points} Points
+                  +{(habit.points * (currentHabit?.streak || 1)) / 10} Points
                 </p>
               </div>
             ) : (
