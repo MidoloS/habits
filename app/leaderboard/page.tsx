@@ -48,7 +48,7 @@ export default async function Page() {
 
       <div className="bg-gradient-to-t from-zinc-900 to-zinc-950 items-center border-b border-zinc-600">
         <div className="container mx-auto px-5 pb-14">
-          <div className="mb-4 flex flex-col gap-2 pt-28">
+          <div className="mb-6 flex flex-col gap-2 pt-28 md:text-center">
             <h1 className="text-2xl font-bold text-zinc-50">Leaderboard</h1>
             <h2 className="subheading-1">TOP 3 RANKERS</h2>
           </div>

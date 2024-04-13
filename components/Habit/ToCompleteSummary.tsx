@@ -47,7 +47,7 @@ export const HabitToCompleteSummary: FC<Props> = async ({
       legacyBehavior
     >
       <a>
-        <div className="border border-zinc-600 bg-zinc-950 flex justify-between px-6 items-center rounded-xl ">
+        <div className="border border-zinc-600 bg-zinc-900 flex justify-between px-6 items-center rounded-xl ">
           <div className="flex flex-col gap-1">
             <h1 className="text-zinc-400 font-medium text-sm tracking-wide">
               Habits completed

@@ -7,7 +7,6 @@ import { UserHabits } from "@/components/Habit/UserList";
 import { UserWelcome } from "@/components/User/Welcome";
 import { HabitToCompleteSummary } from "@/components/Habit/ToCompleteSummary";
 import { CountdownHabit } from "@/components/Habit/Countdown";
-import { EnableNotification } from "@/components/Modal/EnableNotification";
 import Image from "next/image";
 import Link from "next/link";
 import { NotificationRedirect } from "@/components/Info/NotificationRedirect";
@@ -61,24 +60,31 @@ const Home = async () => {
 
   return (
     <>
-      <main className="flex flex-col gap-8 p-7 container mx-auto">
-        <div className="flex flex-col gap-8">
-          <UserWelcome img={session.user?.image} name={session.user?.name} />
+      <div className="bg-gradient-to-t from-zinc-900 to-zinc-950 items-center border-b border-zinc-600">
+        <main className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 py-6 border-b border-zinc-600">
+            <div className="flex flex-col gap-8 container mx-auto px-5">
+              <UserWelcome
+                img={session.user?.image}
+                name={session.user?.name}
+              />
 
-          <div className="flex flex-col gap-2">
-            <NotificationRedirect userId={session?.user?.id} />
+              <div className="flex flex-col gap-4">
+                <NotificationRedirect userId={session?.user?.id} />
 
-            <HabitToCompleteSummary subscriptions={session?.user?.subs} />
-            <CountdownHabit />
+                <HabitToCompleteSummary subscriptions={session?.user?.subs} />
+                <CountdownHabit />
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h1 className="subheading-1 mb-4">TODAYS HABITS</h1>
-          {/* @ts-ignore */}
-          <UserHabits />
-        </div>
-      </main>
+          <div className="container mx-auto px-5">
+            <h1 className="subheading-1 mb-4">TODAYS HABITS</h1>
+            {/* @ts-ignore */}
+            <UserHabits />
+          </div>
+        </main>
+      </div>
       <Navigator userId={session?.user?.id} />
     </>
   );

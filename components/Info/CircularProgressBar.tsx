@@ -43,7 +43,7 @@ export const CircularProgressbar: FC<Props> = ({
         strokeWidth={strokeWidth}
         fillOpacity={0}
         style={{
-          stroke: "#09090b",
+          stroke: "#18181b",
         }}
       />
 
