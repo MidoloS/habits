@@ -50,7 +50,7 @@ export const UserHabits = async () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-16">
+    <div className="flex gap-4 flex-col md:grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
       {[
         ...subscriptions.sort((a, b) => {
           if (a.completedAt && b.completedAt) {

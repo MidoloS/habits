@@ -11,7 +11,7 @@ type Props = {
 
 export const HabitList: FC<Props> = ({ habits, urlPattern, Suffix }) => {
   return (
-    <div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-5 mb-16">
+    <div className="flex gap-4 flex-col md:grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
       {habits.map((habit) => (
         <Link
           href={urlPattern.replace("{habitName}", habit.name)}

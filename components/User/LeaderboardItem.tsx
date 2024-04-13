@@ -13,7 +13,7 @@ type Props = {
 
 export const LeaderboardItem: FC<Props> = ({ user, rank, currentUser }) => {
   return (
-    <li className="flex items-center justify-between border-zinc-600 border px-6 py-3 rounded-xl bg-zinc-900">
+    <li className="flex items-center justify-between border-zinc-600 border px-6 py-4 rounded-xl bg-zinc-900">
       <figure className="flex items-center gap-4 justify-center">
         <figcaption className="subheading-1 gap-4 text-zinc-50">
           {rank ? rank : "###"}
@@ -21,8 +21,8 @@ export const LeaderboardItem: FC<Props> = ({ user, rank, currentUser }) => {
         <Image
           className="rounded-full"
           src={user.img || "/default_user.png"}
-          width={40}
-          height={40}
+          width={45}
+          height={45}
           alt="user profile picture"
         />
         <div className="flex flex-col gap-1">
