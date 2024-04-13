@@ -60,9 +60,9 @@ const Home = async () => {
 
   return (
     <>
-      <div className="bg-gradient-to-t from-zinc-900 to-zinc-950 items-center">
+      <div className=" items-center">
         <main className="flex flex-col gap-8">
-          <div className="flex flex-col gap-8 py-6 border-b border-zinc-600">
+          <div className="flex flex-col gap-8 py-6 border-b border-zinc-600 bg-gradient-to-t from-zinc-900 to-zinc-950">
             <div className="flex flex-col gap-8 container mx-auto px-5">
               <UserWelcome
                 img={session.user?.image}
@@ -78,10 +78,12 @@ const Home = async () => {
             </div>
           </div>
 
-          <div className="container mx-auto px-5">
-            <h1 className="subheading-1 mb-4">TODAYS HABITS</h1>
-            {/* @ts-ignore */}
-            <UserHabits />
+          <div className="bg-zinc-900">
+            <div className="container mx-auto px-5">
+              <h1 className="subheading-1 mb-4">TODAYS HABITS</h1>
+              {/* @ts-ignore */}
+              <UserHabits />
+            </div>
           </div>
         </main>
       </div>
