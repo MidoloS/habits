@@ -34,7 +34,7 @@ export default async function Page() {
     (user) => user.email === currentUser.email
   );
 
-  const currentUserRank = await getUserRank(session?.user);
+  const currentUserRank = await getUserRank(session?.user.points);
 
   return (
     <>

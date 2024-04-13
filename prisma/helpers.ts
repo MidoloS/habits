@@ -237,13 +237,13 @@ export const getUserById = (id: string) => {
   }
 };
 
-export const getUserRank = (user: User) => {
-  if (!user) {
+export const getUserRank = (userPoints: number) => {
+  if (!userPoints) {
     return undefined;
   }
   return prisma.user.count({
     where: {
-      points: { gte: user.points },
+      points: { gte: userPoints },
     },
   });
 };

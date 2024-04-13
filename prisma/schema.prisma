@@ -33,6 +33,7 @@ model User {
   points        Int             @default(0)
   img           String?
   subscriptions Subscriptions[]
+  badges        Badge[]
 }
 
 model Subscriptions {
@@ -49,4 +50,12 @@ model Subscriptions {
   streak      Int       @default(0)
 
   @@id([userEmail, habitName])
+}
+
+model Badge {
+  id    String @unique @default(uuid())
+  title String
+
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
 }
