@@ -60,7 +60,7 @@ const Home = async () => {
 
   return (
     <>
-      <div className="bg-gradient-to-t from-zinc-900 to-zinc-950 items-center border-b border-zinc-600">
+      <div className="bg-gradient-to-t from-zinc-900 to-zinc-950 items-center">
         <main className="flex flex-col gap-8">
           <div className="flex flex-col gap-8 py-6 border-b border-zinc-600">
             <div className="flex flex-col gap-8 container mx-auto px-5">

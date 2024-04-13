@@ -102,7 +102,7 @@ export default function BlogLayout({
         />
         <title>HabitAI ─ Create habits healthy using AI</title>
       </head>
-      <body className={roboto.className}>
+      <body style={{ background: "#18181b" }} className={roboto.className}>
         <Provider>{children}</Provider>
         <Analytics />
       </body>
