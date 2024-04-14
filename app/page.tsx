@@ -102,7 +102,7 @@ const Index = async () => {
           <div className="lg:absolute lg:top-6">{APP_LOGO}</div>
         </header>
         <div className=" container mx-auto px-8 flex items-center justify-center flex-col lg:flex-row gap-14">
-          <div className="gap-12 flex flex-col mx-auto container ">
+          <div className="gap-8 flex flex-col mx-auto container ">
             <div>
               <h2 className="text-white mb-2 md:mb-3 text-center text-4xl font-bold leading-10 lg:text-[5rem]  lg:text-left lg:leading-[6rem]">
                 Level Up Your Life:
