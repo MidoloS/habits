@@ -165,7 +165,7 @@ const Index = async () => {
               to transform goal-setting into a game you can win.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 w-fit gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 w-fit gap-6">
             <FeatureCard
               title="Badges"
               description="Show off your badges to your rivals!"
@@ -222,7 +222,7 @@ const Index = async () => {
               />
             </g>
           </svg>
-          <div className="flex flex-col lg:flex-row gap-10">
+          <div className="flex flex-col items-center lg:flex-row gap-10">
             <Quote
               imgUrl="/jclear.png"
               name="James Clear"
@@ -278,7 +278,7 @@ const Index = async () => {
               it.&#39;
             </p>
           </div>
-          <div className="flex flex-col lg:flex-row gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             <FeatureCard
               title="AI Validation"
               description='No more wondering if you"re fooling anyone (especially yourself)'
