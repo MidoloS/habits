@@ -24,7 +24,7 @@ export const LOGO_ICON = (
 
 export const Header: FC<Props> = () => {
   return (
-    <header className="absolute w-full">
+    <header className="absolute w-full z-50">
       <div className="flex  justify-between items-center top-0 z-10 w-full p-5 mt-2 container mx-auto">
         <GoBackButton />
         <ShareButton />
