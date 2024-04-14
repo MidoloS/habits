@@ -10,7 +10,7 @@ export const GoogleSignInButton = ({ text = "Sign In" }: { text?: string }) => {
         await signIn("google", { redirect: true, callbackUrl: "/home" });
         redirect("/home");
       }}
-      className="z-20 bg-zinc-900 text-sm border border-zinc-700 w-fit px-8 py-3 text-white rounded-md"
+      className="z-20 bg-zinc-900 text-sm border border-zinc-700 w-fit px-10 py-4 text-white rounded-md"
     >
       {text}
     </button>

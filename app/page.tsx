@@ -97,23 +97,31 @@ const Index = async () => {
   }
   return (
     <>
-      <header className="mx-auto container px-8 mt-6 flex justify-center lg:justify-start">
-        <div className="lg:absolute lg:top-6">{APP_LOGO}</div>
-      </header>
       <main className="flex flex-col justify-center gap-8 bg-gradient-to-t from-zinc-900 to-zinc-950 min-h-[100vh] py-16 pb-16 pt-4">
-        <div className="container mx-auto px-8 flex items-center justify-center flex-col lg:flex-row gap-14">
-          <div className="gap-8 flex flex-col mx-auto container">
-            <h1 className="text-white mb text-center text-3xl font-semibold leading-10 lg:text-6xl lg:max-w-3xl lg:text-left lg:leading-[6rem]">
-              Level Up Your Life: AI-Powered Habit Formation
-            </h1>
-            <p className="text-center text-zinc-400 lg:max-w-xl lg:text-left leading-8">
+        <header className="mx-auto container px-8 mt-6 flex justify-center lg:justify-start">
+          <div className="lg:absolute lg:top-6">{APP_LOGO}</div>
+        </header>
+        <div className=" container mx-auto px-8 flex items-center justify-center flex-col lg:flex-row gap-14">
+          <div className="gap-8 flex flex-col mx-auto container ">
+            <div>
+              <h2 className="text-white mb-2 md:mb-3 text-center text-4xl font-bold leading-10 lg:text-[5rem]  lg:text-left lg:leading-[6rem]">
+                Level Up Your Life:
+              </h2>
+              <h1 className="from-[#E94646] to-[#9821FF] text-center text-4xl font-bold leading-10 lg:text-[5rem]  lg:text-left lg:leading-[6rem] bg-gradient-to-r text-transparent bg-clip-text">
+                AI-Powered Habit Formation
+              </h1>
+            </div>
+            <p className="text-center text-zinc-400 text-lg lg:max-w-2xl lg:text-left leading-8">
               <span className="text-zinc-50 font-medium">
-                Building habits is hard. HabitAI uses AI to make it easy.{" "}
-              </span>
-              Set goals, snap a pic to verify completion, and earn points. Climb
-              the leaderboard and crush your goals with AI by your side!
+                {" "}
+                Another night scrolling mindlessly? HabitAI can help!
+              </span>{" "}
+              <br />
+              Our AI validation and gamified system make building good habits
+              actually fun. <br />
+              Download HabitAI and break free from the scroll!
             </p>
-            <div className="flex flex-col gap-4 items-center lg:flex-row lg:items-start">
+            <div className="flex flex-col gap-6 items-center lg:flex-row lg:items-start">
               <DownloadApp />
               <GoogleSignInButton />
             </div>
@@ -159,20 +167,20 @@ const Index = async () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 w-fit gap-6">
             <FeatureCard
-              title="Follow Habit"
-              description="Follow any of the 8 habits there is."
+              title="Badges"
+              description="Show off your badges to your rivals!"
               icon={ADD_HABIT}
               square
             />
             <FeatureCard
-              title="Take a Snap"
+              title="AI Validation"
               description="Take a picture completing the habit, we validate it using AI."
               icon={TAKE_SNAP}
               square
             />
             <FeatureCard
               title="Earn Points"
-              description="Follow any of the 8 habits there is."
+              description="Compete on a global leaderboard, don't let them overtake you."
               icon={POINTS}
               square
             />
