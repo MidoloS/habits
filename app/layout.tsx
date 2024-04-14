@@ -98,9 +98,9 @@ export default function BlogLayout({
         <meta name="theme-color" content="#020617" />
         <meta
           name="description"
-          content="HabitAI is a cutting-edge app that supercharges your journey to healthier habits through friendly competition. Turn your wellness goals into an exhilarating personal challenge by facing off against fellow users in the pursuit of a healthier life. Discover how HabitAI can transform your daily routine and drive you towards your goals with excitement and motivation!"
+          content="Rankers, Ditch the Grind & Build Real Habits with HabitAI!  Tired of missing workouts for that extra raid night? HabitAI uses AI & leaderboards to make sticking to goals FUN. Track habits, climb ranks, unlock rewards – it's a habit-building RPG! Download HabitAI & level up your life!"
         />
-        <title>HabitAI ─ Create habits healthy using AI</title>
+        <title>HabitAI ─ AI Powered Habit Formation</title>
       </head>
       <body style={{ background: "#18181b" }} className={roboto.className}>
         <Provider>{children}</Provider>
