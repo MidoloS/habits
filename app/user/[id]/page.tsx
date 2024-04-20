@@ -34,6 +34,7 @@ export default async function Page({
 
   const streaks = user.subscriptions.map((sub) => sub.streak);
   const maxStreak = Math.max(...streaks, 0);
+  const followingHabits = user.subscriptions.filter((el) => el.isFollowing);
 
   const stats = [
     {
@@ -50,13 +51,11 @@ export default async function Page({
     },
     {
       label: "Habits",
-      value: user.subscriptions.length,
+      value: followingHabits.length,
     },
   ];
 
   console.log(JSON.stringify(user));
-
-  const followingHabits = user.subscriptions.filter((el) => el.isFollowing);
 
   return (
     <>
