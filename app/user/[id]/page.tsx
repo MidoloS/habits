@@ -54,7 +54,9 @@ export default async function Page({
     },
   ];
 
-  console.log(user);
+  console.log(JSON.stringify(user));
+
+  const followingHabits = user.subscriptions.filter((el) => el.isFollowing);
 
   return (
     <>
@@ -91,12 +93,12 @@ export default async function Page({
             <BadgeList userEmail={user.email} />
           </div>
 
-          {user.subscriptions.length && (
+          {followingHabits.length && (
             <div className="flex flex-col gap-6 w-full">
               <h2 className="subheading-1 mt-8">FOLLOWING HABITS</h2>
 
               <div className="flex gap-4 flex-col md:grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-                {user.subscriptions.map((sub) => (
+                {followingHabits.map((sub) => (
                   <HabitCard
                     key={sub.habitName}
                     // @ts-ignore
