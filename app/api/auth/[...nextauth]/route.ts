@@ -34,7 +34,8 @@ export const authOptions: NextAuthOptions = {
       const dbUser = await getUser(session.user?.email);
       console.log({ dbUser });
 
-      session.user.subs = dbUser?.subscriptions || [];
+      session.user.subs =
+        dbUser?.subscriptions.filter((el) => el.isFollowing) || [];
 
       session.user.points = dbUser?.points || 0;
 

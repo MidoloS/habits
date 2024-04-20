@@ -25,6 +25,7 @@ export const getUserHabits = async (email: string) =>
   prisma.subscriptions.findMany({
     where: {
       userEmail: email,
+      isFollowing: true,
     },
   });
 
