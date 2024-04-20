@@ -19,6 +19,12 @@ export default async function handler(
 
   console.log("deleting", session?.user?.email);
 
+  await prisma.badgeOfUser.deleteMany({
+    where: {
+      userEmail: session?.user?.email,
+    },
+  });
+
   const user = await prisma.user.delete({
     where: {
       email: session?.user?.email,
