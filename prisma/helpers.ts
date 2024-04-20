@@ -379,6 +379,23 @@ export const createUser = async ({
 
   try {
     const userCount = await prisma.user.count();
+
+    const wea = await prisma.user.upsert({
+      where: {
+        email,
+      },
+      create: {
+        email,
+        name,
+        img,
+      },
+      update: {
+        email,
+        name,
+        img,
+      },
+    });
+
     if (userCount <= 1000) {
       await prisma.badgeOfUser.upsert({
         where: {
@@ -394,22 +411,11 @@ export const createUser = async ({
         },
       });
     }
-    return prisma.user.upsert({
-      where: {
-        email,
-      },
-      create: {
-        email,
-        name,
-        img,
-      },
-      update: {
-        email,
-        name,
-        img,
-      },
-    });
+
+    return wea;
   } catch (err) {
+    console.log({ err });
+
     return null;
   }
 };
@@ -435,7 +441,7 @@ export const getUserById = (id: string) => {
 
 export const getUserRank = (userPoints: number) => {
   if (!userPoints) {
-    return undefined;
+    return 0;
   }
   return prisma.user.count({
     where: {

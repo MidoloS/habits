@@ -33,7 +33,7 @@ export default async function Page({
   }
 
   const streaks = user.subscriptions.map((sub) => sub.streak);
-  const maxStreak = Math.max(...streaks);
+  const maxStreak = Math.max(...streaks, 0);
 
   const stats = [
     {

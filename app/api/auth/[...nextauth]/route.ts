@@ -45,6 +45,8 @@ export const authOptions: NextAuthOptions = {
 
     async signIn({ profile }) {
       try {
+        console.log({ profile });
+
         const res = await createUser({
           email: profile?.email,
           name: profile?.name,
@@ -52,8 +54,12 @@ export const authOptions: NextAuthOptions = {
           img: profile?.image || profile?.picture || "/default_user.png",
         });
 
+        console.log({ res });
+
         return true;
       } catch (error) {
+        console.log({ error });
+
         return false;
       }
     },
