@@ -16,7 +16,7 @@ import { SwapCamera } from "./SwapButton";
 
 export const Camera = ({ habitName }: { habitName: string }) => {
   const [facing, setFacing] = useState<"user" | "environment">("environment");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [subscription, setSubscription] = useState<SubscriptionWithHabit>(
     {} as SubscriptionWithHabit
   );
@@ -127,6 +127,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
     (async () => {
       const res = await getSubscription(habitName);
       setSubscription(res.data);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -157,7 +158,7 @@ export const Camera = ({ habitName }: { habitName: string }) => {
         <PrimaryButton
           isLoading={isLoading}
           onClick={capture}
-          disabled={!!subscription.completedAt}
+          disabled={isLoading || !!subscription.completedAt}
           isActive
         >
           {isLoading ? "Processing..." : text}
