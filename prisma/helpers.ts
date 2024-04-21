@@ -87,7 +87,7 @@ export const addBadge = async ({
     });
   }
 
-  if (user?.points || 0 >= 2000) {
+  if ((user?.points || 0) >= 2000) {
     await prisma.badgeOfUser.upsert({
       where: {
         userEmail_badgeTitle: {
@@ -103,7 +103,7 @@ export const addBadge = async ({
     });
   }
 
-  if (user?.points || 0 >= 6969) {
+  if ((user?.points || 0) >= 6969) {
     await prisma.badgeOfUser.upsert({
       where: {
         userEmail_badgeTitle: {
@@ -119,7 +119,7 @@ export const addBadge = async ({
     });
   }
 
-  if (user?.points || 0 >= 10000) {
+  if ((user?.points || 0) >= 10000) {
     await prisma.badgeOfUser.upsert({
       where: {
         userEmail_badgeTitle: {
@@ -135,7 +135,7 @@ export const addBadge = async ({
     });
   }
 
-  if (user?.points || 0 >= 10000) {
+  if ((user?.points || 0) >= 10000) {
     await prisma.badgeOfUser.upsert({
       where: {
         userEmail_badgeTitle: {
@@ -151,7 +151,7 @@ export const addBadge = async ({
     });
   }
 
-  if (sub?.streak || 0 >= 21) {
+  if ((sub?.streak || 0) >= 21) {
     await prisma.badgeOfUser.upsert({
       where: {
         userEmail_badgeTitle: {
@@ -167,7 +167,7 @@ export const addBadge = async ({
     });
   }
 
-  if (sub?.streak || 0 >= 100) {
+  if ((sub?.streak || 0) >= 100) {
     await prisma.badgeOfUser.upsert({
       where: {
         userEmail_badgeTitle: {
