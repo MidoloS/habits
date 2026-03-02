@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HabitAI
 
-## Getting Started
+### _Social Habit Tracking, Verified by AI._
 
-First, run the development server:
+**HabitAI** is a high-performance Progressive Web App (PWA) designed to turn personal growth into a social, gamified experience. Unlike traditional habit trackers, it uses **AI-powered photo validation** to ensure real accountability and a **Global Ranking** system to foster community motivation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+[LinkedIn](https://www.linkedin.com/in/sebastian-midolo/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌟 Key Features
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+- **📸 AI Photo Validation:** No more "cheating" your streaks. Habit completion is verified through a custom computer vision model hosted on AWS using Docker.
+- **🔥 Streak Multipliers:** A dynamic points system that rewards consistency. The longer your streak, the higher your score multiplier.
+- **🏆 Global Leaderboard & Badges:** Compete with the community and earn unique badges based on habit volume, follower count, and legendary streaks.
+- **🤝 Social Ecosystem:** Follow friends, view their progress, and stay motivated through a native-feeling social feed.
+- **📱 Native PWA Experience:** Built as a Progressive Web App for an "app-like" feel on mobile, featuring **Push Notifications** via Firebase Cloud Messaging.
+- **🔐 Secure Authentication:** Seamless and secure onboarding using Google OAuth via NextAuth.js.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 🛠️ The Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework:** Next.js 13.5 (App Router) for optimized Server Components and SEO.
+- **Language:** TypeScript (Strict type safety).
+- **Styling:** Tailwind CSS + Tailwind Animated for fluid, modern UI transitions.
+- **UX/UI:** React Webcam (Camera integration), React Hot Toast (Feedback), and JS Confetti (Gamification).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Backend & Infrastructure
 
-## Deploy on Vercel
+- **Database:** PostgreSQL hosted on **Supabase**.
+- **ORM:** Prisma 5.0 for type-safe database management.
+- **AI Engine:** Custom validation model containerized with **Docker** and deployed on **AWS**.
+- **Analytics:** Vercel Analytics + Hotjar for user behavior insights.
+- **Notifications:** Firebase Cloud Messaging (FCM).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🏗️ Project Architecture
+
+The project follows a modular directory structure designed for scalability and clean separation of concerns:
+
+- **app/**: Utilizing Next.js 13's App Router for nested layouts, dynamic routing (e.g., `habit/[name]`), and server-side logic.
+- **components/**: Domain-driven component design (Badges, Camera, Habit, User) to ensure high reusability and maintainability.
+- **prisma/**: Centralized schema management and data helper functions.
+- **public/**: Houses the PWA manifest and static assets for a native mobile feel.
+
+---
+
+## 🚀 Engineering Highlights
+
+- **Performance:** Optimized for mobile-first interactions with a focus on Core Web Vitals.
+- **Scalability:** Decoupled the AI validation logic into a dedicated AWS container, allowing the main application to remain lightweight.
+- **Engagement:** Integrated real-time notifications and gamified logic (multipliers/badges) to maximize user retention.
